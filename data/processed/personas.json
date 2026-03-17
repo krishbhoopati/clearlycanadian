@@ -1,0 +1,41 @@
+[
+  {
+    "id": "budget-conscious-millennial",
+    "name": "Budget-Conscious Millennial",
+    "ageRange": "25-34",
+    "region": "Ontario",
+    "incomeLevel": "medium",
+    "shoppingValues": ["price", "convenience", "deals"],
+    "brandLoyalty": "low",
+    "description": "A young professional in the GTA juggling rent and student debt. Shops online frequently, loves discount codes, and will switch brands for a 10% savings. Prefers fast delivery over premium packaging.",
+    "preferredCategories": ["grocery", "electronics", "apparel"],
+    "priceElasticity": 0.85,
+    "digitalAdoption": "early"
+  },
+  {
+    "id": "eco-conscious-gen-x",
+    "name": "Eco-Conscious Gen X",
+    "ageRange": "40-50",
+    "region": "British Columbia",
+    "incomeLevel": "high",
+    "shoppingValues": ["sustainability", "quality", "ethics"],
+    "brandLoyalty": "high",
+    "description": "A BC-based professional who prioritizes environmental impact over price. Pays a premium for certified organic and locally sourced products. Loyal to brands that demonstrate genuine sustainability commitments.",
+    "preferredCategories": ["grocery", "health", "apparel"],
+    "priceElasticity": 0.2,
+    "digitalAdoption": "mainstream"
+  },
+  {
+    "id": "rural-deal-seeker",
+    "name": "Rural Deal-Seeker",
+    "ageRange": "35-50",
+    "region": "Saskatchewan",
+    "incomeLevel": "low",
+    "shoppingValues": ["price", "bulk-value", "reliability"],
+    "brandLoyalty": "medium",
+    "description": "Lives outside a major centre and drives 45 minutes to the nearest Walmart. Buys in bulk, avoids impulse purchases, and plans shopping trips carefully. Very price-sensitive; inflation has real impact on household budget.",
+    "preferredCategories": ["grocery", "automotive", "health"],
+    "priceElasticity": 0.95,
+    "digitalAdoption": "late"
+  }
+]

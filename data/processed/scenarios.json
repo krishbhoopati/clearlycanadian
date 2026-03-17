@@ -1,0 +1,26 @@
+[
+  {
+    "id": "grocery-inflation-2024",
+    "title": "Grocery Inflation 2024",
+    "category": "grocery",
+    "description": "Examines how Canadian consumers are responding to sustained grocery price inflation, including trade-down behaviour, private label adoption, and changes in shopping frequency.",
+    "contextTags": ["inflation", "grocery", "price", "private label", "trade-down", "CPG", "food"],
+    "dateRange": {
+      "from": "2024-01-01",
+      "to": "2024-12-31"
+    },
+    "relevantPersonaIds": ["budget-conscious-millennial", "rural-deal-seeker"]
+  },
+  {
+    "id": "sustainability-shift-retail",
+    "title": "Sustainability Shift in Canadian Retail",
+    "category": "apparel",
+    "description": "Explores how sustainability claims influence purchase decisions across income levels, and which consumer segments are most likely to pay a premium for eco-certified products.",
+    "contextTags": ["sustainability", "eco", "green", "premium", "organic", "ethical", "certified"],
+    "dateRange": {
+      "from": "2023-06-01",
+      "to": "2024-12-31"
+    },
+    "relevantPersonaIds": ["eco-conscious-gen-x"]
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ev-001",
+    "sourceFile": "seed",
+    "text": "68% of Canadian grocery shoppers reported trading down to store-brand or private-label products in 2024 due to sustained inflation.",
+    "tags": ["grocery", "inflation", "private label", "trade-down", "price"],
+    "category": "grocery",
+    "datePublished": "2024-03-15"
+  },
+  {
+    "id": "ev-002",
+    "sourceFile": "seed",
+    "text": "Canadian consumers in Ontario and Quebec show the highest price sensitivity for packaged foods, with 72% actively comparing unit prices across brands.",
+    "tags": ["grocery", "price", "Ontario", "Quebec", "CPG", "sensitivity"],
+    "category": "grocery",
+    "datePublished": "2024-05-20"
+  },
+  {
+    "id": "ev-003",
+    "sourceFile": "seed",
+    "text": "45% of BC consumers say they are willing to pay up to 20% more for products with credible sustainability certifications, compared to a national average of 28%.",
+    "tags": ["sustainability", "BC", "eco", "premium", "certified", "willingness to pay"],
+    "category": "apparel",
+    "datePublished": "2024-02-10"
+  },
+  {
+    "id": "ev-004",
+    "sourceFile": "seed",
+    "text": "Rural Canadian shoppers (populations under 30,000) make 30% fewer shopping trips per month than urban counterparts, but spend 40% more per trip on average.",
+    "tags": ["rural", "shopping", "frequency", "basket size", "Saskatchewan", "Alberta"],
+    "category": "grocery",
+    "datePublished": "2023-11-08"
+  },
+  {
+    "id": "ev-005",
+    "sourceFile": "seed",
+    "text": "Brand loyalty in the apparel category has declined 18% among millennials since 2022, driven primarily by cost pressures and expanded access to fast-fashion alternatives.",
+    "tags": ["apparel", "brand loyalty", "millennials", "fast fashion", "price"],
+    "category": "apparel",
+    "datePublished": "2024-01-30"
+  }
+]
