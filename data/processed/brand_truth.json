@@ -1,0 +1,122 @@
+[
+  {
+    "id": "brand-001",
+    "statement": "Clearly Canadian was founded in 1987 in Vancouver, British Columbia, making it one of Canada's first premium flavoured sparkling water brands.",
+    "category": "origin_story",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
+    "source": "Clearly Canadian company history",
+    "confidence": 0.97
+  },
+  {
+    "id": "brand-002",
+    "statement": "Clearly Canadian Originals are made with spring water sourced from British Columbia and contain no artificial colours or preservatives.",
+    "category": "ingredient_sourcing",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
+    "source": "Clearly Canadian product label and website",
+    "confidence": 0.95
+  },
+  {
+    "id": "brand-003",
+    "statement": "Clearly Canadian Zero Sugar uses stevia leaf extract as its natural sweetener with zero grams of sugar per bottle.",
+    "category": "zero_sugar_formulation",
+    "applies_to_products": ["Clearly Canadian Zero Sugar"],
+    "source": "Clearly Canadian Zero Sugar product label",
+    "confidence": 0.97
+  },
+  {
+    "id": "brand-004",
+    "statement": "The Clearly Canadian Originals glass bottle is a curved, embossed design that has remained largely unchanged since the 1980s, making it immediately recognizable to consumers who remember the brand.",
+    "category": "packaging_heritage",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
+    "source": "Brand packaging history documentation",
+    "confidence": 0.93
+  },
+  {
+    "id": "brand-005",
+    "statement": "Clearly Canadian's current flavour lineup includes Country Raspberry, Wild Cherry, Orchard Peach, Mountain Blackberry, and Western Melon for Originals.",
+    "category": "flavor_lineup",
+    "applies_to_products": ["Clearly Canadian Originals"],
+    "source": "Clearly Canadian product listing 2024",
+    "confidence": 0.90
+  },
+  {
+    "id": "brand-006",
+    "statement": "Clearly Canadian Zero Sugar is available in Country Raspberry, Wild Cherry, Orchard Peach, and Mountain Blackberry flavours.",
+    "category": "flavor_lineup",
+    "applies_to_products": ["Clearly Canadian Zero Sugar"],
+    "source": "Clearly Canadian product listing 2024",
+    "confidence": 0.90
+  },
+  {
+    "id": "brand-007",
+    "statement": "Clearly Canadian relaunched the brand in 2015 following a successful crowdfunding campaign where fans pre-ordered over 500,000 cases, demonstrating the depth of consumer nostalgia.",
+    "category": "nostalgia_narrative",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
+    "source": "Clearly Canadian relaunch press coverage 2015",
+    "confidence": 0.92
+  },
+  {
+    "id": "brand-008",
+    "statement": "Clearly Canadian is a Canadian-owned and operated brand, headquartered in Kelowna, British Columbia.",
+    "category": "canadian_ownership",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans"],
+    "source": "Clearly Canadian corporate information",
+    "confidence": 0.96
+  },
+  {
+    "id": "brand-009",
+    "statement": "Clearly Canadian cans were introduced to expand distribution into convenience and impulse channels where glass bottle format is impractical.",
+    "category": "convenience_channel_strategy",
+    "applies_to_products": ["Clearly Canadian Cans"],
+    "source": "Clearly Canadian distribution strategy documentation",
+    "confidence": 0.85
+  },
+  {
+    "id": "brand-010",
+    "statement": "The Clearly Canadian glass bottle is fully recyclable and the brand positions glass as part of its sustainability story versus single-use plastic.",
+    "category": "sustainability_positioning",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
+    "source": "Clearly Canadian sustainability messaging",
+    "confidence": 0.88
+  },
+  {
+    "id": "brand-011",
+    "statement": "Clearly Canadian Originals contain approximately 80 calories and 20g of sugar per 325ml bottle, positioning it as a flavoured sparkling water rather than a zero-calorie option.",
+    "category": "nutritional_facts",
+    "applies_to_products": ["Clearly Canadian Originals"],
+    "source": "Clearly Canadian Originals product label",
+    "confidence": 0.95
+  },
+  {
+    "id": "brand-012",
+    "statement": "Clearly Canadian is distributed across grocery, specialty retail, and convenience channels in Canada, with selective distribution in U.S. Whole Foods and specialty grocers.",
+    "category": "distribution_footprint",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans"],
+    "source": "Clearly Canadian retail distribution data 2024",
+    "confidence": 0.83
+  },
+  {
+    "id": "brand-013",
+    "statement": "Clearly Canadian's sparkling water is lightly carbonated compared to European mineral waters, making it more approachable for consumers transitioning from still water or soda.",
+    "category": "product_positioning",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans"],
+    "source": "Clearly Canadian product taste profile documentation",
+    "confidence": 0.82
+  },
+  {
+    "id": "brand-014",
+    "statement": "The Clearly Canadian brand peaked in the early 1990s with annual sales exceeding $150 million CAD before declining through the 2000s and entering a revitalization phase post-2015.",
+    "category": "brand_history",
+    "applies_to_products": ["Clearly Canadian Originals"],
+    "source": "Canadian Business magazine historical coverage",
+    "confidence": 0.87
+  },
+  {
+    "id": "brand-015",
+    "statement": "Clearly Canadian's brand voice and visual identity emphasize Canadian heritage, natural sourcing, and 90s nostalgia to differentiate from U.S.-owned sparkling water brands.",
+    "category": "brand_positioning",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans", "Clearly Canadian Glass Bottle"],
+    "source": "Clearly Canadian brand guidelines 2023",
+    "confidence": 0.89
+  }
+]

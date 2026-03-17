@@ -29,7 +29,7 @@ export default function ScenarioSelector({ value, onChange }: Props) {
         <option value="">— No scenario —</option>
         {scenarios.map((s) => (
           <option key={s.id} value={s.id}>
-            {s.title}
+            {s.name}
           </option>
         ))}
       </select>

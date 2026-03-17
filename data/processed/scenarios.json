@@ -1,26 +1,235 @@
 [
   {
-    "id": "grocery-inflation-2024",
-    "title": "Grocery Inflation 2024",
-    "category": "grocery",
-    "description": "Examines how Canadian consumers are responding to sustained grocery price inflation, including trade-down behaviour, private label adoption, and changes in shopping frequency.",
-    "contextTags": ["inflation", "grocery", "price", "private label", "trade-down", "CPG", "food"],
-    "dateRange": {
-      "from": "2024-01-01",
-      "to": "2024-12-31"
-    },
-    "relevantPersonaIds": ["budget-conscious-millennial", "rural-deal-seeker"]
+    "id": "scenario-zero-sugar-reaction",
+    "name": "Zero Sugar Launch Reaction",
+    "description": "How do different consumer segments react to Clearly Canadian's Zero Sugar line — do they trust the formulation, and what would drive trial?",
+    "context": "Clearly Canadian has launched a Zero Sugar version using stevia. Health-conscious and sugar-aware consumers are the primary target. The question is whether the brand's 90s sugar-heavy heritage helps or hurts credibility for a zero-sugar extension.",
+    "question_templates": [
+      "Would you try Clearly Canadian Zero Sugar?",
+      "What would make you trust a 'zero sugar' claim from this brand?",
+      "Does the stevia sweetener concern you?",
+      "How does this compare to your usual zero-sugar sparkling water?"
+    ],
+    "recommended_personas": [
+      "persona-health-conscious",
+      "persona-ca-genz",
+      "persona-ca-millennial",
+      "persona-convenience-first"
+    ],
+    "required_fact_categories": [
+      "low_sugar_interest",
+      "zero_sugar_formulation",
+      "beverage_buying_behavior"
+    ]
   },
   {
-    "id": "sustainability-shift-retail",
-    "title": "Sustainability Shift in Canadian Retail",
-    "category": "apparel",
-    "description": "Explores how sustainability claims influence purchase decisions across income levels, and which consumer segments are most likely to pay a premium for eco-certified products.",
-    "contextTags": ["sustainability", "eco", "green", "premium", "organic", "ethical", "certified"],
-    "dateRange": {
-      "from": "2023-06-01",
-      "to": "2024-12-31"
-    },
-    "relevantPersonaIds": ["eco-conscious-gen-x"]
+    "id": "scenario-grocery-shelf",
+    "name": "Grocery Shelf Encounter",
+    "description": "A consumer encounters Clearly Canadian on a grocery shelf for the first time (or first time in years). What drives pick-up, trial, and conversion to purchase?",
+    "context": "The shopper is in the sparkling water aisle. Clearly Canadian glass bottles are displayed alongside San Pellegrino, Perrier, and local brands. The price point is $2.99 per bottle.",
+    "question_templates": [
+      "What's your first impression when you see the bottle?",
+      "Would you pick it up? What would you check first?",
+      "How does the price feel compared to what you'd expect?",
+      "Does the Canadian branding affect your interest?"
+    ],
+    "recommended_personas": [
+      "persona-ca-millennial",
+      "persona-existing-nostalgia",
+      "persona-premium-lifestyle",
+      "persona-health-conscious"
+    ],
+    "required_fact_categories": [
+      "beverage_buying_behavior",
+      "canadian_identity",
+      "price_sensitivity",
+      "packaging_heritage"
+    ]
+  },
+  {
+    "id": "scenario-convenience-impulse",
+    "name": "Convenience Store Cold Case",
+    "description": "A Clearly Canadian can is spotted in the cold case at a gas station or convenience store. What drives impulse purchase among grab-and-go shoppers?",
+    "context": "Clearly Canadian cans are at eye level in the convenience store cooler, priced at $2.29. The shopper has no prior intent to buy a specific brand and is choosing between Bubly, Perrier, and Clearly Canadian cans.",
+    "question_templates": [
+      "What made you reach for it?",
+      "Is the price right for a gas station buy?",
+      "Would you grab it again on your next visit?",
+      "Does the can format work for you or would you prefer a bottle?"
+    ],
+    "recommended_personas": [
+      "persona-convenience-first",
+      "persona-ca-genz",
+      "persona-ca-millennial"
+    ],
+    "required_fact_categories": [
+      "convenience_impulse",
+      "price_sensitivity",
+      "beverage_buying_behavior"
+    ]
+  },
+  {
+    "id": "scenario-nostalgia-ad",
+    "name": "Nostalgia-Driven Advertisement",
+    "description": "A consumer encounters a nostalgia-themed Clearly Canadian ad — either a TV spot, Instagram reel, or in-store display. How does it land across age groups?",
+    "context": "The ad evokes the early 90s: the iconic bottle, summer imagery, references to 'Canada's original sparkling water.' The message is: 'We're back. And you remember why you loved us.'",
+    "question_templates": [
+      "Does this ad make you want to buy it?",
+      "Does the nostalgia angle mean anything to you?",
+      "What would you want to know after seeing this?",
+      "Who do you think this ad is for?"
+    ],
+    "recommended_personas": [
+      "persona-existing-nostalgia",
+      "persona-ca-millennial",
+      "persona-ca-genz",
+      "persona-us-millennial"
+    ],
+    "required_fact_categories": [
+      "nostalgia_narrative",
+      "canadian_identity",
+      "beverage_buying_behavior",
+      "social_media_discovery"
+    ]
+  },
+  {
+    "id": "scenario-sustainability-message",
+    "name": "Sustainability and Glass Bottle Messaging",
+    "description": "How effectively does Clearly Canadian's glass bottle sustainability story resonate, and does it drive premium price acceptance?",
+    "context": "Clearly Canadian is communicating that its glass bottles are fully recyclable and that choosing glass over plastic reduces single-use waste. The message is paired with a BC spring water sourcing claim.",
+    "question_templates": [
+      "Does the glass bottle make you feel better about buying this?",
+      "Would sustainability messaging make you pay more?",
+      "Does the spring water sourcing claim feel authentic?",
+      "How does this compare to other brands' sustainability messaging?"
+    ],
+    "recommended_personas": [
+      "persona-premium-lifestyle",
+      "persona-ca-millennial",
+      "persona-health-conscious",
+      "persona-us-millennial"
+    ],
+    "required_fact_categories": [
+      "sustainability_positioning",
+      "canadian_identity",
+      "ingredient_sourcing",
+      "beverage_buying_behavior"
+    ]
+  },
+  {
+    "id": "scenario-packaging-reaction",
+    "name": "Packaging First Impression",
+    "description": "What is the immediate reaction to Clearly Canadian's signature glass bottle design, and does packaging alone drive trial intent?",
+    "context": "The consumer is shown only the Clearly Canadian bottle — no price, no marketing copy. Just the embossed glass bottle with the label. They are asked for an unfiltered first impression.",
+    "question_templates": [
+      "What do you think this is?",
+      "What does this packaging communicate to you?",
+      "Would you pick this up in a store?",
+      "What price would you guess this is, based on the packaging alone?"
+    ],
+    "recommended_personas": [
+      "persona-us-genz",
+      "persona-ca-genz",
+      "persona-premium-lifestyle",
+      "persona-us-millennial"
+    ],
+    "required_fact_categories": [
+      "packaging_heritage",
+      "beverage_buying_behavior",
+      "social_media_discovery"
+    ]
+  },
+  {
+    "id": "scenario-price-reaction",
+    "name": "Price Sensitivity Probe",
+    "description": "How do different segments respond to Clearly Canadian's price positioning versus competitive sparkling water brands?",
+    "context": "Clearly Canadian Originals are priced at $2.99 for a single glass bottle. Perrier is $2.49. Bubly cans are $1.79. The consumer is choosing between them at a grocery shelf.",
+    "question_templates": [
+      "Is $2.99 fair for this bottle?",
+      "What would make it worth more than Perrier to you?",
+      "At what price would you stop buying it?",
+      "Would a multi-pack deal change your decision?"
+    ],
+    "recommended_personas": [
+      "persona-ca-millennial",
+      "persona-convenience-first",
+      "persona-health-conscious",
+      "persona-us-millennial"
+    ],
+    "required_fact_categories": [
+      "price_sensitivity",
+      "beverage_buying_behavior",
+      "canadian_identity"
+    ]
+  },
+  {
+    "id": "scenario-repeat-purchase",
+    "name": "Repeat Purchase Drivers",
+    "description": "What turns a one-time trial purchaser into a regular Clearly Canadian buyer, and what are the risks of churn?",
+    "context": "A consumer has tried Clearly Canadian once and liked it. The question is: what would need to happen — in terms of availability, price, format, and brand experience — for them to make it a regular purchase?",
+    "question_templates": [
+      "What would it take for you to buy this every week?",
+      "Is there anything that would stop you from repurchasing?",
+      "What format would you buy most often — glass bottle, can, or multi-pack?",
+      "Would a subscription or loyalty program interest you?"
+    ],
+    "recommended_personas": [
+      "persona-ca-millennial",
+      "persona-existing-nostalgia",
+      "persona-health-conscious",
+      "persona-convenience-first"
+    ],
+    "required_fact_categories": [
+      "beverage_buying_behavior",
+      "sparkling_water_behavior",
+      "price_sensitivity",
+      "convenience_impulse"
+    ]
+  },
+  {
+    "id": "scenario-online-discovery",
+    "name": "Online and Social Discovery",
+    "description": "How would Clearly Canadian break through to consumers who have never heard of it via digital and social channels?",
+    "context": "A consumer encounters Clearly Canadian for the first time via a TikTok post, an Instagram reel, or an Amazon product listing. They have no prior brand awareness. The question is what content, claims, or social proof would drive them to search or buy.",
+    "question_templates": [
+      "What would make you stop scrolling on a Clearly Canadian TikTok?",
+      "What would you Google after seeing it for the first time?",
+      "What would a creator you trust need to say about it for you to buy?",
+      "Would you buy it directly from a social post or go find it in-store?"
+    ],
+    "recommended_personas": [
+      "persona-us-genz",
+      "persona-ca-genz",
+      "persona-us-millennial",
+      "persona-ca-millennial"
+    ],
+    "required_fact_categories": [
+      "social_media_discovery",
+      "beverage_buying_behavior",
+      "canadian_identity"
+    ]
+  },
+  {
+    "id": "scenario-household-stock-up",
+    "name": "Household Stock-Up Behavior",
+    "description": "When and why do consumers buy Clearly Canadian in multi-unit quantities, and what triggers a bulk purchase decision?",
+    "context": "A consumer who already knows and likes Clearly Canadian is at a grocery store where a 4-pack is available for $9.99 (vs. $2.99 per single). They're deciding whether to stock up.",
+    "question_templates": [
+      "Would you buy the 4-pack at this price?",
+      "Do you usually stock sparkling water at home?",
+      "How many bottles do you go through in a week?",
+      "Would you prefer a subscription delivery option if it saved you 10%?"
+    ],
+    "recommended_personas": [
+      "persona-existing-nostalgia",
+      "persona-ca-millennial",
+      "persona-premium-lifestyle",
+      "persona-health-conscious"
+    ],
+    "required_fact_categories": [
+      "sparkling_water_behavior",
+      "beverage_buying_behavior",
+      "price_sensitivity"
+    ]
   }
 ]

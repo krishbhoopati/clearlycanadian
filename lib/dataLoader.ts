@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import type { Persona, Scenario, Evidence } from "./types";
+import type { Persona, Scenario, BehaviorFact, BrandFact } from "./types";
 
 const PROCESSED_DIR = path.join(process.cwd(), "data", "processed");
 
@@ -32,8 +32,18 @@ export function loadScenarios(): Scenario[] {
   return loadJSON<Scenario[]>("scenarios.json");
 }
 
-export function loadEvidence(): Evidence[] {
-  return loadJSON<Evidence[]>("evidence.json");
+/** @deprecated Use loadBehaviorFacts() instead. Returns empty array. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function loadEvidence(): any[] {
+  return [];
+}
+
+export function loadBehaviorFacts(): BehaviorFact[] {
+  return loadJSON<BehaviorFact[]>("behavior_facts.json");
+}
+
+export function loadBrandFacts(): BrandFact[] {
+  return loadJSON<BrandFact[]>("brand_truth.json");
 }
 
 export function clearCache(): void {
