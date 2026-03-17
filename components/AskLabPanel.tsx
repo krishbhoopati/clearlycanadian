@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { SimulationResponse, QueryResult } from "@/lib/types";
+import type { SimulationResponse, AskLabResponse } from "@/lib/types";
 import PersonaSelector from "./PersonaSelector";
 import ScenarioSelector from "./ScenarioSelector";
 import ResponseCard from "./ResponseCard";
@@ -12,7 +12,7 @@ export default function AskLabPanel() {
   const [personaId, setPersonaId] = useState("");
   const [scenarioId, setScenarioId] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<QueryResult | null>(null);
+  const [result, setResult] = useState<AskLabResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -27,9 +27,9 @@ export default function AskLabPanel() {
       const res = await fetch("/api/ask-lab", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, personaId: personaId || undefined, scenarioId: scenarioId || undefined }),
+        body: JSON.stringify({ user_question: query, personaId: personaId || undefined, scenarioId: scenarioId || undefined }),
       });
-      const data = await res.json() as SimulationResponse<QueryResult>;
+      const data = await res.json() as SimulationResponse<AskLabResponse>;
       if (data.success && data.data) {
         setResult(data.data);
       } else {
@@ -83,7 +83,7 @@ export default function AskLabPanel() {
       {result && (
         <div className="mt-6">
           <ResponseCard result={result} />
-          <EvidencePanel items={result.evidence} />
+          <EvidencePanel items={result.evidence_items} />
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import type { SimulationResponse, ChatTurn, Message } from "@/lib/types";
+import type { SimulationResponse, PersonaChatResponse } from "@/lib/types";
 import PersonaSelector from "./PersonaSelector";
 import ScenarioSelector from "./ScenarioSelector";
 
@@ -61,17 +61,17 @@ export default function PersonaChatPanel() {
           sessionId: sessionId ?? undefined,
         }),
       });
-      const data = await res.json() as SimulationResponse<ChatTurn>;
+      const data = await res.json() as SimulationResponse<PersonaChatResponse>;
 
       if (data.success && data.data) {
-        const turn = data.data;
-        if (!sessionId) setSessionId(turn.sessionId);
+        const result = data.data;
+        if (!sessionId) setSessionId(result.session_id);
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: turn.personaReply.content,
-            personaName: turn.persona.name,
+            content: result.persona_response,
+            personaName: personaId,
           },
         ]);
       } else {

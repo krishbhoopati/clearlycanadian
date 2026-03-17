@@ -5,6 +5,7 @@ export interface Persona {
   name: string;
   age_range: string;
   market: string;
+  region?: string;
   generation: "Gen Z" | "Millennial" | "Gen X" | "Boomer";
   customer_type: string;
   behavioral_segment: string;
@@ -30,6 +31,7 @@ export interface Scenario {
   question_templates: string[];
   recommended_personas: string[];
   required_fact_categories: string[];
+  contextTags?: string[];
 }
 
 export interface BehaviorFact {
@@ -56,6 +58,26 @@ export interface BrandFact {
   confidence: number;
 }
 
+export interface Evidence {
+  id: string;
+  text: string;          // mapped from BehaviorFact.statement at retrieval time
+  tags: string[];
+  category: string;
+  relevanceScore: number; // 0–1, computed at retrieval time
+  source?: string;
+  datePublished?: string;
+}
+
+export interface QueryResult {
+  query: string;
+  parsedIntent: "explore" | "compare" | "validate" | "explain";
+  evidence: Evidence[];
+  summary: string;
+  score: number;
+  scenarioId?: string;
+  personaId?: string;
+}
+
 // ─── API Request / Response Types ─────────────────────────────────────────────
 
 export interface AskLabRequest {
@@ -74,7 +96,7 @@ export interface PersonaChatRequest {
 export interface PersonaSimulationResult {
   persona_id: string;
   persona_name: string;
-  decision: "buy" | "consider" | "skip" | "defer";
+  decision: "likely_try" | "likely_reject" | "mixed_interest" | "likely_repeat" | "low_awareness_high_potential";
   drivers: string[];
   barriers: string[];
   inferred_beliefs: string[];
@@ -93,6 +115,8 @@ export interface AskLabResponse {
   strategic_takeaway: string;
   confidence: number;
   used_evidence_ids: string[];
+  evidence_items: Evidence[];
+  scenario_matched: boolean;
 }
 
 export interface PersonaChatResponse {
@@ -156,6 +180,12 @@ export interface ParsedQuery {
   category?: string;
   personaFilter?: string;
   scenarioFilter?: string;
+  market?: "CA" | "US";
+  generation?: "Gen Z" | "Millennial" | "Gen X" | "Boomer";
+  customerType?: "potential" | "existing";
+  topic?: string;
+  confidence: number;
+  missingFields: string[];
 }
 
 export interface ChatSession {
@@ -168,14 +198,22 @@ export interface ChatSession {
 }
 
 export interface AggregatedResult {
-  byCategory: Record<string, BehaviorFact[]>;
-  topEvidence: BehaviorFact[];
+  byCategory: Record<string, Evidence[]>;
+  topEvidence: Evidence[];
   totalCount: number;
 }
 
 export interface PanelData {
   title: string;
-  evidenceItems: BehaviorFact[];
+  evidenceItems: Evidence[];
   scoringResult: ScoringResult;
-  queryResult: AskLabResponse;
+  queryResult: QueryResult;
+  personas: Persona[];
+}
+
+export interface ScenarioMatch {
+  scenarioId: string;
+  scenario: Scenario;
+  explanation: string;
+  score: number;
 }

@@ -19,6 +19,12 @@ export function appendMessage(sessionId: string, message: Message): void {
   sessions.set(sessionId, existing);
 }
 
+export function getRecentMessages(sessionId: string, limit = 6): Message[] {
+  const session = sessions.get(sessionId);
+  if (!session) return [];
+  return session.messages.slice(-limit);
+}
+
 export function createSession(personaId: string, scenarioId?: string): ChatSession {
   const sessionId = `session-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   const session: ChatSession = {

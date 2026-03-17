@@ -33,6 +33,44 @@ function detectIntent(text: string): ParsedQuery["intent"] {
   return "explore";
 }
 
+function detectMarket(text: string): ParsedQuery["market"] {
+  const lower = text.toLowerCase();
+  if (/\bu\.?s\.?\b|american|\bunited states\b/i.test(lower)) return "US";
+  if (/\bcanada\b|(?<!clearly\s)\bcanadian\b/i.test(lower)) return "CA";
+  return undefined;
+}
+
+function detectGeneration(text: string): ParsedQuery["generation"] {
+  const lower = text.toLowerCase();
+  if (/gen\s*z\b|generation\s*z\b|zoomer/i.test(lower)) return "Gen Z";
+  if (/\bmillennial(s)?\b/i.test(lower)) return "Millennial";
+  if (/gen\s*x\b|generation\s*x\b/i.test(lower)) return "Gen X";
+  if (/\bboomer(s)?\b|\bbaby\s+boomer/i.test(lower)) return "Boomer";
+  return undefined;
+}
+
+function detectCustomerType(text: string): ParsedQuery["customerType"] {
+  const lower = text.toLowerCase();
+  if (/existing\s+customer(s)?|loyal(ist)?|\breturning\b/i.test(lower)) return "existing";
+  if (/new\s+customer(s)?|\bpotential\b|\bprospect\b/i.test(lower)) return "potential";
+  return undefined;
+}
+
+function detectTopic(text: string): string | undefined {
+  const lower = text.toLowerCase();
+  if (/zero[\s-]sugar|no\s+sugar|sugar[\s-]free/i.test(lower)) return "zero_sugar";
+  if (/sustainab|eco\b|environment|green/i.test(lower)) return "sustainability";
+  if (/\bcan\b|\bcans\b|aluminum/i.test(lower)) return "cans";
+  if (/packag|\bbottle\b|\bglass\b/i.test(lower)) return "packaging";
+  if (/\bprice\b|\bcost\b|expensive|\bcheap\b|affordable|\bvalue\b/i.test(lower)) return "price";
+  if (/nostalgi|retro|\b90s\b|\bclassic\b/i.test(lower)) return "nostalgia";
+  if (/social\s+media|tiktok|instagram|\bonline\b/i.test(lower)) return "social_media";
+  if (/grocery|\bshelf\b|supermarket/i.test(lower)) return "grocery_shelf";
+  if (/convenience|impulse/i.test(lower)) return "convenience";
+  if (/health|healthy|wellness|natural|organic/i.test(lower)) return "health_wellness";
+  return undefined;
+}
+
 function detectCategory(text: string): string | undefined {
   const lower = text.toLowerCase();
   for (const [category, words] of Object.entries(CATEGORY_KEYWORDS)) {
@@ -53,9 +91,24 @@ export function parseQuery(rawText: string): ParsedQuery {
   const keywords = extractKeywords(rawText);
   const intent = detectIntent(rawText);
   const category = detectCategory(rawText);
+  const market = detectMarket(rawText);
+  const generation = detectGeneration(rawText);
+  const customerType = detectCustomerType(rawText);
+  const topic = detectTopic(rawText);
 
   const personaMatch = rawText.match(/\bas\s+([a-z-]+(?:\s+[a-z-]+)*)/i);
   const scenarioMatch = rawText.match(/\bscenario[:\s]+([a-z-]+(?:\s+[a-z-]+)*)/i);
+
+  const confidence = Math.round((
+    (market ? 1 / 3 : 0) +
+    (generation || customerType ? 1 / 3 : 0) +
+    (topic ? 1 / 3 : 0)
+  ) * 100) / 100;
+
+  const missingFields: string[] = [];
+  if (!market) missingFields.push("market");
+  if (!generation && !customerType) missingFields.push("audience");
+  if (!topic) missingFields.push("topic");
 
   return {
     rawText,
@@ -64,5 +117,11 @@ export function parseQuery(rawText: string): ParsedQuery {
     category,
     personaFilter: personaMatch?.[1]?.trim().toLowerCase().replace(/\s+/g, "-"),
     scenarioFilter: scenarioMatch?.[1]?.trim().toLowerCase().replace(/\s+/g, "-"),
+    market,
+    generation,
+    customerType,
+    topic,
+    confidence,
+    missingFields,
   };
 }

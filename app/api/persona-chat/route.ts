@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { SimulationResponse, ChatTurn, Message } from "@/lib/types";
+import type { SimulationResponse, PersonaChatResponse, Message, BehaviorFact } from "@/lib/types";
 import { resolvePersona } from "@/lib/personaResolver";
 import { resolveScenario } from "@/lib/scenarioResolver";
 import { parseQuery } from "@/lib/queryParser";
 import { retrieveEvidence } from "@/lib/retrieval";
-import { simulate } from "@/lib/simulationEngine";
-import { getSession, createSession, appendMessage } from "@/lib/chatMemory";
+import { runSimulation } from "@/lib/simulationEngine";
+import { composePersonaResponse } from "@/lib/responseComposer";
+import { getSession, createSession, appendMessage, getRecentMessages } from "@/lib/chatMemory";
 
 export async function POST(req: NextRequest) {
   const start = Date.now();
@@ -20,7 +21,7 @@ export async function POST(req: NextRequest) {
     const { message: content, personaId, scenarioId, sessionId: incomingSessionId } = body;
 
     if (!content || content.trim().length === 0) {
-      return NextResponse.json<SimulationResponse<ChatTurn>>({
+      return NextResponse.json<SimulationResponse<PersonaChatResponse>>({
         success: false,
         data: null,
         error: "Message cannot be empty.",
@@ -29,7 +30,7 @@ export async function POST(req: NextRequest) {
     }
 
     if (!personaId) {
-      return NextResponse.json<SimulationResponse<ChatTurn>>({
+      return NextResponse.json<SimulationResponse<PersonaChatResponse>>({
         success: false,
         data: null,
         error: "personaId is required.",
@@ -39,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     const persona = resolvePersona(personaId);
     if (!persona) {
-      return NextResponse.json<SimulationResponse<ChatTurn>>({
+      return NextResponse.json<SimulationResponse<PersonaChatResponse>>({
         success: false,
         data: null,
         error: `Persona "${personaId}" not found.`,
@@ -61,19 +62,56 @@ export async function POST(req: NextRequest) {
       content,
       timestamp: Date.now(),
     };
-    appendMessage(session.sessionId, userMessage);
+
+    // Read history before appending to get accurate turnIndex
+    const recentMessages = getRecentMessages(session.sessionId, 6);
+    const turnIndex = recentMessages.filter(m => m.role === "assistant").length;
 
     // Retrieve evidence scoped to scenario tags if available
     const parsed = parseQuery(content);
     const tagFilter = scenario?.contextTags ?? [];
     const evidence = retrieveEvidence(parsed, { topN: 3, tagFilter });
 
-    const turn = simulate(persona, scenario, userMessage, evidence, session.sessionId);
-    appendMessage(session.sessionId, turn.personaReply);
+    const behaviorFacts: BehaviorFact[] = evidence.map(e => ({
+      id: e.id,
+      statement: e.text,
+      category: e.category,
+      applies_to: [],
+      market: "CA" as const,
+      source: e.source ?? "unknown",
+      source_type: "other" as const,
+      confidence: e.relevanceScore,
+      tags: e.tags,
+    }));
 
-    return NextResponse.json<SimulationResponse<ChatTurn>>({
+    const result = runSimulation(persona, scenario, behaviorFacts, [], undefined, content);
+    const replyText = composePersonaResponse(persona, result, content, turnIndex);
+
+    const personaReply: Message = {
+      id: `msg-${Date.now()}-persona`,
+      role: "assistant",
+      content: replyText,
+      timestamp: Date.now(),
+      metadata: {
+        personaId: persona.id,
+        scenarioId: scenario?.id,
+        evidenceIds: result.used_evidence_ids,
+        confidence: result.confidence,
+      },
+    };
+
+    appendMessage(session.sessionId, userMessage);
+    appendMessage(session.sessionId, personaReply);
+
+    return NextResponse.json<SimulationResponse<PersonaChatResponse>>({
       success: true,
-      data: turn,
+      data: {
+        persona_response: replyText,
+        session_id: session.sessionId,
+        confidence: result.confidence,
+        used_evidence_ids: result.used_evidence_ids,
+        validator_flags: result.validator_flags,
+      },
       meta: {
         processingMs: Date.now() - start,
         evidenceCount: evidence.length,
@@ -81,7 +119,7 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (err) {
-    return NextResponse.json<SimulationResponse<ChatTurn>>({
+    return NextResponse.json<SimulationResponse<PersonaChatResponse>>({
       success: false,
       data: null,
       error: err instanceof Error ? err.message : "Unknown error",
