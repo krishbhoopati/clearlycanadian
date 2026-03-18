@@ -179,7 +179,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
               Your consumer panel{" "}
               <span>is ready.</span>
             </h1>
-            <p className="text-white/75 text-2xl font-light mt-3">
+            <p className="text-white/75 text-[1.35rem] font-bold mt-3">
               12 AI personas built on real market data. Test any product, price, message, or channel decision instantly.
             </p>
           </div>
@@ -242,24 +242,29 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
                   <button
                     key={`${p.id}-${i}`}
                     onClick={() => onPersonaClick?.(p.id)}
-                    className="shrink-0 w-60 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-2.5 cursor-pointer text-left transition-all"
+                    className="shrink-0 w-80 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 cursor-pointer text-left transition-all flex gap-4 items-center"
                   >
-                    <div className="flex items-center gap-2 mb-1">
-                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-6 h-6" textSize="text-xs" />
-                      <div className="flex items-center gap-1.5 min-w-0 flex-1">
-                        <span className="text-white font-bold text-sm truncate">{p.name.split(" ")[0]}</span>
+                    {/* Left: avatar + name */}
+                    <div className="flex flex-col items-center gap-1.5 shrink-0">
+                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-16 h-16" textSize="text-lg" />
+                      <span className="text-white font-bold text-sm text-center">{p.name.split(" ")[0]}</span>
+                    </div>
+
+                    {/* Right: info sub-box */}
+                    <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col justify-center gap-1 self-stretch">
+                      <p className="text-white/80 text-sm font-semibold leading-snug">
+                        {p.cc_awareness_label ?? p.cc_awareness ?? ""}
+                      </p>
+                      <div className="flex items-center gap-1.5">
                         <div
-                          className="w-1.5 h-1.5 rounded-full shrink-0"
+                          className="w-2 h-2 rounded-full shrink-0"
                           style={{ backgroundColor: getAwarenessColor(p.cc_awareness ?? "") }}
                         />
+                        <p className="text-white/40 text-xs leading-snug truncate">
+                          {(p.market === "CA" ? "Canada" : p.market)} • {p.generation} • {p.segment_label ?? p.customer_type}
+                        </p>
                       </div>
                     </div>
-                    <p className="text-white/80 text-xs font-semibold leading-snug truncate">
-                      {p.cc_awareness_label ?? p.cc_awareness ?? ""}
-                    </p>
-                    <p className="text-white/40 text-[10px] leading-snug truncate">
-                      {(p.market === "CA" ? "Canada" : p.market)} • {p.generation} • {p.segment_label ?? p.customer_type}
-                    </p>
                   </button>
                 ))}
               </div>

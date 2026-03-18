@@ -73,7 +73,8 @@
   100% { transform: translateX(-50%); }
 }
 .persona-marquee {
-  animation: marquee-scroll 25s linear infinite;
+  animation: marquee-scroll 50s linear infinite;
+  will-change: transform;
 }
 .persona-marquee:hover {
   animation-play-state: paused;
