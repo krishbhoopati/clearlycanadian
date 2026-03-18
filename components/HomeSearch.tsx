@@ -142,7 +142,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
     <div className="min-h-screen w-screen overflow-y-auto flex items-center justify-center relative">
       {/* Background */}
       <Image
-        src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?q=90&w=3840&auto=format&fit=crop"
+        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=90&w=3840&auto=format&fit=crop"
         alt=""
         fill
         quality={100}
@@ -179,7 +179,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
               Your consumer panel{" "}
               <span>is ready.</span>
             </h1>
-            <p className="text-white/75 text-lg font-light mt-3">
+            <p className="text-white/75 text-2xl font-light mt-3">
               12 AI personas built on real market data. Test any product, price, message, or channel decision instantly.
             </p>
           </div>
@@ -242,20 +242,23 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
                   <button
                     key={`${p.id}-${i}`}
                     onClick={() => onPersonaClick?.(p.id)}
-                    className="shrink-0 w-40 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-3 cursor-pointer text-left transition-all"
+                    className="shrink-0 w-60 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-2.5 cursor-pointer text-left transition-all"
                   >
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-7 h-7" textSize="text-xs" />
-                      <span className="text-white font-bold text-sm truncate flex-1">{p.name.split(" ")[0]}</span>
-                      <div
-                        className="w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ backgroundColor: getAwarenessColor(p.cc_awareness ?? "") }}
-                      />
+                    <div className="flex items-center gap-2 mb-1">
+                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-6 h-6" textSize="text-xs" />
+                      <div className="flex items-center gap-1.5 min-w-0 flex-1">
+                        <span className="text-white font-bold text-sm truncate">{p.name.split(" ")[0]}</span>
+                        <div
+                          className="w-1.5 h-1.5 rounded-full shrink-0"
+                          style={{ backgroundColor: getAwarenessColor(p.cc_awareness ?? "") }}
+                        />
+                      </div>
                     </div>
-                    <p className="text-white/50 text-xs leading-snug">
-                      {p.age_range}{", "}{p.market}
-                      {p.generation ? ` • ${p.generation}` : ""}
-                      {p.customer_type ? ` • ${p.customer_type}` : ""}
+                    <p className="text-white/80 text-xs font-semibold leading-snug truncate">
+                      {p.cc_awareness_label ?? p.cc_awareness ?? ""}
+                    </p>
+                    <p className="text-white/40 text-[10px] leading-snug truncate">
+                      {(p.market === "CA" ? "Canada" : p.market)} • {p.generation} • {p.segment_label ?? p.customer_type}
                     </p>
                   </button>
                 ))}

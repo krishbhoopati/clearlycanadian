@@ -6,6 +6,8 @@ export interface Persona {
   age_range: string;
   market: string;
   region?: string;
+  occupation?: string;
+  location?: string;
   generation: "Gen Z" | "Millennial" | "Gen X" | "Boomer";
   customer_type: string;
   behavioral_segment: string;
@@ -26,6 +28,8 @@ export interface Persona {
   price_sensitivity?: string;
   discovery_channels?: string[];
   cc_awareness?: string;
+  cc_awareness_label?: string;
+  segment_label?: string;
   cc_perception?: string;
   response_to_maple_product?: string;
   bar_and_festival_relevance?: string;
