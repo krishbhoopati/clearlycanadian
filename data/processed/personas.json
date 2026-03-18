@@ -41,7 +41,8 @@
       "Immediately more interested if a Canadian friend is visibly drinking it",
       "Checks if the brand has a TikTok presence before deciding if it's 'legit'"
     ],
-    "evidence_ids": ["bf-003", "bf-005", "bf-006", "bf-021"]
+    "evidence_ids": ["bf-003", "bf-005", "bf-006", "bf-021"],
+    "avatar_url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "ca_mill_potential",
@@ -85,7 +86,8 @@
       "Responds positively to 'Canadian-made' callouts on packaging",
       "Won't try something new unless he trusts the channel where he discovered it"
     ],
-    "evidence_ids": ["bf-002", "bf-004", "bf-008"]
+    "evidence_ids": ["bf-002", "bf-004", "bf-008"],
+    "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "ca_genz_sober_curious",
@@ -129,7 +131,8 @@
       "Looks for 'zero alcohol' or 'non-alcoholic' callouts to confirm before ordering",
       "More likely to try if positioned alongside NA beer/wine on a menu"
     ],
-    "evidence_ids": ["bf-005", "bf-010", "bf-015"]
+    "evidence_ids": ["bf-005", "bf-010", "bf-015"],
+    "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "ca_mill_loyal",
@@ -173,7 +176,8 @@
       "Gets annoyed if CC changes the label design without consulting the community",
       "Compares every new flavored sparkling water he tastes against Mountain Blackberry as his benchmark"
     ],
-    "evidence_ids": ["bf-001", "bf-007", "bf-012", "bf-018"]
+    "evidence_ids": ["bf-001", "bf-007", "bf-012", "bf-018"],
+    "avatar_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "us_genz_potential",
@@ -217,7 +221,8 @@
       "Shares new drink discoveries in her friend group chat and waits for reactions before buying",
       "More likely to buy if she sees it stocked at a Target she already shops at"
     ],
-    "evidence_ids": ["bf-003", "bf-005", "bf-021"]
+    "evidence_ids": ["bf-003", "bf-005", "bf-021"],
+    "avatar_url": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "us_mill_lapsed",
@@ -261,7 +266,8 @@
       "Won't subscribe or buy a multi-pack until he's confirmed it tastes right",
       "Will post to his local Facebook group about finding it — drives peer discovery"
     ],
-    "evidence_ids": ["bf-001", "bf-007", "bf-016"]
+    "evidence_ids": ["bf-001", "bf-007", "bf-016"],
+    "avatar_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "us_genz_wellness",
@@ -305,7 +311,8 @@
       "Shares ingredient label photos in her stories to educate followers",
       "If she endorses it, her followers in the wellness community will try it — multiplier effect"
     ],
-    "evidence_ids": ["bf-004", "bf-009", "bf-013"]
+    "evidence_ids": ["bf-004", "bf-009", "bf-013"],
+    "avatar_url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "us_mill_convenience",
@@ -349,7 +356,8 @@
       "No interest in subscription or DTC ordering — only buys what's in front of him",
       "Will become a loyal repeat buyer if price and availability are consistent — low effort to retain"
     ],
-    "evidence_ids": ["bf-011", "bf-014", "bf-019"]
+    "evidence_ids": ["bf-011", "bf-014", "bf-019"],
+    "avatar_url": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "nostalgia_loyalist",
@@ -393,7 +401,8 @@
       "Complains directly to CC's customer service if a beloved flavor is unavailable — constructive, not hostile",
       "Becomes visibly excited and tells the story of the comeback whenever someone unfamiliar sees her drinking it"
     ],
-    "evidence_ids": ["bf-001", "bf-007", "bf-012", "bf-018", "bf-020"]
+    "evidence_ids": ["bf-001", "bf-007", "bf-012", "bf-018", "bf-020"],
+    "avatar_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "premium_lifestyle",
@@ -437,7 +446,8 @@
       "Canadian-made callout adds credibility only when paired with premium visual identity",
       "If CC is listed as a mixer at a fine-dining restaurant, he'll order it and investigate the brand"
     ],
-    "evidence_ids": ["bf-002", "bf-004", "bf-008"]
+    "evidence_ids": ["bf-002", "bf-004", "bf-008"],
+    "avatar_url": "https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "household_stockup",
@@ -481,7 +491,8 @@
       "Looks at the Costco flyer for new items every week — a flyer feature would drive a first purchase",
       "Won't pay a premium for the nostalgia factor — value has to make sense independently"
     ],
-    "evidence_ids": ["bf-011", "bf-014", "bf-019"]
+    "evidence_ids": ["bf-011", "bf-014", "bf-019"],
+    "avatar_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face"
   },
   {
     "id": "bartender_mixologist",
@@ -525,6 +536,7 @@
       "Will evangelize CC to the broader Toronto bar community if he believes in it",
       "The maple variant is the highest-interest SKU — leads with that in any pitch to him"
     ],
-    "evidence_ids": ["bf-002", "bf-006", "bf-008", "bf-017"]
+    "evidence_ids": ["bf-002", "bf-006", "bf-008", "bf-017"],
+    "avatar_url": "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop&crop=face"
   }
 ]

@@ -35,6 +35,7 @@ export interface Persona {
   social_media_behavior?: string;
   current_beverages?: string[];
   shopping_locations?: string[];
+  avatar_url?: string;
 }
 
 export interface Scenario {

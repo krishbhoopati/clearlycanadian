@@ -51,6 +51,8 @@ export async function POST(req: NextRequest) {
         used_evidence_ids: [],
         evidence_items: [],
         scenario_matched: false,
+        segments_to_watch: [],
+        suggested_follow_ups: [],
       };
       return NextResponse.json<SimulationResponse<AskLabResponse>>({
         success: true,
@@ -83,7 +85,7 @@ export async function POST(req: NextRequest) {
       return result;
     });
 
-    const response = aggregateSimulations(simulationResults);
+    const response = aggregateSimulations(simulationResults, scenario);
 
     const evidence_items = retrieveEvidence(parsed, { topN: 5 });
     console.log("[ask-lab] evidence_items:", evidence_items.length);

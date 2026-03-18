@@ -1,39 +1,64 @@
 "use client";
 
 import { useState } from "react";
-import AskLabPanel from "@/components/AskLabPanel";
-import PersonaChatPanel from "@/components/PersonaChatPanel";
+import HomeSearch from "@/components/HomeSearch";
+import ResultsView from "@/components/ResultsView";
+import PersonaChatModal from "@/components/PersonaChatModal";
+import type { AskLabResponse } from "@/lib/types";
 
-type Tab = "ask-lab" | "persona-chat";
-
-const TABS: { id: Tab; label: string }[] = [
-  { id: "ask-lab", label: "Ask the Lab" },
-  { id: "persona-chat", label: "Persona Chat" },
-];
+interface ConversationTurn {
+  question: string;
+  result: AskLabResponse;
+}
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState<Tab>("ask-lab");
+  const [view, setView] = useState<"home" | "results">("home");
+  const [turns, setTurns] = useState<ConversationTurn[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [chatPersonaId, setChatPersonaId] = useState<string | null>(null);
+
+  async function handleQuery(q: string) {
+    setLoading(true);
+    if (view !== "results") setView("results");
+    try {
+      const res = await fetch("/api/ask-lab", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_question: q }),
+      });
+      const data = await res.json();
+      const result: AskLabResponse = data.data ?? data;
+      setTurns(prev => [...prev, { question: q, result }]);
+    } catch {
+      // silently fail — keep existing turns
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
-    <div>
-      <div className="flex border-b border-gray-200 mb-6">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-5 py-3 text-sm font-medium transition-colors ${
-              activeTab === tab.id
-                ? "border-b-2 border-blue-600 text-blue-600"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+    <>
+      {view === "home" && (
+        <HomeSearch onQuery={handleQuery} loading={loading} onPersonaClick={setChatPersonaId} />
+      )}
+      {view === "results" && (
+        <ResultsView
+          turns={turns}
+          loading={loading}
+          onFollowUp={handleQuery}
+          onPersonaClick={setChatPersonaId}
+        />
+      )}
+      {chatPersonaId && (
+        <PersonaChatModal
+          personaId={chatPersonaId}
+          onClose={() => setChatPersonaId(null)}
+        />
+      )}
+      {/* Fixed bottom-left branding */}
+      <div className="fixed bottom-4 left-6 pointer-events-none select-none">
+        <span className="font-bold uppercase text-white tracking-wide text-xl">Clearly Voices.</span>
       </div>
-
-      {activeTab === "ask-lab" && <AskLabPanel />}
-      {activeTab === "persona-chat" && <PersonaChatPanel />}
-    </div>
+    </>
   );
 }

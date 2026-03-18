@@ -91,6 +91,42 @@ export default function ResponseCard({ result }: Props) {
           )}
         </div>
       )}
+
+      {/* Key Tensions */}
+      {result.key_disagreements.length > 0 && (
+        <div className="border border-amber-200 rounded-md bg-amber-50 px-3 py-2">
+          <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Key Tensions</p>
+          <ul className="space-y-1">
+            {result.key_disagreements.map((d, i) => (
+              <li key={i} className="text-sm text-amber-800">↔ {d}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Segments to Watch */}
+      {result.segments_to_watch.length > 0 && (
+        <div className="border border-purple-200 rounded-md bg-purple-50 px-3 py-2">
+          <p className="text-xs font-semibold text-purple-700 uppercase tracking-wide mb-1">Segments to Watch</p>
+          <ul className="space-y-1">
+            {result.segments_to_watch.map((s, i) => (
+              <li key={i} className="text-sm text-purple-800">⚑ {s}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Suggested Follow-Ups */}
+      {result.suggested_follow_ups.length > 0 && (
+        <div className="border border-green-200 rounded-md bg-green-50 px-3 py-2">
+          <p className="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">Suggested Follow-Ups</p>
+          <ul className="space-y-1">
+            {result.suggested_follow_ups.map((q, i) => (
+              <li key={i} className="text-sm text-green-800">→ {q}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
