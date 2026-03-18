@@ -39,11 +39,13 @@ export function validateSimulationResult(
 
   // 4. Invalid decision label
   const validDecisions = [
+    "immediate_yes",
     "likely_try",
-    "likely_reject",
-    "mixed_interest",
-    "likely_repeat",
-    "low_awareness_high_potential",
+    "interested_but_barriers",
+    "indifferent",
+    "unlikely_without_push",
+    "hard_no",
+    "already_buying",
   ];
   if (!validDecisions.includes(result.decision)) flags.push("invalid_decision_label");
 

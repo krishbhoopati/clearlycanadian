@@ -35,10 +35,17 @@ export function composeSummary(query: ParsedQuery, evidence: Evidence[]): string
 }
 
 const DECISION_OPENERS: Record<string, string> = {
-  likely_try: "I'd give this a shot",
-  likely_repeat: "Yeah, I'd pick this up again",
-  likely_reject: "Honestly, this isn't really for me",
-  mixed_interest: "I'm a bit on the fence here",
+  immediate_yes:            "Honestly, I'm in — no hesitation",
+  likely_try:               "Yeah, I'd give this a shot",
+  interested_but_barriers:  "I'm genuinely interested, but I've got some reservations",
+  indifferent:              "I don't have strong feelings about this either way",
+  unlikely_without_push:    "I'm not really feeling it — I'd need something to change",
+  hard_no:                  "This honestly isn't for me",
+  already_buying:           "Yeah, I already buy this — this just reinforces it",
+  // Legacy labels kept for backwards compatibility
+  likely_repeat:            "Yeah, I'd pick this up again",
+  likely_reject:            "Honestly, this isn't really for me",
+  mixed_interest:           "I'm a bit on the fence here",
   low_awareness_high_potential: "I haven't really heard of this, but it sounds like something I'd check out",
 };
 
@@ -54,10 +61,17 @@ const TOPIC_OPENERS: Record<string, string> = {
 };
 
 const DECISION_PHRASES: Record<string, string> = {
-  likely_try: "shows strong purchase intent",
-  likely_repeat: "is a high-retention candidate",
-  likely_reject: "is likely to pass on this product",
-  mixed_interest: "shows mixed signals",
+  immediate_yes:            "would buy this without hesitation",
+  likely_try:               "shows strong purchase intent",
+  interested_but_barriers:  "is interested but has specific barriers to overcome",
+  indifferent:              "shows low engagement with this scenario",
+  unlikely_without_push:    "is unlikely to convert without significant change",
+  hard_no:                  "is actively not interested",
+  already_buying:           "is a high-retention existing customer",
+  // Legacy labels kept for backwards compatibility
+  likely_repeat:            "is a high-retention candidate",
+  likely_reject:            "is likely to pass on this product",
+  mixed_interest:           "shows mixed signals",
   low_awareness_high_potential: "has low awareness but latent interest",
 };
 
@@ -186,12 +200,12 @@ export function composeInsightSummary(
 
   const topDriverRaw = result.drivers[0] ?? "";
   const topDriver = topDriverRaw
-    ? topDriverRaw.split("supported by:")[0].replace(/"/g, "").trim().toLowerCase()
+    ? topDriverRaw.split(" — in this scenario")[0].replace(/"/g, "").trim().toLowerCase()
     : null;
 
   const topBarrierRaw = result.barriers[0] ?? "";
   const topBarrier = topBarrierRaw
-    ? topBarrierRaw.replace(/^(Objection|Pain point): /, "").replace(/"/g, "").trim().toLowerCase()
+    ? topBarrierRaw.split(" — in this scenario")[0].replace(/^(Objection|Pain point): /, "").replace(/"/g, "").trim().toLowerCase()
     : null;
 
   const lowEvidence =

@@ -1,20 +1,68 @@
 [
   {
-    "id": "scenario-zero-sugar-reaction",
-    "name": "Zero Sugar Launch Reaction",
-    "description": "How do different consumer segments react to Clearly Canadian's Zero Sugar line — do they trust the formulation, and what would drive trial?",
-    "context": "Clearly Canadian has launched a Zero Sugar version using stevia. Health-conscious and sugar-aware consumers are the primary target. The question is whether the brand's 90s sugar-heavy heritage helps or hurts credibility for a zero-sugar extension.",
+    "id": "maple-bar-launch",
+    "name": "CC Maple Bar Launch",
+    "description": "CC Maple launches at 50 craft cocktail bars in Toronto. How do bartenders and premium consumers respond to it as a mixer, and what drives menu adoption and reorder?",
+    "context": "Clearly Canadian is seeding CC Maple — a naturally maple-flavoured sparkling water — across 50 craft cocktail venues in Toronto. Bartenders receive free samples and cocktail recipe cards. The product is positioned as a premium mixer for bourbon, whiskey, and gin, and as a sober-curious mocktail base. This is an on-premise-first go-to-market strategy before retail rollout.",
     "question_templates": [
-      "Would you try Clearly Canadian Zero Sugar?",
-      "What would make you trust a 'zero sugar' claim from this brand?",
-      "Does the stevia sweetener concern you?",
-      "How does this compare to your usual zero-sugar sparkling water?"
+      "How would you use CC Maple in a cocktail or mocktail menu?",
+      "Would you put a CC Maple drink on your menu permanently?",
+      "What about the maple flavour works — or doesn't work — for mixology?",
+      "Would you recommend CC Maple to a customer looking for a non-alcoholic option?"
     ],
     "recommended_personas": [
-      "persona-health-conscious",
-      "persona-ca-genz",
-      "persona-ca-millennial",
-      "persona-convenience-first"
+      "bartender_mixologist",
+      "premium_lifestyle",
+      "ca_mill_potential",
+      "ca_genz_sober_curious"
+    ],
+    "required_fact_categories": [
+      "product_maple",
+      "mixology_innovation",
+      "on_premise_strategy"
+    ],
+    "contextTags": ["maple", "cocktail", "on_premise", "bartender", "sober_curious"]
+  },
+  {
+    "id": "maple-festival-sampling",
+    "name": "CC Maple Sampling at Osheaga",
+    "description": "Clearly Canadian runs a CC Maple sampling booth at Osheaga music festival in Montreal, offering free cans and a mocktail bar. How do festival-goers respond to first taste?",
+    "context": "It's a hot Saturday at Osheaga. A Clearly Canadian branded booth offers free CC Maple SleekCans and a mocktail bar with two CC Maple recipes. Attendees range from Gen Z students to Millennial music fans. Many have never heard of CC Maple or Clearly Canadian. The booth has no purchase option — just sample, talk, and scan a QR code.",
+    "question_templates": [
+      "What's your first reaction to the maple flavour in a sparkling water?",
+      "Would you buy this at a store after trying it here?",
+      "Does a mocktail option matter to you at a festival?",
+      "Would you follow Clearly Canadian after today based on this experience?"
+    ],
+    "recommended_personas": [
+      "ca_genz_potential",
+      "ca_genz_sober_curious",
+      "ca_mill_potential",
+      "us_genz_potential"
+    ],
+    "required_fact_categories": [
+      "product_maple",
+      "sampling_trial",
+      "sober_curious"
+    ],
+    "contextTags": ["maple", "festival", "sampling", "sober_curious", "gen_z"]
+  },
+  {
+    "id": "zero-sugar-discovery",
+    "name": "Zero Sugar Shelf Discovery",
+    "description": "A consumer encounters Clearly Canadian Zero Sugar for the first time on a grocery store shelf. What drives pick-up, trust, and trial for a stevia-sweetened extension of a heritage brand?",
+    "context": "A health-conscious shopper pauses in the sparkling water aisle. They spot Clearly Canadian Zero Sugar — stevia-sweetened, zero grams of sugar — next to the original glass bottle version. They've seen the original before but didn't know a Zero Sugar line existed. The Zero Sugar is US-distributed only and launched in 2024 with limited marketing support.",
+    "question_templates": [
+      "Does a Zero Sugar version of Clearly Canadian appeal to you?",
+      "Do you trust stevia as a sweetener — or does it put you off?",
+      "How does this compare to other zero-sugar sparkling waters you use?",
+      "Would you buy Zero Sugar over the original, or alongside it?"
+    ],
+    "recommended_personas": [
+      "us_genz_wellness",
+      "ca_genz_sober_curious",
+      "us_mill_lapsed",
+      "ca_mill_potential"
     ],
     "required_fact_categories": [
       "low_sugar_interest",
@@ -23,44 +71,136 @@
     ]
   },
   {
-    "id": "scenario-grocery-shelf",
-    "name": "Grocery Shelf Encounter",
-    "description": "A consumer encounters Clearly Canadian on a grocery shelf for the first time (or first time in years). What drives pick-up, trial, and conversion to purchase?",
-    "context": "The shopper is in the sparkling water aisle. Clearly Canadian glass bottles are displayed alongside San Pellegrino, Perrier, and local brands. The price point is $2.99 per bottle.",
+    "id": "costco-demo",
+    "name": "Costco In-Store Demo",
+    "description": "A consumer tries Clearly Canadian at a Costco demo station during a weekend shopping trip. What triggers a bulk purchase decision and who converts on the spot?",
+    "context": "It's Saturday afternoon at a Costco warehouse. A demo station offers small cups of Clearly Canadian Originals — Mountain Blackberry and Wild Cherry. A 12-pack is available on the adjacent pallet for $19.99. The demo associate explains that CC has been around since 1987, relaunched after a fan crowdfunding campaign, and has no artificial colours or preservatives.",
     "question_templates": [
-      "What's your first impression when you see the bottle?",
-      "Would you pick it up? What would you check first?",
-      "How does the price feel compared to what you'd expect?",
-      "Does the Canadian branding affect your interest?"
+      "Does the Costco context make you more or less likely to take this seriously as a brand?",
+      "After tasting it, would you put the 12-pack in your cart today?",
+      "Does hearing the brand story change your perception of the product?",
+      "What would stop you from buying a 12-pack even if you liked the taste?"
     ],
     "recommended_personas": [
-      "persona-ca-millennial",
-      "persona-existing-nostalgia",
-      "persona-premium-lifestyle",
-      "persona-health-conscious"
+      "household_stockup",
+      "ca_mill_loyal",
+      "nostalgia_loyalist",
+      "us_mill_lapsed"
     ],
     "required_fact_categories": [
-      "beverage_buying_behavior",
-      "canadian_identity",
-      "price_sensitivity",
-      "packaging_heritage"
+      "trial_conversion",
+      "sparkling_water_behavior",
+      "beverage_buying_behavior"
     ]
   },
   {
-    "id": "scenario-convenience-impulse",
-    "name": "Convenience Store Cold Case",
-    "description": "A Clearly Canadian can is spotted in the cold case at a gas station or convenience store. What drives impulse purchase among grab-and-go shoppers?",
-    "context": "Clearly Canadian cans are at eye level in the convenience store cooler, priced at $2.29. The shopper has no prior intent to buy a specific brand and is choosing between Bubly, Perrier, and Clearly Canadian cans.",
+    "id": "tiktok-origin-story",
+    "name": "TikTok Crowdfunding Comeback Story",
+    "description": "A consumer watches a TikTok video telling the story of Clearly Canadian's 2015 crowdfunding revival — 14,000 fans, 35 countries, 40,000 cases pre-ordered. How does the origin story drive brand affinity and purchase intent?",
+    "context": "A 60-second TikTok tells the story: Clearly Canadian was a 90s icon that disappeared. A group of fans launched a crowdfunding campaign. 14,000 people from 35 countries pre-ordered 40,000 cases, bringing the brand back from the dead. The video has 2.3M views. The viewer has never tried CC but the story makes them curious.",
     "question_templates": [
-      "What made you reach for it?",
-      "Is the price right for a gas station buy?",
-      "Would you grab it again on your next visit?",
-      "Does the can format work for you or would you prefer a bottle?"
+      "Does a brand comeback story like this make you want to try it?",
+      "What part of this story resonates with you most?",
+      "Would you seek out Clearly Canadian in a store after seeing this?",
+      "Does knowing it's Canadian-owned and fan-revived change how you feel about it?"
     ],
     "recommended_personas": [
-      "persona-convenience-first",
-      "persona-ca-genz",
-      "persona-ca-millennial"
+      "ca_genz_potential",
+      "us_genz_potential",
+      "ca_genz_sober_curious"
+    ],
+    "required_fact_categories": [
+      "social_media_discovery",
+      "nostalgia_narrative",
+      "brand_storytelling"
+    ],
+    "contextTags": ["tiktok", "social_media", "brand_story", "crowdfunding"]
+  },
+  {
+    "id": "nostalgia-trigger",
+    "name": "Unexpected Nostalgia Shelf Moment",
+    "description": "A consumer unexpectedly spots Clearly Canadian on a store shelf and experiences a strong nostalgia reaction. How does emotional memory drive purchase intent for lapsed and loyal consumers?",
+    "context": "A shopper in their late 30s or 50s is doing a routine grocery run. They turn down the sparkling water aisle and see the Clearly Canadian embossed glass bottle — the same curved shape they remember from childhood or their teens. They haven't seen it in years and assumed it was gone. The emotional reaction is immediate.",
+    "question_templates": [
+      "What memory comes back when you see this bottle?",
+      "Do you grab it on the spot or talk yourself out of it?",
+      "Has the brand aged well, or does it feel dated?",
+      "Would you buy it for nostalgia alone, or does it have to taste as good as you remember?"
+    ],
+    "recommended_personas": [
+      "ca_mill_loyal",
+      "nostalgia_loyalist",
+      "us_mill_lapsed"
+    ],
+    "required_fact_categories": [
+      "nostalgia_narrative",
+      "packaging_heritage",
+      "sparkling_water_behavior"
+    ],
+    "contextTags": ["nostalgia", "glass_bottle", "lapsed_consumer"]
+  },
+  {
+    "id": "price-comparison-shelf",
+    "name": "Price Comparison in the Sparkling Water Aisle",
+    "description": "A consumer stands in the sparkling water aisle comparing Clearly Canadian SleekCans ($7.99/6pk) to LaCroix ($5.49/12pk) and Bubly ($4.99/12pk). What is the price-value calculus and who walks away with CC?",
+    "context": "The shopper has a $10 budget and wants sparkling water for the week. On the shelf: Clearly Canadian SleekCans at $7.99 for 6 cans, LaCroix at $5.49 for 12 cans, Bubly at $4.99 for 12 cans. CC is more expensive per can but they've seen it on TikTok. LaCroix is the default. Bubly is cheaper.",
+    "question_templates": [
+      "Walk me through how you make this call.",
+      "Is Clearly Canadian's price difference worth it to you?",
+      "What would Clearly Canadian need to offer to justify the premium over LaCroix?",
+      "Do you think $7.99 for 6 is expensive, fair, or cheap for a premium sparkling water?"
+    ],
+    "recommended_personas": [
+      "ca_genz_potential",
+      "us_mill_convenience",
+      "household_stockup",
+      "us_genz_wellness"
+    ],
+    "required_fact_categories": [
+      "price_sensitivity",
+      "beverage_buying_behavior",
+      "sparkling_water_behavior"
+    ]
+  },
+  {
+    "id": "sustainability-message",
+    "name": "\"Never Plastic. Clearly Canadian.\" Social Post",
+    "description": "A consumer sees Clearly Canadian's sustainability messaging — glass and aluminum only, no plastic — on social media. How does the no-plastic commitment shift brand perception and willingness to pay?",
+    "context": "A consumer scrolling Instagram sees a Clearly Canadian post: 'Never Plastic. Clearly Canadian. Every bottle is glass. Every can is aluminum. Zero plastic, ever.' The post shows the glass bottle next to a crushed single-use plastic bottle. The comment section is full of positive responses. The shopper cares about sustainability but usually buys LaCroix in bulk plastic.",
+    "question_templates": [
+      "Does a no-plastic commitment make you reconsider your sparkling water brand?",
+      "Is sustainability messaging from a beverage brand credible to you, or does it feel performative?",
+      "Would you pay more for Clearly Canadian specifically because it uses glass and aluminum?",
+      "Does this change how you feel about your current sparkling water habit?"
+    ],
+    "recommended_personas": [
+      "ca_mill_potential",
+      "ca_genz_sober_curious",
+      "us_genz_wellness",
+      "premium_lifestyle"
+    ],
+    "required_fact_categories": [
+      "sustainability_positioning",
+      "packaging_heritage",
+      "ingredient_sourcing"
+    ],
+    "contextTags": ["sustainability", "no_plastic", "glass_bottle", "eco_values"]
+  },
+  {
+    "id": "convenience-store-impulse",
+    "name": "7-Eleven SleekCan Impulse Grab",
+    "description": "A consumer at a 7-Eleven or Circle K checkout spots a Clearly Canadian SleekCan in the cooler. What triggers an impulse grab among convenience-channel shoppers who weren't looking for CC?",
+    "context": "It's midday. A consumer stops at a 7-Eleven to grab a drink. They weren't planning to buy sparkling water. In the cooler: Bubly at $1.99, Perrier at $2.49, and a Clearly Canadian SleekCan (Mountain Blackberry) at $2.29. The CC can has a clean design and they vaguely recognize the brand. They have 30 seconds to decide.",
+    "question_templates": [
+      "Do you grab the CC can — and what tips you toward it?",
+      "Does the brand recognition matter at all in this setting?",
+      "Is $2.29 the right price to make this a reflex buy?",
+      "Would you remember to look for it again, or is this a one-time impulse?"
+    ],
+    "recommended_personas": [
+      "us_mill_convenience",
+      "ca_genz_potential",
+      "us_genz_potential"
     ],
     "required_fact_categories": [
       "convenience_impulse",
@@ -69,167 +209,142 @@
     ]
   },
   {
-    "id": "scenario-nostalgia-ad",
-    "name": "Nostalgia-Driven Advertisement",
-    "description": "A consumer encounters a nostalgia-themed Clearly Canadian ad — either a TV spot, Instagram reel, or in-store display. How does it land across age groups?",
-    "context": "The ad evokes the early 90s: the iconic bottle, summer imagery, references to 'Canada's original sparkling water.' The message is: 'We're back. And you remember why you loved us.'",
+    "id": "friend-recommendation",
+    "name": "Friend Passes You a Clearly Canadian",
+    "description": "A friend hands the consumer a Clearly Canadian at a social gathering and says 'try this.' How does peer recommendation shape first impressions and purchase intent for unconverted consumers?",
+    "context": "At a backyard gathering, a friend pulls a Clearly Canadian glass bottle from a cooler, hands it over, and says: 'You have to try this — it's the best sparkling water.' The consumer has seen the brand before but never tried it. They crack it open. The conversation around them touches on the 90s comeback story, the glass bottle, and how it tastes different from LaCroix.",
     "question_templates": [
-      "Does this ad make you want to buy it?",
-      "Does the nostalgia angle mean anything to you?",
-      "What would you want to know after seeing this?",
-      "Who do you think this ad is for?"
+      "What does it feel like to be handed this versus picking it off a shelf yourself?",
+      "Does the social context — a friend vouching for it — change how you evaluate it?",
+      "After trying it here, what's the likelihood you buy it on your next grocery run?",
+      "What would you say about it if someone asked you later?"
     ],
     "recommended_personas": [
-      "persona-existing-nostalgia",
-      "persona-ca-millennial",
-      "persona-ca-genz",
-      "persona-us-millennial"
+      "ca_genz_potential",
+      "us_genz_potential",
+      "ca_mill_potential",
+      "us_mill_lapsed"
     ],
     "required_fact_categories": [
-      "nostalgia_narrative",
-      "canadian_identity",
-      "beverage_buying_behavior",
-      "social_media_discovery"
-    ]
-  },
-  {
-    "id": "scenario-sustainability-message",
-    "name": "Sustainability and Glass Bottle Messaging",
-    "description": "How effectively does Clearly Canadian's glass bottle sustainability story resonate, and does it drive premium price acceptance?",
-    "context": "Clearly Canadian is communicating that its glass bottles are fully recyclable and that choosing glass over plastic reduces single-use waste. The message is paired with a BC spring water sourcing claim.",
-    "question_templates": [
-      "Does the glass bottle make you feel better about buying this?",
-      "Would sustainability messaging make you pay more?",
-      "Does the spring water sourcing claim feel authentic?",
-      "How does this compare to other brands' sustainability messaging?"
-    ],
-    "recommended_personas": [
-      "persona-premium-lifestyle",
-      "persona-ca-millennial",
-      "persona-health-conscious",
-      "persona-us-millennial"
-    ],
-    "required_fact_categories": [
-      "sustainability_positioning",
-      "canadian_identity",
-      "ingredient_sourcing",
+      "word_of_mouth",
+      "trial_conversion",
       "beverage_buying_behavior"
     ]
   },
   {
-    "id": "scenario-packaging-reaction",
-    "name": "Packaging First Impression",
-    "description": "What is the immediate reaction to Clearly Canadian's signature glass bottle design, and does packaging alone drive trial intent?",
-    "context": "The consumer is shown only the Clearly Canadian bottle — no price, no marketing copy. Just the embossed glass bottle with the label. They are asked for an unfiltered first impression.",
+    "id": "maple-cocktail-menu",
+    "name": "CC Maple on the Bar Menu",
+    "description": "A consumer at a bar sees a cocktail or mocktail made with CC Maple listed on the menu. How does on-premise visibility shape product discovery and trial intent for the new maple line?",
+    "context": "A consumer is at a craft cocktail bar in Toronto. The menu features a drink called 'Maple Smoke' — CC Maple, bourbon, bitters, smoked salt rim — and a mocktail version called 'Maple Mule' — CC Maple, ginger, lime. The consumer hasn't heard of CC Maple before seeing it on the menu. The bartender mentions it just launched.",
     "question_templates": [
-      "What do you think this is?",
-      "What does this packaging communicate to you?",
-      "Would you pick this up in a store?",
-      "What price would you guess this is, based on the packaging alone?"
+      "Does seeing CC Maple on a cocktail menu make you curious to try it straight?",
+      "Would you order the mocktail version, and why?",
+      "Does a bar endorsement — being on a craft cocktail menu — change your perception of the product?",
+      "Would you look for CC Maple to buy for home after trying it here?"
     ],
     "recommended_personas": [
-      "persona-us-genz",
-      "persona-ca-genz",
-      "persona-premium-lifestyle",
-      "persona-us-millennial"
+      "ca_genz_sober_curious",
+      "bartender_mixologist",
+      "premium_lifestyle",
+      "ca_mill_potential"
+    ],
+    "required_fact_categories": [
+      "product_maple",
+      "mixology_innovation",
+      "sober_curious"
+    ],
+    "contextTags": ["maple", "cocktail", "mocktail", "on_premise", "sober_curious"]
+  },
+  {
+    "id": "household-stockup-decision",
+    "name": "Weekly Sparkling Water Stock-Up Decision",
+    "description": "A consumer is deciding what sparkling water to buy in bulk for the household this week. How does Clearly Canadian compete against default bulk-buy brands like LaCroix and Bubly for routine household purchases?",
+    "context": "A shopper is filling their cart with the week's groceries. Their household goes through 3–4 sparkling waters a day. They usually buy LaCroix 12-packs or Bubly variety packs. They see Clearly Canadian SleekCans in a 6-pack at $7.99. They also see the glass bottles at $2.99 each. The question is whether CC fits into a practical weekly routine.",
+    "question_templates": [
+      "Does Clearly Canadian make sense as a weekly household staple, or is it more of an occasional treat?",
+      "How does the SleekCan 6-pack at $7.99 compare to your usual bulk sparkling water spend?",
+      "Would your household finish a 6-pack of one flavour, or do you need variety?",
+      "What would it take for CC to replace your current default sparkling water?"
+    ],
+    "recommended_personas": [
+      "household_stockup",
+      "nostalgia_loyalist",
+      "us_mill_convenience"
+    ],
+    "required_fact_categories": [
+      "sparkling_water_behavior",
+      "price_sensitivity",
+      "beverage_buying_behavior"
+    ]
+  },
+  {
+    "id": "dinner-party-hosting",
+    "name": "Choosing a Beverage for a Dinner Party",
+    "description": "A consumer is selecting beverages to serve at or bring to a dinner party. Does Clearly Canadian's glass bottle presentation and Canadian provenance make it a go-to for social occasions?",
+    "context": "A consumer is hosting a dinner party for 8 people — a mix of wine drinkers and non-drinkers. They want a sparkling water that feels considered, not like an afterthought. They're comparing Clearly Canadian glass bottles, San Pellegrino, and Perrier. Clearly Canadian is $2.99/bottle, San Pellegrino is $2.79, Perrier is $2.49.",
+    "question_templates": [
+      "Would you put Clearly Canadian on your dinner table — and does the bottle feel appropriate for the occasion?",
+      "Does Canadian provenance matter to you when you're hosting?",
+      "How does it compare to San Pellegrino or Perrier as a hosting choice?",
+      "Would the story behind the brand be something you'd mention to guests?"
+    ],
+    "recommended_personas": [
+      "premium_lifestyle",
+      "ca_mill_potential",
+      "ca_mill_loyal",
+      "nostalgia_loyalist"
     ],
     "required_fact_categories": [
       "packaging_heritage",
-      "beverage_buying_behavior",
-      "social_media_discovery"
-    ]
-  },
-  {
-    "id": "scenario-price-reaction",
-    "name": "Price Sensitivity Probe",
-    "description": "How do different segments respond to Clearly Canadian's price positioning versus competitive sparkling water brands?",
-    "context": "Clearly Canadian Originals are priced at $2.99 for a single glass bottle. Perrier is $2.49. Bubly cans are $1.79. The consumer is choosing between them at a grocery shelf.",
-    "question_templates": [
-      "Is $2.99 fair for this bottle?",
-      "What would make it worth more than Perrier to you?",
-      "At what price would you stop buying it?",
-      "Would a multi-pack deal change your decision?"
-    ],
-    "recommended_personas": [
-      "persona-ca-millennial",
-      "persona-convenience-first",
-      "persona-health-conscious",
-      "persona-us-millennial"
-    ],
-    "required_fact_categories": [
-      "price_sensitivity",
-      "beverage_buying_behavior",
+      "social_influence",
       "canadian_identity"
     ]
   },
   {
-    "id": "scenario-repeat-purchase",
-    "name": "Repeat Purchase Drivers",
-    "description": "What turns a one-time trial purchaser into a regular Clearly Canadian buyer, and what are the risks of churn?",
-    "context": "A consumer has tried Clearly Canadian once and liked it. The question is: what would need to happen — in terms of availability, price, format, and brand experience — for them to make it a regular purchase?",
+    "id": "instagram-discovery",
+    "name": "Instagram Glass Bottle Lifestyle Photo",
+    "description": "A consumer sees Clearly Canadian's glass bottle in an aesthetically curated lifestyle photo on Instagram — poolside, rooftop, picnic. How does visual social discovery translate to brand curiosity and purchase intent?",
+    "context": "A consumer is scrolling Instagram and pauses on a photo: a hand holding a Clearly Canadian glass bottle against a golden-hour rooftop backdrop. The post is from a lifestyle account they follow, tagged with #ClearlyCanadian. The caption reads: 'Finally found the sparkling water I've been looking for.' 14K likes. Comments full of 'where do I get this?'",
     "question_templates": [
-      "What would it take for you to buy this every week?",
-      "Is there anything that would stop you from repurchasing?",
-      "What format would you buy most often — glass bottle, can, or multi-pack?",
-      "Would a subscription or loyalty program interest you?"
+      "Does this kind of aesthetic post make you want to try the product?",
+      "What does the glass bottle communicate in this context versus a can?",
+      "Would you search for Clearly Canadian after seeing this post?",
+      "Is the Instagram discovery enough to drive a store visit, or do you need more information first?"
     ],
     "recommended_personas": [
-      "persona-ca-millennial",
-      "persona-existing-nostalgia",
-      "persona-health-conscious",
-      "persona-convenience-first"
-    ],
-    "required_fact_categories": [
-      "beverage_buying_behavior",
-      "sparkling_water_behavior",
-      "price_sensitivity",
-      "convenience_impulse"
-    ]
-  },
-  {
-    "id": "scenario-online-discovery",
-    "name": "Online and Social Discovery",
-    "description": "How would Clearly Canadian break through to consumers who have never heard of it via digital and social channels?",
-    "context": "A consumer encounters Clearly Canadian for the first time via a TikTok post, an Instagram reel, or an Amazon product listing. They have no prior brand awareness. The question is what content, claims, or social proof would drive them to search or buy.",
-    "question_templates": [
-      "What would make you stop scrolling on a Clearly Canadian TikTok?",
-      "What would you Google after seeing it for the first time?",
-      "What would a creator you trust need to say about it for you to buy?",
-      "Would you buy it directly from a social post or go find it in-store?"
-    ],
-    "recommended_personas": [
-      "persona-us-genz",
-      "persona-ca-genz",
-      "persona-us-millennial",
-      "persona-ca-millennial"
+      "ca_genz_potential",
+      "us_genz_potential",
+      "premium_lifestyle"
     ],
     "required_fact_categories": [
       "social_media_discovery",
-      "beverage_buying_behavior",
-      "canadian_identity"
-    ]
+      "packaging_heritage",
+      "brand_aesthetics"
+    ],
+    "contextTags": ["instagram", "social_media", "visual_discovery", "glass_bottle"]
   },
   {
-    "id": "scenario-household-stock-up",
-    "name": "Household Stock-Up Behavior",
-    "description": "When and why do consumers buy Clearly Canadian in multi-unit quantities, and what triggers a bulk purchase decision?",
-    "context": "A consumer who already knows and likes Clearly Canadian is at a grocery store where a 4-pack is available for $9.99 (vs. $2.99 per single). They're deciding whether to stock up.",
+    "id": "maple-recipe-content",
+    "name": "CC Maple Cocktail Recipe on TikTok or Instagram",
+    "description": "A consumer sees a CC Maple cocktail or mocktail recipe video on TikTok or Instagram. How does recipe content drive product discovery and purchase intent for the new maple line?",
+    "context": "A 30-second TikTok shows a bartender making a 'Maple Sunrise Mocktail' with CC Maple, fresh ginger, lime, and a rosemary sprig — no alcohol. It's from a zero-proof cocktail account with 400K followers. The creator says: 'This is going to be your new fall obsession. CC Maple sparkling water just unlocked something.' The video has 800K views and the comment section is asking where to buy it.",
     "question_templates": [
-      "Would you buy the 4-pack at this price?",
-      "Do you usually stock sparkling water at home?",
-      "How many bottles do you go through in a week?",
-      "Would you prefer a subscription delivery option if it saved you 10%?"
+      "Does a recipe video make you more interested in CC Maple than a straight product ad would?",
+      "Would you make this mocktail at home — and would you buy CC Maple specifically for it?",
+      "Does the sober-curious framing resonate with you?",
+      "What would the video need to show for you to click the link and find out where to buy?"
     ],
     "recommended_personas": [
-      "persona-existing-nostalgia",
-      "persona-ca-millennial",
-      "persona-premium-lifestyle",
-      "persona-health-conscious"
+      "ca_genz_sober_curious",
+      "bartender_mixologist",
+      "ca_genz_potential",
+      "us_genz_wellness"
     ],
     "required_fact_categories": [
-      "sparkling_water_behavior",
-      "beverage_buying_behavior",
-      "price_sensitivity"
-    ]
+      "product_maple",
+      "social_media_discovery",
+      "sober_curious"
+    ],
+    "contextTags": ["maple", "tiktok", "recipe", "mocktail", "sober_curious"]
   }
 ]

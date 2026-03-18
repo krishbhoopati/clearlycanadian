@@ -89,8 +89,8 @@ export function aggregateSimulations(results: PersonaSimulationResult[]): AskLab
   }
 
   // Step 4 — overall reaction
-  const positiveDecisions = new Set(["likely_try", "likely_repeat"]);
-  const negativeDecisions = new Set(["likely_reject"]);
+  const positiveDecisions = new Set(["immediate_yes", "likely_try", "already_buying"]);
+  const negativeDecisions = new Set(["hard_no", "unlikely_without_push"]);
   let positiveCount = 0;
   let negativeCount = 0;
   for (const r of results) {
@@ -104,11 +104,13 @@ export function aggregateSimulations(results: PersonaSimulationResult[]): AskLab
   else reactionLabel = "Mixed signals across the panel";
 
   const decisionText: Record<string, string> = {
-    likely_try: "is likely to try the product",
-    likely_repeat: "is likely to purchase again",
-    likely_reject: "is unlikely to purchase",
-    mixed_interest: "shows mixed interest",
-    low_awareness_high_potential: "has low awareness but high latent potential",
+    immediate_yes:           "would buy this without hesitation",
+    likely_try:              "is likely to try the product",
+    interested_but_barriers: "is interested but has barriers to overcome",
+    indifferent:             "shows low engagement with this scenario",
+    unlikely_without_push:   "is unlikely to convert without a change",
+    hard_no:                 "is actively not interested",
+    already_buying:          "is an existing loyal customer",
   };
 
   const personaLines = results.map(r => {

@@ -11,15 +11,17 @@ export function listPersonas(): Persona[] {
 }
 
 const TOPIC_AFFINITY: Record<string, string[]> = {
-  zero_sugar:     ["wellness optimizer", "social media discoverer", "wellness trend follower"],
-  nostalgia:      ["nostalgia loyalist", "nostalgia + health seeker"],
-  social_media:   ["social media discoverer", "wellness trend follower"],
-  convenience:    ["grab-and-go maximizer"],
-  packaging:      ["premium curator", "wellness trend follower", "social media discoverer"],
-  health_wellness:["wellness optimizer", "nostalgia + health seeker"],
-  sustainability: ["premium curator"],
-  price:          ["grab-and-go maximizer", "premium water switcher"],
-  cans:           ["grab-and-go maximizer", "social media discoverer"],
+  zero_sugar:      ["health_wellness", "sober_curious", "general_potential"],
+  nostalgia:       ["nostalgia_loyalist"],
+  social_media:    ["general_potential", "sober_curious"],
+  convenience:     ["convenience_first"],
+  packaging:       ["premium_lifestyle", "sober_curious", "general_potential"],
+  health_wellness: ["health_wellness", "nostalgia_loyalist"],
+  sustainability:  ["premium_lifestyle", "health_wellness", "sober_curious"],
+  price:           ["convenience_first", "household_decision_maker"],
+  cans:            ["convenience_first", "general_potential"],
+  bar:             ["bartender_mixologist", "sober_curious", "premium_lifestyle"],
+  maple:           ["bartender_mixologist", "premium_lifestyle", "nostalgia_loyalist"],
 };
 
 export function resolvePanel(

@@ -1,122 +1,194 @@
 [
   {
-    "id": "brand-001",
-    "statement": "Clearly Canadian was founded in 1987 in Vancouver, British Columbia, making it one of Canada's first premium flavoured sparkling water brands.",
+    "id": "origin-founding",
+    "statement": "Clearly Canadian was founded in 1987 in British Columbia, making it one of Canada's first premium flavoured sparkling water brands — predating the sparkling water category boom by over a decade.",
     "category": "origin_story",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Essence", "Clearly Canadian SleekCans", "CC Maple"],
     "source": "Clearly Canadian company history",
+    "confidence": 0.99
+  },
+  {
+    "id": "origin-mission",
+    "statement": "Clearly Canadian's brand mission is rooted in 'good thoughts, good words, good deeds' — a commitment to positive impact reflected in its sourcing, packaging, and community partnerships.",
+    "category": "brand_mission",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Essence", "Clearly Canadian SleekCans", "CC Maple"],
+    "source": "Clearly Canadian brand guidelines",
     "confidence": 0.97
   },
   {
-    "id": "brand-002",
-    "statement": "Clearly Canadian Originals are made with spring water sourced from British Columbia and contain no artificial colours or preservatives.",
-    "category": "ingredient_sourcing",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
-    "source": "Clearly Canadian product label and website",
+    "id": "origin-sourcing",
+    "statement": "All Clearly Canadian sparkling water is sourced from a British Columbia aquifer, and the brand's tagline 'Clearly it's our Water' reflects the purity and regional authenticity of its source.",
+    "category": "origin_story",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Essence", "Clearly Canadian Sparkling Mineral", "CC Maple"],
+    "source": "Clearly Canadian product label and brand website",
+    "confidence": 0.97
+  },
+  {
+    "id": "distribution-scale",
+    "statement": "Clearly Canadian is available in 33,600 retail doors across Canada and the US, representing 69% ACV (All Commodity Volume) distribution — a significant national footprint for an independent Canadian brand.",
+    "category": "distribution",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Essence", "Clearly Canadian SleekCans", "CC Maple"],
+    "source": "Clearly Canadian retail distribution data 2025",
     "confidence": 0.95
   },
   {
-    "id": "brand-003",
-    "statement": "Clearly Canadian Zero Sugar uses stevia leaf extract as its natural sweetener with zero grams of sugar per bottle.",
-    "category": "zero_sugar_formulation",
-    "applies_to_products": ["Clearly Canadian Zero Sugar"],
-    "source": "Clearly Canadian Zero Sugar product label",
-    "confidence": 0.97
+    "id": "cc-maple-positioning",
+    "statement": "CC Maple is Clearly Canadian's newest line — a naturally maple-flavoured sparkling water positioned both as a standalone drink and as a premium mixer that pairs with bourbon, whiskey, and gin, as well as a sober-curious mocktail base with autumn-inspired appeal.",
+    "category": "product_maple",
+    "applies_to_products": ["CC Maple"],
+    "source": "Clearly Canadian CC Maple product launch communications 2025",
+    "confidence": 0.95
   },
   {
-    "id": "brand-004",
-    "statement": "The Clearly Canadian Originals glass bottle is a curved, embossed design that has remained largely unchanged since the 1980s, making it immediately recognizable to consumers who remember the brand.",
-    "category": "packaging_heritage",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
-    "source": "Brand packaging history documentation",
-    "confidence": 0.93
-  },
-  {
-    "id": "brand-005",
-    "statement": "Clearly Canadian's current flavour lineup includes Country Raspberry, Wild Cherry, Orchard Peach, Mountain Blackberry, and Western Melon for Originals.",
-    "category": "flavor_lineup",
+    "id": "originals-flavors",
+    "statement": "Clearly Canadian Originals are available in four signature flavours: Mountain Blackberry, Wild Cherry, Orchard Peach, and Summer Strawberry — each lightly sweetened and made with no artificial colours or preservatives.",
+    "category": "product_originals",
     "applies_to_products": ["Clearly Canadian Originals"],
-    "source": "Clearly Canadian product listing 2024",
-    "confidence": 0.90
+    "source": "Clearly Canadian product listing 2025",
+    "confidence": 0.95
   },
   {
-    "id": "brand-006",
-    "statement": "Clearly Canadian Zero Sugar is available in Country Raspberry, Wild Cherry, Orchard Peach, and Mountain Blackberry flavours.",
-    "category": "flavor_lineup",
-    "applies_to_products": ["Clearly Canadian Zero Sugar"],
-    "source": "Clearly Canadian product listing 2024",
-    "confidence": 0.90
-  },
-  {
-    "id": "brand-007",
-    "statement": "Clearly Canadian relaunched the brand in 2015 following a successful crowdfunding campaign where fans pre-ordered over 500,000 cases, demonstrating the depth of consumer nostalgia.",
-    "category": "nostalgia_narrative",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
-    "source": "Clearly Canadian relaunch press coverage 2015",
-    "confidence": 0.92
-  },
-  {
-    "id": "brand-008",
-    "statement": "Clearly Canadian is a Canadian-owned and operated brand, headquartered in Kelowna, British Columbia.",
-    "category": "canadian_ownership",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans"],
-    "source": "Clearly Canadian corporate information",
-    "confidence": 0.96
-  },
-  {
-    "id": "brand-009",
-    "statement": "Clearly Canadian cans were introduced to expand distribution into convenience and impulse channels where glass bottle format is impractical.",
-    "category": "convenience_channel_strategy",
-    "applies_to_products": ["Clearly Canadian Cans"],
-    "source": "Clearly Canadian distribution strategy documentation",
-    "confidence": 0.85
-  },
-  {
-    "id": "brand-010",
-    "statement": "The Clearly Canadian glass bottle is fully recyclable and the brand positions glass as part of its sustainability story versus single-use plastic.",
-    "category": "sustainability_positioning",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Glass Bottle"],
-    "source": "Clearly Canadian sustainability messaging",
-    "confidence": 0.88
-  },
-  {
-    "id": "brand-011",
-    "statement": "Clearly Canadian Originals contain approximately 80 calories and 20g of sugar per 325ml bottle, positioning it as a flavoured sparkling water rather than a zero-calorie option.",
-    "category": "nutritional_facts",
+    "id": "originals-nutrition",
+    "statement": "Clearly Canadian Originals contain approximately 80 calories and 20g of cane sugar per 325ml glass bottle, positioning the product as a lightly sweetened sparkling water rather than a zero-calorie alternative.",
+    "category": "product_originals",
     "applies_to_products": ["Clearly Canadian Originals"],
     "source": "Clearly Canadian Originals product label",
     "confidence": 0.95
   },
   {
-    "id": "brand-012",
-    "statement": "Clearly Canadian is distributed across grocery, specialty retail, and convenience channels in Canada, with selective distribution in U.S. Whole Foods and specialty grocers.",
-    "category": "distribution_footprint",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans"],
-    "source": "Clearly Canadian retail distribution data 2024",
-    "confidence": 0.83
-  },
-  {
-    "id": "brand-013",
-    "statement": "Clearly Canadian's sparkling water is lightly carbonated compared to European mineral waters, making it more approachable for consumers transitioning from still water or soda.",
-    "category": "product_positioning",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans"],
-    "source": "Clearly Canadian product taste profile documentation",
-    "confidence": 0.82
-  },
-  {
-    "id": "brand-014",
-    "statement": "The Clearly Canadian brand peaked in the early 1990s with annual sales exceeding $150 million CAD before declining through the 2000s and entering a revitalization phase post-2015.",
-    "category": "brand_history",
+    "id": "originals-bottle-design",
+    "statement": "The Clearly Canadian Originals glass bottle features a distinctive curved, embossed design inspired by the shape of a baseball glove — an iconic form that has remained largely unchanged since the 1980s and drives immediate shelf recognition.",
+    "category": "product_originals",
     "applies_to_products": ["Clearly Canadian Originals"],
-    "source": "Canadian Business magazine historical coverage",
-    "confidence": 0.87
+    "source": "Brand packaging history and design documentation",
+    "confidence": 0.93
   },
   {
-    "id": "brand-015",
-    "statement": "Clearly Canadian's brand voice and visual identity emphasize Canadian heritage, natural sourcing, and 90s nostalgia to differentiate from U.S.-owned sparkling water brands.",
-    "category": "brand_positioning",
-    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian Cans", "Clearly Canadian Glass Bottle"],
-    "source": "Clearly Canadian brand guidelines 2023",
+    "id": "originals-innobev-award",
+    "statement": "Clearly Canadian Originals received the InnoBev 'Best in Glass' award, recognizing the brand's iconic glass bottle format as a standout packaging innovation in the global beverage industry.",
+    "category": "product_originals",
+    "applies_to_products": ["Clearly Canadian Originals"],
+    "source": "InnoBev Awards — Clearly Canadian",
+    "confidence": 0.93
+  },
+  {
+    "id": "sleekcans-format",
+    "statement": "Clearly Canadian SleekCans are sold in 6-packs at approximately $7.99 — roughly 50% less per serving than the glass bottle format — making them the entry-level price point for impulse and convenience channel shoppers.",
+    "category": "packaging",
+    "applies_to_products": ["Clearly Canadian SleekCans"],
+    "source": "Clearly Canadian SleekCan retail pricing 2025",
+    "confidence": 0.92
+  },
+  {
+    "id": "sleekcans-channel",
+    "statement": "Clearly Canadian SleekCans were introduced specifically to expand distribution into convenience and impulse channels where glass bottles are impractical, broadening the brand's reach beyond grocery and specialty retail.",
+    "category": "packaging",
+    "applies_to_products": ["Clearly Canadian SleekCans"],
+    "source": "Clearly Canadian channel strategy documentation",
+    "confidence": 0.90
+  },
+  {
+    "id": "zero-sugar-formulation",
+    "statement": "Clearly Canadian Zero Sugar uses stevia leaf extract as its natural sweetener, delivering zero grams of sugar per bottle with the same fruit-forward flavour profile as the Originals.",
+    "category": "product_zero_sugar",
+    "applies_to_products": ["Clearly Canadian Zero Sugar"],
+    "source": "Clearly Canadian Zero Sugar product label",
+    "confidence": 0.95
+  },
+  {
+    "id": "zero-sugar-availability",
+    "statement": "Clearly Canadian Zero Sugar launched in 2024 and is currently distributed primarily in the US market, with limited availability in Canada — the brand's support and marketing investment behind this line remains selective.",
+    "category": "product_zero_sugar",
+    "applies_to_products": ["Clearly Canadian Zero Sugar"],
+    "source": "Clearly Canadian distribution and launch communications 2024",
+    "confidence": 0.88
+  },
+  {
+    "id": "essence-positioning",
+    "statement": "Clearly Canadian Essence is the brand's unsweetened sparkling water line — zero sweeteners, zero calories — targeted at health-first consumers who want flavour without any sugar or sugar substitutes.",
+    "category": "product_essence",
+    "applies_to_products": ["Clearly Canadian Essence"],
+    "source": "Clearly Canadian Essence product communications",
+    "confidence": 0.92
+  },
+  {
+    "id": "essence-flavors",
+    "statement": "Clearly Canadian Essence is available in grapefruit and limon flavours, both using natural fruit essences to deliver a clean, crisp taste with no sweeteners of any kind.",
+    "category": "product_essence",
+    "applies_to_products": ["Clearly Canadian Essence"],
+    "source": "Clearly Canadian Essence product listing 2025",
+    "confidence": 0.90
+  },
+  {
+    "id": "mineral-positioning",
+    "statement": "Clearly Canadian Sparkling Mineral water retains natural minerals sourced from the BC aquifer, and is positioned as a premium, on-premise product — suited for restaurants, bars, and fine dining rather than retail mass market.",
+    "category": "product_mineral",
+    "applies_to_products": ["Clearly Canadian Sparkling Mineral"],
+    "source": "Clearly Canadian Sparkling Mineral product and channel documentation",
+    "confidence": 0.88
+  },
+  {
+    "id": "cc-maple-formats",
+    "statement": "CC Maple is available in both the signature Clearly Canadian glass bottle and SleekCan format, allowing on-premise accounts (bars, restaurants) to serve it by the glass while enabling retail and convenience takeaway.",
+    "category": "product_maple",
+    "applies_to_products": ["CC Maple"],
+    "source": "Clearly Canadian CC Maple launch documentation 2025",
+    "confidence": 0.92
+  },
+  {
+    "id": "cc-maple-launch-strategy",
+    "statement": "CC Maple launched with an on-premise-first distribution strategy, seeding the product in bars and cocktail-forward venues before expanding to retail — designed to build bartender advocacy and cocktail association before mass shelf placement.",
+    "category": "product_maple",
+    "applies_to_products": ["CC Maple"],
+    "source": "Clearly Canadian CC Maple go-to-market strategy 2025",
+    "confidence": 0.90
+  },
+  {
+    "id": "cc-maple-mocktail",
+    "statement": "CC Maple is designed as a sober-curious mocktail base, with its natural maple flavor and light carbonation making it a versatile non-alcoholic ingredient for autumn-inspired drinks and zero-proof cocktail menus.",
+    "category": "product_maple",
+    "applies_to_products": ["CC Maple"],
+    "source": "Clearly Canadian CC Maple brand and bartender communications 2025",
+    "confidence": 0.88
+  },
+  {
+    "id": "packaging-no-plastic",
+    "statement": "Clearly Canadian uses only glass bottles and aluminum cans across its entire product portfolio — no plastic packaging — reinforcing its sustainability positioning and differentiating from single-use plastic sparkling water brands.",
+    "category": "sustainability",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Essence", "Clearly Canadian SleekCans", "CC Maple", "Clearly Canadian Sparkling Mineral"],
+    "source": "Clearly Canadian sustainability messaging and packaging documentation",
+    "confidence": 0.96
+  },
+  {
+    "id": "distribution-retail-partners",
+    "statement": "Clearly Canadian is carried at major Canadian and US retail partners including Whole Foods, Loblaws, Safeway Canada, and specialty grocery chains — with the glass bottle format anchoring the premium grocery tier.",
+    "category": "distribution",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Essence", "Clearly Canadian SleekCans"],
+    "source": "Clearly Canadian retail distribution data 2025",
     "confidence": 0.89
+  },
+  {
+    "id": "performance-us-retail",
+    "statement": "Clearly Canadian achieved $65.8 million in US retail sales with +39.4% year-over-year growth, making it one of the fastest-growing premium sparkling water brands in the US market.",
+    "category": "performance",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian Zero Sugar", "Clearly Canadian SleekCans"],
+    "source": "Clearly Canadian retail sales data 2024–2025",
+    "confidence": 0.92
+  },
+  {
+    "id": "culture-crowdfunding",
+    "statement": "Clearly Canadian's 2015 relaunch was powered by a grassroots crowdfunding campaign that attracted 14,000 fans from 35 countries who pre-ordered 40,000 cases — proving that deep consumer nostalgia could restart a dormant brand.",
+    "category": "culture",
+    "applies_to_products": ["Clearly Canadian Originals"],
+    "source": "Clearly Canadian relaunch press coverage and campaign documentation 2015",
+    "confidence": 0.93
+  },
+  {
+    "id": "culture-blue-jays",
+    "statement": "In 2025, Clearly Canadian announced a partnership with the Toronto Blue Jays, aligning the brand with Canada's MLB franchise and expanding its presence in sports and entertainment venues across the country.",
+    "category": "partnerships",
+    "applies_to_products": ["Clearly Canadian Originals", "Clearly Canadian SleekCans", "CC Maple"],
+    "source": "Clearly Canadian Blue Jays partnership announcement 2025",
+    "confidence": 0.93
   }
 ]

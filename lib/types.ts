@@ -21,6 +21,20 @@ export interface Persona {
   core_traits: string[];
   behavior_rules: string[];
   evidence_ids: string[];
+  // Extended persona-specific fields (optional — graceful if absent)
+  beverage_psychology?: string;
+  price_sensitivity?: string;
+  discovery_channels?: string[];
+  cc_awareness?: string;
+  cc_perception?: string;
+  response_to_maple_product?: string;
+  bar_and_festival_relevance?: string;
+  nostalgia_relevance?: string;
+  canadian_identity_relevance?: string;
+  sustainability_attitude?: string;
+  social_media_behavior?: string;
+  current_beverages?: string[];
+  shopping_locations?: string[];
 }
 
 export interface Scenario {
@@ -96,7 +110,14 @@ export interface PersonaChatRequest {
 export interface PersonaSimulationResult {
   persona_id: string;
   persona_name: string;
-  decision: "likely_try" | "likely_reject" | "mixed_interest" | "likely_repeat" | "low_awareness_high_potential";
+  decision:
+    | "immediate_yes"
+    | "likely_try"
+    | "interested_but_barriers"
+    | "indifferent"
+    | "unlikely_without_push"
+    | "hard_no"
+    | "already_buying";
   drivers: string[];
   barriers: string[];
   inferred_beliefs: string[];
@@ -117,6 +138,8 @@ export interface AskLabResponse {
   used_evidence_ids: string[];
   evidence_items: Evidence[];
   scenario_matched: boolean;
+  segments_to_watch: string[];
+  suggested_follow_ups: string[];
 }
 
 export interface PersonaChatResponse {
