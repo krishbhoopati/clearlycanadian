@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import PersonaAvatar from "@/components/PersonaAvatar";
+import PersonaPopover from "@/components/PersonaPopover";
 import type { Persona } from "@/lib/types";
 
 interface HomeSearchProps {
@@ -87,6 +88,8 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
   const [isFocused, setIsFocused] = useState(false);
   const restartRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [dataPoints, setDataPoints] = useState(500);
+  const [hoveredPersona, setHoveredPersona] = useState<{ persona: Persona; rect: DOMRect } | null>(null);
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Every 4–9 seconds, tick up by 1–3 points to simulate live learning
@@ -175,7 +178,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
         {/* Top section */}
         <div className="flex flex-col gap-6">
           <div>
-            <h1 className="text-6xl font-bold font-sans text-white leading-tight tracking-tight">
+            <h1 className="text-[4rem] font-bold font-sans text-white leading-tight tracking-tight">
               Your consumer panel{" "}
               <span>is ready.</span>
             </h1>
@@ -242,28 +245,38 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
                   <button
                     key={`${p.id}-${i}`}
                     onClick={() => onPersonaClick?.(p.id)}
-                    className="shrink-0 w-80 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 cursor-pointer text-left transition-all flex gap-4 items-center"
+                    onMouseEnter={e => {
+                      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+                      setHoveredPersona({ persona: p, rect: e.currentTarget.getBoundingClientRect() });
+                    }}
+                    onMouseLeave={() => {
+                      hoverTimeoutRef.current = setTimeout(() => setHoveredPersona(null), 120);
+                    }}
+                    className="shrink-0 w-96 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 cursor-pointer text-left transition-all flex gap-4 items-center"
                   >
-                    {/* Left: avatar + name */}
-                    <div className="flex flex-col items-center gap-1.5 shrink-0">
-                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-16 h-16" textSize="text-lg" />
-                      <span className="text-white font-bold text-sm text-center">{p.name.split(" ")[0]}</span>
+                    {/* Avatar */}
+                    <div className="shrink-0">
+                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-14 h-14" textSize="text-lg" />
                     </div>
 
-                    {/* Right: info sub-box */}
-                    <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col justify-center gap-1 self-stretch">
-                      <p className="text-white/80 text-sm font-semibold leading-snug">
-                        {p.cc_awareness_label ?? p.cc_awareness ?? ""}
-                      </p>
-                      <div className="flex items-center gap-1.5">
+                    {/* Profile info */}
+                    <div className="flex-1 flex flex-col gap-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-white font-bold text-base">{p.name}</span>
                         <div
-                          className="w-2 h-2 rounded-full shrink-0"
+                          className="w-1.5 h-1.5 rounded-full shrink-0"
                           style={{ backgroundColor: getAwarenessColor(p.cc_awareness ?? "") }}
                         />
-                        <p className="text-white/40 text-xs leading-snug truncate">
-                          {(p.market === "CA" ? "Canada" : p.market)} • {p.generation} • {p.segment_label ?? p.customer_type}
-                        </p>
                       </div>
+                      <p className="text-white/65 text-sm leading-snug">
+                        {p.generation} • {p.age_range} • {p.location ?? (p.market === "CA" ? "Canada" : p.market)}
+                      </p>
+                      <p className="text-white/80 text-sm leading-snug truncate">
+                        {p.occupation ?? p.segment_label ?? p.customer_type}
+                      </p>
+                      <p className="text-white/55 text-sm leading-snug line-clamp-2 mt-0.5">
+                        {p.cc_awareness_label ?? p.cc_awareness ?? p.behavioral_segment}
+                      </p>
                     </div>
                   </button>
                 ))}
@@ -374,6 +387,20 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
           </div>
         </div>
       </div>
+
+      {/* Persona hover popover — rendered via portal to escape overflow:hidden */}
+      {hoveredPersona && (
+        <PersonaPopover
+          persona={hoveredPersona.persona}
+          rect={hoveredPersona.rect}
+          onMouseEnter={() => {
+            if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+          }}
+          onMouseLeave={() => {
+            hoverTimeoutRef.current = setTimeout(() => setHoveredPersona(null), 120);
+          }}
+        />
+      )}
     </div>
   );
 }
