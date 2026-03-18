@@ -79,6 +79,17 @@ function getAwarenessColor(cc_awareness: string): string {
   return "#f59e0b";
 }
 
+function DataPointsCounter() {
+  const [dataPoints, setDataPoints] = useState(500);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setDataPoints(n => n + Math.floor(Math.random() * 16) + 5);
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
+  return <>{dataPoints}+ Research Data Points</>;
+}
+
 export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSearchProps) {
   const [input, setInput] = useState("");
   const [personas, setPersonas] = useState<Persona[]>([]);
@@ -87,17 +98,8 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
   const [prevIdx, setPrevIdx] = useState<number | null>(null);
   const [isFocused, setIsFocused] = useState(false);
   const restartRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [dataPoints, setDataPoints] = useState(500);
   const [hoveredPersona, setHoveredPersona] = useState<{ persona: Persona; rect: DOMRect } | null>(null);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    // Every 4–9 seconds, tick up by 1–3 points to simulate live learning
-    const id = setInterval(() => {
-      setDataPoints(n => n + Math.floor(Math.random() * 16) + 5);
-    }, 2000);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     fetch("/api/personas")
@@ -142,7 +144,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
   const extra = personas.length - displayed.length;
 
   return (
-    <div className="min-h-screen w-screen overflow-y-auto flex items-center justify-center relative">
+    <div className="h-screen w-screen overflow-hidden flex items-center justify-center relative">
       {/* Background */}
       <Image
         src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=90&w=3840&auto=format&fit=crop"
@@ -173,7 +175,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
       ))}
 
       {/* Main panel */}
-      <div className="max-w-[1280px] w-full rounded-[48px] glass-panel flex flex-col gap-10 p-8 md:p-10 lg:p-12 relative z-10 mx-4 my-8 overflow-y-auto dark-scroll">
+      <div className="max-w-[1280px] w-full rounded-[48px] glass-panel flex flex-col gap-10 p-8 md:p-10 lg:p-12 relative z-10 mx-4 my-8 dark-scroll">
 
         {/* Top section */}
         <div className="flex flex-col gap-6">
@@ -343,7 +345,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
 {/* Footer bar */}
         <div className="flex items-center justify-between">
           <span className="font-mono text-white/75 text-sm font-bold tracking-widest uppercase bg-white/5 border border-white/10 rounded-full px-4 py-1.5">
-            {dataPoints}+ Research Data Points
+            <DataPointsCounter />
           </span>
           <div className="flex items-center gap-6">
             {personas.length > 0 && (
