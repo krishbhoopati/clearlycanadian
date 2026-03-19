@@ -99,7 +99,7 @@ export default function LoadingOverlay({ visible, personas }: Props) {
             zIndex: 0,
           }} />
           {/* Left bottle */}
-          <div style={{ height: 260, zIndex: 1, marginRight: -36, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))", animation: "loading-float-left 4s ease-in-out infinite" }}>
+          <div style={{ height: 260, zIndex: 1, marginRight: -80, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))", animation: "loading-float-left 4s ease-in-out infinite" }}>
             <Image src="/bottles/bottle-left.png" alt="" width={100} height={260} style={{ height: "100%", width: "auto", objectFit: "contain" }} />
           </div>
           {/* Center bottle */}
@@ -107,7 +107,7 @@ export default function LoadingOverlay({ visible, personas }: Props) {
             <Image src="/bottles/bottle-center.png" alt="" width={100} height={260} style={{ height: "100%", width: "auto", objectFit: "contain" }} />
           </div>
           {/* Right bottle */}
-          <div style={{ height: 260, zIndex: 1, marginLeft: -36, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))", animation: "loading-float-right 4.2s ease-in-out infinite" }}>
+          <div style={{ height: 260, zIndex: 1, marginLeft: -80, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))", animation: "loading-float-right 4.2s ease-in-out infinite" }}>
             <Image src="/bottles/bottle-right.png" alt="" width={100} height={260} style={{ height: "100%", width: "auto", objectFit: "contain" }} />
           </div>
         </div>
