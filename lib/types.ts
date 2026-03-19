@@ -87,6 +87,33 @@ export interface BrandFact {
   confidence: number;
 }
 
+export interface Competitor {
+  id: string;
+  name: string;
+  parent_company: string;
+  founded: number | string;
+  positioning: string;
+  price_points: {
+    single: string;
+    multipack: string;
+    per_can_cost: string;
+  };
+  calories_per_serving: number | string;
+  sugar_per_serving: string;
+  sweetener: string;
+  key_differentiators: string[];
+  weaknesses_vs_cc: string[];
+  retail_doors_estimate: string;
+  target_demographic: string;
+  social_media_strategy: string;
+  recent_news_2025_2026: string[];
+  market_context: string;
+  comparison_to_cc: {
+    cc_wins: string[];
+    cc_loses: string[];
+  };
+}
+
 export interface Evidence {
   id: string;
   text: string;          // mapped from BehaviorFact.statement at retrieval time

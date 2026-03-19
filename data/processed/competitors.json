@@ -1,0 +1,608 @@
+[
+  {
+    "id": "lacroix",
+    "name": "LaCroix",
+    "parent_company": "National Beverage Corp",
+    "founded": 1981,
+    "positioning": "Everyday affordable sparkling water — the original mass-market flavored sparkling water that made the category mainstream. Positioned as a pantry staple rather than a premium treat, with broad flavor variety and ubiquitous distribution.",
+    "price_points": {
+      "single": "$0.75–$1.00 (where available)",
+      "multipack": "$5.00–$6.00 / 12-pack",
+      "per_can_cost": "$0.42–$0.50"
+    },
+    "calories_per_serving": 0,
+    "sugar_per_serving": "0g",
+    "sweetener": "None",
+    "key_differentiators": [
+      "Ubiquitous distribution: 100,000+ retail doors, 90%+ ACV — available virtually everywhere",
+      "Unbeatable value: lowest per-can cost in the branded sparkling water category",
+      "Extensive flavor portfolio with 20+ varieties providing broad consumer choice",
+      "Category pioneer status — defined the mass-market flavored sparkling water segment in the U.S.",
+      "Clean label: no artificial ingredients, calories, or sweeteners",
+      "Strong Costco/club channel presence for household stock-up purchasing"
+    ],
+    "weaknesses_vs_cc": [
+      "No flavor depth or sweetness — criticized as 'hint of a hint' of flavor, especially by soda switchers",
+      "No heritage story, brand narrative, or emotional connection beyond 'I drink this because it's cheap and everywhere'",
+      "No premium positioning — perceived as generic/commoditized, interchangeable with store brand",
+      "Generic, outdated packaging design with no social media shareability or shelf differentiation",
+      "No Canadian identity, provenance story, or country-of-origin premium",
+      "Parent company (National Beverage Corp) has had reputational issues — CEO controversies",
+      "No on-premise or bar presence — not seen as sophisticated enough for hospitality",
+      "No sustainability narrative beyond standard aluminum cans"
+    ],
+    "retail_doors_estimate": "100,000+ doors, 90%+ ACV",
+    "target_demographic": "Mass market, household stock-up buyers, price-sensitive consumers across all demographics. Skews toward suburban families and office breakroom consumption.",
+    "social_media_strategy": "Minimal active social strategy. Legacy brand awareness from early category leadership, but largely absent from TikTok/Instagram creator culture. No significant influencer partnerships or viral moments in recent years.",
+    "recent_news_2025_2026": [
+      "Continued market share erosion as premium and functional sparkling water brands gain shelf space",
+      "Increased private label competition putting pressure on LaCroix's value positioning",
+      "Parent company National Beverage Corp facing ongoing competitive headwinds from PepsiCo (Bubly) and Coca-Cola brands"
+    ],
+    "market_context": "LaCroix defined the mass-market flavored sparkling water category but has struggled to evolve as the market premiumizes. It remains the volume leader but is increasingly squeezed between cheaper private label and more exciting premium/functional competitors. The brand's lack of innovation and social media presence leaves it vulnerable to share erosion among younger consumers.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Dramatically superior flavor intensity and taste satisfaction — CC's fruit essences deliver real flavor vs LaCroix's subtle hints",
+        "Rich heritage and nostalgia story creates emotional connection LaCroix completely lacks",
+        "Premium glass bottle and brand aesthetics are Instagram/TikTok-worthy vs LaCroix's generic look",
+        "Canadian identity and provenance story (BC aquifer spring water) adds brand depth",
+        "On-premise viability — CC can work in bars and restaurants where LaCroix cannot",
+        "Sustainability narrative (glass + aluminum, never plastic, 100% recycled materials)",
+        "Higher brand loyalty and emotional resonance among aware consumers (48% awareness-to-consideration)"
+      ],
+      "cc_loses": [
+        "Distribution: LaCroix's 100K+ doors vs CC's ~33,600 — LaCroix is available nearly everywhere",
+        "Price: LaCroix at $0.42–$0.50/can vs CC at $1.33/can — CC costs 2.5–3x more per can",
+        "Household stock-up: LaCroix's 12-pack value format dominates pantry stocking occasions",
+        "Brand awareness: LaCroix has near-universal recognition vs CC's 2% unaided awareness",
+        "Zero-calorie purity: LaCroix is 0 cal/0 sugar, while CC's sweetened variants may deter strict health buyers"
+      ]
+    }
+  },
+  {
+    "id": "bubly",
+    "name": "Bubly",
+    "parent_company": "PepsiCo",
+    "founded": 2018,
+    "positioning": "Mainstream, playful sparkling water backed by PepsiCo's distribution and marketing muscle. Fun, colorful branding designed to appeal to younger consumers trading down from soda, positioned as the accessible, personality-driven alternative to LaCroix.",
+    "price_points": {
+      "single": "$0.75–$1.00",
+      "multipack": "$4.99 / 12-pack",
+      "per_can_cost": "$0.42"
+    },
+    "calories_per_serving": 0,
+    "sugar_per_serving": "0g",
+    "sweetener": "None",
+    "key_differentiators": [
+      "PepsiCo's massive distribution network and retail relationships ensure ubiquitous availability",
+      "Playful, colorful branding and personality-driven packaging designed for younger consumers",
+      "Michael Bublé celebrity association (name similarity + ad campaigns) provides cultural recognition",
+      "Launched Bubly Burst (caffeinated sparkling water) to capture the functional/energy crossover segment",
+      "Aggressive promotional pricing and trade spend leverage PepsiCo's scale",
+      "Strong club channel and mass retailer presence"
+    ],
+    "weaknesses_vs_cc": [
+      "Corporate-feeling brand — clearly a PepsiCo product, lacks authenticity and founder story",
+      "No spring water or natural water source story — perceived as 'manufactured' sparkling water",
+      "No Canadian identity or heritage narrative — purely American corporate brand",
+      "Flavor depth similar to LaCroix (subtle/hint-based), not satisfying for soda switchers seeking real taste",
+      "No premium positioning or on-premise relevance — not a bar or restaurant brand",
+      "No sustainability differentiation beyond standard aluminum packaging",
+      "Brand personality feels manufactured rather than organic — 'designed to be fun' vs genuinely fun"
+    ],
+    "retail_doors_estimate": "Estimated 80,000–100,000+ doors via PepsiCo DSD network",
+    "target_demographic": "Younger mainstream consumers (18–35), soda-to-sparkling-water switchers, value-conscious buyers looking for something more 'fun' than LaCroix at the same price point.",
+    "social_media_strategy": "PepsiCo-funded social campaigns with professional content. Michael Bublé partnership drives awareness. Active on Instagram/TikTok but content feels corporate-produced rather than organic/creator-driven. Limited viral or earned media moments.",
+    "recent_news_2025_2026": [
+      "Launched Bubly Burst — caffeinated sparkling water line targeting energy drink crossover consumers",
+      "Continued aggressive pricing and promotional activity to defend share against premium competitors",
+      "PepsiCo's acquisition of Poppi ($1.95B) signals the company views functional/prebiotic soda as the future growth vector — Bubly may get deprioritized internally"
+    ],
+    "market_context": "Bubly was PepsiCo's response to LaCroix's category creation, using massive distribution and trade spend to rapidly capture share. But the brand sits in an awkward middle — too corporate to excite Gen Z, too plain to satisfy soda switchers wanting real flavor. PepsiCo's $1.95B Poppi acquisition suggests even PepsiCo itself sees functional/premium as the future, not mass-market plain sparkling water.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Authentic brand story and independent heritage vs corporate PepsiCo product",
+        "Real flavor intensity that satisfies soda switchers — CC delivers taste, Bubly delivers hints",
+        "Canadian identity and BC spring water provenance vs 'manufactured by PepsiCo'",
+        "Premium packaging (glass bottle) creates treat-worthy moments Bubly cannot deliver",
+        "On-premise potential — CC can appear on bar back-bars; Bubly is strictly retail",
+        "Sustainability story: glass + aluminum, never plastic, 100% recycled materials",
+        "Higher per-unit value perception — CC is a treat, Bubly is a commodity"
+      ],
+      "cc_loses": [
+        "Distribution: PepsiCo DSD gives Bubly near-universal availability vs CC's growing but smaller footprint",
+        "Price: Bubly at $0.42/can vs CC at $1.33/can — CC is 3x the cost",
+        "Promotional firepower: PepsiCo's trade spend dwarfs CC's marketing budget",
+        "Household stock-up occasions: Bubly's 12-pack value format dominates pantry purchases",
+        "Brand awareness: Bubly benefits from PepsiCo's media spend and Michael Bublé association"
+      ]
+    }
+  },
+  {
+    "id": "topo-chico",
+    "name": "Topo Chico",
+    "parent_company": "Coca-Cola (acquired 2017)",
+    "founded": 1895,
+    "positioning": "Premium Mexican mineral water — the bartender's sparkling water. Originally a cult-favorite in Texas, Topo Chico has become the go-to premium sparkling water for bars, restaurants, and cocktail culture, leveraging its mineral water heritage and distinctive glass bottle.",
+    "price_points": {
+      "single": "$1.79",
+      "multipack": "$7.99–$9.99 / 12-pack (cans)",
+      "per_can_cost": "$0.67–$0.83"
+    },
+    "calories_per_serving": 0,
+    "sugar_per_serving": "0g",
+    "sweetener": "None",
+    "key_differentiators": [
+      "Authentic Mexican mineral water heritage dating back to 1895 — genuinely premium provenance",
+      "Bar and restaurant staple — the default premium sparkling water for cocktails and food pairing",
+      "Distinctive glass bottle with aggressive carbonation creates a premium drinking experience",
+      "Coca-Cola distribution and marketing muscle since 2017 acquisition, rapidly expanding availability",
+      "Cultural cachet in cocktail and foodie communities — bartenders actively recommend and specify it",
+      "Strong carbonation (harder bubbles) that stands up in cocktails better than softer competitors",
+      "Topo Chico Ranch Water (hard seltzer line) extended brand into alcohol category"
+    ],
+    "weaknesses_vs_cc": [
+      "No sweetened or flavored-sweet options — purely unsweetened mineral water, limiting appeal for soda switchers",
+      "No Canadian heritage or identity — Mexican/now-Coca-Cola brand with no connection to Canadian market sentiment",
+      "Seen as 'trendy import' rather than heritage brand with genuine roots in consumer memory",
+      "Limited flavor range — primarily unflavored mineral water with a few lime/grapefruit variants",
+      "Post-Coca-Cola acquisition, authenticity perception has eroded among early adopters",
+      "Glass bottle is premium but fragile and not convenient for on-the-go consumption",
+      "No emotional or nostalgia connection for North American consumers — functional premium, not emotional premium"
+    ],
+    "retail_doors_estimate": "50,000+ doors (rapidly expanding via Coca-Cola distribution)",
+    "target_demographic": "Premium lifestyle consumers, cocktail enthusiasts, bartenders, foodies, and urban millennials who view sparkling water as a dining and entertaining essential rather than a hydration commodity.",
+    "social_media_strategy": "Organic cultural cachet drives social mentions — bartender and food influencer content creates earned media. Coca-Cola supports with paid campaigns, but the brand's social strength comes from organic bar and restaurant culture rather than manufactured influencer partnerships.",
+    "recent_news_2025_2026": [
+      "Continued expansion of flavored sparkling water line (Topo Chico Sabores) beyond core mineral water",
+      "Topo Chico Ranch Water hard seltzer maintains presence in the declining hard seltzer category",
+      "Coca-Cola investing in broader distribution of Topo Chico to challenge Perrier and San Pellegrino in the premium tier"
+    ],
+    "market_context": "Topo Chico occupies the premium unsweetened sparkling water tier that CC doesn't directly compete in — they serve different consumer needs. Topo Chico is for cocktail culture and dining sophistication; CC is for flavor satisfaction and nostalgia. However, they compete for the same premium shelf space and consumer wallet share, and Topo Chico's Coca-Cola-backed distribution expansion is rapidly claiming premium retail real estate.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Flavor intensity and sweetness — CC delivers satisfying fruit flavor that Topo Chico's mineral water cannot",
+        "Soda-switcher appeal — CC's sweetened sparkling water directly replaces soda; Topo Chico replaces plain water",
+        "Canadian identity and heritage — authentic provenance story vs Coca-Cola-owned 'imported premium'",
+        "Nostalgia and emotional connection — CC triggers genuine memories; Topo Chico triggers 'trendy bar' associations",
+        "Sustainability positioning: CC's glass + aluminum, never plastic, 100% recycled materials vs Coca-Cola's mixed record",
+        "Broader consumer appeal — CC's flavor profile attracts mainstream soda drinkers, not just cocktail enthusiasts"
+      ],
+      "cc_loses": [
+        "On-premise dominance: Topo Chico is the default premium bar sparkling water — CC is largely absent from bars",
+        "Distribution: Coca-Cola's DSD network gives Topo Chico rapidly expanding reach vs CC's 33,600 doors",
+        "Cocktail credibility: bartenders know and trust Topo Chico's consistent, hard carbonation for mixing",
+        "Price positioning: Topo Chico single at $1.79 is more accessible than CC glass at $2.49–$2.99",
+        "Premium mineral water perception: Topo Chico owns 'premium water' in a way CC's flavored/sweetened product doesn't"
+      ]
+    }
+  },
+  {
+    "id": "poppi",
+    "name": "Poppi",
+    "parent_company": "PepsiCo (acquired for $1.95B, closed May 19, 2025)",
+    "founded": 2016,
+    "positioning": "Prebiotic soda — a 'healthy soda' with apple cider vinegar and prebiotics that claims gut health benefits. The brand that proved TikTok could build a billion-dollar beverage company. Positioned at the intersection of functional health, Gen Z cultural cachet, and soda nostalgia.",
+    "price_points": {
+      "single": "$2.49",
+      "multipack": "$8.99–$9.99 / 4-pack",
+      "per_can_cost": "$2.25–$2.49"
+    },
+    "calories_per_serving": 25,
+    "sugar_per_serving": "5g",
+    "sweetener": "Organic cane sugar + stevia",
+    "key_differentiators": [
+      "TikTok-native brand building: Allison Ellsworth's viral video drove $100K in 24 hours, establishing the playbook",
+      "Prebiotic/functional health positioning with apple cider vinegar and gut health claims",
+      "Explosive celebrity partnership portfolio: Post Malone, Hailey Bieber, Kylie Jenner, Billie Eilish, LA Lakers",
+      "Super Bowl ads in 2025 (Jake Shane, Alix Earle) and 2026 (Charli XCX, Rachel Sennott) — massive awareness investment",
+      "Colorful, eye-catching can packaging designed to 'scream soda' on shelf — high impulse conversion",
+      "15 flavors providing extensive variety for trial and repeat purchase",
+      "PepsiCo acquisition validates category at the highest level — $1.95B enterprise value",
+      "36,000+ U.S. retail locations across 120+ retailers (Target, Costco, Whole Foods)"
+    ],
+    "weaknesses_vs_cc": [
+      "Not actually sparkling water — it's a functional soda with sugar, calories, and processed ingredients",
+      "Gut health marketing claims are legally challenged — settled class-action lawsuit for $8.9M in July 2025",
+      "Now corporate-owned by PepsiCo — risks authenticity backlash among Gen Z consumers who valued indie status",
+      "Contains sugar (5g) and stevia — not a clean 'just water + natural flavor' product",
+      "No heritage or nostalgia story — founded 2016, a startup success but not a cultural touchstone",
+      "No Canadian identity or provenance — purely American brand",
+      "Gross margin 40–50% (vs PepsiCo 55–60%) creates profitability pressure post-acquisition",
+      "Category risk: prebiotic soda may prove to be a trend, not a permanent category"
+    ],
+    "retail_doors_estimate": "36,000+ U.S. locations, 120+ retailers",
+    "target_demographic": "Gen Z and younger Millennials (18–30) who are health-curious, TikTok-native, and view beverages as lifestyle accessories. The consumer who wants to feel good about drinking something that looks and tastes like soda.",
+    "social_media_strategy": "Best-in-class TikTok-native strategy. Co-founder Allison Ellsworth's authentic, direct-to-camera content catalyzed growth. Heavy investment in Gen Z creators and cultural partnerships. Super Bowl 2025 and 2026 ads demonstrate transition from social-first to mass-market awareness. Celebrity partnerships (Post Malone, Hailey Bieber) drive cultural relevance.",
+    "recent_news_2025_2026": [
+      "PepsiCo acquired Poppi for $1.95B (net $1.65B after $300M tax benefits), deal closed May 19, 2025",
+      "Settled gut health class-action lawsuit for $8.9M in July 2025",
+      "Super Bowl 2025 ad featuring Jake Shane and Alix Earle",
+      "Super Bowl 2026 ad featuring Charli XCX and Rachel Sennott",
+      "Expanded into UK and Ireland via distribution partnership with Carlsberg Britvic in 2026",
+      "2024 revenue approximately $500M",
+      "19% market share in prebiotic soda segment"
+    ],
+    "market_context": "Poppi is the poster child for the TikTok-to-mainstream beverage playbook. Its $1.95B acquisition by PepsiCo validates the functional/prebiotic soda category but also creates risks — will PepsiCo ownership erode the authentic, indie brand identity that drove growth? The gut health lawsuit settlement signals ongoing regulatory risk for functional claims. CC doesn't directly compete with Poppi (different category) but competes for the same consumer wallet share and cultural mindshare among Gen Z.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Actually sparkling water — CC is clean, simple, and transparent vs Poppi's processed functional soda",
+        "No health claim risk — CC doesn't need to defend gut health or prebiotic claims in court",
+        "Heritage and nostalgia — CC has a genuine 1990s origin story; Poppi was founded in 2016",
+        "Canadian identity and provenance — BC aquifer spring water vs American startup product",
+        "Still independently owned — no PepsiCo corporate parent to erode authenticity",
+        "Sustainability story: glass + aluminum, never plastic, 100% recycled materials",
+        "Simpler, cleaner ingredient list — just sparkling spring water + natural flavors"
+      ],
+      "cc_loses": [
+        "Brand awareness: Poppi's TikTok/Super Bowl strategy has driven far higher awareness than CC's 2% unaided",
+        "Social media presence: Poppi's creator partnerships and viral moments are category-leading",
+        "Gen Z cultural cachet: Poppi is the beverage Gen Z photographs, shares, and identifies with",
+        "Distribution velocity: 36,000+ doors with PepsiCo DSD expansion vs CC's 33,600 doors",
+        "Celebrity ecosystem: Post Malone, Hailey Bieber, Kylie Jenner create aspirational brand halo",
+        "Marketing budget: PepsiCo can outspend CC on awareness by orders of magnitude"
+      ]
+    }
+  },
+  {
+    "id": "olipop",
+    "name": "Olipop",
+    "parent_company": "Independent (private — $1.85B valuation, Feb 2025 Series C)",
+    "founded": 2018,
+    "positioning": "'A new kind of soda' — retro-pastel prebiotic soda that anchors against the soda category rather than sparkling water. Deliberately nostalgic can aesthetics combined with functional health positioning, targeting consumers who want to feel like they're drinking soda without the guilt.",
+    "price_points": {
+      "single": "$2.49–$2.99",
+      "multipack": "$9.99–$11.99 / 4-pack",
+      "per_can_cost": "$2.49–$2.99"
+    },
+    "calories_per_serving": "35–45",
+    "sugar_per_serving": "2–5g",
+    "sweetener": "Stevia + cassava root syrup",
+    "key_differentiators": [
+      "Retro-pastel can design creates strong shelf differentiation and Instagram/TikTok shareability",
+      "Deliberately abandoned paid advertising in 2021, invested everything in TikTok creators — revenue tripled",
+      "High-profile brand collaborations (Barbie, Hello Kitty, Disney) drive cultural crossover moments",
+      "Still independently owned — maintains authentic indie brand equity vs Poppi's PepsiCo acquisition",
+      "Strong 'nostalgic soda' flavor profiles (Vintage Cola, Classic Root Beer, Cherry Vanilla) that directly replace CSD",
+      "Positioned explicitly against soda ('a new kind of soda') rather than competing in sparkling water",
+      "$1.85B valuation demonstrates investor confidence without losing independent status"
+    ],
+    "weaknesses_vs_cc": [
+      "Expensive — $2.49–$2.99 per can with no value multipack option makes it a treat, not a staple",
+      "Niche positioning — prebiotic soda is a sub-segment, not a broad category like sparkling water",
+      "Still proving long-term viability — if the prebiotic/functional trend fades, Olipop has limited fallback",
+      "No Canadian identity or provenance — purely American brand",
+      "No heritage story beyond 2018 founding — lacks the decades-deep nostalgia CC carries",
+      "Category risk: Coca-Cola launched Simply Pop as a direct competitive response, bringing massive resources",
+      "Higher calorie count (35–45 cal) and sugar (2–5g) than CC, and significantly more than plain sparkling water",
+      "Complex ingredient list with functional additives may deter clean-label-focused consumers"
+    ],
+    "retail_doors_estimate": "30,000+ doors (growing rapidly via natural and conventional grocery)",
+    "target_demographic": "Health-curious Millennials and Gen Z (22–38) who want soda nostalgia with a health halo. The consumer who grew up on Coca-Cola but now reads ingredient labels and wants to feel virtuous about indulging.",
+    "social_media_strategy": "Pioneer of the 'quit paid ads, invest in creators' strategy. All-in on TikTok with authentic creator partnerships rather than celebrity endorsements. Brand collaborations (Barbie, Hello Kitty, Disney) create cultural moments that generate earned media far exceeding paid reach. Retro aesthetic drives organic sharing.",
+    "recent_news_2025_2026": [
+      "$1.85B valuation achieved in February 2025 Series C funding round",
+      "Coca-Cola launched Simply Pop as a direct competitive response, validating the category but intensifying competition",
+      "Continued brand collaborations with major cultural franchises driving social media engagement",
+      "Expanding distribution from natural/specialty into conventional grocery and mass retail"
+    ],
+    "market_context": "Olipop's strength is its authentic indie identity and TikTok-native brand building — it proved that earned media from creator partnerships can outperform paid advertising for beverage brands. But it faces existential category risk: if prebiotic soda is a trend rather than a permanent category, Olipop's entire value proposition is at risk. Coca-Cola's Simply Pop launch confirms big CPG is coming for the category with vastly superior resources. CC competes with Olipop for premium beverage wallet share and cultural mindshare, but serves a fundamentally different consumer need (flavored sparkling water vs functional soda).",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Genuine decades-deep heritage and nostalgia — CC's 1990s story is real; Olipop was founded in 2018",
+        "Simpler, cleaner product — sparkling spring water + natural flavors vs complex prebiotic formula",
+        "Canadian identity and provenance creates differentiation Olipop cannot replicate",
+        "Lower calorie and simpler ingredient profile appeals to clean-label-focused consumers",
+        "Broader category play — sparkling water is a permanent, growing category; prebiotic soda is unproven long-term",
+        "Glass bottle format creates premium treat moments that cans alone cannot deliver",
+        "No regulatory risk from functional health claims"
+      ],
+      "cc_loses": [
+        "TikTok and creator strategy: Olipop's earned media approach is best-in-class for indie beverage brands",
+        "Cultural collaboration playbook: Barbie/Hello Kitty/Disney crossovers drive massive awareness",
+        "Soda replacement credibility: Olipop's flavors (Cola, Root Beer) directly replace CSD in a way sparkling water doesn't",
+        "Gen Z cultural relevance: Olipop is deeply embedded in TikTok creator culture; CC is still building presence",
+        "Retro-aesthetic packaging drives higher social sharing rates"
+      ]
+    }
+  },
+  {
+    "id": "liquid-death",
+    "name": "Liquid Death",
+    "parent_company": "Independent (private — $1.4B valuation)",
+    "founded": 2019,
+    "positioning": "Punk-rock canned water and iced tea — 'Murder Your Thirst.' The brand that proved packaging, personality, and anti-establishment positioning can build a billion-dollar company in the commoditized water category. Sustainability messaging (#DeathToPlastic) wrapped in irreverent, heavy-metal-inspired branding.",
+    "price_points": {
+      "single": "$1.89–$2.19",
+      "multipack": "$14.99–$17.99 / 8-pack",
+      "per_can_cost": "$1.87–$2.25"
+    },
+    "calories_per_serving": "0 (water/sparkling), varies (iced tea)",
+    "sugar_per_serving": "0g (water/sparkling), varies (iced tea)",
+    "sweetener": "None (water), agave (iced tea)",
+    "key_differentiators": [
+      "Utterly unique brand personality — heavy metal aesthetic in a wellness category breaks every convention",
+      "#DeathToPlastic sustainability positioning makes environmental messaging feel rebellious, not preachy",
+      "Aluminum-only commitment across all products — 'infinitely recyclable' packaging story",
+      "'Sell Your Soul' loyalty program and Live Nation entertainment partnerships build cult community",
+      "Product expansion from water → flavored sparkling → iced tea → cocktail mixers demonstrates brand platform strength",
+      "Proven that personality alone can command premium pricing in a commodity category",
+      "Strong convenience store and festival/event presence — visible in non-traditional channels"
+    ],
+    "weaknesses_vs_cc": [
+      "No sweetness or fruit flavor intensity — Liquid Death's core product is plain water, not a soda replacement",
+      "American, not Canadian — no connection to Canadian identity or buy-Canadian sentiment",
+      "Shock/punk marketing may fatigue over time — novelty-dependent brands risk relevance decay",
+      "No heritage or nostalgia — founded 2019, purely a modern marketing phenomenon",
+      "No emotional connection beyond 'this brand is funny and I like the cans'",
+      "Iced tea and flavored lines are newer, less proven than core water product",
+      "Heavy-metal aesthetic limits appeal to certain demographics — alienates health-focused, older, or mainstream consumers"
+    ],
+    "retail_doors_estimate": "60,000+ doors (expanding via 7-Eleven, Whole Foods, Target, and Live Nation venues)",
+    "target_demographic": "Gen Z and young Millennials (18–32) who value irreverence, anti-corporate sentiment, and sustainability but express it through humor and counter-culture rather than earnest activism. The consumer who wants their water to make a statement.",
+    "social_media_strategy": "Best-in-class content marketing that doesn't feel like marketing. Viral stunts (selling soul contracts, celebrity roasts), entertainment-first content on TikTok/Instagram/YouTube, and community building through the 'Sell Your Soul' loyalty program. Live Nation partnership creates real-world brand touchpoints at concerts and festivals. The brand behaves more like a media company than a beverage company.",
+    "recent_news_2025_2026": [
+      "Continued expansion into cocktail mixers and flavored sparkling water lines",
+      "Live Nation partnership extends brand presence across concert and festival venues",
+      "Maintained $1.4B valuation while scaling distribution and expanding product portfolio",
+      "Growing international presence as the brand personality translates across English-speaking markets"
+    ],
+    "market_context": "Liquid Death proved that brand personality and packaging innovation can create a billion-dollar company in the most commoditized category imaginable — water. The brand doesn't compete with CC on product (plain water vs flavored sparkling water) but competes intensely for cultural mindshare, Gen Z attention, and premium shelf space. Liquid Death's success is a case study in what CC could achieve with its own unique brand assets (nostalgia, Canadian identity, iconic bottle) if amplified with comparable marketing creativity.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Flavor intensity — CC delivers real fruit-flavored satisfaction; Liquid Death's core is plain water",
+        "Soda-switcher relevance — CC directly replaces soda cravings; Liquid Death replaces plain water",
+        "Heritage and nostalgia — CC has genuine 1990s cultural significance; Liquid Death is a 2019 startup",
+        "Canadian identity and provenance story vs purely American marketing phenomenon",
+        "Broader demographic appeal — CC's nostalgia and flavor profile attracts 25–55+; Liquid Death skews young",
+        "Glass bottle creates premium treat moments beyond what even Liquid Death's tall cans deliver",
+        "Emotional warmth — CC triggers genuine memories and feelings; Liquid Death triggers entertainment"
+      ],
+      "cc_loses": [
+        "Brand personality intensity: Liquid Death's irreverent voice is instantly recognizable and deeply memeable",
+        "Social media and content marketing: Liquid Death creates entertainment, not ads — category-leading engagement",
+        "Distribution: 60,000+ doors vs CC's 33,600 — nearly 2x the retail presence",
+        "Gen Z cultural relevance: Liquid Death's punk aesthetic resonates deeply with younger consumers",
+        "Event/festival presence: Live Nation partnership creates real-world brand touchpoints CC lacks",
+        "On-premise (bars, venues): Liquid Death's cocktail mixers are gaining bar presence"
+      ]
+    }
+  },
+  {
+    "id": "spindrift",
+    "name": "Spindrift",
+    "parent_company": "Independent (private)",
+    "founded": 2010,
+    "positioning": "Real fruit juice sparkling water — the only sparkling water made with real squeezed fruit. Premium-priced authenticity play that differentiates on ingredient transparency and 'real food' credentials. Positioned as the honest, no-compromise option for consumers who want real flavor without artificial anything.",
+    "price_points": {
+      "single": "$1.49–$1.99",
+      "multipack": "$5.99–$6.99 / 8-pack",
+      "per_can_cost": "$0.75–$0.87"
+    },
+    "calories_per_serving": "5–15",
+    "sugar_per_serving": "1–4g (from real fruit juice)",
+    "sweetener": "None — trace sugar from real fruit only",
+    "key_differentiators": [
+      "'Made with real squeezed fruit' — the only sparkling water that can make this claim authentically",
+      "Clean, transparent ingredient list: sparkling water + real fruit juice, nothing else",
+      "Premium pricing justified by real ingredient story and higher production costs",
+      "Strong following among health-conscious consumers who read labels carefully",
+      "Each batch varies slightly in color/taste due to real fruit — positioned as a feature, not a bug",
+      "Growing presence in natural/specialty retail (Whole Foods, Sprouts) and expanding to conventional"
+    ],
+    "weaknesses_vs_cc": [
+      "Higher calorie count (5–15 cal) than zero-calorie sparkling waters — consumers counting calories may avoid",
+      "Limited flavor range compared to competitors — fewer than 10 core SKUs",
+      "No heritage or nostalgia story — founded 2010, no emotional connection beyond ingredient quality",
+      "No Canadian identity or provenance — Massachusetts-based American brand",
+      "Premium pricing without the premium packaging — standard aluminum cans lack visual differentiation",
+      "Real fruit juice means shorter shelf life and more complex supply chain",
+      "No on-premise bar presence — not positioned for cocktail culture or restaurant programs"
+    ],
+    "retail_doors_estimate": "25,000–35,000 doors (growing from natural to conventional grocery)",
+    "target_demographic": "Health-conscious Millennials and Gen X (28–45) who read every ingredient label, shop at Whole Foods and farmers markets, and are willing to pay more for 'real food' credentials. The consumer who rejected 'natural flavors' long before it was trendy.",
+    "social_media_strategy": "Authentic, ingredient-focused content that highlights real fruit sourcing. Community building around 'real ingredients' values rather than celebrity or influencer partnerships. Limited but genuine social presence that reflects the brand's transparent, no-hype personality.",
+    "recent_news_2025_2026": [
+      "Expanding distribution from natural/specialty into conventional grocery chains",
+      "Launched new seasonal flavors leveraging real fruit sourcing partnerships",
+      "Growing category of 'real ingredient' sparkling water as consumers demand ingredient transparency"
+    ],
+    "market_context": "Spindrift occupies a unique niche — the only sparkling water made with real squeezed fruit juice — that gives it a defensible position against both mass-market (LaCroix, Bubly) and functional (Poppi, Olipop) competitors. The brand appeals to the most ingredient-conscious consumers but faces scaling challenges due to real fruit supply chain complexity and limited flavor range. CC competes with Spindrift for the 'premium sparkling water with real flavor' consumer, with CC's sweetened profile and heritage story providing different but complementary appeal.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Heritage and nostalgia story — CC's 1990s cultural significance vs Spindrift's 2010 founding",
+        "Canadian identity and BC aquifer provenance add brand depth Spindrift lacks",
+        "Iconic glass bottle packaging creates visual and experiential premium Spindrift's cans don't deliver",
+        "Broader flavor portfolio with more variety for consumer exploration",
+        "Stronger emotional brand connection — CC triggers memories and feelings; Spindrift triggers ingredient respect",
+        "On-premise potential — CC's glass bottle and brand story work in bars; Spindrift is retail-only"
+      ],
+      "cc_loses": [
+        "Ingredient transparency: Spindrift's 'real squeezed fruit' claim is more compelling than 'natural flavors'",
+        "Health positioning: Spindrift's trace-calorie, no-sweetener profile appeals to strict health consumers",
+        "Price: Spindrift at $0.75–$0.87/can is significantly more accessible than CC at $1.33/can",
+        "Clean-label credibility: Spindrift's ingredient list is the shortest and most transparent in the category",
+        "Allergen/diet compatibility: zero sweetener appeals to consumers avoiding stevia, sugar, and all sweeteners"
+      ]
+    }
+  },
+  {
+    "id": "san-pellegrino",
+    "name": "San Pellegrino (S.Pellegrino)",
+    "parent_company": "Nestlé",
+    "founded": 1899,
+    "positioning": "Italian premium mineral water — the fine dining sparkling water. S.Pellegrino is synonymous with European sophistication, white-tablecloth restaurants, and the intersection of food and water connoisseurship. The brand that made sparkling mineral water a luxury dining essential.",
+    "price_points": {
+      "single": "$1.99–$2.49 (glass)",
+      "multipack": "$15.99–$19.99 / 12-pack (cans), $8.99–$12.99 / 6-pack (glass)",
+      "per_can_cost": "$1.33–$1.67"
+    },
+    "calories_per_serving": 0,
+    "sugar_per_serving": "0g",
+    "sweetener": "None",
+    "key_differentiators": [
+      "Italian luxury heritage dating to 1899 — the definitive 'fine dining water' globally",
+      "Iconic green glass bottle with foil wrapper is instantly recognizable and signals premium occasion",
+      "Deep on-premise penetration — the default premium sparkling water at upscale restaurants worldwide",
+      "Natural mineral water sourced from Italian Alps — premium provenance story",
+      "S.Pellegrino sponsors 'World's 50 Best Restaurants' — embedding the brand in global food culture",
+      "Fruit-flavored sparkling beverages (Aranciata, Limonata) extend brand into flavored/sweetened segment",
+      "Nestlé's global distribution ensures availability in virtually every developed market"
+    ],
+    "weaknesses_vs_cc": [
+      "No sweetened/flavored sparkling water in the core mineral water line — separate Italian soda products exist but are different",
+      "European, not North American — no connection to Canadian identity or buy-Canadian sentiment",
+      "Perceived as 'stuffy' and 'old world' by younger consumers — doesn't connect with Gen Z culture",
+      "Glass bottle is premium but impractical for everyday consumption and on-the-go occasions",
+      "Nestlé parent company carries significant reputational baggage (water rights controversies, sustainability criticism)",
+      "Price premium is justified by dining occasion but limits everyday purchase frequency",
+      "No social media cultural relevance — brand is respected but not shared, photographed, or discussed on TikTok"
+    ],
+    "retail_doors_estimate": "60,000+ doors globally (strong in specialty, natural, and upscale grocery)",
+    "target_demographic": "Affluent adults (35–65+), fine dining enthusiasts, European culture-oriented consumers, and premium lifestyle buyers who view sparkling mineral water as a daily luxury and dining essential. The consumer who orders S.Pellegrino by name at restaurants.",
+    "social_media_strategy": "Minimal social-first strategy. Brand strength comes from physical presence in fine dining and cultural sponsorships (World's 50 Best Restaurants) rather than digital content. Instagram presence is polished but engagement is low relative to newer brands. Essentially invisible on TikTok.",
+    "recent_news_2025_2026": [
+      "Continued World's 50 Best Restaurants sponsorship maintaining premium dining association",
+      "Nestlé Waters division restructuring amid strategic review of water brands portfolio",
+      "Expanded flavored Italian soda line to compete with emerging premium flavored sparkling brands"
+    ],
+    "market_context": "S.Pellegrino owns the 'fine dining sparkling water' occasion globally but faces challenges extending relevance beyond the restaurant table. The brand is deeply respected but not culturally exciting — Gen Z doesn't photograph S.Pellegrino for Instagram. Nestlé's ownership provides distribution but also reputational risk. CC doesn't directly compete with S.Pellegrino (different occasion and product type) but can learn from S.Pellegrino's mastery of on-premise penetration and premium provenance storytelling.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Flavor and sweetness — CC delivers fruit-flavored satisfaction; S.Pellegrino is unflavored mineral water",
+        "Canadian identity resonates in North America and buy-Canadian contexts where Italian luxury doesn't",
+        "Cultural relevance for younger consumers — CC's nostalgia story has Gen Z appeal; S.Pellegrino feels 'old'",
+        "Accessibility — CC is a treat at the grocery store; S.Pellegrino feels limited to fine dining occasions",
+        "Social media shareability — CC's iconic bottle is photographed and shared; S.Pellegrino is taken for granted",
+        "Sustainability: CC's no-plastic commitment vs Nestlé's mixed environmental record",
+        "Independent ownership — CC's indie story vs Nestlé corporate parent with water rights controversies"
+      ],
+      "cc_loses": [
+        "On-premise dominance: S.Pellegrino is the default at upscale restaurants globally — CC has minimal on-premise presence",
+        "Global distribution: Nestlé's reach puts S.Pellegrino in virtually every developed market",
+        "Premium perception: S.Pellegrino is synonymous with luxury; CC is still building premium credentials",
+        "Price justification: consumers accept S.Pellegrino's premium because the dining occasion warrants it",
+        "Food culture association: S.Pellegrino's World's 50 Best sponsorship creates unmatched food-world credibility"
+      ]
+    }
+  },
+  {
+    "id": "perrier",
+    "name": "Perrier",
+    "parent_company": "Nestlé",
+    "founded": 1898,
+    "positioning": "French premium sparkling mineral water — the original premium sparkling water brand. Perrier's iconic green glass bottle and aggressive carbonation have made it a bar staple and cultural symbol of European sophistication for over a century. The brand that introduced premium sparkling water to North America.",
+    "price_points": {
+      "single": "$1.49–$1.99",
+      "multipack": "$14.99–$17.99 / 24-pack (slim cans), $7.99–$9.99 / 10-pack (slim cans)",
+      "per_can_cost": "$0.62–$0.80"
+    },
+    "calories_per_serving": 0,
+    "sugar_per_serving": "0g",
+    "sweetener": "None",
+    "key_differentiators": [
+      "Iconic green glass bottle — one of the most recognizable beverage packages in the world",
+      "French mineral water provenance from Vergèze, France — over 125 years of heritage",
+      "Strong, aggressive carbonation that stands up in cocktails and is preferred by many bartenders",
+      "Bar and restaurant staple — deep on-premise penetration globally",
+      "Slim can format successful in retail — convenient and distinctive on shelf",
+      "Flavored line (lime, pink grapefruit, watermelon) provides some variety beyond plain mineral water",
+      "Cultural cachet as the 'sophisticated choice' in bars and social settings"
+    ],
+    "weaknesses_vs_cc": [
+      "No sweetened options in any format — purely unsweetened mineral water with optional flavor hints",
+      "Minimal flavor innovation — flavored variants are subtle and don't satisfy soda-replacement cravings",
+      "French, not Canadian identity — no connection to buy-Canadian sentiment or North American heritage",
+      "Nestlé parent company carries reputational baggage that undermines premium and sustainability perception",
+      "Perceived as 'old school' and 'your parents' sparkling water' by younger consumers",
+      "No social media cultural relevance — brand is iconic but static, not dynamic or shareable",
+      "No functional or health innovation — purely a mineral water with no added benefits"
+    ],
+    "retail_doors_estimate": "50,000+ doors in North America, much larger globally",
+    "target_demographic": "Affluent adults (30–60+), bar and cocktail enthusiasts, Francophile and European culture-oriented consumers, and traditional premium water buyers. The consumer who has been drinking Perrier since the 1980s and views it as a timeless classic.",
+    "social_media_strategy": "Limited and corporate-feeling social presence. Brand relies on physical presence (bar, restaurant, shelf) rather than digital engagement. Occasionally sponsors lifestyle events but lacks organic TikTok/Instagram creator culture. The brand's cultural cachet is inherited rather than actively cultivated on social platforms.",
+    "recent_news_2025_2026": [
+      "Continued expansion of flavored slim can portfolio in retail channels",
+      "Nestlé Waters strategic review impacting brand investment and portfolio priorities",
+      "Maintaining bar and restaurant distribution as premium sparkling water competition intensifies"
+    ],
+    "market_context": "Perrier is a legacy premium sparkling water brand that defined the category but now risks being outflanked by newer, more culturally relevant competitors. The brand's strength — iconic status and bar penetration — is also its limitation, as it relies on inherited reputation rather than active brand building. CC can learn from Perrier's on-premise success while differentiating through flavor, Canadian identity, and social media relevance that Perrier lacks.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Flavor intensity and sweetness — CC delivers real fruit flavor satisfaction; Perrier is subtly flavored at best",
+        "Soda-switcher appeal — CC directly replaces soda cravings; Perrier is for water drinkers who want fizz",
+        "Canadian identity vs French identity — CC resonates with North American and buy-Canadian sentiment",
+        "Cultural dynamism — CC's nostalgia story is shareable and engaging; Perrier feels static and inherited",
+        "Younger consumer appeal — CC's brand can connect with Gen Z and Millennials; Perrier skews older",
+        "Independent ownership vs Nestlé — CC avoids Nestlé's reputational baggage",
+        "Innovation potential — CC can extend into new flavors, formats, and occasions; Perrier is essentially fixed"
+      ],
+      "cc_loses": [
+        "On-premise dominance: Perrier's green bottle is a global bar standard; CC is absent from most bars",
+        "Global distribution: Nestlé's network puts Perrier in every developed market worldwide",
+        "Iconic packaging: Perrier's green bottle may be the most recognized sparkling water package globally",
+        "Price accessibility: Perrier at $0.62–$0.80/can is cheaper than CC at $1.33/can for regular consumption",
+        "Zero-calorie purity: Perrier's 0/0 profile is simpler for strict health-focused buyers"
+      ]
+    }
+  },
+  {
+    "id": "store-brand-private-label",
+    "name": "Store Brand / Private Label",
+    "parent_company": "Various (Kroger, Walmart Great Value, Kirkland Signature, 365 by Whole Foods, etc.)",
+    "founded": "Varies — most launched 2015–2020 following LaCroix's category creation",
+    "positioning": "Price leader — the lowest-cost flavored sparkling water option. Private label sparkling water exists purely on price, offering basic flavored carbonated water at 40–50% below branded alternatives. Zero brand story, zero differentiation, zero emotional connection.",
+    "price_points": {
+      "single": "$0.30–$0.50 (where sold individually)",
+      "multipack": "$3.00–$4.00 / 12-pack",
+      "per_can_cost": "$0.25–$0.35"
+    },
+    "calories_per_serving": 0,
+    "sugar_per_serving": "0g",
+    "sweetener": "None",
+    "key_differentiators": [
+      "Lowest price in the category — 40–50% below branded alternatives",
+      "Retailer control of shelf placement and promotion — guaranteed distribution within own stores",
+      "Available at point of purchase with no discovery or awareness effort required",
+      "Sufficient quality for price-driven consumers who view sparkling water as a commodity",
+      "Growing variety — major retailers now offer 8–12+ private label sparkling water flavors",
+      "No marketing cost built into price — savings passed directly to consumer"
+    ],
+    "weaknesses_vs_cc": [
+      "Zero brand equity — no consumer loyalty, affinity, or emotional connection whatsoever",
+      "Zero brand story — no heritage, provenance, founding narrative, or cultural significance",
+      "Zero differentiation — interchangeable between retailers and indistinguishable from each other",
+      "Zero emotional connection — consumers feel nothing about purchasing or consuming private label",
+      "Zero social media presence — no consumer would ever photograph, share, or discuss private label sparkling water",
+      "Flavor quality is noticeably inferior — subtle to nonexistent flavor profiles",
+      "No sustainability story, no packaging innovation, no ingredient transparency claims",
+      "No on-premise relevance — no bar, restaurant, or hospitality channel would serve private label",
+      "Vulnerable to any branded competitor that provides value pricing with even minimal brand differentiation"
+    ],
+    "retail_doors_estimate": "Varies by retailer — available in all stores of their respective chains (Kroger: 2,700+, Walmart: 4,700+, Costco Kirkland: 600+)",
+    "target_demographic": "Strictly price-driven consumers who view sparkling water as a commodity and make purchase decisions based solely on per-unit cost. Household stock-up buyers optimizing grocery budgets, and consumers with no brand awareness or preference in the category.",
+    "social_media_strategy": "None. Private label sparkling water has zero social media presence, zero influencer partnerships, zero creator content, and zero organic consumer sharing. The category exists entirely in the physical retail environment.",
+    "recent_news_2025_2026": [
+      "Continued growth of private label sparkling water as retailers expand store brand portfolios",
+      "Quality improvements narrowing the gap with entry-level branded products like LaCroix",
+      "Some retailers launching premium private label tiers (Kirkland Signature, 365 by Whole Foods) that slightly narrow the gap with branded premium"
+    ],
+    "market_context": "Private label sparkling water represents the floor of the category — the baseline against which all branded products must justify their premium. It captures the purely price-sensitive consumer who sees no value in brand story, packaging, or emotional connection. For CC, private label is not a direct competitor (completely different value proposition and consumer) but defines the price floor that makes CC's 2.5–3x premium positioning more challenging to sustain for value-conscious household buyers.",
+    "comparison_to_cc": {
+      "cc_wins": [
+        "Everything except price: brand equity, heritage, nostalgia, Canadian identity, taste quality, packaging, sustainability story, social shareability, on-premise potential, emotional connection, cultural significance",
+        "Consumer loyalty: CC drinkers actively seek the brand; private label buyers grab whatever's cheapest",
+        "Social currency: CC is photographed, shared, and discussed; private label is invisible to culture",
+        "Taste quality: CC's flavor intensity and spring water base are categorically superior",
+        "Premium occasion: CC creates 'treat' moments; private label is strictly utilitarian",
+        "Sustainability narrative: CC's glass + aluminum, no plastic, 100% recycled vs generic packaging"
+      ],
+      "cc_loses": [
+        "Price: private label at $0.25–$0.35/can vs CC at $1.33/can — CC is 4–5x the cost",
+        "Accessibility: private label is available in every store of its retailer chain — guaranteed distribution",
+        "Household budget: for families on tight budgets, private label's value is impossible for CC to match",
+        "No awareness barrier: private label requires zero discovery — it's right there on the shelf, at the lowest price"
+      ]
+    }
+  }
+]
