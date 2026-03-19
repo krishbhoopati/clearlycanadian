@@ -3,6 +3,7 @@
 export interface ConversationTurn {
   question: string;
   result: AskLabResponse;
+  timestamp: number; // Date.now() at submission time
 }
 
 // ─── Core Domain Entities ─────────────────────────────────────────────────────
@@ -10,6 +11,7 @@ export interface ConversationTurn {
 export interface Persona {
   id: string;
   name: string;
+  age?: number;
   age_range: string;
   market: string;
   region?: string;

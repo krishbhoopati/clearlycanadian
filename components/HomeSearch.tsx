@@ -95,7 +95,7 @@ function DataPointsCounter() {
   return <>{dataPoints}+ Research Data Points</>;
 }
 
-const DESIGN_WIDTH = 1400;
+const DESIGN_WIDTH = 1560;
 
 export default function HomeSearch({
   onQuery,
@@ -177,7 +177,7 @@ export default function HomeSearch({
 
   // In results mode, size the panel so it fills the viewport after scaling
   const panelHeightPx = view === "results"
-    ? Math.floor((windowHeight - 64) / scale)
+    ? Math.floor((windowHeight - 120) / scale)
     : undefined;
 
   const panelClass = view === "results"

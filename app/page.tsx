@@ -22,7 +22,7 @@ export default function HomePage() {
       });
       const data = await res.json();
       const result: AskLabResponse = data.data ?? data;
-      setTurns(prev => [...prev, { question: q, result }]);
+      setTurns(prev => [...prev, { question: q, result, timestamp: Date.now() }]);
     } catch {
       // silently fail — keep existing turns
     } finally {

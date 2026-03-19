@@ -1,6 +1,16 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+
+function formatTurnTime(ts: number): string {
+  const d = new Date(ts);
+  const now = new Date();
+  const isToday = d.toDateString() === now.toDateString();
+  const time = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  return isToday
+    ? `Today, ${time}`
+    : `${d.toLocaleDateString([], { month: "short", day: "numeric" })}, ${time}`;
+}
 import PersonaCard from "@/components/PersonaCard";
 import AnalysisSidebar from "@/components/AnalysisSidebar";
 import PersonaAvatar from "@/components/PersonaAvatar";
@@ -19,19 +29,35 @@ function ConversationTurnBlock({
   turn,
   personas,
   onPersonaClick,
+  followUps,
+  onFollowUp,
+  loading,
 }: {
   turn: ConversationTurn;
   personas: Persona[];
   onPersonaClick: (id: string) => void;
+  followUps?: string[];
+  onFollowUp?: (q: string) => void;
+  loading?: boolean;
 }) {
   const personaMap = Object.fromEntries(personas.map(p => [p.id, p]));
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Timestamp separator */}
+      <div className="flex justify-center">
+        <span className="font-mono text-white/30 text-xs uppercase tracking-widest">
+          {formatTurnTime(turn.timestamp)}
+        </span>
+      </div>
+
       {/* User bubble */}
-      <div className="flex justify-end">
+      <div className="flex justify-end items-end gap-3">
         <div className="glass-dark text-white p-6 rounded-[24px] rounded-tr-[8px] max-w-[70%]">
           <p className="text-white/90">{turn.question}</p>
+        </div>
+        <div className="w-9 h-9 rounded-full bg-white/20 border border-white/30 flex items-center justify-center shrink-0 text-xs font-bold text-white">
+          ME
         </div>
       </div>
 
@@ -55,8 +81,13 @@ function ConversationTurnBlock({
           {turn.result.overall_summary}
         </p>
 
+        <div className="flex items-center gap-3 pl-[56px]">
+          <span className="font-mono text-white/40 text-xs uppercase tracking-widest">Overall Confidence</span>
+          <span className="font-mono text-white font-bold text-sm">{Math.round(turn.result.confidence * 100)}/100</span>
+        </div>
+
         {turn.result.consulted_personas.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-[56px]">
+          <div className="grid grid-cols-3 gap-6 pl-[56px]">
             {turn.result.consulted_personas.map(p => (
               <PersonaCard
                 key={p.persona_id}
@@ -64,6 +95,21 @@ function ConversationTurnBlock({
                 persona={personaMap[p.persona_id]}
                 onChatClick={() => onPersonaClick(p.persona_id)}
               />
+            ))}
+          </div>
+        )}
+
+        {followUps && followUps.length > 0 && (
+          <div className="flex flex-wrap gap-2 pl-[56px]">
+            {followUps.map((fu, i) => (
+              <button
+                key={i}
+                onClick={() => onFollowUp?.(fu)}
+                disabled={loading}
+                className="glass-input rounded-full px-5 py-2 text-sm text-white cursor-pointer hover:bg-white/20 transition-colors disabled:opacity-50"
+              >
+                {fu}
+              </button>
             ))}
           </div>
         )}
@@ -82,11 +128,17 @@ export default function ResultsView({
 }: ResultsPanelProps) {
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const prevTurnsLen = useRef(0);
 
   useEffect(() => {
-    if (scrollRef.current) {
+    if (!scrollRef.current) return;
+    const isFirstResult = turns.length === 1 && prevTurnsLen.current === 0;
+    if (isFirstResult) {
+      scrollRef.current.scrollTop = 0;
+    } else if (turns.length > 1 || loading) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
+    prevTurnsLen.current = turns.length;
   }, [turns, loading]);
 
   function handleSubmit() {
@@ -148,7 +200,7 @@ export default function ResultsView({
       {/* Body */}
       <div className="flex-1 flex overflow-hidden">
         {/* Main scroll area */}
-        <div className="flex-1 flex flex-col relative">
+        <div className="flex-1 min-w-0 flex flex-col relative">
           {turns.length === 0 && loading ? (
             <div className="flex-1 flex items-center justify-center">
               <div className="flex flex-col items-center gap-4">
@@ -162,7 +214,7 @@ export default function ResultsView({
           ) : (
             <div
               ref={scrollRef}
-              className="flex-1 overflow-y-auto px-10 py-10 dark-scroll pb-48 flex flex-col gap-12"
+              className="flex-1 overflow-y-auto px-10 py-10 dark-scroll pb-28 flex flex-col gap-12"
             >
               {turns.map((turn, i) => (
                 <ConversationTurnBlock
@@ -170,6 +222,9 @@ export default function ResultsView({
                   turn={turn}
                   personas={personas}
                   onPersonaClick={onPersonaClick ?? (() => {})}
+                  followUps={i === turns.length - 1 ? followUps : undefined}
+                  onFollowUp={onFollowUp}
+                  loading={loading}
                 />
               ))}
               {loading && (
@@ -188,20 +243,6 @@ export default function ResultsView({
 
           {/* Fixed bottom overlay */}
           <div className="absolute bottom-0 left-0 right-0 px-10 pb-8 pt-6 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
-            {followUps.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {followUps.map((fu, i) => (
-                  <button
-                    key={i}
-                    onClick={() => onFollowUp(fu)}
-                    disabled={loading}
-                    className="glass-input rounded-full px-5 py-2 text-sm text-white cursor-pointer hover:bg-white/20 transition-colors disabled:opacity-50"
-                  >
-                    {fu}
-                  </button>
-                ))}
-              </div>
-            )}
             <div className="glass-input rounded-full p-2 pl-6 flex items-center gap-3 transition-all">
               <input
                 className="bg-transparent text-white placeholder:text-white/40 flex-1 outline-none text-sm"
