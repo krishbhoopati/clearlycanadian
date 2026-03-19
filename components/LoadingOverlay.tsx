@@ -1,6 +1,36 @@
 "use client";
 import Image from "next/image";
 import type { Persona } from "@/lib/types";
+import { parseQuery } from "@/lib/queryParser";
+
+const TOPIC_AFFINITY: Record<string, string[]> = {
+  zero_sugar:      ["health_wellness", "sober_curious", "general_potential"],
+  nostalgia:       ["nostalgia_loyalist"],
+  social_media:    ["general_potential", "sober_curious"],
+  convenience:     ["convenience_first"],
+  packaging:       ["premium_lifestyle", "sober_curious", "general_potential"],
+  health_wellness: ["health_wellness", "nostalgia_loyalist"],
+  sustainability:  ["premium_lifestyle", "health_wellness", "sober_curious"],
+  price:           ["convenience_first", "household_decision_maker"],
+  cans:            ["convenience_first", "general_potential"],
+  bar:             ["bartender_mixologist", "sober_curious", "premium_lifestyle"],
+  maple:           ["bartender_mixologist", "premium_lifestyle", "nostalgia_loyalist"],
+};
+
+function resolveConsultedNames(query: string, personas: Persona[]): string {
+  const parsed = parseQuery(query);
+  const affinitySegments = parsed.topic ? (TOPIC_AFFINITY[parsed.topic] ?? []) : [];
+  const scored = personas.map(p => {
+    let points = 0;
+    if (parsed.market && parsed.market === p.market) points += 3;
+    if (parsed.generation && parsed.generation === p.generation) points += 2;
+    if (parsed.customerType && parsed.customerType === p.customer_type) points += 1;
+    if (affinitySegments.includes(p.behavioral_segment)) points += 2;
+    return { name: p.name, score: points };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, 4).map(s => s.name).join(", ");
+}
 
 const BUBBLES = [
   { size: 6, left: "15%", dur: 4.2, delay: 0.0, drift: "15px",  op: 0.20 },
@@ -36,12 +66,15 @@ const SPARKLES = [
 interface Props {
   visible: boolean;
   personas?: Persona[];
+  query?: string;
 }
 
-export default function LoadingOverlay({ visible, personas }: Props) {
+export default function LoadingOverlay({ visible, personas, query }: Props) {
   if (!visible) return null;
 
-  const names = personas?.slice(0, 4).map(p => p.name).join(", ") ?? "your panel";
+  const names = (query && personas?.length)
+    ? resolveConsultedNames(query, personas)
+    : (personas?.slice(0, 4).map(p => p.name).join(", ") ?? "your panel");
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">

@@ -112,6 +112,7 @@ export interface AskLabRequest {
   user_question: string;
   product_context?: string;
   market_context?: string;
+  persona_ids?: string[];
 }
 
 export interface PersonaChatRequest {

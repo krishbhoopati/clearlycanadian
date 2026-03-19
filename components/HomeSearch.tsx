@@ -222,8 +222,8 @@ export default function HomeSearch({
           width: DESIGN_WIDTH,
           transform: `scale(${scale})`,
           transformOrigin: "center center",
-          opacity: loading ? 0 : 1,
-          pointerEvents: loading ? "none" : undefined,
+          opacity: (loading && turns.length === 0) ? 0 : 1,
+          pointerEvents: (loading && turns.length === 0) ? "none" : undefined,
           transition: "opacity 0.4s ease",
         }}
       >
@@ -469,7 +469,7 @@ export default function HomeSearch({
         </div>
       </div>
 
-      <LoadingOverlay visible={loading} personas={personas} />
+      <LoadingOverlay visible={loading && turns.length === 0} personas={personas} query={input} />
 
       {/* Persona hover popover — rendered via portal to escape overflow:hidden */}
       {hoveredPersona && (

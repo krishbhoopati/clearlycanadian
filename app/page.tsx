@@ -10,21 +10,27 @@ export default function HomePage() {
   const [turns, setTurns] = useState<ConversationTurn[]>([]);
   const [loading, setLoading] = useState(false);
   const [chatPersonaId, setChatPersonaId] = useState<string | null>(null);
+  const [panelIds, setPanelIds] = useState<string[] | null>(null);
 
   async function handleQuery(q: string) {
     setLoading(true);
     if (view !== "results") setView("results");
     try {
+      const body: Record<string, unknown> = { user_question: q };
+      if (panelIds) body.persona_ids = panelIds;
       const [res] = await Promise.all([
         fetch("/api/ask-lab", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ user_question: q }),
+          body: JSON.stringify(body),
         }),
-        new Promise(resolve => setTimeout(resolve, 5000)),
+        new Promise(resolve => setTimeout(resolve, panelIds ? 0 : 5000)),
       ]);
       const data = await (res as Response).json();
       const result: AskLabResponse = data.data ?? data;
+      if (!panelIds && result.consulted_personas?.length) {
+        setPanelIds(result.consulted_personas.map(p => p.persona_id));
+      }
       setTurns(prev => [...prev, { question: q, result, timestamp: Date.now() }]);
     } catch {
       // silently fail — keep existing turns
@@ -36,6 +42,7 @@ export default function HomePage() {
   function handleBack() {
     setView("home");
     setTurns([]);
+    setPanelIds(null);
   }
 
   return (

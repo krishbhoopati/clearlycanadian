@@ -3,7 +3,7 @@ import type { AskLabRequest, AskLabResponse, SimulationResponse, PersonaSimulati
 import { validateQuery } from "@/lib/validator";
 import { parseQuery } from "@/lib/queryParser";
 import { isOutOfScope } from "@/lib/scopeGuard";
-import { resolvePanel } from "@/lib/personaResolver";
+import { resolvePanel, listPersonas } from "@/lib/personaResolver";
 import { resolveScenarioForQuery } from "@/lib/scenarioResolver";
 import { retrieveForPersona, retrieveEvidence } from "@/lib/retrieval";
 import { runSimulation } from "@/lib/simulationEngine";
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json() as AskLabRequest;
-    const { user_question, product_context } = body;
+    const { user_question, product_context, persona_ids } = body;
 
     const validationError = validateQuery(user_question ?? "");
     if (validationError) {
@@ -61,7 +61,9 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const panel = resolvePanel(parsed);
+    const panel = persona_ids?.length
+      ? listPersonas().filter(p => persona_ids.includes(p.id))
+      : resolvePanel(parsed);
     const match = resolveScenarioForQuery(parsed);
     const scenario = match?.scenario ?? null;
     console.log("[ask-lab] panel:", panel.length, "personas; scenario:", match?.scenario.id ?? "none");
