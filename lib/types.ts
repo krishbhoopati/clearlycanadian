@@ -285,3 +285,45 @@ export interface ScenarioMatch {
   explanation: string;
   score: number;
 }
+
+// ─── AI Simulation Types ──────────────────────────────────────────────────────
+
+export interface PerPersonaScore {
+  persona_name: string;
+  resonance: number;
+  key_driver: string;
+  key_blocker: string;
+  decision: string;
+}
+
+export interface AnalysisResult {
+  net_resonance: number;
+  sentiment_distribution: {
+    positive: number;
+    friction: number;
+    neutral: number;
+    negative: number;
+  };
+  dominant_themes: {
+    theme: string;
+    evidence: string;
+    persona_count: number;
+  }[];
+  key_insight: string;
+  strategic_recommendations: {
+    action: string;
+    rationale: string;
+    priority: "high" | "medium" | "low";
+  }[];
+  risk_factors: string[];
+  follow_up_questions: string[];
+  per_persona_scores: PerPersonaScore[];
+}
+
+export interface AIStreamState {
+  question: string;
+  personaTexts: Record<string, string>;
+  completedPersonaIds: string[];
+  selectedPersonaIds: string[];
+  timestamp: number;
+}

@@ -20,6 +20,8 @@ export default function PersonaChatModal({ personaId, onClose }: PersonaChatModa
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [sessionId, setSessionId] = useState<string | undefined>(undefined);
+  const [streamingText, setStreamingText] = useState<string>("");
+  const [isAiMode, setIsAiMode] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,10 +35,22 @@ export default function PersonaChatModal({ personaId, onClose }: PersonaChatModa
   }, [personaId]);
 
   useEffect(() => {
+    async function checkPuter() {
+      try {
+        const { isPuterAvailable } = await import("@/lib/puterAI");
+        setIsAiMode(isPuterAvailable());
+      } catch {
+        setIsAiMode(false);
+      }
+    }
+    checkPuter();
+  }, []);
+
+  useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, streamingText]);
 
   async function sendMessage() {
     const text = input.trim();
@@ -44,6 +58,45 @@ export default function PersonaChatModal({ personaId, onClose }: PersonaChatModa
     setInput("");
     setMessages(prev => [...prev, { role: "user", text }]);
     setLoading(true);
+    setStreamingText("");
+
+    if (isAiMode) {
+      await sendAiMessage(text);
+    } else {
+      await sendApiMessage(text);
+    }
+  }
+
+  async function sendAiMessage(text: string) {
+    try {
+      const { chatWithPersona } = await import("@/lib/aiSimulationEngine");
+      const history = messages.map(m => ({
+        role: m.role === "user" ? "user" : "assistant",
+        content: m.text,
+      }));
+
+      let accumulated = "";
+      const fullResponse = await chatWithPersona(
+        personaId,
+        text,
+        history,
+        (chunk) => {
+          accumulated += chunk;
+          setStreamingText(accumulated);
+        }
+      );
+
+      setStreamingText("");
+      setMessages(prev => [...prev, { role: "persona", text: fullResponse }]);
+    } catch {
+      setStreamingText("");
+      await sendApiMessage(text);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function sendApiMessage(text: string) {
     try {
       const res = await fetch("/api/persona-chat", {
         method: "POST",
@@ -76,8 +129,15 @@ export default function PersonaChatModal({ personaId, onClose }: PersonaChatModa
         <div className="h-16 bg-white border-b border-gray-200 flex items-center px-6 gap-4">
           <PersonaAvatar name={persona?.name ?? "?"} avatarUrl={persona?.avatar_url} size="w-16 h-16" textSize="text-base" />
           <div className="flex-1 min-w-0">
-            <div className="font-semibold text-gray-900 text-sm leading-tight truncate">
-              {persona?.name ?? "Loading…"}
+            <div className="flex items-center gap-2">
+              <div className="font-semibold text-gray-900 text-sm leading-tight truncate">
+                {persona?.name ?? "Loading…"}
+              </div>
+              {isAiMode && (
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700">
+                  AI
+                </span>
+              )}
             </div>
             {persona && (
               <div className="text-gray-500 text-xs truncate">{persona.behavioral_segment}</div>
@@ -122,7 +182,23 @@ export default function PersonaChatModal({ personaId, onClose }: PersonaChatModa
               )}
             </div>
           ))}
-          {loading && (
+
+          {/* Streaming AI response */}
+          {streamingText && (
+            <div className="flex items-end gap-2 justify-start">
+              <PersonaAvatar name={persona?.name ?? "?"} avatarUrl={persona?.avatar_url} size="w-8 h-8" textSize="text-xs" />
+              <div className="bg-white rounded-2xl rounded-tl-sm p-4 shadow-sm max-w-[80%] flex flex-col gap-1">
+                <div className="text-xs text-gray-400 font-semibold">{persona?.name}</div>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  {streamingText}
+                  <span className="inline-block w-0.5 h-3.5 bg-blue-500 animate-pulse ml-0.5 align-middle" />
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Non-streaming loading dots */}
+          {loading && !streamingText && (
             <div className="flex justify-start">
               <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
                 <div className="flex gap-1.5 items-center h-4">

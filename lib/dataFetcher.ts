@@ -46,26 +46,22 @@ export interface DataBundle {
 
 const TIMEOUT_MS = 5000;
 
-function assertPuterNet(): void {
-  if (!isPuterAvailable()) {
-    throw new Error(
-      "Puter is not available. The puter.js script may not have loaded yet."
-    );
-  }
-}
-
 async function puterFetch(url: string): Promise<Response> {
-  assertPuterNet();
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const res = await window.puter.net.fetch(url, {
-      signal: controller.signal,
-    });
-    return res;
-  } finally {
-    clearTimeout(timer);
+  if (!isPuterAvailable()) {
+    throw new Error("Puter not available");
   }
+
+  // puter.net.fetch routes through a Wisp WebSocket tunnel that ignores
+  // AbortSignal, so we use Promise.race to enforce the timeout ourselves.
+  return Promise.race([
+    (window as any).puter.net.fetch(url) as Promise<Response>,
+    new Promise<never>((_, reject) =>
+      setTimeout(
+        () => reject(new Error(`[dataFetcher] puterFetch timed out after ${TIMEOUT_MS}ms: ${url}`)),
+        TIMEOUT_MS
+      )
+    ),
+  ]);
 }
 
 function stripHtml(html: string): string {
@@ -219,17 +215,35 @@ export async function fetchCocktailRecipes(
 
 // ─── Web Search via Puter AI ─────────────────────────────────────────────────
 
-const SEARCH_MODEL = "claude-sonnet-4-6";
+const SEARCH_MODEL = "gpt-4o-mini";
+const AI_TIMEOUT_MS = 12_000;
 
 export async function searchWeb(query: string): Promise<string> {
-  assertPuterNet();
+  if (!isPuterAvailable()) {
+    console.log("[dataFetcher] searchWeb: Puter not available, skipping.");
+    return "";
+  }
   try {
-    const response = await window.puter.ai.chat(
+    console.log("[dataFetcher] searchWeb: calling puter.ai.chat, model:", SEARCH_MODEL, "query:", query.slice(0, 80));
+    const chatPromise = (window as any).puter.ai.chat(
       `Search the web and provide current, factual information about: ${query}`,
       { model: SEARCH_MODEL }
     );
-    return response?.message?.content ?? response?.text ?? String(response);
-  } catch {
+
+    // Race against a timeout so a hung API call doesn't block the whole simulation
+    const response = await Promise.race([
+      chatPromise,
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("[dataFetcher] searchWeb timed out")), AI_TIMEOUT_MS)
+      ),
+    ]);
+
+    const r = response as any;
+    const text = r?.message?.content ?? r?.text ?? String(response);
+    console.log("[dataFetcher] searchWeb: got response, chars:", text.length);
+    return text;
+  } catch (err) {
+    console.error("[dataFetcher] searchWeb FAILED:", err);
     return "";
   }
 }
@@ -263,7 +277,9 @@ export async function fetchAllRelevantData(
   question: string,
   categories: string[]
 ): Promise<DataBundle> {
-  assertPuterNet();
+  if (!isPuterAvailable()) {
+    throw new Error("Puter not available");
+  }
 
   const bundle: DataBundle = {
     reddit: [],

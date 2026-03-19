@@ -6,7 +6,7 @@ import PersonaAvatar from "@/components/PersonaAvatar";
 import PersonaPopover from "@/components/PersonaPopover";
 import ResultsView from "@/components/ResultsView";
 import LoadingOverlay from "@/components/LoadingOverlay";
-import type { Persona, ConversationTurn } from "@/lib/types";
+import type { Persona, ConversationTurn, AIStreamState, AnalysisResult } from "@/lib/types";
 
 interface HomeSearchProps {
   onQuery: (q: string) => void;
@@ -16,6 +16,9 @@ interface HomeSearchProps {
   turns: ConversationTurn[];
   onFollowUp: (q: string) => void;
   onBack: () => void;
+  aiStream?: AIStreamState | null;
+  lastAiAnalysis?: AnalysisResult | null;
+  onPersonasLoaded?: (personas: Persona[]) => void;
 }
 
 const TEMPLATE_CARDS = [
@@ -106,6 +109,9 @@ export default function HomeSearch({
   turns,
   onFollowUp,
   onBack,
+  aiStream,
+  lastAiAnalysis,
+  onPersonasLoaded,
 }: HomeSearchProps) {
   const [input, setInput] = useState("");
   const [personas, setPersonas] = useState<Persona[]>([]);
@@ -132,8 +138,13 @@ export default function HomeSearch({
   useEffect(() => {
     fetch("/api/personas")
       .then(r => r.json())
-      .then(data => setPersonas(data.personas ?? []))
+      .then(data => {
+        const p = data.personas ?? [];
+        setPersonas(p);
+        onPersonasLoaded?.(p);
+      })
       .catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -464,12 +475,18 @@ export default function HomeSearch({
               onBack={onBack}
               onPersonaClick={onPersonaClick}
               personas={personas}
+              aiStream={aiStream}
+              lastAiAnalysis={lastAiAnalysis}
             />
           </div>
         </div>
       </div>
 
-      <LoadingOverlay visible={loading && turns.length === 0} personas={personas} query={input} />
+      <LoadingOverlay
+        visible={loading && turns.length === 0}
+        personas={personas}
+        query={input}
+      />
 
       {/* Persona hover popover — rendered via portal to escape overflow:hidden */}
       {hoveredPersona && (

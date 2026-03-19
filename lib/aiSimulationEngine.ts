@@ -1,4 +1,9 @@
-import type { Persona, BehaviorFact } from "@/lib/types";
+import type {
+  Persona,
+  BehaviorFact,
+  AnalysisResult,
+  PerPersonaScore,
+} from "@/lib/types";
 import type { RedditPost, NutritionData } from "@/lib/dataFetcher";
 import {
   isPuterAvailable,
@@ -13,45 +18,7 @@ import {
 } from "@/lib/dataFetcher";
 import { buildPersonaPrompt, buildAnalysisPrompt } from "@/lib/promptBuilder";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
-
-export interface PerPersonaScore {
-  persona_name: string;
-  resonance: number;
-  key_driver: string;
-  key_blocker: string;
-  decision:
-    | "would_buy"
-    | "would_try"
-    | "interested_but_barriers"
-    | "indifferent"
-    | "unlikely"
-    | "would_not_buy";
-}
-
-export interface AnalysisResult {
-  net_resonance: number;
-  sentiment_distribution: {
-    positive: number;
-    friction: number;
-    neutral: number;
-    negative: number;
-  };
-  dominant_themes: {
-    theme: string;
-    evidence: string;
-    persona_count: number;
-  }[];
-  key_insight: string;
-  strategic_recommendations: {
-    action: string;
-    rationale: string;
-    priority: "high" | "medium" | "low";
-  }[];
-  risk_factors: string[];
-  follow_up_questions: string[];
-  per_persona_scores: PerPersonaScore[];
-}
+export type { AnalysisResult, PerPersonaScore };
 
 // ─── Step A: Classify Question ───────────────────────────────────────────────
 
@@ -337,42 +304,71 @@ async function fetchLiveData(
 
 // ─── Step D & E: Main simulation ─────────────────────────────────────────────
 
+// Hard ceiling: if the entire simulation hasn't finished in this many ms,
+// abort and show the rule-based fallback so the UI is never stuck forever.
+const SIMULATION_HARD_TIMEOUT_MS = 45_000;
+
 export async function runSimulation(
   question: string,
   onPersonaChunk: (personaId: string, chunk: string) => void,
   onPersonaComplete: (personaId: string, fullResponse: string) => void,
   onAnalysisComplete: (analysis: AnalysisResult) => void
 ): Promise<void> {
-  if (!isPuterAvailable()) {
+  console.log("[runSimulation] ▶ Starting simulation for question:", question);
+
+  const puterReady = isPuterAvailable();
+  console.log("[runSimulation] isPuterAvailable:", puterReady);
+
+  if (!puterReady) {
     console.warn(
-      "[aiSimulationEngine] Puter not available — falling back to rule-based engine."
+      "[runSimulation] Puter not available — falling back to rule-based engine."
     );
     await runFallbackSimulation(question, onPersonaComplete, onAnalysisComplete);
     return;
   }
 
+  // Safety net: if anything hangs longer than the hard timeout, run the
+  // rule-based fallback so the loading screen never gets stuck forever.
+  let hardTimeoutFired = false;
+  const hardTimeoutId = setTimeout(async () => {
+    hardTimeoutFired = true;
+    console.warn(`[runSimulation] Hard timeout (${SIMULATION_HARD_TIMEOUT_MS}ms) — falling back to rule-based engine.`);
+    await runFallbackSimulation(question, onPersonaComplete, onAnalysisComplete);
+  }, SIMULATION_HARD_TIMEOUT_MS);
+
   try {
     // Step A: classify
+    console.log("[runSimulation] Step A: Classifying question...");
     const categories = classifyQuestion(question);
+    console.log("[runSimulation] Step A complete — categories:", categories);
 
     // Load static data + select personas
     const { personas, behaviorFacts, brandFacts } = await loadClientData();
 
     // Step B: select personas
+    console.log("[runSimulation] Step B: Selecting personas...");
     const selectedIds = selectPersonaIds(categories, question);
     const selectedPersonas = selectedIds
       .map((id) => personas.find((p) => p.id === id))
       .filter((p): p is Persona => p !== undefined);
+
+    console.log(
+      "[runSimulation] Step B complete — selected personas:",
+      selectedPersonas.map((p) => `${p.name} (${p.id})`)
+    );
 
     if (selectedPersonas.length === 0) {
       throw new Error("No matching personas found");
     }
 
     // Step C: fetch live data in parallel
+    console.log("[runSimulation] Step C: Fetching live data...");
     const liveData = await fetchLiveData(question, categories);
+    console.log("[runSimulation] Step C complete — reddit posts:", liveData.reddit.length, "| webSearch chars:", liveData.webSearch.length);
     const allNutrition = [...liveData.nutrition, ...liveData.competitorNutrition];
 
     // Step D: build prompts and stream all persona responses in parallel
+    console.log("[runSimulation] Step D: Building prompts and calling Puter AI for each persona...");
     const personaResponses: { persona: Persona; response: string }[] = [];
 
     await Promise.all(
@@ -396,15 +392,19 @@ export async function runSimulation(
           allNutrition
         );
 
+        console.log(`[runSimulation] Step E: Calling Puter AI for persona "${persona.name}" (${persona.id})...`);
+
         try {
           const fullResponse = await generateStreamingResponse(
             systemPrompt,
             question,
             (chunk) => onPersonaChunk(persona.id, chunk)
           );
+          console.log(`[runSimulation] Step F: Got response from "${persona.name}" — ${fullResponse.length} chars`);
           personaResponses.push({ persona, response: fullResponse });
           onPersonaComplete(persona.id, fullResponse);
-        } catch {
+        } catch (err) {
+          console.error(`[runSimulation] Puter AI call failed for "${persona.name}":`, err);
           const fallbackMsg =
             `I'd need to think more about that. As someone who ${persona.core_traits[0] ?? "has their own perspective"}, I don't have a quick answer.`;
           personaResponses.push({ persona, response: fallbackMsg });
@@ -413,7 +413,9 @@ export async function runSimulation(
       })
     );
 
-    // Step E: run analysis after all personas respond
+    console.log("[runSimulation] Step G: Running analysis on", personaResponses.length, "persona responses...");
+
+    // Step G: run analysis after all personas respond
     try {
       const responseSummaries = personaResponses.map((pr) => ({
         name: pr.persona.name,
@@ -438,14 +440,21 @@ export async function runSimulation(
 
       const rawAnalysis = await generateAnalysis(analysisPrompt);
       const analysis = normalizeAnalysis(rawAnalysis);
+      console.log("[runSimulation] Step H: Complete — analysis ready, net_resonance:", analysis.net_resonance);
       onAnalysisComplete(analysis);
     } catch (err) {
-      console.warn("[aiSimulationEngine] Analysis generation failed:", err);
+      console.error("[runSimulation] Puter AI call failed (analysis):", err);
+      console.warn("[runSimulation] Falling back to rule-based analysis.");
       onAnalysisComplete(buildFallbackAnalysis(personaResponses));
     }
   } catch (err) {
-    console.error("[aiSimulationEngine] Simulation failed:", err);
+    console.error("[runSimulation] Simulation failed at top level:", err);
     await runFallbackSimulation(question, onPersonaComplete, onAnalysisComplete);
+  } finally {
+    clearTimeout(hardTimeoutId);
+    if (hardTimeoutFired) {
+      console.log("[runSimulation] Note: hard timeout already fired and delivered results.");
+    }
   }
 }
 

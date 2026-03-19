@@ -14,7 +14,7 @@ function formatTurnTime(ts: number): string {
 import PersonaCard from "@/components/PersonaCard";
 import AnalysisSidebar from "@/components/AnalysisSidebar";
 import PersonaAvatar from "@/components/PersonaAvatar";
-import type { Persona, ConversationTurn } from "@/lib/types";
+import type { Persona, ConversationTurn, AIStreamState, AnalysisResult } from "@/lib/types";
 
 interface ResultsPanelProps {
   turns: ConversationTurn[];
@@ -23,6 +23,8 @@ interface ResultsPanelProps {
   onPersonaClick?: (personaId: string) => void;
   onBack: () => void;
   personas: Persona[];
+  aiStream?: AIStreamState | null;
+  lastAiAnalysis?: AnalysisResult | null;
 }
 
 function ConversationTurnBlock({
@@ -118,6 +120,95 @@ function ConversationTurnBlock({
   );
 }
 
+function StreamingTurnBlock({
+  stream,
+  personas,
+  onPersonaClick,
+}: {
+  stream: AIStreamState;
+  personas: Persona[];
+  onPersonaClick: (id: string) => void;
+}) {
+  const personaMap = Object.fromEntries(personas.map(p => [p.id, p]));
+
+  return (
+    <div className="flex flex-col gap-6">
+      {/* Timestamp */}
+      <div className="flex justify-center">
+        <span className="font-mono text-white/30 text-xs uppercase tracking-widest">
+          {formatTurnTime(stream.timestamp)}
+        </span>
+      </div>
+
+      {/* User bubble */}
+      <div className="flex justify-end items-end gap-3">
+        <div className="glass-dark text-white p-6 rounded-[24px] rounded-tr-[8px] max-w-[70%]">
+          <p className="text-white/90">{stream.question}</p>
+        </div>
+        <div className="w-9 h-9 rounded-full bg-white/20 border border-white/30 flex items-center justify-center shrink-0 text-xs font-bold text-white">
+          ME
+        </div>
+      </div>
+
+      {/* AI response header */}
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0">
+            <svg className="w-5 h-5 text-[#2a3441]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-white font-semibold">Clearly Voices Insight Engine</span>
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-blue-500/20 text-blue-300 border border-blue-400/30">
+              AI Live
+            </span>
+            <span className="font-mono text-white/40 text-xs flex items-center gap-2">
+              <svg className="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              {stream.completedPersonaIds.length}/{stream.selectedPersonaIds.length} personas complete
+            </span>
+          </div>
+        </div>
+
+        {/* Streaming persona cards */}
+        {stream.selectedPersonaIds.length > 0 && (
+          <div className="grid grid-cols-3 gap-6 pl-[56px]">
+            {stream.selectedPersonaIds.map(id => {
+              const persona = personaMap[id];
+              const text = stream.personaTexts[id] ?? "";
+              const isComplete = stream.completedPersonaIds.includes(id);
+
+              return (
+                <PersonaCard
+                  key={id}
+                  persona={persona}
+                  onChatClick={() => onPersonaClick(id)}
+                  streamingText={text}
+                  isStreaming={!isComplete}
+                />
+              );
+            })}
+          </div>
+        )}
+
+        {/* Waiting for personas indicator */}
+        {stream.selectedPersonaIds.length === 0 && (
+          <div className="flex items-center gap-4 pl-[56px]">
+            <svg className="w-5 h-5 text-white/40 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            <span className="text-white/50 font-mono text-sm">Selecting personas and fetching data…</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function ResultsView({
   turns,
   loading,
@@ -125,21 +216,28 @@ export default function ResultsView({
   onPersonaClick,
   onBack,
   personas,
+  aiStream,
+  lastAiAnalysis,
 }: ResultsPanelProps) {
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevTurnsLen = useRef(0);
+  const prevStreamLen = useRef(0);
 
   useEffect(() => {
     if (!scrollRef.current) return;
     const isFirstResult = turns.length === 1 && prevTurnsLen.current === 0;
+    const streamPersonaCount = aiStream?.selectedPersonaIds.length ?? 0;
+    const streamGrew = streamPersonaCount > prevStreamLen.current;
+
     if (isFirstResult) {
       scrollRef.current.scrollTop = 0;
-    } else if (turns.length > 1 || loading) {
+    } else if (turns.length > 1 || loading || streamGrew) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
     prevTurnsLen.current = turns.length;
-  }, [turns, loading]);
+    prevStreamLen.current = streamPersonaCount;
+  }, [turns, loading, aiStream]);
 
   function handleSubmit() {
     const q = input.trim();
@@ -157,6 +255,15 @@ export default function ResultsView({
   const followUps = lastResult?.suggested_follow_ups?.slice(0, 3) ?? [];
   const personaMap = Object.fromEntries(personas.map(p => [p.id, p]));
 
+  const showAiStreamHeader = !!aiStream && aiStream.selectedPersonaIds.length > 0;
+  const streamingPersonaAvatars = showAiStreamHeader
+    ? aiStream!.selectedPersonaIds.map(id => ({
+        id,
+        name: personaMap[id]?.name ?? id,
+        avatarUrl: personaMap[id]?.avatar_url,
+      }))
+    : [];
+
   return (
     <div className="h-full flex flex-col">
       {/* Top strip */}
@@ -171,7 +278,21 @@ export default function ResultsView({
           New Question
         </button>
         <div className="flex items-center gap-4">
-          {consultedPersonas.length > 0 && (
+          {/* Show streaming persona avatars during AI, else completed persona avatars */}
+          {showAiStreamHeader ? (
+            <div className="flex -space-x-2">
+              {streamingPersonaAvatars.map(p => (
+                <PersonaAvatar
+                  key={p.id}
+                  name={p.name}
+                  avatarUrl={p.avatarUrl}
+                  size="w-8 h-8"
+                  textSize="text-xs"
+                  className="border-2 border-white/10"
+                />
+              ))}
+            </div>
+          ) : consultedPersonas.length > 0 ? (
             <div className="flex -space-x-2">
               {consultedPersonas.map(p => (
                 <PersonaAvatar
@@ -184,14 +305,15 @@ export default function ResultsView({
                 />
               ))}
             </div>
-          )}
+          ) : null}
+
           {loading && (
             <span className="font-mono text-white/50 text-xs uppercase tracking-widest flex items-center gap-2">
               <svg className="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              Analysing
+              {aiStream ? "AI Analysing" : "Analysing"}
             </span>
           )}
         </div>
@@ -216,18 +338,21 @@ export default function ResultsView({
               ref={scrollRef}
               className="flex-1 overflow-y-auto px-10 py-10 dark-scroll pb-28 flex flex-col gap-12"
             >
+              {/* Completed turns */}
               {turns.map((turn, i) => (
                 <ConversationTurnBlock
                   key={i}
                   turn={turn}
                   personas={personas}
                   onPersonaClick={onPersonaClick ?? (() => {})}
-                  followUps={i === turns.length - 1 ? followUps : undefined}
+                  followUps={i === turns.length - 1 && !aiStream ? followUps : undefined}
                   onFollowUp={onFollowUp}
                   loading={loading}
                 />
               ))}
-              {loading && (
+
+              {/* Loading indicator */}
+              {loading && turns.length > 0 && (
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
                     <svg className="w-5 h-5 text-white/50 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -266,8 +391,12 @@ export default function ResultsView({
         </div>
 
         {/* Right sidebar */}
-        {lastResult && (
-          <AnalysisSidebar result={lastResult} />
+        {(lastResult || lastAiAnalysis) && !aiStream && (
+          <AnalysisSidebar
+            result={lastAiAnalysis ? undefined : lastResult}
+            aiAnalysis={lastAiAnalysis}
+            onFollowUpClick={onFollowUp}
+          />
         )}
       </div>
     </div>

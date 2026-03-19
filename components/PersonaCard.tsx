@@ -4,9 +4,11 @@ import PersonaAvatar from "@/components/PersonaAvatar";
 import type { PersonaSimulationResult, Persona } from "@/lib/types";
 
 interface PersonaCardProps {
-  result: PersonaSimulationResult;
+  result?: PersonaSimulationResult;
   persona?: Persona;
   onChatClick: () => void;
+  streamingText?: string;
+  isStreaming?: boolean;
 }
 
 const SENTIMENT: Record<string, { label: string; dot: string; bg: string; text: string; bar: string }> = {
@@ -39,7 +41,89 @@ function extractShortLabel(text: string): string {
   return stripped.slice(0, 28).replace(/[\s([{,;:]+$/, '');
 }
 
-export default function PersonaCard({ result, persona, onChatClick }: PersonaCardProps) {
+export default function PersonaCard({ result, persona, onChatClick, streamingText, isStreaming }: PersonaCardProps) {
+  // ── Streaming mode ──
+  if (streamingText !== undefined && !result) {
+    const displayName = persona
+      ? `${persona.name}, ${persona.age ?? persona.age_range}`
+      : "Loading…";
+    const subtitle = persona?.behavioral_segment
+      ? formatSegment(persona.behavioral_segment)
+      : "";
+
+    return (
+      <div
+        onClick={onChatClick}
+        className="bg-white rounded-[20px] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.13)] flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden cursor-pointer"
+      >
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-blue-400 to-blue-200" />
+
+        <div className="flex items-center justify-between pt-1">
+          <div className="flex items-center gap-3">
+            <PersonaAvatar
+              name={persona?.name ?? "?"}
+              avatarUrl={persona?.avatar_url}
+              size="w-12 h-12"
+              textSize="text-sm"
+            />
+            <div>
+              <div className="font-bold text-gray-900 text-[15px] leading-tight">
+                {displayName}
+              </div>
+              {subtitle && (
+                <div className="text-gray-400 text-xs mt-0.5">{subtitle}</div>
+              )}
+            </div>
+          </div>
+
+          {isStreaming ? (
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+              Responding…
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              Complete
+            </div>
+          )}
+        </div>
+
+        <p
+          className="text-gray-700 text-[15px] italic leading-relaxed"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 5,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          &ldquo;{streamingText}
+          {isStreaming && (
+            <span className="inline-block w-0.5 h-4 bg-blue-500 animate-pulse ml-0.5 align-middle" />
+          )}
+          &rdquo;
+        </p>
+
+        {!isStreaming && (
+          <div className="flex items-end justify-between border-t border-gray-100 pt-4">
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">
+                Resonance
+              </span>
+              <span className="text-xl font-bold text-gray-300 font-mono leading-none">
+                —
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ── Full result mode (existing) ──
+  if (!result) return null;
+
   const sentiment = SENTIMENT[result.decision] ?? SENTIMENT.indifferent;
   const resonance = Math.round(result.confidence * 100);
 
@@ -61,10 +145,8 @@ export default function PersonaCard({ result, persona, onChatClick }: PersonaCar
       onClick={onChatClick}
       className="bg-white rounded-[20px] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.13)] flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden cursor-pointer"
     >
-      {/* Colored top bar */}
       <div className="absolute top-0 left-0 w-full h-[3px]" style={{ backgroundColor: sentiment.bar }} />
 
-      {/* Header row */}
       <div className="flex items-center justify-between pt-1">
         <div className="flex items-center gap-3">
           <PersonaAvatar name={result.persona_name} avatarUrl={persona?.avatar_url} size="w-12 h-12" textSize="text-sm" />
@@ -73,7 +155,6 @@ export default function PersonaCard({ result, persona, onChatClick }: PersonaCar
             {subtitle && <div className="text-gray-400 text-xs mt-0.5">{subtitle}</div>}
           </div>
         </div>
-        {/* Dot + label badge */}
         <div
           className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
           style={{ backgroundColor: sentiment.bg, color: sentiment.text }}
@@ -83,12 +164,10 @@ export default function PersonaCard({ result, persona, onChatClick }: PersonaCar
         </div>
       </div>
 
-      {/* Quote */}
       <p className="text-gray-700 text-[15px] italic leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
         &ldquo;{result.response_text}&rdquo;
       </p>
 
-      {/* Footer */}
       <div className="flex items-end justify-between border-t border-gray-100 pt-4">
         <div className="flex flex-col gap-1">
           <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">Resonance</span>
