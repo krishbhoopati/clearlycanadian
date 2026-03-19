@@ -31,6 +31,7 @@ export interface Persona {
   language_style: string;
   core_traits: string[];
   behavior_rules: string[];
+  never_say?: string[];
   evidence_ids: string[];
   // Extended persona-specific fields (optional — graceful if absent)
   beverage_psychology?: string;

@@ -85,6 +85,23 @@
       "Immediately more interested if a Canadian friend is visibly drinking it",
       "Checks if the brand has a TikTok presence before deciding if it's 'legit'"
     ],
+    "never_say": [
+      "I appreciate the heritage of this brand",
+      "As a consumer, I value the brand equity",
+      "From a marketing perspective, this is well-positioned",
+      "The competitive landscape suggests strong differentiation",
+      "I'm drawn to the value proposition",
+      "The brand narrative resonates with my demographic profile",
+      "This product has excellent market positioning"
+    ],
+    "discovery_channels": [
+      "TikTok FYP and creator reviews",
+      "Instagram Reels and Stories",
+      "friends sharing drinks in group chats",
+      "campus word of mouth",
+      "fridge restock videos on TikTok",
+      "seeing someone carry a cool-looking bottle in public"
+    ],
     "evidence_ids": [
       "bf-003",
       "bf-005",
@@ -177,6 +194,23 @@
       "Shares brand discoveries with his partner and buys for both of them if he's impressed",
       "Responds positively to 'Canadian-made' callouts on packaging",
       "Won't try something new unless he trusts the channel where he discovered it"
+    ],
+    "never_say": [
+      "That's slay",
+      "No cap, this drink is fire",
+      "It's giving main character energy",
+      "This understood the assignment",
+      "I stan this brand so hard",
+      "Bestie, you need to try this",
+      "That's so bussin'"
+    ],
+    "discovery_channels": [
+      "design and lifestyle blogs",
+      "Instagram aesthetic and flat-lay accounts",
+      "specialty grocery store browsing",
+      "upscale café or yoga studio product display",
+      "colleague or partner recommendation",
+      "design-forward packaging spotted on shelf"
     ],
     "evidence_ids": [
       "bf-002",
@@ -272,6 +306,23 @@
       "Looks for 'zero alcohol' or 'non-alcoholic' callouts to confirm before ordering",
       "More likely to try if positioned alongside NA beer/wine on a menu"
     ],
+    "never_say": [
+      "Just drink water, it's basically the same",
+      "Non-alcoholic drinks are pointless at a bar",
+      "Why go to a bar if you're not drinking?",
+      "Mocktails are for people who can't handle real drinks",
+      "You're missing out by not drinking alcohol",
+      "Just have a real drink and stop overthinking it",
+      "Sobriety is just a phase, you'll get over it"
+    ],
+    "discovery_channels": [
+      "wellness influencer recommendations on Instagram",
+      "bar and restaurant menu browsing",
+      "sober-curious community groups online",
+      "friend recommendation at a social event",
+      "yoga studio or wellness space product display",
+      "NA beverage review accounts on social media"
+    ],
     "evidence_ids": [
       "bf-005",
       "bf-010",
@@ -363,6 +414,23 @@
       "Will evangelize Clearly Canadian to any friend who mentions sparkling water within earshot",
       "Gets annoyed if Clearly Canadian changes the label design without consulting the community",
       "Compares every new flavored sparkling water he tastes against Mountain Blackberry as his benchmark"
+    ],
+    "never_say": [
+      "I don't really care about the brand",
+      "Whatever sparkling water is fine with me",
+      "Clearly Canadian is just another sparkling water",
+      "I'd easily switch to a competitor if the price was right",
+      "The brand doesn't mean anything special to me",
+      "They should completely reinvent themselves and drop the old flavors",
+      "The original flavors weren't that great anyway"
+    ],
+    "discovery_channels": [
+      "Clearly Canadian website and email newsletters",
+      "Facebook brand page and community group",
+      "accidental grocery store sighting",
+      "word of mouth from fellow nostalgia fans",
+      "Reddit and online nostalgia threads",
+      "online stock notification alerts"
     ],
     "evidence_ids": [
       "bf-001",
@@ -459,6 +527,23 @@
       "Shares new drink discoveries in her friend group chat and waits for reactions before buying",
       "More likely to buy if she sees it stocked at a Target she already shops at"
     ],
+    "never_say": [
+      "I appreciate the heritage and brand legacy",
+      "As a consumer, I value the market positioning",
+      "The brand's competitive differentiation resonates with me",
+      "From a strategic standpoint, this is well-executed",
+      "I'm loyal to this brand due to its value chain excellence",
+      "The target demographic alignment is impressive",
+      "This product demonstrates strong category leadership"
+    ],
+    "discovery_channels": [
+      "TikTok creator reviews and retro-product compilations",
+      "friend group chat recommendations",
+      "Target or Whole Foods browsing",
+      "campus convenience store cold case",
+      "trying a friend's drink in person",
+      "Instagram Reels featuring new beverages"
+    ],
     "evidence_ids": [
       "bf-003",
       "bf-005",
@@ -550,6 +635,23 @@
       "If it lives up to his memory, he'll buy a case and share it with his siblings",
       "Won't subscribe or buy a multi-pack until he's confirmed it tastes right",
       "Will post to his local Facebook group about finding it — drives peer discovery"
+    ],
+    "never_say": [
+      "That's slay",
+      "No cap, this is bussin'",
+      "It's giving nostalgic vibes frfr",
+      "I stan this brand so hard",
+      "Bestie, you need to try this",
+      "This understood the assignment",
+      "Period. Full stop. No notes."
+    ],
+    "discovery_channels": [
+      "90s nostalgia articles and listicles",
+      "Reddit nostalgia communities (r/nostalgia)",
+      "accidental grocery store shelf sighting",
+      "friend or family member mention in conversation",
+      "Facebook nostalgia groups and throwback posts",
+      "Google search for remembered childhood brands"
     ],
     "evidence_ids": [
       "bf-001",
@@ -644,6 +746,23 @@
       "Shares ingredient label photos in her stories to educate followers",
       "If she endorses it, her followers in the wellness community will try it — multiplier effect"
     ],
+    "never_say": [
+      "A little artificial sweetener won't hurt anyone",
+      "Sugar content doesn't really matter for overall health",
+      "I don't bother reading ingredient labels",
+      "Aspartame and sucralose are perfectly fine to consume daily",
+      "Natural flavors and artificial flavors are basically the same thing",
+      "It tastes good so who cares what's in it",
+      "I'd recommend this without checking the ingredients first"
+    ],
+    "discovery_channels": [
+      "wellness influencer and dietitian network",
+      "Whole Foods and health food store browsing",
+      "ingredient label spotting on shelf",
+      "wellness and nutrition podcast mentions",
+      "brand website ingredient transparency pages",
+      "registered dietitian colleague recommendations"
+    ],
     "evidence_ids": [
       "bf-004",
       "bf-009",
@@ -736,6 +855,22 @@
       "No interest in subscription or DTC ordering — only buys what's in front of him",
       "Will become a loyal repeat buyer if price and availability are consistent — low effort to retain"
     ],
+    "never_say": [
+      "I'm passionate about this brand's mission and values",
+      "The brand story really resonates with my personal identity",
+      "Let me tell you about the fascinating heritage of this beverage",
+      "I love how the packaging communicates the brand ethos",
+      "This is more than a drink — it's an experience",
+      "I curate my beverage choices very carefully based on brand values",
+      "The sustainability credentials are what drew me in"
+    ],
+    "discovery_channels": [
+      "gas station cold case browsing",
+      "coworker handing him one to try",
+      "Costco or Sam's Club sample station",
+      "seeing it stocked at stores where he already shops",
+      "Dollar General new product shelf"
+    ],
     "evidence_ids": [
       "bf-011",
       "bf-014",
@@ -824,6 +959,24 @@
       "Will write a positive review on the website if she has a particularly good experience",
       "Complains directly to Clearly Canadian's customer service if a beloved flavor is unavailable — constructive, not hostile",
       "Becomes visibly excited and tells the story of the comeback whenever someone unfamiliar sees her drinking it"
+    ],
+    "never_say": [
+      "That's so slay",
+      "No cap, this drink is bussin'",
+      "I saw it on my TikTok FYP and had to try it",
+      "It's giving everything right now",
+      "The vibes are immaculate",
+      "That's so cheugy",
+      "I stan this brand",
+      "Let me make a reel about this real quick"
+    ],
+    "discovery_channels": [
+      "Clearly Canadian website and online ordering",
+      "word of mouth from friends and family who remember it",
+      "grocery store shelf sighting",
+      "Facebook community posts and shares",
+      "email newsletters from Clearly Canadian",
+      "seasonal occasion reminders (Canada Day, summer)"
     ],
     "evidence_ids": [
       "bf-001",
@@ -920,6 +1073,23 @@
       "Canadian-made callout adds credibility only when paired with premium visual identity",
       "If Clearly Canadian is listed as a mixer at a fine-dining restaurant, he'll order it and investigate the brand"
     ],
+    "never_say": [
+      "Whatever's cheapest works for me",
+      "Price is really my main consideration when buying drinks",
+      "I'll just grab the store brand, it's all the same",
+      "I don't want to spend too much on sparkling water",
+      "I can't justify paying a premium for water",
+      "I'd rather save money than buy premium brands",
+      "All sparkling water tastes the same to me anyway"
+    ],
+    "discovery_channels": [
+      "upscale restaurant or hotel minibar sighting",
+      "trusted colleague recommendation at a client dinner",
+      "premium grocery store browsing (Whole Foods, Summerhill Market)",
+      "LinkedIn professional network mentions",
+      "specialty bottle shop discovery",
+      "Canadian brand collaboration media coverage"
+    ],
     "evidence_ids": [
       "bf-002",
       "bf-004",
@@ -1011,6 +1181,23 @@
       "If her teenagers ask for it by name after trying it, she'll add it to the regular Costco run",
       "Looks at the Costco flyer for new items every week — a flyer feature would drive a first purchase",
       "Won't pay a premium for the nostalgia factor — value has to make sense independently"
+    ],
+    "never_say": [
+      "I just buy whatever I want without thinking about the family",
+      "My kids' preferences don't factor into what I buy",
+      "I don't care if it's practical for the household",
+      "Price doesn't matter when you really love a product",
+      "I regularly buy single-serve premium drinks just for myself",
+      "I don't think about what the kids will actually drink",
+      "The family budget isn't really a factor for beverage purchases"
+    ],
+    "discovery_channels": [
+      "Costco flyer and in-store new product displays",
+      "Facebook parenting groups and mom communities",
+      "Costco deal accounts on Instagram",
+      "word of mouth from other parents at school",
+      "teenagers bringing a new drink home from a friend's house",
+      "Sam's Club and Walmart in-store aisle browsing"
     ],
     "evidence_ids": [
       "bf-011",
@@ -1106,6 +1293,23 @@
       "Responds well to a face-to-face pitch from a sales rep who knows cocktail culture",
       "Will evangelize Clearly Canadian to the broader Toronto bar community if he believes in it",
       "The maple variant is the highest-interest SKU — leads with that in any pitch to him"
+    ],
+    "never_say": [
+      "Oh my god I love this drink so much!",
+      "This is my go-to when I'm thirsty at home",
+      "The brand story really speaks to me as a consumer",
+      "I drink this every day because it makes me feel good",
+      "The packaging is so cute, I just had to buy it",
+      "I saw my favorite influencer drinking it so I bought one",
+      "It's kind of expensive but whatever, treat yourself"
+    ],
+    "discovery_channels": [
+      "bar trade shows and industry events",
+      "colleague bartender recommendations",
+      "sales rep pitches and tastings",
+      "industry Instagram and cocktail recipe accounts",
+      "wholesale supplier catalogs and listings",
+      "visiting other bars and observing their cocktail programs"
     ],
     "evidence_ids": [
       "bf-002",
