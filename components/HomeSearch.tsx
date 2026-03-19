@@ -175,7 +175,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
       ))}
 
       {/* Main panel */}
-      <div className="max-w-[1280px] w-full rounded-[48px] glass-panel flex flex-col gap-10 p-8 md:p-10 lg:p-12 relative z-10 mx-4 my-8 dark-scroll">
+      <div className="max-w-[1580px] w-full rounded-[48px] glass-panel flex flex-col gap-10 p-8 md:p-10 lg:p-12 relative z-10 mx-4 my-8 dark-scroll">
 
         {/* Top section */}
         <div className="flex flex-col gap-6">
@@ -318,7 +318,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
                 </div>
 
                 {/* Question text — dominates the card */}
-                <p className="text-white/90 text-base font-medium leading-snug group-hover:text-white transition-colors flex-1">
+                <p className="text-white/90 text-lg font-semibold leading-snug group-hover:text-white transition-colors flex-1">
                   {card.title}
                 </p>
 
@@ -350,12 +350,6 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
           <div className="flex items-center gap-6">
             {personas.length > 0 && (
               <>
-                <button
-                  onClick={() => personas[0] && onPersonaClick?.(personas[0].id)}
-                  className="font-mono text-white/55 hover:text-white/70 text-xs tracking-wide transition-colors"
-                >
-                  View All Personas →
-                </button>
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-3">
                     {displayed.map(p => (
