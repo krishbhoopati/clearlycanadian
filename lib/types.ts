@@ -69,11 +69,12 @@ export interface BehaviorFact {
   applies_to: string[];
   market: string;
   source: string;
-  source_type: "study" | "survey" | "report" | "article" | "internal" | "other";
+  source_type: "study" | "survey" | "report" | "article" | "internal" | "other" | "industry_research" | "company_data" | "cmo_interview" | "market_report" | "behavioral_data";
   source_url?: string;
   confidence: number;
   notes?: string;
   tags: string[];
+  date_verified?: string;
 }
 
 export interface BrandFact {
