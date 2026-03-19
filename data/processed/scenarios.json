@@ -389,5 +389,190 @@
       "mocktail",
       "sober_curious"
     ]
+  },
+  {
+    "id": "shania_twain_ad",
+    "name": "Shania Twain Campaign Reaction",
+    "description": "Consumer sees CC's new Shania Twain × Maximum Effort ad — first campaign in 34 years. Treasure hunt through Canadian wilderness, 'Still the One' tagline, catchy jingle.",
+    "context": "It's June 2025. A consumer sees Clearly Canadian's first advertisement in 34 years — a collaboration with Shania Twain and Maximum Effort Productions (Ryan Reynolds' agency). The ad follows a treasure-hunt narrative through the Canadian wilderness, with Shania arriving at a pristine BC spring. The tagline is 'Still the One.' It's cinematic, funny, and unmistakably Canadian. The ad is airing on YouTube, Instagram, and during Blue Jays broadcasts. The consumer's reaction depends on whether they know the brand, love Shania, or are encountering both for the first time.",
+    "question_templates": [
+      "What's your immediate reaction to seeing Shania Twain in a sparkling water ad?",
+      "Does the 'first ad in 34 years' angle make you more curious about the brand?",
+      "Does this ad make Clearly Canadian feel nostalgic, modern, or both?",
+      "Would you seek out Clearly Canadian at a store after watching this?",
+      "Does the Ryan Reynolds / Maximum Effort connection change how you perceive the ad?"
+    ],
+    "recommended_personas": [
+      "nostalgia_loyalist",
+      "ca_mill_loyal",
+      "ca_mill_potential",
+      "ca_genz_potential",
+      "us_genz_potential"
+    ],
+    "required_fact_categories": [
+      "shania_twain_campaign",
+      "brand_identity",
+      "canadian_identity"
+    ],
+    "contextTags": [
+      "shania_twain",
+      "maximum_effort",
+      "advertising",
+      "canadian_identity",
+      "nostalgia",
+      "comeback"
+    ],
+    "context_data": {
+      "campaign_year": 2025,
+      "celebrity": "Shania Twain",
+      "creator": "Maximum Effort (Ryan Reynolds)",
+      "first_ad_since": 1991
+    }
+  },
+  {
+    "id": "campus_sampling",
+    "name": "University Orientation Sampling",
+    "description": "CC sampling booth during university orientation week. Free cans, flavour quiz on iPad, campus ambassador program.",
+    "context": "It's September orientation week at a major Canadian or American university. Clearly Canadian has set up a branded sampling booth in the student commons. Campus ambassadors are handing out free SleekCans (Mountain Blackberry, Wild Cherry, Zero Sugar) and running a flavour personality quiz on an iPad. There's a selfie wall with a giant CC bottle cutout. Students can sign up as campus ambassadors for free product and merch. Most students have never tried Clearly Canadian; some have seen it on TikTok. The booth is competing for attention alongside dozens of other brands and clubs recruiting.",
+    "question_templates": [
+      "Would you stop at this booth — and what would catch your eye first?",
+      "After trying a free can, would you buy one later this week on campus?",
+      "Does the flavour quiz and selfie wall make you more or less likely to engage?",
+      "Would you sign up as a campus ambassador — and what would motivate you?",
+      "Would you post about this on your social media? What would you say?"
+    ],
+    "recommended_personas": [
+      "ca_genz_potential",
+      "us_genz_potential",
+      "us_genz_wellness",
+      "ca_genz_sober_curious"
+    ],
+    "required_fact_categories": [
+      "awareness_discovery",
+      "gen_z_behavior",
+      "purchase_behavior"
+    ],
+    "contextTags": [
+      "campus",
+      "sampling",
+      "gen_z",
+      "orientation",
+      "ambassador"
+    ],
+    "context_data": {
+      "setting": "university campus",
+      "format": "sampling booth",
+      "products": ["SleekCans", "Zero Sugar"]
+    }
+  },
+  {
+    "id": "blue_jays_game",
+    "name": "Blue Jays Game Discovery",
+    "description": "Consumer at Blue Jays game at Rogers Centre encounters CC SleekCans. Opening day March 27, CC signage visible, three flavours available.",
+    "context": "It's March 27, 2025 — Toronto Blue Jays opening day at Rogers Centre. Clearly Canadian is the team's official sparkling water. CC signage is visible behind home plate, on the scoreboard, and at concession stands. Three SleekCan flavours are available: Mountain Blackberry, Wild Cherry, and Sparkling Mineral Water, priced at $5.50 each. The consumer is a baseball fan who may or may not know Clearly Canadian. They see other fans carrying the distinctive cans. The PA announcer mentions 'Clearly Canadian — the Official Sparkling Water of the Toronto Blue Jays' between innings.",
+    "question_templates": [
+      "Does seeing CC as the Blue Jays' official sparkling water change your perception of the brand?",
+      "Would you buy a CC SleekCan at the game — even at stadium pricing?",
+      "Does the Canadian identity connection (Canadian brand + Canadian team) resonate with you?",
+      "Would you look for CC at a grocery store after encountering it at the game?",
+      "Does the sports sponsorship make CC feel more mainstream and trustworthy?"
+    ],
+    "recommended_personas": [
+      "ca_mill_potential",
+      "ca_mill_loyal",
+      "nostalgia_loyalist",
+      "premium_lifestyle"
+    ],
+    "required_fact_categories": [
+      "partnerships",
+      "canadian_identity",
+      "brand_perception"
+    ],
+    "contextTags": [
+      "blue_jays",
+      "sports",
+      "rogers_centre",
+      "canadian_identity",
+      "on_premise"
+    ],
+    "context_data": {
+      "venue": "Rogers Centre",
+      "products": ["Mountain Blackberry", "Wild Cherry", "Sparkling Mineral Water"],
+      "format": "SleekCan"
+    }
+  },
+  {
+    "id": "holiday_gifting",
+    "name": "Holiday Hostess Gift Decision",
+    "description": "Consumer choosing premium beverage to bring as hostess gift for Thanksgiving or holiday dinner. Considering CC glass bottles vs wine vs other options.",
+    "context": "It's late November. A consumer is choosing what to bring to a Thanksgiving or holiday dinner party. They want something more thoughtful than a bottle of wine — not everyone drinks alcohol. They're in the premium beverage aisle considering options: a 4-pack of Clearly Canadian glass bottles ($11.96), a nice bottle of wine ($15–20), a specialty sparkling cider ($8), or a box of fancy chocolates ($12). The CC glass bottles are visually striking — the curved shape and fruit labels look like a curated gift. They remember CC from childhood or have heard the comeback story.",
+    "question_templates": [
+      "Would you bring Clearly Canadian glass bottles as a hostess gift — and how would the host react?",
+      "Does the glass bottle presentation feel gift-worthy compared to wine or chocolates?",
+      "Is the nostalgia/comeback story part of what makes it a good gift, or is it just about presentation?",
+      "Would you buy a CC gift pack if one existed — and what would you want in it?",
+      "Does bringing a Canadian sparkling water feel like a statement at an American dinner party?"
+    ],
+    "recommended_personas": [
+      "ca_mill_potential",
+      "us_mill_lapsed",
+      "household_stockup",
+      "nostalgia_loyalist",
+      "premium_lifestyle"
+    ],
+    "required_fact_categories": [
+      "packaging",
+      "price_sensitivity",
+      "occasion_usage"
+    ],
+    "contextTags": [
+      "holiday",
+      "gifting",
+      "glass_bottle",
+      "premium",
+      "occasion"
+    ],
+    "context_data": {
+      "occasion": "holiday dinner",
+      "format": "glass bottle gift pack",
+      "price_range": "$12-20"
+    }
+  },
+  {
+    "id": "buy_canadian_moment",
+    "name": "Buy-Canadian Patriotic Shopping",
+    "description": "Consumer actively seeking Canadian products amid US-Canada trade tensions and tariff discussions. Scanning shelves for Canadian brands as statement of national identity.",
+    "context": "It's early 2025. The consumer is doing their weekly grocery shop in Canada. U.S.–Canada trade tensions are in the news — tariff threats, retaliatory measures, and social media campaigns urging Canadians to buy domestic. The consumer is actively scanning shelves for Canadian-made alternatives to American products. They pass the sparkling water aisle: LaCroix (American), Bubly (PepsiCo, American), Perrier (Nestlé, French), and Clearly Canadian — with 'Product of Canada, bottled in Canada' prominently displayed. The Hudson's Bay Company bankruptcy is fresh in the news, heightening awareness of supporting Canadian brands. The consumer feels a genuine pull to put their money behind Canadian products.",
+    "question_templates": [
+      "Does the buy-Canadian sentiment make you actively seek out Clearly Canadian?",
+      "Would you switch from LaCroix or Bubly to Clearly Canadian specifically because it's Canadian?",
+      "How important is 'Product of Canada' labeling to you right now, compared to a year ago?",
+      "Does the trade tension context make CC's Canadian identity feel more meaningful or more like marketing?",
+      "Would you tell friends or family to switch to CC as part of buying Canadian?"
+    ],
+    "recommended_personas": [
+      "ca_mill_potential",
+      "ca_mill_loyal",
+      "nostalgia_loyalist",
+      "ca_genz_sober_curious",
+      "household_stockup"
+    ],
+    "required_fact_categories": [
+      "canadian_identity",
+      "brand_identity",
+      "competitive"
+    ],
+    "contextTags": [
+      "buy_canadian",
+      "tariffs",
+      "trade_tensions",
+      "patriotism",
+      "canadian_identity"
+    ],
+    "context_data": {
+      "trigger": "trade tensions / tariff news",
+      "consumer_sentiment": "patriotic purchasing",
+      "year": 2025
+    }
   }
 ]

@@ -61,6 +61,7 @@ export interface Scenario {
   recommended_personas: string[];
   required_fact_categories: string[];
   contextTags?: string[];
+  context_data?: Record<string, unknown>;
 }
 
 export interface BehaviorFact {
