@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import PersonaAvatar from "@/components/PersonaAvatar";
 import PersonaPopover from "@/components/PersonaPopover";
@@ -90,6 +90,8 @@ function DataPointsCounter() {
   return <>{dataPoints}+ Research Data Points</>;
 }
 
+const DESIGN_WIDTH = 1400;
+
 export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSearchProps) {
   const [input, setInput] = useState("");
   const [personas, setPersonas] = useState<Persona[]>([]);
@@ -100,6 +102,16 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
   const restartRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [hoveredPersona, setHoveredPersona] = useState<{ persona: Persona; rect: DOMRect } | null>(null);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    function updateScale() {
+      setScale(Math.min(1, (window.innerWidth - 32) / DESIGN_WIDTH));
+    }
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
   useEffect(() => {
     fetch("/api/personas")
@@ -140,6 +152,11 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
     }
   }
 
+  const personaAvatarMap = useMemo(
+    () => new Map(personas.map(p => [p.name, p.avatar_url ?? ""])),
+    [personas]
+  );
+
   const displayed = personas.slice(0, 3);
   const extra = personas.length - displayed.length;
 
@@ -175,7 +192,14 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
       ))}
 
       {/* Main panel */}
-      <div className="max-w-[1580px] w-full rounded-[48px] glass-panel flex flex-col gap-10 p-8 md:p-10 lg:p-12 relative z-10 mx-4 my-8 dark-scroll">
+      <div
+        style={{
+          width: DESIGN_WIDTH,
+          transform: `scale(${scale})`,
+          transformOrigin: "center center",
+        }}
+      >
+      <div className="w-full rounded-[48px] glass-panel flex flex-col gap-10 p-10 relative z-10 my-8 dark-scroll">
 
         {/* Top section */}
         <div className="flex flex-col gap-6">
@@ -329,6 +353,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
                       <PersonaAvatar
                         key={ni}
                         name={name}
+                        avatarUrl={personaAvatarMap.get(name) || undefined}
                         size="w-5 h-5"
                         textSize="text-[8px]"
                         className="border border-white/20"
@@ -382,6 +407,7 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
             )}
           </div>
         </div>
+      </div>
       </div>
 
       {/* Persona hover popover — rendered via portal to escape overflow:hidden */}
