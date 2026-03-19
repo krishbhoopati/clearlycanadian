@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC Loading Animation Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #1a2332;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Background image */
+        .bg {
+            position: fixed;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=3840&auto=format&fit=crop') center/cover no-repeat;
+            z-index: 0;
+        }
+        .bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26,35,50,0.75), rgba(26,35,50,0.5), rgba(0,0,0,0.8));
+        }
+
+        /* Glass panel */
+        .glass-panel {
+            position: relative;
+            z-index: 1;
+            width: 900px;
+            height: 600px;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-radius: 48px;
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Bubbles container */
+        .bubbles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100%) translateX(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(var(--drift)) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Generate 20 bubbles with varying properties */
+        .bubble:nth-child(1)  { width: 6px; height: 6px; left: 15%; bottom: -10%; animation-duration: 4.2s; animation-delay: 0.0s; --drift: 15px; opacity: 0.2; }
+        .bubble:nth-child(2)  { width: 4px; height: 4px; left: 25%; bottom: -10%; animation-duration: 3.5s; animation-delay: 0.3s; --drift: -10px; opacity: 0.15; }
+        .bubble:nth-child(3)  { width: 8px; height: 8px; left: 35%; bottom: -10%; animation-duration: 5.0s; animation-delay: 0.7s; --drift: 20px; opacity: 0.25; }
+        .bubble:nth-child(4)  { width: 3px; height: 3px; left: 42%; bottom: -10%; animation-duration: 3.8s; animation-delay: 1.0s; --drift: -8px; opacity: 0.2; }
+        .bubble:nth-child(5)  { width: 5px; height: 5px; left: 48%; bottom: -10%; animation-duration: 4.5s; animation-delay: 0.2s; --drift: 12px; opacity: 0.18; }
+        .bubble:nth-child(6)  { width: 7px; height: 7px; left: 55%; bottom: -10%; animation-duration: 3.3s; animation-delay: 1.5s; --drift: -18px; opacity: 0.22; }
+        .bubble:nth-child(7)  { width: 4px; height: 4px; left: 62%; bottom: -10%; animation-duration: 4.8s; animation-delay: 0.5s; --drift: 8px; opacity: 0.15; }
+        .bubble:nth-child(8)  { width: 6px; height: 6px; left: 70%; bottom: -10%; animation-duration: 3.6s; animation-delay: 1.2s; --drift: -14px; opacity: 0.2; }
+        .bubble:nth-child(9)  { width: 5px; height: 5px; left: 78%; bottom: -10%; animation-duration: 4.0s; animation-delay: 0.8s; --drift: 10px; opacity: 0.18; }
+        .bubble:nth-child(10) { width: 3px; height: 3px; left: 85%; bottom: -10%; animation-duration: 3.4s; animation-delay: 1.8s; --drift: -6px; opacity: 0.12; }
+        .bubble:nth-child(11) { width: 5px; height: 5px; left: 20%; bottom: -10%; animation-duration: 4.6s; animation-delay: 2.0s; --drift: 16px; opacity: 0.16; }
+        .bubble:nth-child(12) { width: 7px; height: 7px; left: 30%; bottom: -10%; animation-duration: 3.2s; animation-delay: 2.3s; --drift: -12px; opacity: 0.2; }
+        .bubble:nth-child(13) { width: 4px; height: 4px; left: 40%; bottom: -10%; animation-duration: 5.2s; animation-delay: 1.4s; --drift: 9px; opacity: 0.14; }
+        .bubble:nth-child(14) { width: 6px; height: 6px; left: 52%; bottom: -10%; animation-duration: 3.9s; animation-delay: 2.6s; --drift: -20px; opacity: 0.22; }
+        .bubble:nth-child(15) { width: 3px; height: 3px; left: 65%; bottom: -10%; animation-duration: 4.3s; animation-delay: 0.9s; --drift: 7px; opacity: 0.13; }
+        .bubble:nth-child(16) { width: 8px; height: 8px; left: 38%; bottom: -10%; animation-duration: 3.7s; animation-delay: 3.0s; --drift: -15px; opacity: 0.18; }
+        .bubble:nth-child(17) { width: 4px; height: 4px; left: 58%; bottom: -10%; animation-duration: 4.1s; animation-delay: 2.8s; --drift: 11px; opacity: 0.16; }
+        .bubble:nth-child(18) { width: 5px; height: 5px; left: 73%; bottom: -10%; animation-duration: 3.5s; animation-delay: 1.6s; --drift: -9px; opacity: 0.2; }
+        .bubble:nth-child(19) { width: 6px; height: 6px; left: 45%; bottom: -10%; animation-duration: 4.7s; animation-delay: 3.2s; --drift: 13px; opacity: 0.15; }
+        .bubble:nth-child(20) { width: 3px; height: 3px; left: 82%; bottom: -10%; animation-duration: 3.8s; animation-delay: 2.1s; --drift: -7px; opacity: 0.12; }
+
+        /* Bottles container */
+        .bottles {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+            height: 280px;
+        }
+
+        .bottle {
+            position: relative;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+        }
+
+        .bottle img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .bottle-left {
+            height: 220px;
+            transform: rotate(-6deg) translateX(20px);
+            animation: floatLeft 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .bottle-center {
+            height: 260px;
+            z-index: 3;
+            animation: floatCenter 3.5s ease-in-out infinite;
+        }
+
+        .bottle-right {
+            height: 220px;
+            transform: rotate(6deg) translateX(-20px);
+            animation: floatRight 4.2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes floatCenter {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-12px) scale(1.02) rotate(0.5deg); }
+        }
+
+        @keyframes floatLeft {
+            0%, 100% { transform: rotate(-6deg) translateX(20px) translateY(0) scale(1); }
+            50% { transform: rotate(-5deg) translateX(20px) translateY(-8px) scale(1.01); }
+        }
+
+        @keyframes floatRight {
+            0%, 100% { transform: rotate(6deg) translateX(-20px) translateY(0) scale(1); }
+            50% { transform: rotate(5deg) translateX(-20px) translateY(-10px) scale(1.01); }
+        }
+
+        /* Glow behind center bottle */
+        .bottle-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(120,180,230,0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Status text */
+        .status {
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .status-main {
+            font-size: 18px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        .status-detail {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.05em;
+            height: 20px;
+            position: relative;
+        }
+
+        .status-detail span {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        .status-detail span:nth-child(1) {
+            animation: fadeStep 5s ease-in-out forwards;
+        }
+        .status-detail span:nth-child(2) {
+            animation: fadeStep 5s ease-in-out forwards;
+            animation-delay: 1.6s;
+        }
+        .status-detail span:nth-child(3) {
+            animation: fadeStep 5s ease-in-out forwards;
+            animation-delay: 3.2s;
+        }
+
+        @keyframes fadeStep {
+            0% { opacity: 0; transform: translateX(-50%) translateY(8px); }
+            5% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            28% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            35% { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+            100% { opacity: 0; }
+        }
+
+        /* Progress bar */
+        .progress-container {
+            width: 200px;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin: 24px auto 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.7));
+            animation: fill 5s ease-out forwards;
+        }
+
+        @keyframes fill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Subtle sparkle dots near bottles */
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.6; transform: scale(1); }
+        }
+
+        .sparkle:nth-child(1) { top: 25%; left: 30%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 35%; right: 28%; animation-delay: 0.7s; }
+        .sparkle:nth-child(3) { top: 20%; left: 55%; animation-delay: 1.4s; }
+        .sparkle:nth-child(4) { top: 40%; left: 38%; animation-delay: 0.3s; }
+        .sparkle:nth-child(5) { top: 30%; right: 35%; animation-delay: 1.0s; }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+
+    <div class="glass-panel">
+        <!-- Bubbles -->
+        <div class="bubbles">
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+            <div class="bubble"></div><div class="bubble"></div>
+        </div>
+
+        <!-- Sparkle dots -->
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+
+        <!-- Bottles -->
+        <div class="bottles">
+            <div class="bottle-glow"></div>
+            <div class="bottle bottle-left">
+                <img src="https://i.imgur.com/placeholder1.png" alt="Summer Strawberry"
+                     onerror="this.parentElement.innerHTML='<div style=&quot;width:90px;height:220px;background:linear-gradient(180deg,rgba(135,190,230,0.6),rgba(100,160,210,0.8));border-radius:20px 20px 35px 35px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.2)&quot;><span style=&quot;color:white;font-size:11px;text-align:center;opacity:0.7&quot;>Summer<br>Strawberry</span></div>'">
+            </div>
+            <div class="bottle bottle-center">
+                <img src="https://i.imgur.com/placeholder2.png" alt="Mountain Blackberry"
+                     onerror="this.parentElement.innerHTML='<div style=&quot;width:100px;height:260px;background:linear-gradient(180deg,rgba(120,175,220,0.7),rgba(80,140,200,0.9));border-radius:22px 22px 40px 40px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.25);box-shadow:0 10px 30px rgba(0,0,0,0.3)&quot;><span style=&quot;color:white;font-size:12px;text-align:center;font-weight:500&quot;>Mountain<br>Blackberry</span></div>'">
+            </div>
+            <div class="bottle bottle-right">
+                <img src="https://i.imgur.com/placeholder3.png" alt="Grapefruit Essence"
+                     onerror="this.parentElement.innerHTML='<div style=&quot;width:90px;height:220px;background:linear-gradient(180deg,rgba(140,195,235,0.6),rgba(110,170,215,0.8));border-radius:20px 20px 35px 35px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.2)&quot;><span style=&quot;color:white;font-size:11px;text-align:center;opacity:0.7&quot;>Grapefruit<br>Essence</span></div>'">
+            </div>
+        </div>
+
+        <!-- Status text -->
+        <div class="status">
+            <div class="status-main">Consulting your consumer panel...</div>
+            <div class="status-detail">
+                <span>Analyzing question...</span>
+                <span>Querying Ethan, Marie, Aisha, Raj...</span>
+                <span>Generating insights...</span>
+            </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-container">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+</body>
+</html>

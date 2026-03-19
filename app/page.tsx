@@ -15,12 +15,15 @@ export default function HomePage() {
     setLoading(true);
     if (view !== "results") setView("results");
     try {
-      const res = await fetch("/api/ask-lab", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_question: q }),
-      });
-      const data = await res.json();
+      const [res] = await Promise.all([
+        fetch("/api/ask-lab", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_question: q }),
+        }),
+        new Promise(resolve => setTimeout(resolve, 5000)),
+      ]);
+      const data = await (res as Response).json();
       const result: AskLabResponse = data.data ?? data;
       setTurns(prev => [...prev, { question: q, result, timestamp: Date.now() }]);
     } catch {

@@ -5,6 +5,7 @@ import Image from "next/image";
 import PersonaAvatar from "@/components/PersonaAvatar";
 import PersonaPopover from "@/components/PersonaPopover";
 import ResultsView from "@/components/ResultsView";
+import LoadingOverlay from "@/components/LoadingOverlay";
 import type { Persona, ConversationTurn } from "@/lib/types";
 
 interface HomeSearchProps {
@@ -464,6 +465,8 @@ export default function HomeSearch({
           </div>
         </div>
       </div>
+
+      <LoadingOverlay visible={loading} personas={personas} />
 
       {/* Persona hover popover — rendered via portal to escape overflow:hidden */}
       {hoveredPersona && (
