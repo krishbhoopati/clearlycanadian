@@ -44,7 +44,7 @@ export default function LoadingOverlay({ visible, personas }: Props) {
   const names = personas?.slice(0, 4).map(p => p.name).join(", ") ?? "your panel";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: "rgba(15, 20, 30, 0.85)", backdropFilter: "blur(8px)" }}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Bubbles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {BUBBLES.map((b, i) => (
@@ -114,8 +114,8 @@ export default function LoadingOverlay({ visible, personas }: Props) {
 
         {/* Status text */}
         <div className="text-center relative z-10">
-          <p className="text-white/70 text-lg font-medium mb-3">Consulting your consumer panel…</p>
-          <div className="relative h-5 font-mono text-[13px] text-white/35 tracking-wider">
+          <p className="text-white/90 text-2xl font-bold mb-3 font-manrope">Consulting your consumer panel…</p>
+          <div className="relative h-6 font-manrope text-[15px] font-bold text-white tracking-wider">
             <span style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", opacity: 0, animation: "loading-status-step 5s ease-in-out infinite" }}>
               Analyzing question…
             </span>
@@ -129,7 +129,7 @@ export default function LoadingOverlay({ visible, personas }: Props) {
         </div>
 
         {/* Progress bar */}
-        <div className="mt-6 w-48 h-[3px] rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.1)" }}>
+        <div className="mt-8 w-48 h-[3px] rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.1)" }}>
           <div
             key={visible ? "active" : "idle"}
             style={{

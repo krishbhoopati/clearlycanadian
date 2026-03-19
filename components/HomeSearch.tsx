@@ -198,7 +198,7 @@ export default function HomeSearch({
         className="absolute inset-0"
       />
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-[#2a3441]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-[#2a3441]/80" />
 
       {/* Ambient bubbles */}
       {BUBBLES.map((b, i) => (
@@ -222,6 +222,9 @@ export default function HomeSearch({
           width: DESIGN_WIDTH,
           transform: `scale(${scale})`,
           transformOrigin: "center center",
+          opacity: loading ? 0 : 1,
+          pointerEvents: loading ? "none" : undefined,
+          transition: "opacity 0.4s ease",
         }}
       >
         <div
