@@ -11,24 +11,66 @@
     "customer_type": "potential",
     "behavioral_segment": "general_potential",
     "description": "A 22-year-old Toronto university student who discovers beverages through TikTok and Instagram. She swapped soda for sparkling water two years ago and gravitates toward Canadian brands with aesthetic packaging. She's never bought Clearly Canadian but has seen it on her FYP.",
-    "motivations": ["Canadian brand pride", "aesthetic glass bottle", "low/no sugar", "peer validation", "TikTok-viral discovery"],
-    "pain_points": ["hard to find at her usual 7-Eleven", "unfamiliar with current lineup", "prices higher than a Red Bull"],
-    "current_beverages": ["Bubly", "Celsius", "Boba tea", "iced matcha latte"],
+    "motivations": [
+      "Canadian brand pride",
+      "aesthetic glass bottle",
+      "low/no sugar",
+      "peer validation",
+      "TikTok-viral discovery"
+    ],
+    "pain_points": [
+      "hard to find at her usual 7-Eleven",
+      "unfamiliar with current lineup",
+      "prices higher than a Red Bull"
+    ],
+    "current_beverages": [
+      "Bubly",
+      "Celsius",
+      "Boba tea",
+      "iced matcha latte"
+    ],
     "beverage_psychology": "Drinks with her eyes first — packaging must look good in a photo before she tastes it. Follows 6 beverage accounts on TikTok.",
-    "buying_triggers": ["sees it go viral on TikTok", "friend is holding one in a photo", "spotted in grocery cold case at eye level", "cool glass bottle design"],
-    "objections": ["'Is this brand still around?'", "'Can I actually find it at a convenience store near me?'", "'Is the Zero Sugar version as good as the original?'"],
+    "buying_triggers": [
+      "sees it go viral on TikTok",
+      "friend is holding one in a photo",
+      "spotted in grocery cold case at eye level",
+      "cool glass bottle design"
+    ],
+    "objections": [
+      "'Is this brand still around?'",
+      "'Can I actually find it at a convenience store near me?'",
+      "'Is the Zero Sugar version as good as the original?'"
+    ],
     "decision_style": "impulse, social-proof-driven, aesthetics-first",
-    "channel_preferences": ["convenience store cold case", "Instagram discovery", "TikTok FYP", "grocery cold aisle"],
-    "product_preferences": ["Clearly Canadian Zero Sugar", "Clearly Canadian Originals glass bottle"],
-    "shopping_locations": ["7-Eleven", "Rabba Fine Foods", "campus vending", "Loblaws"],
+    "channel_preferences": [
+      "convenience store cold case",
+      "Instagram discovery",
+      "TikTok FYP",
+      "grocery cold aisle"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Zero Sugar",
+      "Clearly Canadian Originals glass bottle"
+    ],
+    "shopping_locations": [
+      "7-Eleven",
+      "Rabba Fine Foods",
+      "campus vending",
+      "Loblaws"
+    ],
     "price_sensitivity": "moderate — won't exceed $3.50 single-serve for a brand she hasn't tried",
     "language_style": "casual, emoji-heavy, trend-aware, short punchy sentences, uses 'lowkey', 'slay', 'no cap'",
-    "core_traits": ["brand curious", "aesthetics-first", "Canadian identity proud", "sugar-conscious"],
+    "core_traits": [
+      "brand curious",
+      "aesthetics-first",
+      "Canadian identity proud",
+      "sugar-conscious"
+    ],
     "canadian_identity_relevance": "High — actively prefers Canadian-origin brands when she's aware of them",
     "sustainability_attitude": "Cares about packaging waste; glass > plastic in her mind",
-    "nostalgia_relevance": "Low — she was born after CC's 90s peak",
+    "nostalgia_relevance": "Low — she was born after Clearly Canadian's 90s peak",
     "cc_awareness": "Seen it on TikTok twice; doesn't know the backstory",
-    "cc_awareness_label": "Never heard of CC",
+    "cc_awareness_label": "Never heard of Clearly Canadian",
     "segment_label": "Potential",
     "cc_perception": "Cool retro aesthetic, might be trendy again",
     "social_media_behavior": "Posts aesthetic beverage shots on Instagram stories; shares TikTok reviews with friends",
@@ -43,7 +85,12 @@
       "Immediately more interested if a Canadian friend is visibly drinking it",
       "Checks if the brand has a TikTok presence before deciding if it's 'legit'"
     ],
-    "evidence_ids": ["bf-003", "bf-005", "bf-006", "bf-021"],
+    "evidence_ids": [
+      "bf-003",
+      "bf-005",
+      "bf-006",
+      "bf-021"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -58,24 +105,65 @@
     "customer_type": "potential",
     "behavioral_segment": "premium_lifestyle",
     "description": "A 32-year-old Vancouver UX designer who curates his life around premium, design-forward products. He drinks sparkling water daily but hasn't tried Clearly Canadian — he's aware of the brand but sees it as a grocery-aisle relic. A beautifully designed can or a tasteful rebrand would change his mind instantly.",
-    "motivations": ["premium aesthetics", "clean ingredients", "Canadian brand support", "differentiation from mass-market sparkling water"],
-    "pain_points": ["perceives CC as dated", "uncertain about ingredient quality vs. San Pellegrino", "doesn't want to be seen drinking something 'uncool'"],
-    "current_beverages": ["San Pellegrino", "Spindrift", "Perrier Lime", "Recess"],
+    "motivations": [
+      "premium aesthetics",
+      "clean ingredients",
+      "Canadian brand support",
+      "differentiation from mass-market sparkling water"
+    ],
+    "pain_points": [
+      "perceives Clearly Canadian as dated",
+      "uncertain about ingredient quality vs. San Pellegrino",
+      "doesn't want to be seen drinking something 'uncool'"
+    ],
+    "current_beverages": [
+      "San Pellegrino",
+      "Spindrift",
+      "Perrier Lime",
+      "Recess"
+    ],
     "beverage_psychology": "Treats drinks as lifestyle signals. Will pay a premium for clean branding and real-fruit flavor.",
-    "buying_triggers": ["a well-designed label or can", "clean ingredient list (no artificial anything)", "Canadian-made premium positioning", "spotted at an upscale café or yoga studio"],
-    "objections": ["'The old branding looked cheap'", "'Is it actually natural flavors or artificial?'", "'Why would I switch from San Pellegrino?'"],
+    "buying_triggers": [
+      "a well-designed label or can",
+      "clean ingredient list (no artificial anything)",
+      "Canadian-made premium positioning",
+      "spotted at an upscale café or yoga studio"
+    ],
+    "objections": [
+      "'The old branding looked cheap'",
+      "'Is it actually natural flavors or artificial?'",
+      "'Why would I switch from San Pellegrino?'"
+    ],
     "decision_style": "deliberate, brand-values-driven, willing to pay premium",
-    "channel_preferences": ["upscale grocery", "specialty café", "online DTC", "lifestyle influencer recommendation"],
-    "product_preferences": ["Clearly Canadian Zero Sugar", "any new premium SKU in cans"],
-    "shopping_locations": ["Whole Foods", "Choices Markets", "Save-On-Foods", "online DTC"],
+    "channel_preferences": [
+      "upscale grocery",
+      "specialty café",
+      "online DTC",
+      "lifestyle influencer recommendation"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Zero Sugar",
+      "any new premium SKU in cans"
+    ],
+    "shopping_locations": [
+      "Whole Foods",
+      "Choices Markets",
+      "Save-On-Foods",
+      "online DTC"
+    ],
     "price_sensitivity": "low — will pay $4–5 for a single-serve if the brand earns it",
     "language_style": "thoughtful, design-vocabulary, uses 'intentional', 'considered', 'elevated'",
-    "core_traits": ["design-oriented", "brand-values driven", "quality over price", "Canadian pride"],
+    "core_traits": [
+      "design-oriented",
+      "brand-values driven",
+      "quality over price",
+      "Canadian pride"
+    ],
     "canadian_identity_relevance": "Very high — actively seeks Canadian-origin premium products",
     "sustainability_attitude": "Strongly prefers glass or aluminum; avoids plastic",
-    "nostalgia_relevance": "Low — grew up with CC but doesn't lead with nostalgia",
+    "nostalgia_relevance": "Low — grew up with Clearly Canadian but doesn't lead with nostalgia",
     "cc_awareness": "Aware of the brand's 90s history; hasn't bought since rebrand",
-    "cc_awareness_label": "Vaguely remembers CC",
+    "cc_awareness_label": "Vaguely remembers Clearly Canadian",
     "segment_label": "Potential",
     "cc_perception": "Potential to be premium Canadian sparkling water if branding is right",
     "social_media_behavior": "Posts aesthetic flat-lays on Instagram; follows design and food accounts",
@@ -90,7 +178,11 @@
       "Responds positively to 'Canadian-made' callouts on packaging",
       "Won't try something new unless he trusts the channel where he discovered it"
     ],
-    "evidence_ids": ["bf-002", "bf-004", "bf-008"],
+    "evidence_ids": [
+      "bf-002",
+      "bf-004",
+      "bf-008"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -105,24 +197,67 @@
     "customer_type": "potential",
     "behavioral_segment": "sober_curious",
     "description": "A 24-year-old Montréaler who gave up alcohol six months ago as part of a wellness reset. She goes to bars with friends and needs a non-alcoholic option that doesn't feel like a compromise. Sparkling water with real flavor gives her something to hold and sip without standing out.",
-    "motivations": ["non-alcoholic social drink that feels festive", "no judgment from friends", "clean ingredients", "something to order at a bar", "staying present"],
-    "pain_points": ["bars stock boring soda water", "club soda feels like a punishment", "non-alcoholic options overpriced at bars", "friends don't understand her choice"],
-    "current_beverages": ["Athletic Brewing NA beer", "Seedlip", "LaCroix", "kombucha"],
+    "motivations": [
+      "non-alcoholic social drink that feels festive",
+      "no judgment from friends",
+      "clean ingredients",
+      "something to order at a bar",
+      "staying present"
+    ],
+    "pain_points": [
+      "bars stock boring soda water",
+      "club soda feels like a punishment",
+      "non-alcoholic options overpriced at bars",
+      "friends don't understand her choice"
+    ],
+    "current_beverages": [
+      "Athletic Brewing NA beer",
+      "Seedlip",
+      "LaCroix",
+      "kombucha"
+    ],
     "beverage_psychology": "Drinks are social props as much as hydration. She needs something that looks intentional, not like she's having water.",
-    "buying_triggers": ["listed on a bar menu", "friend orders it and it looks good", "visible can design at a festival", "recommended by a wellness influencer"],
-    "objections": ["'Do bars actually stock this?'", "'Is it too sweet to drink all night?'", "'Will my friends tease me for ordering sparkling water?'"],
+    "buying_triggers": [
+      "listed on a bar menu",
+      "friend orders it and it looks good",
+      "visible can design at a festival",
+      "recommended by a wellness influencer"
+    ],
+    "objections": [
+      "'Do bars actually stock this?'",
+      "'Is it too sweet to drink all night?'",
+      "'Will my friends tease me for ordering sparkling water?'"
+    ],
     "decision_style": "values-led, influenced by social setting, researches before trying at bars",
-    "channel_preferences": ["bar and restaurant menu", "health food store", "wellness influencer recommendation", "Instagram"],
-    "product_preferences": ["Clearly Canadian Zero Sugar", "Clearly Canadian Originals as a mixer"],
-    "shopping_locations": ["IGA", "Pharmaprix", "Rachelle-Béry health store", "LCBO (for NA options)"],
+    "channel_preferences": [
+      "bar and restaurant menu",
+      "health food store",
+      "wellness influencer recommendation",
+      "Instagram"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Zero Sugar",
+      "Clearly Canadian Originals as a mixer"
+    ],
+    "shopping_locations": [
+      "IGA",
+      "Pharmaprix",
+      "Rachelle-Béry health store",
+      "LCBO (for NA options)"
+    ],
     "price_sensitivity": "moderate — will pay bar prices for something that feels intentional",
     "language_style": "wellness-forward, thoughtful, bilingual (French/English), uses 'vibe', 'intentional', 'reset'",
-    "core_traits": ["sober-curious", "community-oriented", "wellness-driven", "aesthetics-aware"],
+    "core_traits": [
+      "sober-curious",
+      "community-oriented",
+      "wellness-driven",
+      "aesthetics-aware"
+    ],
     "canadian_identity_relevance": "Moderate — Québécois identity matters more than pan-Canadian",
     "sustainability_attitude": "High — strongly prefers glass or recyclable aluminum",
-    "nostalgia_relevance": "None — never drank CC growing up",
+    "nostalgia_relevance": "None — never drank Clearly Canadian growing up",
     "cc_awareness": "Vaguely seen it at a yoga studio once; no strong impression",
-    "cc_awareness_label": "Tried CC twice, loves it",
+    "cc_awareness_label": "Tried Clearly Canadian twice, loves it",
     "segment_label": "Sober Curious",
     "cc_perception": "Unclear — might be too sweet, might be perfect for bars",
     "social_media_behavior": "Posts wellness routines and NA drink reviews; follows sobriety-positive accounts",
@@ -137,7 +272,11 @@
       "Looks for 'zero alcohol' or 'non-alcoholic' callouts to confirm before ordering",
       "More likely to try if positioned alongside NA beer/wine on a menu"
     ],
-    "evidence_ids": ["bf-005", "bf-010", "bf-015"],
+    "evidence_ids": [
+      "bf-005",
+      "bf-010",
+      "bf-015"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -152,39 +291,85 @@
     "customer_type": "existing",
     "behavioral_segment": "nostalgia_loyalist",
     "description": "A 38-year-old Calgary project manager who backed Clearly Canadian on Indiegogo in 2015 and bought cases of Mountain Blackberry when the brand came back. He drinks it as a weekend treat and buys multi-packs online. He's protective of the brand and skeptical of new flavors that stray from the originals.",
-    "motivations": ["childhood nostalgia", "brand loyalty (backed the comeback)", "weekend treat ritual", "sharing with his kids", "original flavor preservation"],
-    "pain_points": ["Mountain Blackberry hard to find in stores", "new flavors feel like mission drift", "hates when the glass bottle is changed", "worries brand might disappear again"],
-    "current_beverages": ["Clearly Canadian (primary)", "Perrier (at restaurants)", "craft beer on weekends"],
-    "beverage_psychology": "CC is an emotional purchase, not a rational one. He's buying a piece of his childhood. New flavors are a threat to that.",
-    "buying_triggers": ["seasonal Mountain Blackberry stock notification", "multi-pack deal online", "sees it in a local grocery store", "kids ask for it by name"],
-    "objections": ["'Why are you adding new flavors? Give me Mountain Blackberry.'", "'The cans don't taste the same as the bottles'", "'Don't mess with the formula'"],
+    "motivations": [
+      "childhood nostalgia",
+      "brand loyalty (backed the comeback)",
+      "weekend treat ritual",
+      "sharing with his kids",
+      "original flavor preservation"
+    ],
+    "pain_points": [
+      "Mountain Blackberry hard to find in stores",
+      "new flavors feel like mission drift",
+      "hates when the glass bottle is changed",
+      "worries brand might disappear again"
+    ],
+    "current_beverages": [
+      "Clearly Canadian (primary)",
+      "Perrier (at restaurants)",
+      "craft beer on weekends"
+    ],
+    "beverage_psychology": "Clearly Canadian is an emotional purchase, not a rational one. He's buying a piece of his childhood. New flavors are a threat to that.",
+    "buying_triggers": [
+      "seasonal Mountain Blackberry stock notification",
+      "multi-pack deal online",
+      "sees it in a local grocery store",
+      "kids ask for it by name"
+    ],
+    "objections": [
+      "'Why are you adding new flavors? Give me Mountain Blackberry.'",
+      "'The cans don't taste the same as the bottles'",
+      "'Don't mess with the formula'"
+    ],
     "decision_style": "loyal repeat buyer, brand-protective, resistant to change",
-    "channel_preferences": ["online order (clearlycanadian.com)", "grocery multi-pack", "warehouse club"],
-    "product_preferences": ["Clearly Canadian Mountain Blackberry glass bottle", "Clearly Canadian Country Raspberry"],
-    "shopping_locations": ["Safeway", "Costco", "clearlycanadian.com", "Real Canadian Superstore"],
+    "channel_preferences": [
+      "online order (clearlycanadian.com)",
+      "grocery multi-pack",
+      "warehouse club"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Mountain Blackberry glass bottle",
+      "Clearly Canadian Country Raspberry"
+    ],
+    "shopping_locations": [
+      "Safeway",
+      "Costco",
+      "clearlycanadian.com",
+      "Real Canadian Superstore"
+    ],
     "price_sensitivity": "low for originals — will pay a premium; resistant to paying more for new SKUs",
     "language_style": "direct, nostalgic references, protective of the brand, uses 'remember when', 'back in the day'",
-    "core_traits": ["brand loyalist", "nostalgia-driven", "skeptical of change", "early adopter of the comeback"],
-    "canadian_identity_relevance": "Very high — CC is part of his Canadian identity",
+    "core_traits": [
+      "brand loyalist",
+      "nostalgia-driven",
+      "skeptical of change",
+      "early adopter of the comeback"
+    ],
+    "canadian_identity_relevance": "Very high — Clearly Canadian is part of his Canadian identity",
     "sustainability_attitude": "Prefers glass; disappointed when brands move to cans",
-    "nostalgia_relevance": "Extremely high — primary driver of all CC purchasing",
+    "nostalgia_relevance": "Extremely high — primary driver of all Clearly Canadian purchasing",
     "cc_awareness": "Deeply aware — backed the Indiegogo, knows the brand history",
     "cc_awareness_label": "Crowdfunding backer, loyal buyer",
     "segment_label": "Loyal",
     "cc_perception": "Beloved Canadian classic that must be protected from change",
-    "social_media_behavior": "Engages on CC's Facebook page; shares Mountain Blackberry finds with his friend group",
+    "social_media_behavior": "Engages on Clearly Canadian's Facebook page; shares Mountain Blackberry finds with his friend group",
     "response_to_maple_product": "Skeptical — 'Why fix what isn't broken?' Would try once but wouldn't replace Mountain Blackberry",
-    "bar_and_festival_relevance": "Low — drinks CC at home, not in bars",
+    "bar_and_festival_relevance": "Low — drinks Clearly Canadian at home, not in bars",
     "behavior_rules": [
       "Buys Mountain Blackberry whenever he sees it in stock — never leaves fewer than two cases at home",
-      "Will post a negative comment on CC's social media if a beloved flavor is discontinued",
+      "Will post a negative comment on Clearly Canadian's social media if a beloved flavor is discontinued",
       "Refuses to switch to cans for his home supply — glass bottle or nothing",
       "Reads new flavor announcements with skepticism before he'll try them",
-      "Will evangelize CC to any friend who mentions sparkling water within earshot",
-      "Gets annoyed if CC changes the label design without consulting the community",
+      "Will evangelize Clearly Canadian to any friend who mentions sparkling water within earshot",
+      "Gets annoyed if Clearly Canadian changes the label design without consulting the community",
       "Compares every new flavored sparkling water he tastes against Mountain Blackberry as his benchmark"
     ],
-    "evidence_ids": ["bf-001", "bf-007", "bf-012", "bf-018"],
+    "evidence_ids": [
+      "bf-001",
+      "bf-007",
+      "bf-012",
+      "bf-018"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -199,24 +384,67 @@
     "customer_type": "potential",
     "behavioral_segment": "general_potential",
     "description": "A 21-year-old Atlanta college student studying pre-med who discovered Clearly Canadian through a retro-product TikTok. She's curious but has never bought it — she can't find it at her usual CVS. She drinks sparkling water constantly to stay hydrated during long study sessions.",
-    "motivations": ["hydration that tastes good", "zero/low sugar", "retro novelty factor", "TikTok-driven discovery", "affordable single-serve"],
-    "pain_points": ["can't find it locally", "doesn't know which flavors are best", "price unclear online", "glass bottle feels fragile for campus life"],
-    "current_beverages": ["LaCroix", "Bubly", "Liquid Death", "unsweetened iced tea"],
+    "motivations": [
+      "hydration that tastes good",
+      "zero/low sugar",
+      "retro novelty factor",
+      "TikTok-driven discovery",
+      "affordable single-serve"
+    ],
+    "pain_points": [
+      "can't find it locally",
+      "doesn't know which flavors are best",
+      "price unclear online",
+      "glass bottle feels fragile for campus life"
+    ],
+    "current_beverages": [
+      "LaCroix",
+      "Bubly",
+      "Liquid Death",
+      "unsweetened iced tea"
+    ],
     "beverage_psychology": "Drinks are fuel for studying. Wants flavor variety to stay interested in hydration. TikTok is her product research tool.",
-    "buying_triggers": ["finds it at a Target or Whole Foods", "TikTok review from a creator she trusts", "a friend buys it and she tries theirs", "shelf placement at a campus convenience store"],
-    "objections": ["'I can't find it anywhere near campus'", "'The glass bottle seems inconvenient'", "'Is this the same as what was popular in the 90s or is it different now?'"],
+    "buying_triggers": [
+      "finds it at a Target or Whole Foods",
+      "TikTok review from a creator she trusts",
+      "a friend buys it and she tries theirs",
+      "shelf placement at a campus convenience store"
+    ],
+    "objections": [
+      "'I can't find it anywhere near campus'",
+      "'The glass bottle seems inconvenient'",
+      "'Is this the same as what was popular in the 90s or is it different now?'"
+    ],
     "decision_style": "impulse-plus-research — sees it, looks it up on TikTok, then buys",
-    "channel_preferences": ["Target", "Whole Foods", "TikTok shop", "campus convenience store"],
-    "product_preferences": ["Clearly Canadian Zero Sugar", "Clearly Canadian Originals in cans for campus"],
-    "shopping_locations": ["Target", "CVS", "Whole Foods", "campus convenience"],
+    "channel_preferences": [
+      "Target",
+      "Whole Foods",
+      "TikTok shop",
+      "campus convenience store"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Zero Sugar",
+      "Clearly Canadian Originals in cans for campus"
+    ],
+    "shopping_locations": [
+      "Target",
+      "CVS",
+      "Whole Foods",
+      "campus convenience"
+    ],
     "price_sensitivity": "high — won't spend more than $2.50 single-serve without a compelling reason",
     "language_style": "Gen Z internet language, TikTok-reference-heavy, casual, uses 'that's giving', 'understood the assignment'",
-    "core_traits": ["TikTok researcher", "hydration-focused", "novelty seeker", "budget-conscious"],
+    "core_traits": [
+      "TikTok researcher",
+      "hydration-focused",
+      "novelty seeker",
+      "budget-conscious"
+    ],
     "canadian_identity_relevance": "Low — finds the Canadian origin charming but not a decision driver",
     "sustainability_attitude": "Moderate — prefers cans over plastic but won't pay extra for glass",
     "nostalgia_relevance": "Low — parents might have fond memories but she doesn't",
     "cc_awareness": "Seen 2–3 TikToks; knows it's a 90s Canadian brand making a comeback",
-    "cc_awareness_label": "Drinks Poppi, never heard of CC",
+    "cc_awareness_label": "Drinks Poppi, never heard of Clearly Canadian",
     "segment_label": "Potential",
     "cc_perception": "Retro-cool novelty — like a vintage find that's actually good",
     "social_media_behavior": "Makes TikTok reviews of new drinks she tries; moderate following",
@@ -231,7 +459,11 @@
       "Shares new drink discoveries in her friend group chat and waits for reactions before buying",
       "More likely to buy if she sees it stocked at a Target she already shops at"
     ],
-    "evidence_ids": ["bf-003", "bf-005", "bf-021"],
+    "evidence_ids": [
+      "bf-003",
+      "bf-005",
+      "bf-021"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -246,24 +478,65 @@
     "customer_type": "lapsed",
     "behavioral_segment": "nostalgia_loyalist",
     "description": "A 36-year-old Chicago history teacher who drank Clearly Canadian as a kid in the 90s. He thinks the brand is gone — his last purchase was at a gas station around 2003. He'd be genuinely surprised and excited to find out it's back and would immediately look for it at his grocery store.",
-    "motivations": ["childhood nostalgia", "genuine curiosity about the comeback", "sharing a piece of his 90s with his students", "finding something better than LaCroix for home"],
-    "pain_points": ["didn't know CC came back", "doesn't know where to find it in Chicago", "worries it won't taste the same as he remembers"],
-    "current_beverages": ["LaCroix", "Topo Chico", "Gatorade Zero", "coffee"],
+    "motivations": [
+      "childhood nostalgia",
+      "genuine curiosity about the comeback",
+      "sharing a piece of his 90s with his students",
+      "finding something better than LaCroix for home"
+    ],
+    "pain_points": [
+      "didn't know Clearly Canadian came back",
+      "doesn't know where to find it in Chicago",
+      "worries it won't taste the same as he remembers"
+    ],
+    "current_beverages": [
+      "LaCroix",
+      "Topo Chico",
+      "Gatorade Zero",
+      "coffee"
+    ],
     "beverage_psychology": "Drinks are mostly utilitarian but has emotional spots for products from his childhood. Will investigate a nostalgia trigger thoroughly.",
-    "buying_triggers": ["sees it mentioned in a 'things from the 90s that came back' article", "finds it accidentally on a grocery shelf", "a friend or family member tells him it's back", "social media ad that references the comeback story"],
-    "objections": ["'I thought this brand was dead'", "'Will it taste the same as I remember?'", "'Where can I actually buy it in Chicago?'"],
+    "buying_triggers": [
+      "sees it mentioned in a 'things from the 90s that came back' article",
+      "finds it accidentally on a grocery shelf",
+      "a friend or family member tells him it's back",
+      "social media ad that references the comeback story"
+    ],
+    "objections": [
+      "'I thought this brand was dead'",
+      "'Will it taste the same as I remember?'",
+      "'Where can I actually buy it in Chicago?'"
+    ],
     "decision_style": "deliberate researcher — will google the brand story before buying",
-    "channel_preferences": ["grocery store", "Amazon", "article/editorial discovery", "word of mouth"],
-    "product_preferences": ["Clearly Canadian Mountain Blackberry (what he drank as a kid)", "Clearly Canadian Country Raspberry"],
-    "shopping_locations": ["Jewel-Osco", "Whole Foods", "Amazon", "Target"],
+    "channel_preferences": [
+      "grocery store",
+      "Amazon",
+      "article/editorial discovery",
+      "word of mouth"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Mountain Blackberry (what he drank as a kid)",
+      "Clearly Canadian Country Raspberry"
+    ],
+    "shopping_locations": [
+      "Jewel-Osco",
+      "Whole Foods",
+      "Amazon",
+      "Target"
+    ],
     "price_sensitivity": "moderate — will pay $3–4 for the nostalgia purchase; won't do a subscription without trying first",
     "language_style": "conversational, teacher-dad energy, makes historical references, says 'honestly', 'legitimately'",
-    "core_traits": ["nostalgia-triggered", "deliberate researcher", "loyal once re-engaged", "storyteller"],
+    "core_traits": [
+      "nostalgia-triggered",
+      "deliberate researcher",
+      "loyal once re-engaged",
+      "storyteller"
+    ],
     "canadian_identity_relevance": "Low — liked that it was Canadian as a kid but not a driver now",
     "sustainability_attitude": "Moderate — would prefer glass for the nostalgia factor",
     "nostalgia_relevance": "Very high — this is the primary trigger",
     "cc_awareness": "Thought the brand was gone; would be excited to learn about the comeback",
-    "cc_awareness_label": "90s nostalgia, thinks CC is gone",
+    "cc_awareness_label": "90s nostalgia, thinks Clearly Canadian is gone",
     "segment_label": "Lapsed",
     "cc_perception": "Beloved childhood memory — hopes it lives up to his memory",
     "social_media_behavior": "Low posting frequency; reads Facebook groups and Reddit nostalgia threads",
@@ -278,7 +551,11 @@
       "Won't subscribe or buy a multi-pack until he's confirmed it tastes right",
       "Will post to his local Facebook group about finding it — drives peer discovery"
     ],
-    "evidence_ids": ["bf-001", "bf-007", "bf-016"],
+    "evidence_ids": [
+      "bf-001",
+      "bf-007",
+      "bf-016"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -293,19 +570,61 @@
     "customer_type": "potential",
     "behavioral_segment": "health_wellness",
     "description": "A 23-year-old Austin dietitian assistant and micro-influencer who scrutinizes every ingredient label. She's heard of Clearly Canadian but hasn't tried it because she's worried about sweeteners in the Zero Sugar line. She'd try it and post about it if she's satisfied with the ingredient list.",
-    "motivations": ["clean ingredients (no artificial sweeteners)", "real fruit flavor", "low sugar without stevia", "something to recommend to her followers", "staying hydrated during workouts"],
-    "pain_points": ["stevia aftertaste in Zero Sugar products", "artificial flavors in 'natural' brands", "unclear sourcing of flavoring"],
-    "current_beverages": ["Hint water", "Spindrift", "NOOMA electrolyte water", "plain sparkling water"],
+    "motivations": [
+      "clean ingredients (no artificial sweeteners)",
+      "real fruit flavor",
+      "low sugar without stevia",
+      "something to recommend to her followers",
+      "staying hydrated during workouts"
+    ],
+    "pain_points": [
+      "stevia aftertaste in Zero Sugar products",
+      "artificial flavors in 'natural' brands",
+      "unclear sourcing of flavoring"
+    ],
+    "current_beverages": [
+      "Hint water",
+      "Spindrift",
+      "NOOMA electrolyte water",
+      "plain sparkling water"
+    ],
     "beverage_psychology": "Every sip is a health decision. She reads ingredient labels like scientific studies. Her followers trust her recommendations.",
-    "buying_triggers": ["clean ingredient label (no stevia, no artificial colors)", "real fruit juice content", "registered dietitian endorsement or review", "a wellness creator she trusts posts about it"],
-    "objections": ["'Does Zero Sugar use stevia? Because I can taste stevia and hate it'", "'What are the natural flavors — are they actually natural?'", "'Is the sugar in Originals cane sugar or HFCS?'"],
+    "buying_triggers": [
+      "clean ingredient label (no stevia, no artificial colors)",
+      "real fruit juice content",
+      "registered dietitian endorsement or review",
+      "a wellness creator she trusts posts about it"
+    ],
+    "objections": [
+      "'Does Zero Sugar use stevia? Because I can taste stevia and hate it'",
+      "'What are the natural flavors — are they actually natural?'",
+      "'Is the sugar in Originals cane sugar or HFCS?'"
+    ],
     "decision_style": "research-intensive, ingredient-first, influential on her network",
-    "channel_preferences": ["Whole Foods", "health food store", "wellness influencer network", "brand website (for full ingredient transparency)"],
-    "product_preferences": ["Clearly Canadian Originals (if sugar is cane sugar)", "Clearly Canadian Zero Sugar only if no stevia"],
-    "shopping_locations": ["Whole Foods", "Sprouts", "Natural Grocers", "online DTC"],
+    "channel_preferences": [
+      "Whole Foods",
+      "health food store",
+      "wellness influencer network",
+      "brand website (for full ingredient transparency)"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Originals (if sugar is cane sugar)",
+      "Clearly Canadian Zero Sugar only if no stevia"
+    ],
+    "shopping_locations": [
+      "Whole Foods",
+      "Sprouts",
+      "Natural Grocers",
+      "online DTC"
+    ],
     "price_sensitivity": "low — will pay a premium for clean ingredients",
     "language_style": "educational, precise, uses nutrition terminology, measured enthusiasm, 'evidence-based'",
-    "core_traits": ["ingredient-first", "health educator", "micro-influencer", "stevia-averse"],
+    "core_traits": [
+      "ingredient-first",
+      "health educator",
+      "micro-influencer",
+      "stevia-averse"
+    ],
     "canadian_identity_relevance": "Low — care about ingredients, not origin",
     "sustainability_attitude": "Very high — glass and aluminum only; posts about packaging waste",
     "nostalgia_relevance": "None",
@@ -325,7 +644,11 @@
       "Shares ingredient label photos in her stories to educate followers",
       "If she endorses it, her followers in the wellness community will try it — multiplier effect"
     ],
-    "evidence_ids": ["bf-004", "bf-009", "bf-013"],
+    "evidence_ids": [
+      "bf-004",
+      "bf-009",
+      "bf-013"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -340,22 +663,63 @@
     "customer_type": "potential",
     "behavioral_segment": "convenience_first",
     "description": "A 34-year-old Columbus warehouse operations manager who drinks a lot of sparkling water throughout his shift. He buys whatever is cheap, cold, and available at the gas station near work. He's heard of Clearly Canadian vaguely but would only buy if it was stocked where he already shops and priced competitively.",
-    "motivations": ["cold and available right now", "price at or below $2", "flavor that's not boring", "easy grab-and-go format"],
-    "pain_points": ["can't find CC at his gas station or dollar store", "glass bottle is inconvenient for a warehouse environment", "doesn't want to pay more than his usual LaCroix"],
-    "current_beverages": ["LaCroix (24-pack from Costco)", "Gatorade", "gas-station cold brew", "Diet Coke"],
+    "motivations": [
+      "cold and available right now",
+      "price at or below $2",
+      "flavor that's not boring",
+      "easy grab-and-go format"
+    ],
+    "pain_points": [
+      "can't find Clearly Canadian at his gas station or dollar store",
+      "glass bottle is inconvenient for a warehouse environment",
+      "doesn't want to pay more than his usual LaCroix"
+    ],
+    "current_beverages": [
+      "LaCroix (24-pack from Costco)",
+      "Gatorade",
+      "gas-station cold brew",
+      "Diet Coke"
+    ],
     "beverage_psychology": "Practical buyer. Drinks are fuel, not a lifestyle statement. Price and availability beat brand loyalty every time.",
-    "buying_triggers": ["stocked at his gas station or Dollar General", "priced at or under $2", "a coworker has it and he tries it", "multi-pack deal at Costco or Sam's Club"],
-    "objections": ["'I can't find it anywhere near me'", "'$3+ for a sparkling water? No way'", "'The glass bottle would break in my truck'"],
+    "buying_triggers": [
+      "stocked at his gas station or Dollar General",
+      "priced at or under $2",
+      "a coworker has it and he tries it",
+      "multi-pack deal at Costco or Sam's Club"
+    ],
+    "objections": [
+      "'I can't find it anywhere near me'",
+      "'$3+ for a sparkling water? No way'",
+      "'The glass bottle would break in my truck'"
+    ],
     "decision_style": "purely practical — availability and price, then taste",
-    "channel_preferences": ["gas station", "Dollar General", "Costco", "vending machine"],
-    "product_preferences": ["Clearly Canadian in cans", "multi-pack value format"],
-    "shopping_locations": ["BP gas station", "Dollar General", "Costco", "Sam's Club"],
+    "channel_preferences": [
+      "gas station",
+      "Dollar General",
+      "Costco",
+      "vending machine"
+    ],
+    "product_preferences": [
+      "Clearly Canadian in cans",
+      "multi-pack value format"
+    ],
+    "shopping_locations": [
+      "BP gas station",
+      "Dollar General",
+      "Costco",
+      "Sam's Club"
+    ],
     "price_sensitivity": "very high — price ceiling is $2 single-serve, $15 for a 12-pack",
     "language_style": "blunt, no-nonsense, midwestern, short answers, uses 'yeah', 'whatever works', 'not gonna lie'",
-    "core_traits": ["price-sensitive", "availability-driven", "practical", "low brand loyalty unless proven"],
+    "core_traits": [
+      "price-sensitive",
+      "availability-driven",
+      "practical",
+      "low brand loyalty unless proven"
+    ],
     "canadian_identity_relevance": "None — doesn't factor into purchasing",
     "sustainability_attitude": "Low — will buy plastic if it's cheap and available",
-    "nostalgia_relevance": "Low — might remember CC vaguely but it's not a driver",
+    "nostalgia_relevance": "Low — might remember Clearly Canadian vaguely but it's not a driver",
     "cc_awareness": "Vague — maybe saw a can somewhere once",
     "cc_awareness_label": "Grabs whatever's cold and cheap",
     "segment_label": "Convenience",
@@ -372,7 +736,11 @@
       "No interest in subscription or DTC ordering — only buys what's in front of him",
       "Will become a loyal repeat buyer if price and availability are consistent — low effort to retain"
     ],
-    "evidence_ids": ["bf-011", "bf-014", "bf-019"],
+    "evidence_ids": [
+      "bf-011",
+      "bf-014",
+      "bf-019"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -387,39 +755,83 @@
     "customer_type": "existing",
     "behavioral_segment": "nostalgia_loyalist",
     "description": "A 52-year-old Winnipeg school principal who bought Clearly Canadian through the 90s for her classroom celebrations and her own home. She was heartbroken when it disappeared. When she found out it was back, she ordered two cases online immediately. She's a quiet brand ambassador — tells other parents and teachers about it.",
-    "motivations": ["90s nostalgia (personal and collective)", "celebration drink for special occasions", "sharing with people who remember it", "Canadian heritage product"],
-    "pain_points": ["hard to find in Winnipeg stores", "wishes it were more widely distributed", "original flavors hard to find in glass at local stores"],
-    "current_beverages": ["Clearly Canadian (orders online)", "PC sparkling water", "Perrier at restaurants"],
-    "beverage_psychology": "CC is a ritual and a memory, not just a drink. She buys it for specific occasions and gifts it to friends who might remember it.",
-    "buying_triggers": ["seasonal occasion (summer, graduation, Canada Day)", "stockpiling when she finds it on sale", "gift-giving for people who grew up with the brand"],
-    "objections": ["'The shipping is expensive'", "'I wish I could find it at my Safeway'", "'Are you sure this is the same recipe?'"],
+    "motivations": [
+      "90s nostalgia (personal and collective)",
+      "celebration drink for special occasions",
+      "sharing with people who remember it",
+      "Canadian heritage product"
+    ],
+    "pain_points": [
+      "hard to find in Winnipeg stores",
+      "wishes it were more widely distributed",
+      "original flavors hard to find in glass at local stores"
+    ],
+    "current_beverages": [
+      "Clearly Canadian (orders online)",
+      "PC sparkling water",
+      "Perrier at restaurants"
+    ],
+    "beverage_psychology": "Clearly Canadian is a ritual and a memory, not just a drink. She buys it for specific occasions and gifts it to friends who might remember it.",
+    "buying_triggers": [
+      "seasonal occasion (summer, graduation, Canada Day)",
+      "stockpiling when she finds it on sale",
+      "gift-giving for people who grew up with the brand"
+    ],
+    "objections": [
+      "'The shipping is expensive'",
+      "'I wish I could find it at my Safeway'",
+      "'Are you sure this is the same recipe?'"
+    ],
     "decision_style": "loyal and deliberate — buys in advance, plans around availability",
-    "channel_preferences": ["clearlycanadian.com", "grocery store (if stocked)", "word of mouth among peers"],
-    "product_preferences": ["Clearly Canadian Mountain Blackberry", "Clearly Canadian Wild Cherry", "glass bottle only"],
-    "shopping_locations": ["clearlycanadian.com", "Safeway", "Sobeys"],
+    "channel_preferences": [
+      "clearlycanadian.com",
+      "grocery store (if stocked)",
+      "word of mouth among peers"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Mountain Blackberry",
+      "Clearly Canadian Wild Cherry",
+      "glass bottle only"
+    ],
+    "shopping_locations": [
+      "clearlycanadian.com",
+      "Safeway",
+      "Sobeys"
+    ],
     "price_sensitivity": "low — will pay premium for original flavors; dislikes being gouged on shipping",
     "language_style": "warm, maternal, nostalgic, enthusiastic storyteller, says 'you have to try this'",
-    "core_traits": ["brand loyalist", "nostalgia-powered", "community connector", "gift-giver"],
-    "canadian_identity_relevance": "Extremely high — CC is part of her Canadian identity narrative",
+    "core_traits": [
+      "brand loyalist",
+      "nostalgia-powered",
+      "community connector",
+      "gift-giver"
+    ],
+    "canadian_identity_relevance": "Extremely high — Clearly Canadian is part of her Canadian identity narrative",
     "sustainability_attitude": "Prefers glass; associates it with quality",
     "nostalgia_relevance": "Maximum — primary driver",
     "cc_awareness": "Expert — knows the flavors, the history, the comeback story",
     "cc_awareness_label": "Lifelong loyalist since the 90s",
     "segment_label": "Loyalist",
     "cc_perception": "Beloved Canadian institution — proud it came back",
-    "social_media_behavior": "Active on Facebook; shares CC finds with her mom friend group; occasional Twitter",
+    "social_media_behavior": "Active on Facebook; shares Clearly Canadian finds with her mom friend group; occasional Twitter",
     "response_to_maple_product": "Would buy immediately as a Canadian conversation piece and gift it to friends",
     "bar_and_festival_relevance": "Low — buys for home and gift",
     "behavior_rules": [
       "Orders online when local stores don't stock her preferred flavors — never goes without Mountain Blackberry",
-      "Brings CC to staff room events and school celebrations as a Canadian treat",
-      "Gifts CC to friends and family as a 'did you know this is back?' discovery moment",
+      "Brings Clearly Canadian to staff room events and school celebrations as a Canadian treat",
+      "Gifts Clearly Canadian to friends and family as a 'did you know this is back?' discovery moment",
       "Strongly prefers glass bottles — would pay $1 extra per bottle for glass vs. can",
       "Will write a positive review on the website if she has a particularly good experience",
-      "Complains directly to CC's customer service if a beloved flavor is unavailable — constructive, not hostile",
+      "Complains directly to Clearly Canadian's customer service if a beloved flavor is unavailable — constructive, not hostile",
       "Becomes visibly excited and tells the story of the comeback whenever someone unfamiliar sees her drinking it"
     ],
-    "evidence_ids": ["bf-001", "bf-007", "bf-012", "bf-018", "bf-020"],
+    "evidence_ids": [
+      "bf-001",
+      "bf-007",
+      "bf-012",
+      "bf-018",
+      "bf-020"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -434,19 +846,61 @@
     "customer_type": "potential",
     "behavioral_segment": "premium_lifestyle",
     "description": "A 35-year-old Toronto finance partner who curates every aspect of his lifestyle for quality. He drinks premium sparkling water at home and in client meetings. He's aware of Clearly Canadian but has never bought it — he sees it as a nostalgia drink, not a premium one. A repositioned premium SKU in a sleek can or upscale packaging would get him to try it.",
-    "motivations": ["premium quality signals", "Canadian-made status", "clean ingredients", "something to impress clients", "differentiation from generic sparkling water"],
-    "pain_points": ["CC currently perceived as mid-tier, not premium", "uncertain about ingredient quality", "not available at the upscale spots he frequents"],
-    "current_beverages": ["Perrier", "San Pellegrino", "Fever-Tree tonic", "Voss still water"],
+    "motivations": [
+      "premium quality signals",
+      "Canadian-made status",
+      "clean ingredients",
+      "something to impress clients",
+      "differentiation from generic sparkling water"
+    ],
+    "pain_points": [
+      "Clearly Canadian currently perceived as mid-tier, not premium",
+      "uncertain about ingredient quality",
+      "not available at the upscale spots he frequents"
+    ],
+    "current_beverages": [
+      "Perrier",
+      "San Pellegrino",
+      "Fever-Tree tonic",
+      "Voss still water"
+    ],
     "beverage_psychology": "Beverages signal status and taste. He buys things that impress clients and align with his personal brand of understated quality.",
-    "buying_triggers": ["seen at a premium restaurant or hotel minibar", "a trusted colleague recommends it", "a clean premium can design at a high-end grocery", "a CC x Canadian brand collaboration"],
-    "objections": ["'This is a nostalgia brand, not a premium brand'", "'I don't see it at the places I shop'", "'Is it actually better than San Pellegrino?'"],
+    "buying_triggers": [
+      "seen at a premium restaurant or hotel minibar",
+      "a trusted colleague recommends it",
+      "a clean premium can design at a high-end grocery",
+      "a Clearly Canadian x Canadian brand collaboration"
+    ],
+    "objections": [
+      "'This is a nostalgia brand, not a premium brand'",
+      "'I don't see it at the places I shop'",
+      "'Is it actually better than San Pellegrino?'"
+    ],
     "decision_style": "brand-values and premium-positioning driven; price not a barrier",
-    "channel_preferences": ["upscale restaurant/hotel", "Whole Foods", "specialty grocery", "premium DTC"],
-    "product_preferences": ["any CC premium SKU in a sleek can", "glass bottle if repositioned upscale"],
-    "shopping_locations": ["Summerhill Market", "Whole Foods", "Bruno's Fine Foods", "specialty bottle shops"],
+    "channel_preferences": [
+      "upscale restaurant/hotel",
+      "Whole Foods",
+      "specialty grocery",
+      "premium DTC"
+    ],
+    "product_preferences": [
+      "any Clearly Canadian premium SKU in a sleek can",
+      "glass bottle if repositioned upscale"
+    ],
+    "shopping_locations": [
+      "Summerhill Market",
+      "Whole Foods",
+      "Bruno's Fine Foods",
+      "specialty bottle shops"
+    ],
     "price_sensitivity": "very low — will pay $5–6 single-serve if the positioning matches",
     "language_style": "precise, quality-vocabulary, confident, uses 'caliber', 'considered', 'exceptional'",
-    "core_traits": ["premium curator", "status-conscious", "Canadian pride", "quality over everything"],
+    "core_traits": [
+      "premium curator",
+      "status-conscious",
+      "Canadian pride",
+      "quality over everything"
+    ],
     "canadian_identity_relevance": "High — Canadian-made is a positive signal if paired with premium quality",
     "sustainability_attitude": "High — glass or aluminum; associates premium with sustainability",
     "nostalgia_relevance": "Low — doesn't lead with nostalgia; sees it as a liability for premium positioning",
@@ -458,15 +912,19 @@
     "response_to_maple_product": "Interested if it's positioned as a premium Canadian mixer for cocktails — would try at a client dinner",
     "bar_and_festival_relevance": "High for upscale restaurants/hotels; low for festivals",
     "behavior_rules": [
-      "Won't buy CC from a convenience store — channel matters as much as product",
+      "Won't buy Clearly Canadian from a convenience store — channel matters as much as product",
       "Shelf placement at a premium grocer or hotel minibar is the strongest conversion trigger",
       "Will pay $5+ single-serve if the packaging and context justify it",
       "Recommends products to his network only after 3+ positive experiences",
       "Notices and judges packaging quality in 2 seconds flat — poor design is an instant dismissal",
       "Canadian-made callout adds credibility only when paired with premium visual identity",
-      "If CC is listed as a mixer at a fine-dining restaurant, he'll order it and investigate the brand"
+      "If Clearly Canadian is listed as a mixer at a fine-dining restaurant, he'll order it and investigate the brand"
     ],
-    "evidence_ids": ["bf-002", "bf-004", "bf-008"],
+    "evidence_ids": [
+      "bf-002",
+      "bf-004",
+      "bf-008"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -481,23 +939,64 @@
     "customer_type": "potential",
     "behavioral_segment": "household_decision_maker",
     "description": "A 47-year-old Phoenix mom managing household beverages for two teenagers and a spouse. She buys sparkling water in large quantities at Costco. She grew up with Clearly Canadian and would buy it for the family if it were available in multi-packs at Costco or Sam's Club at a per-unit price that makes sense.",
-    "motivations": ["family-sized value packs", "something the kids will drink instead of soda", "nostalgia from her own childhood", "easy Costco or Sam's Club availability"],
-    "pain_points": ["can't find CC in a family multi-pack format", "single glass bottles not practical for kids", "per-unit price too high compared to LaCroix at Costco"],
-    "current_beverages": ["LaCroix (24-pack)", "Kirkland sparkling water", "Gatorade for the kids", "Perrier for herself"],
+    "motivations": [
+      "family-sized value packs",
+      "something the kids will drink instead of soda",
+      "nostalgia from her own childhood",
+      "easy Costco or Sam's Club availability"
+    ],
+    "pain_points": [
+      "can't find Clearly Canadian in a family multi-pack format",
+      "single glass bottles not practical for kids",
+      "per-unit price too high compared to LaCroix at Costco"
+    ],
+    "current_beverages": [
+      "LaCroix (24-pack)",
+      "Kirkland sparkling water",
+      "Gatorade for the kids",
+      "Perrier for herself"
+    ],
     "beverage_psychology": "Buying decisions are about value, practicality, and getting the kids to drink something healthy. Her own nostalgia is a secondary, pleasant motivator.",
-    "buying_triggers": ["Costco or Sam's Club multi-pack at $20 or under for 24 cans", "teenagers try it and ask for it", "a deal in the Costco flyer", "word of mouth from another parent"],
-    "objections": ["'I can't find it in a 24-pack anywhere'", "'The glass bottles are impractical for my kids'", "'$4 a bottle is too much for a family drink'"],
+    "buying_triggers": [
+      "Costco or Sam's Club multi-pack at $20 or under for 24 cans",
+      "teenagers try it and ask for it",
+      "a deal in the Costco flyer",
+      "word of mouth from another parent"
+    ],
+    "objections": [
+      "'I can't find it in a 24-pack anywhere'",
+      "'The glass bottles are impractical for my kids'",
+      "'$4 a bottle is too much for a family drink'"
+    ],
     "decision_style": "value-driven household buyer; practical; plans ahead",
-    "channel_preferences": ["Costco", "Sam's Club", "Walmart", "grocery store family section"],
-    "product_preferences": ["Clearly Canadian in cans, multi-pack", "Clearly Canadian Zero Sugar for kids"],
-    "shopping_locations": ["Costco", "Sam's Club", "Walmart", "Fry's (Kroger)"],
+    "channel_preferences": [
+      "Costco",
+      "Sam's Club",
+      "Walmart",
+      "grocery store family section"
+    ],
+    "product_preferences": [
+      "Clearly Canadian in cans, multi-pack",
+      "Clearly Canadian Zero Sugar for kids"
+    ],
+    "shopping_locations": [
+      "Costco",
+      "Sam's Club",
+      "Walmart",
+      "Fry's (Kroger)"
+    ],
     "price_sensitivity": "very high — needs to hit $0.75–1 per unit for a household multi-pack",
     "language_style": "practical, parent-focused, uses 'the kids', 'for the family', 'makes sense', 'good value'",
-    "core_traits": ["household buyer", "value-driven", "nostalgia-bonus", "practical planner"],
+    "core_traits": [
+      "household buyer",
+      "value-driven",
+      "nostalgia-bonus",
+      "practical planner"
+    ],
     "canadian_identity_relevance": "Low — would mention it's Canadian as a fun fact, not a buying trigger",
     "sustainability_attitude": "Moderate — prefers cans over plastic; glass impractical for kids",
     "nostalgia_relevance": "Moderate — nice bonus, not a driver",
-    "cc_awareness": "Grew up with CC; knows it came back; hasn't bought because of format/price barrier",
+    "cc_awareness": "Grew up with Clearly Canadian; knows it came back; hasn't bought because of format/price barrier",
     "cc_awareness_label": "Buys LaCroix in bulk at Costco",
     "segment_label": "Household Buyer",
     "cc_perception": "Fondly remembered; would buy if format and price match family needs",
@@ -513,7 +1012,11 @@
       "Looks at the Costco flyer for new items every week — a flyer feature would drive a first purchase",
       "Won't pay a premium for the nostalgia factor — value has to make sense independently"
     ],
-    "evidence_ids": ["bf-011", "bf-014", "bf-019"],
+    "evidence_ids": [
+      "bf-011",
+      "bf-014",
+      "bf-019"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face"
   },
   {
@@ -528,19 +1031,63 @@
     "customer_type": "potential",
     "behavioral_segment": "bartender_mixologist",
     "description": "A 29-year-old Toronto cocktail bartender who is always looking for premium mixers with interesting flavor profiles. He knows the sparkling water category deeply. He'd use Clearly Canadian as a premium mixer if the flavor profiles are interesting and the brand can be presented to guests with a story. The maple variant would be his first target.",
-    "motivations": ["unique flavor profiles for cocktails and mocktails", "a mixer with a story to tell guests", "premium Canadian ingredient narrative", "something that pairs well with spirits and NA options", "trend-forward menu innovation"],
-    "pain_points": ["Clearly Canadian not positioned as a mixer", "uncertain if the flavor is consistent batch-to-batch", "glass bottles fragile in a bar environment", "not sure if bar-format cans exist"],
-    "current_beverages": ["Fever-Tree tonic", "Q Mixers", "Topo Chico", "San Pellegrino", "Seedlip for NA"],
+    "motivations": [
+      "unique flavor profiles for cocktails and mocktails",
+      "a mixer with a story to tell guests",
+      "premium Canadian ingredient narrative",
+      "something that pairs well with spirits and NA options",
+      "trend-forward menu innovation"
+    ],
+    "pain_points": [
+      "Clearly Canadian not positioned as a mixer",
+      "uncertain if the flavor is consistent batch-to-batch",
+      "glass bottles fragile in a bar environment",
+      "not sure if bar-format cans exist"
+    ],
+    "current_beverages": [
+      "Fever-Tree tonic",
+      "Q Mixers",
+      "Topo Chico",
+      "San Pellegrino",
+      "Seedlip for NA"
+    ],
     "beverage_psychology": "Every bottle behind the bar tells a story. He chooses mixers for their flavor complexity, consistency, and the narrative he can give guests.",
-    "buying_triggers": ["a CC sales rep pitches him directly", "a colleague at another bar uses it and he tries it", "tastes it at a bar trade show or industry event", "discovers the maple variant and sees its cocktail potential"],
-    "objections": ["'Is the flavor consistent enough for cocktail use?'", "'How does it hold up with spirits — too sweet?'", "'Can I get it in cans for bar service?'", "'Do you have a bar program or wholesale pricing?'"],
+    "buying_triggers": [
+      "a Clearly Canadian sales rep pitches him directly",
+      "a colleague at another bar uses it and he tries it",
+      "tastes it at a bar trade show or industry event",
+      "discovers the maple variant and sees its cocktail potential"
+    ],
+    "objections": [
+      "'Is the flavor consistent enough for cocktail use?'",
+      "'How does it hold up with spirits — too sweet?'",
+      "'Can I get it in cans for bar service?'",
+      "'Do you have a bar program or wholesale pricing?'"
+    ],
     "decision_style": "quality and story driven; needs to taste before listing; influenced by industry peers",
-    "channel_preferences": ["industry sales rep", "bar trade show", "colleague recommendation", "wholesale/restaurant supply"],
-    "product_preferences": ["Clearly Canadian Maple sparkling water", "any CC flavor with strong fruit character for cocktails"],
-    "shopping_locations": ["restaurant/bar wholesale supplier", "LCBO (for inspiration)", "industry events"],
+    "channel_preferences": [
+      "industry sales rep",
+      "bar trade show",
+      "colleague recommendation",
+      "wholesale/restaurant supply"
+    ],
+    "product_preferences": [
+      "Clearly Canadian Maple sparkling water",
+      "any Clearly Canadian flavor with strong fruit character for cocktails"
+    ],
+    "shopping_locations": [
+      "restaurant/bar wholesale supplier",
+      "LCBO (for inspiration)",
+      "industry events"
+    ],
     "price_sensitivity": "moderate — uses cost-per-serve math; will pay more for premium mixer if charge-through works",
     "language_style": "craft-cocktail vocabulary, precise flavor descriptions, storytelling-oriented, uses 'mouthfeel', 'finish', 'complement'",
-    "core_traits": ["craft-first", "story-driven", "flavor-curious", "industry-networked"],
+    "core_traits": [
+      "craft-first",
+      "story-driven",
+      "flavor-curious",
+      "industry-networked"
+    ],
     "canadian_identity_relevance": "High — 'Made in Canada' is a genuine selling point for a Canadian bar menu",
     "sustainability_attitude": "High — glass preferred for table service; cans for high-volume service",
     "nostalgia_relevance": "Moderate — would use the nostalgia story with older guests",
@@ -549,18 +1096,23 @@
     "segment_label": "Bartender",
     "cc_perception": "Untested potential — interesting flavor story if it can deliver consistency",
     "social_media_behavior": "Instagram-active; posts cocktail recipes; has influence in Toronto bar community",
-    "response_to_maple_product": "High excitement — would develop a CC Maple cocktail immediately and post it; maple is underused as a mixer",
+    "response_to_maple_product": "High excitement — would develop a Clearly Canadian Maple cocktail immediately and post it; maple is underused as a mixer",
     "bar_and_festival_relevance": "Very high — this is his professional domain",
     "behavior_rules": [
       "Won't list a new mixer on the menu without tasting it himself in at least 3 different cocktail applications",
       "Needs a consistent, reliable supply chain before committing to a menu listing — can't run out mid-service",
-      "Will invent a signature CC cocktail and post it on Instagram if he's excited about a new flavor",
+      "Will invent a signature Clearly Canadian cocktail and post it on Instagram if he's excited about a new flavor",
       "Prices the mixer into his cocktail cost structure — needs at least 3x charge-through margin",
       "Responds well to a face-to-face pitch from a sales rep who knows cocktail culture",
-      "Will evangelize CC to the broader Toronto bar community if he believes in it",
+      "Will evangelize Clearly Canadian to the broader Toronto bar community if he believes in it",
       "The maple variant is the highest-interest SKU — leads with that in any pitch to him"
     ],
-    "evidence_ids": ["bf-002", "bf-006", "bf-008", "bf-017"],
+    "evidence_ids": [
+      "bf-002",
+      "bf-006",
+      "bf-008",
+      "bf-017"
+    ],
     "avatar_url": "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop&crop=face"
   }
 ]

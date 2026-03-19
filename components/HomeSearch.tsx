@@ -4,30 +4,35 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import PersonaAvatar from "@/components/PersonaAvatar";
 import PersonaPopover from "@/components/PersonaPopover";
-import type { Persona } from "@/lib/types";
+import ResultsView from "@/components/ResultsView";
+import type { Persona, ConversationTurn } from "@/lib/types";
 
 interface HomeSearchProps {
   onQuery: (q: string) => void;
   loading: boolean;
   onPersonaClick?: (id: string) => void;
+  view: "home" | "results";
+  turns: ConversationTurn[];
+  onFollowUp: (q: string) => void;
+  onBack: () => void;
 }
 
 const TEMPLATE_CARDS = [
   {
     color: "#60a5fa", // blue-400
-    title: "How would Ethan and Gen Z react to CC Maple as a bar cocktail mixer?",
+    title: "How would Ethan and Gen Z react to Clearly Canadian Maple as a bar cocktail mixer?",
     consults: "Ethan, Marie, Aisha, Raj",
     iconPath: "M9 3h6l1 5H8L9 3zM5 8h14l-2 13H7L5 8zm5 4v6m4-6v6",
   },
   {
     color: "#c084fc", // purple-400
-    title: "Compare brand perception of CC among Gen Z vs. Millennials in Canada",
+    title: "Compare brand perception of Clearly Canadian among Gen Z vs. Millennials in Canada",
     consults: "Chloe, Jake, Marie, Doug",
     iconPath: "M3 3v18h18M7 16l4-4 4 4 4-6",
   },
   {
     color: "#fbbf24", // amber-400
-    title: "How effective is nostalgia marketing for lapsed fans who haven't bought CC in a decade?",
+    title: "How effective is nostalgia marketing for lapsed fans who haven't bought Clearly Canadian in a decade?",
     consults: "Linda, Marcus, Doug",
     iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
   },
@@ -45,19 +50,19 @@ const TEMPLATE_CARDS = [
   },
   {
     color: "#2dd4bf", // teal-400
-    title: "What would it take for each persona to try CC for the first time?",
+    title: "What would it take for each persona to try Clearly Canadian for the first time?",
     consults: "All potential customers",
     iconPath: "M5 3l14 9-14 9V3z",
   },
 ];
 
 const PLACEHOLDER_QUESTIONS = [
-  "How would U.S. Gen Z react to CC Maple at a bar?",
+  "How would U.S. Gen Z react to Clearly Canadian Maple at a bar?",
   "Is $8.99 too much for a Zero Sugar 6-pack?",
-  "What would make LaCroix drinkers switch to CC?",
+  "What would make LaCroix drinkers switch to Clearly Canadian?",
   "Would a TikTok origin story campaign work for Gen Z?",
   "Test the message: Never Plastic. Clearly Canadian.",
-  "How would bartenders use CC Maple in cocktails?",
+  "How would bartenders use Clearly Canadian Maple in cocktails?",
 ];
 
 const BUBBLES = [
@@ -92,7 +97,15 @@ function DataPointsCounter() {
 
 const DESIGN_WIDTH = 1400;
 
-export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSearchProps) {
+export default function HomeSearch({
+  onQuery,
+  loading,
+  onPersonaClick,
+  view,
+  turns,
+  onFollowUp,
+  onBack,
+}: HomeSearchProps) {
   const [input, setInput] = useState("");
   const [personas, setPersonas] = useState<Persona[]>([]);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -103,14 +116,16 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
   const [hoveredPersona, setHoveredPersona] = useState<{ persona: Persona; rect: DOMRect } | null>(null);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [scale, setScale] = useState(1);
+  const [windowHeight, setWindowHeight] = useState(900);
 
   useEffect(() => {
-    function updateScale() {
+    function updateDimensions() {
       setScale(Math.min(1, (window.innerWidth - 32) / DESIGN_WIDTH));
+      setWindowHeight(window.innerHeight);
     }
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   useEffect(() => {
@@ -160,6 +175,15 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
   const displayed = personas.slice(0, 3);
   const extra = personas.length - displayed.length;
 
+  // In results mode, size the panel so it fills the viewport after scaling
+  const panelHeightPx = view === "results"
+    ? Math.floor((windowHeight - 64) / scale)
+    : undefined;
+
+  const panelClass = view === "results"
+    ? "w-full rounded-[48px] glass-panel overflow-hidden relative z-10 my-8"
+    : "w-full rounded-[48px] glass-panel flex flex-col gap-10 p-10 relative z-10 my-8 dark-scroll";
+
   return (
     <div className="h-screen w-screen overflow-hidden flex items-center justify-center relative">
       {/* Background */}
@@ -199,215 +223,246 @@ export default function HomeSearch({ onQuery, loading, onPersonaClick }: HomeSea
           transformOrigin: "center center",
         }}
       >
-      <div className="w-full rounded-[48px] glass-panel flex flex-col gap-10 p-10 relative z-10 my-8 dark-scroll">
+        <div
+          className={panelClass}
+          style={panelHeightPx !== undefined ? { height: panelHeightPx } : undefined}
+        >
+          {/* Home content */}
+          <div
+            className={`transition-opacity duration-500 ${
+              view === "home"
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none absolute inset-0 overflow-hidden"
+            }`}
+          >
+            <div className="flex flex-col gap-10">
+              {/* Top section */}
+              <div className="flex flex-col gap-6">
+                <div>
+                  <h1 className="text-[4rem] font-bold font-sans text-white leading-tight tracking-tight">
+                    Your consumer panel{" "}
+                    <span>is ready.</span>
+                  </h1>
+                  <p className="text-white/75 text-[1.35rem] font-bold mt-3">
+                    12 AI personas built on real market data. Test any product, price, message, or channel decision instantly.
+                  </p>
+                </div>
 
-        {/* Top section */}
-        <div className="flex flex-col gap-6">
-          <div>
-            <h1 className="text-[4rem] font-bold font-sans text-white leading-tight tracking-tight">
-              Your consumer panel{" "}
-              <span>is ready.</span>
-            </h1>
-            <p className="text-white/75 text-[1.35rem] font-bold mt-3">
-              12 AI personas built on real market data. Test any product, price, message, or channel decision instantly.
-            </p>
-          </div>
-
-          {/* Search input */}
-          <div className="glass-input rounded-full p-2 pl-8 flex items-center gap-3 transition-all">
-            <svg className="w-5 h-5 text-white/50 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <div className="relative flex-1 overflow-hidden" style={{ height: "1.75rem" }}>
-              {prevIdx !== null && !input && !isFocused && (
-                <span
-                  key={`out-${prevIdx}`}
-                  className="placeholder-slide-out absolute left-0 top-0 text-xl text-white/40 pointer-events-none whitespace-nowrap"
-                  onAnimationEnd={() => setPrevIdx(null)}
-                >
-                  {PLACEHOLDER_QUESTIONS[prevIdx]}
-                </span>
-              )}
-              {!input && !isFocused && (
-                <span
-                  key={`in-${placeholderIdx}`}
-                  className="placeholder-slide-in absolute left-0 top-0 text-xl text-white/40 pointer-events-none whitespace-nowrap"
-                >
-                  {PLACEHOLDER_QUESTIONS[placeholderIdx]}
-                </span>
-              )}
-              <input
-                className="bg-transparent text-xl text-white flex-1 outline-none w-full h-full"
-                value={input}
-                onChange={e => {
-                  setInput(e.target.value);
-                  if (restartRef.current) clearTimeout(restartRef.current);
-                }}
-                onKeyDown={handleKeyDown}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                disabled={loading}
-              />
-            </div>
-            <button
-              onClick={handleSubmit}
-              disabled={loading || !input.trim()}
-              className="w-12 h-12 rounded-full bg-white flex items-center justify-center shrink-0 disabled:opacity-50 hover:bg-white/90 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="#2a3441" viewBox="0 0 24 24" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Persona strip */}
-        {personas.length > 0 && (
-          <div className="flex flex-col gap-3">
-            <span className="font-mono text-white/55 uppercase text-sm tracking-widest">Your Consumer Panel</span>
-            <div className="overflow-hidden">
-              <div className="flex gap-3 persona-marquee" style={{ width: "max-content" }}>
-                {[...personas, ...personas].map((p, i) => (
+                {/* Search input */}
+                <div className="glass-input rounded-full p-2 pl-8 flex items-center gap-3 transition-all">
+                  <svg className="w-5 h-5 text-white/50 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <div className="relative flex-1 overflow-hidden" style={{ height: "1.75rem" }}>
+                    {prevIdx !== null && !input && !isFocused && (
+                      <span
+                        key={`out-${prevIdx}`}
+                        className="placeholder-slide-out absolute left-0 top-0 text-xl text-white/40 pointer-events-none whitespace-nowrap"
+                        onAnimationEnd={() => setPrevIdx(null)}
+                      >
+                        {PLACEHOLDER_QUESTIONS[prevIdx]}
+                      </span>
+                    )}
+                    {!input && !isFocused && (
+                      <span
+                        key={`in-${placeholderIdx}`}
+                        className="placeholder-slide-in absolute left-0 top-0 text-xl text-white/40 pointer-events-none whitespace-nowrap"
+                      >
+                        {PLACEHOLDER_QUESTIONS[placeholderIdx]}
+                      </span>
+                    )}
+                    <input
+                      className="bg-transparent text-xl text-white flex-1 outline-none w-full h-full"
+                      value={input}
+                      onChange={e => {
+                        setInput(e.target.value);
+                        if (restartRef.current) clearTimeout(restartRef.current);
+                      }}
+                      onKeyDown={handleKeyDown}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                      disabled={loading}
+                    />
+                  </div>
                   <button
-                    key={`${p.id}-${i}`}
-                    onClick={() => onPersonaClick?.(p.id)}
-                    onMouseEnter={e => {
-                      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-                      setHoveredPersona({ persona: p, rect: e.currentTarget.getBoundingClientRect() });
-                    }}
-                    onMouseLeave={() => {
-                      hoverTimeoutRef.current = setTimeout(() => setHoveredPersona(null), 120);
-                    }}
-                    className="shrink-0 w-96 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 cursor-pointer text-left transition-all flex gap-4 items-center"
+                    onClick={handleSubmit}
+                    disabled={loading || !input.trim()}
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center shrink-0 disabled:opacity-50 hover:bg-white/90 transition-colors"
                   >
-                    {/* Avatar */}
-                    <div className="shrink-0">
-                      <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-14 h-14" textSize="text-lg" />
-                    </div>
-
-                    {/* Profile info */}
-                    <div className="flex-1 flex flex-col gap-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-white font-bold text-base">{p.name}</span>
-                        <div
-                          className="w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{ backgroundColor: getAwarenessColor(p.cc_awareness ?? "") }}
-                        />
-                      </div>
-                      <p className="text-white/65 text-sm leading-snug">
-                        {p.generation} • {p.age_range} • {p.location ?? (p.market === "CA" ? "Canada" : p.market)}
-                      </p>
-                      <p className="text-white/80 text-sm leading-snug truncate">
-                        {p.occupation ?? p.segment_label ?? p.customer_type}
-                      </p>
-                      <p className="text-white/55 text-sm leading-snug line-clamp-2 mt-0.5">
-                        {p.cc_awareness_label ?? p.cc_awareness ?? p.behavioral_segment}
-                      </p>
-                    </div>
+                    <svg className="w-5 h-5" fill="none" stroke="#2a3441" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
                   </button>
-                ))}
+                </div>
+              </div>
+
+              {/* Persona strip */}
+              {personas.length > 0 && (
+                <div className="flex flex-col gap-3">
+                  <span className="font-mono text-white/55 uppercase text-sm tracking-widest">Your Consumer Panel</span>
+                  <div className="overflow-hidden">
+                    <div className="flex gap-3 persona-marquee" style={{ width: "max-content" }}>
+                      {[...personas, ...personas].map((p, i) => (
+                        <button
+                          key={`${p.id}-${i}`}
+                          onClick={() => onPersonaClick?.(p.id)}
+                          onMouseEnter={e => {
+                            if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+                            setHoveredPersona({ persona: p, rect: e.currentTarget.getBoundingClientRect() });
+                          }}
+                          onMouseLeave={() => {
+                            hoverTimeoutRef.current = setTimeout(() => setHoveredPersona(null), 120);
+                          }}
+                          className="shrink-0 w-96 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 cursor-pointer text-left transition-all flex gap-4 items-center"
+                        >
+                          {/* Avatar */}
+                          <div className="shrink-0">
+                            <PersonaAvatar name={p.name} avatarUrl={p.avatar_url} size="w-14 h-14" textSize="text-lg" />
+                          </div>
+
+                          {/* Profile info */}
+                          <div className="flex-1 flex flex-col gap-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className="text-white font-bold text-base">{p.name}</span>
+                              <div
+                                className="w-1.5 h-1.5 rounded-full shrink-0"
+                                style={{ backgroundColor: getAwarenessColor(p.cc_awareness ?? "") }}
+                              />
+                            </div>
+                            <p className="text-white/65 text-sm leading-snug">
+                              {p.generation} • {p.age_range} • {p.location ?? (p.market === "CA" ? "Canada" : p.market)}
+                            </p>
+                            <p className="text-white/80 text-sm leading-snug truncate">
+                              {p.occupation ?? p.segment_label ?? p.customer_type}
+                            </p>
+                            <p className="text-white/55 text-sm leading-snug line-clamp-2 mt-0.5">
+                              {p.cc_awareness_label ?? p.cc_awareness ?? p.behavioral_segment}
+                            </p>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Template cards section */}
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-white/65 uppercase text-sm tracking-widest">Starting Templates</span>
+                  <div className="flex-1 h-px bg-white/10" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  {TEMPLATE_CARDS.map((card, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setInput(card.title)}
+                      onMouseEnter={() => setHoveredCard(i)}
+                      onMouseLeave={() => setHoveredCard(null)}
+                      className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-3xl p-6 cursor-pointer group flex flex-col h-full min-h-[200px] text-left transition-all duration-200"
+                      style={hoveredCard === i ? { boxShadow: `0 0 28px ${card.color}33`, transform: "scale(1.02)" } : {}}
+                    >
+                      {/* Icon */}
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center mb-4 shrink-0 transition-all duration-200"
+                        style={{
+                          backgroundColor: `${card.color}1a`,
+                          border: `1px solid ${card.color}33`,
+                          ...(hoveredCard === i ? { boxShadow: `0 0 18px ${card.color}40` } : {}),
+                        }}
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke={card.color} strokeWidth={1.75} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                          <path d={card.iconPath} />
+                        </svg>
+                      </div>
+
+                      {/* Question text — dominates the card */}
+                      <p className="text-white/90 text-lg font-semibold leading-snug group-hover:text-white transition-colors flex-1">
+                        {card.title}
+                      </p>
+
+                      {/* Consults row */}
+                      <div className="flex items-center gap-2 mt-4">
+                        <div className="flex -space-x-1.5">
+                          {card.consults.split(", ").slice(0, 4).map((name, ni) => (
+                            <PersonaAvatar
+                              key={ni}
+                              name={name}
+                              avatarUrl={personaAvatarMap.get(name) || undefined}
+                              size="w-5 h-5"
+                              textSize="text-[8px]"
+                              className="border border-white/20"
+                            />
+                          ))}
+                        </div>
+                        <span className="font-mono text-white/45 text-[11px] truncate">{card.consults}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Footer bar */}
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-white/75 text-sm font-bold tracking-widest uppercase bg-white/5 border border-white/10 rounded-full px-4 py-1.5">
+                  <DataPointsCounter />
+                </span>
+                <div className="flex items-center gap-6">
+                  {personas.length > 0 && (
+                    <>
+                      <div className="flex items-center gap-3">
+                        <div className="flex -space-x-3">
+                          {displayed.map(p => (
+                            <PersonaAvatar
+                              key={p.id}
+                              name={p.name}
+                              avatarUrl={p.avatar_url}
+                              size="w-8 h-8"
+                              textSize="text-xs"
+                              className="border-2 border-[#2a3441]"
+                            />
+                          ))}
+                          {extra > 0 && (
+                            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold text-white border-2 border-[#2a3441]">
+                              +{extra}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                          </span>
+                          <span className="font-mono text-white/50 text-xs uppercase tracking-widest">
+                            {personas.length} Active Personas
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        )}
 
-        {/* Template cards section */}
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-white/65 uppercase text-sm tracking-widest">Starting Templates</span>
-            <div className="flex-1 h-px bg-white/10" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {TEMPLATE_CARDS.map((card, i) => (
-              <button
-                key={i}
-                onClick={() => setInput(card.title)}
-                onMouseEnter={() => setHoveredCard(i)}
-                onMouseLeave={() => setHoveredCard(null)}
-                className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-3xl p-6 cursor-pointer group flex flex-col h-full min-h-[200px] text-left transition-all duration-200"
-                style={hoveredCard === i ? { boxShadow: `0 0 28px ${card.color}33`, transform: "scale(1.02)" } : {}}
-              >
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center mb-4 shrink-0 transition-all duration-200"
-                  style={{
-                    backgroundColor: `${card.color}1a`,
-                    border: `1px solid ${card.color}33`,
-                    ...(hoveredCard === i ? { boxShadow: `0 0 18px ${card.color}40` } : {}),
-                  }}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke={card.color} strokeWidth={1.75} viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                    <path d={card.iconPath} />
-                  </svg>
-                </div>
-
-                {/* Question text — dominates the card */}
-                <p className="text-white/90 text-lg font-semibold leading-snug group-hover:text-white transition-colors flex-1">
-                  {card.title}
-                </p>
-
-                {/* Consults row */}
-                <div className="flex items-center gap-2 mt-4">
-                  <div className="flex -space-x-1.5">
-                    {card.consults.split(", ").slice(0, 4).map((name, ni) => (
-                      <PersonaAvatar
-                        key={ni}
-                        name={name}
-                        avatarUrl={personaAvatarMap.get(name) || undefined}
-                        size="w-5 h-5"
-                        textSize="text-[8px]"
-                        className="border border-white/20"
-                      />
-                    ))}
-                  </div>
-                  <span className="font-mono text-white/45 text-[11px] truncate">{card.consults}</span>
-                </div>
-              </button>
-            ))}
+          {/* Results content */}
+          <div
+            className={`transition-opacity duration-500 h-full ${
+              view === "results"
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none absolute inset-0"
+            }`}
+          >
+            <ResultsView
+              turns={turns}
+              loading={loading}
+              onFollowUp={onFollowUp}
+              onBack={onBack}
+              onPersonaClick={onPersonaClick}
+              personas={personas}
+            />
           </div>
         </div>
-
-{/* Footer bar */}
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-white/75 text-sm font-bold tracking-widest uppercase bg-white/5 border border-white/10 rounded-full px-4 py-1.5">
-            <DataPointsCounter />
-          </span>
-          <div className="flex items-center gap-6">
-            {personas.length > 0 && (
-              <>
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-3">
-                    {displayed.map(p => (
-                      <PersonaAvatar
-                        key={p.id}
-                        name={p.name}
-                        avatarUrl={p.avatar_url}
-                        size="w-8 h-8"
-                        textSize="text-xs"
-                        className="border-2 border-[#2a3441]"
-                      />
-                    ))}
-                    {extra > 0 && (
-                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold text-white border-2 border-[#2a3441]">
-                        +{extra}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-                    </span>
-                    <span className="font-mono text-white/50 text-xs uppercase tracking-widest">
-                      {personas.length} Active Personas
-                    </span>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
       </div>
 
       {/* Persona hover popover — rendered via portal to escape overflow:hidden */}

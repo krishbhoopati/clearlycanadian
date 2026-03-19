@@ -1,3 +1,10 @@
+// ─── UI State Types ────────────────────────────────────────────────────────────
+
+export interface ConversationTurn {
+  question: string;
+  result: AskLabResponse;
+}
+
 // ─── Core Domain Entities ─────────────────────────────────────────────────────
 
 export interface Persona {

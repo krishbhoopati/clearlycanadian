@@ -48,7 +48,7 @@ function extractDriverConcept(driver: string): string | null {
     const m = driver.match(/"([^"]+)"/);
     return m ? `${m[1]} discovery match` : "Discovery channel match";
   }
-  if (driver.includes("existing awareness")) return "CC brand recognition";
+  if (driver.includes("existing awareness")) return "Clearly Canadian brand recognition";
   if (driver.includes("response to maple")) return "Maple product resonance";
   if (driver.includes("bar/festival relevance") || driver.includes("bar and festival")) return "Bar/festival context fit";
   if (driver.includes("buying trigger")) {
@@ -201,7 +201,7 @@ export function aggregateSimulations(
     sentence3 = `The key risk is price perception — ${lowIntentNames || "low-intent personas"} hesitate at the shelf before brand trust is established, making the first 3 seconds of shelf decision the highest-risk moment.`;
   } else if (topBarrierLower.includes("recognition") || topBarrierLower.includes("awareness")) {
     const awarenessNames = nameList(results.filter(r => r.barriers.some(b => b.toLowerCase().includes("awareness"))));
-    sentence3 = `The key risk is cold-start brand recognition — ${awarenessNames || lowIntentNames || "some personas"} lack the CC familiarity that makes pick-up automatic, so trial must precede retail push.`;
+    sentence3 = `The key risk is cold-start brand recognition — ${awarenessNames || lowIntentNames || "some personas"} lack the Clearly Canadian familiarity that makes pick-up automatic, so trial must precede retail push.`;
   } else if (top_barriers.length === 0) {
     sentence3 = `No significant shared barriers identified — conditions favor conversion if distribution is in place.`;
   } else {
@@ -235,11 +235,11 @@ export function aggregateSimulations(
       let implication: string;
 
       if (pRoleLower === "loyal buyer" && (nBarrierLower.includes("dilut") || nBarrierLower.includes("brand"))) {
-        disagreementSentence = `${p.persona_name} (${pRoleLabel}) values CC's existing lineup — ${pTopDriver}. ${n.persona_name} (${nRoleLabel}) worries the addition dilutes brand focus.`;
-        implication = `This tension suggests CC should launch maple as a separate line extension, not a replacement, to avoid cannibalizing the core loyalist base.`;
+        disagreementSentence = `${p.persona_name} (${pRoleLabel}) values Clearly Canadian's existing lineup — ${pTopDriver}. ${n.persona_name} (${nRoleLabel}) worries the addition dilutes brand focus.`;
+        implication = `This tension suggests Clearly Canadian should launch maple as a separate line extension, not a replacement, to avoid cannibalizing the core loyalist base.`;
       } else if (pRoleLower === "bartender" && (nBarrierLower.includes("channel") || nBarrierLower.includes("discovery"))) {
         disagreementSentence = `${p.persona_name} (${pRoleLabel}) sees immediate on-premise utility — ${pTopDriver}. ${n.persona_name} (${nRoleLabel}) has no equivalent discovery pathway through current channels.`;
-        implication = `This signals CC should launch on-premise before retail — bartender adoption creates the discovery trail that retail buyers need.`;
+        implication = `This signals Clearly Canadian should launch on-premise before retail — bartender adoption creates the discovery trail that retail buyers need.`;
       } else if (n.decision === "interested_but_barriers") {
         const barrierLabel = nTopBarrier || "the key barrier";
         disagreementSentence = `${p.persona_name} (${pRoleLabel}) converts on ${pTopDriver}. ${n.persona_name} (${nRoleLabel}) is held back by ${barrierLabel}.`;
@@ -294,7 +294,7 @@ export function aggregateSimulations(
       discoveryMechanism = "word-of-mouth credibility that reaches adjacent segments authentically";
     } else if (leadRoleLower === "sober-curious buyer") {
       actionNoun = "lifestyle-led positioning";
-      discoveryMechanism = "category bridge that makes CC relevant beyond the drinking occasion";
+      discoveryMechanism = "category bridge that makes Clearly Canadian relevant beyond the drinking occasion";
     } else {
       actionNoun = "shelf facings and in-store trial";
       discoveryMechanism = "retail discovery that converts consideration into purchase";
@@ -373,12 +373,12 @@ export function aggregateSimulations(
     const tdLower = (lead.drivers[0] ?? "").toLowerCase();
 
     if (leadRoleLower === "bartender" || tdLower.includes("bartend") || tdLower.includes("bar/festival")) {
-      const productCtx = tdLower.includes("maple") ? "CC Maple" : "CC";
+      const productCtx = tdLower.includes("maple") ? "Clearly Canadian Maple" : "Clearly Canadian";
       suggested_follow_ups.push(`Ask ${lead.persona_name}: What specific cocktail would you build with ${productCtx}, and where would it sit on the menu?`);
     } else if (leadRoleLower === "social discovery buyer" || tdLower.includes("tiktok") || tdLower.includes("instagram")) {
-      suggested_follow_ups.push(`Ask ${lead.persona_name}: What post format or occasion would make you share CC to your feed — walk us through the exact moment.`);
+      suggested_follow_ups.push(`Ask ${lead.persona_name}: What post format or occasion would make you share Clearly Canadian to your feed — walk us through the exact moment.`);
     } else if (tdLower.includes("maple")) {
-      suggested_follow_ups.push(`Ask ${lead.persona_name}: What specific cocktail or occasion would you pair with CC Maple first?`);
+      suggested_follow_ups.push(`Ask ${lead.persona_name}: What specific cocktail or occasion would you pair with Clearly Canadian Maple first?`);
     } else {
       suggested_follow_ups.push(`Ask ${lead.persona_name}: What single change would make you recommend this product to someone like you?`);
     }

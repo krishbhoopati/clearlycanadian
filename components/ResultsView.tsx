@@ -4,18 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import PersonaCard from "@/components/PersonaCard";
 import AnalysisSidebar from "@/components/AnalysisSidebar";
 import PersonaAvatar from "@/components/PersonaAvatar";
-import type { AskLabResponse, Persona } from "@/lib/types";
+import type { Persona, ConversationTurn } from "@/lib/types";
 
-interface ConversationTurn {
-  question: string;
-  result: AskLabResponse;
-}
-
-interface ResultsViewProps {
+interface ResultsPanelProps {
   turns: ConversationTurn[];
   loading: boolean;
   onFollowUp: (q: string) => void;
-  onPersonaClick: (personaId: string) => void;
+  onPersonaClick?: (personaId: string) => void;
+  onBack: () => void;
+  personas: Persona[];
 }
 
 function ConversationTurnBlock({
@@ -75,17 +72,16 @@ function ConversationTurnBlock({
   );
 }
 
-export default function ResultsView({ turns, loading, onFollowUp, onPersonaClick }: ResultsViewProps) {
+export default function ResultsView({
+  turns,
+  loading,
+  onFollowUp,
+  onPersonaClick,
+  onBack,
+  personas,
+}: ResultsPanelProps) {
   const [input, setInput] = useState("");
-  const [personas, setPersonas] = useState<Persona[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    fetch("/api/personas")
-      .then(r => r.json())
-      .then(data => setPersonas(data.personas ?? []))
-      .catch(() => {});
-  }, []);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -110,14 +106,18 @@ export default function ResultsView({ turns, loading, onFollowUp, onPersonaClick
   const personaMap = Object.fromEntries(personas.map(p => [p.id, p]));
 
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden bg-[#2a3441]">
-      {/* Header */}
-      <div className="h-20 shrink-0 flex items-center justify-between px-8 border-b border-white/5 bg-[#2a3441]/80 backdrop-blur-md">
-        <div className="flex items-center gap-4">
-          <span className="font-bold uppercase text-white tracking-wide">Clearly Voices.</span>
-          <div className="w-px h-5 bg-white/20" />
-          <span className="text-white/40 text-sm">Insight Engine</span>
-        </div>
+    <div className="h-full flex flex-col">
+      {/* Top strip */}
+      <div className="shrink-0 flex items-center justify-between px-8 py-4 border-b border-white/10">
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm font-medium"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          New Question
+        </button>
         <div className="flex items-center gap-4">
           {consultedPersonas.length > 0 && (
             <div className="flex -space-x-2">
@@ -128,14 +128,20 @@ export default function ResultsView({ turns, loading, onFollowUp, onPersonaClick
                   avatarUrl={personaMap[p.persona_id]?.avatar_url}
                   size="w-8 h-8"
                   textSize="text-xs"
-                  className="border-2 border-[#2a3441]"
+                  className="border-2 border-white/10"
                 />
               ))}
             </div>
           )}
-          <button className="px-4 py-2 bg-white text-[#2a3441] rounded-full text-sm font-semibold hover:bg-white/90 transition-colors">
-            Export
-          </button>
+          {loading && (
+            <span className="font-mono text-white/50 text-xs uppercase tracking-widest flex items-center gap-2">
+              <svg className="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              Analysing
+            </span>
+          )}
         </div>
       </div>
 
@@ -143,33 +149,45 @@ export default function ResultsView({ turns, loading, onFollowUp, onPersonaClick
       <div className="flex-1 flex overflow-hidden">
         {/* Main scroll area */}
         <div className="flex-1 flex flex-col relative">
-          <div
-            ref={scrollRef}
-            className="flex-1 overflow-y-auto px-10 py-10 dark-scroll pb-48 flex flex-col gap-12"
-          >
-            {turns.map((turn, i) => (
-              <ConversationTurnBlock
-                key={i}
-                turn={turn}
-                personas={personas}
-                onPersonaClick={onPersonaClick}
-              />
-            ))}
-            {loading && (
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-white/50 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                </div>
-                <span className="text-white/50 font-mono text-sm">Analysing…</span>
+          {turns.length === 0 && loading ? (
+            <div className="flex-1 flex items-center justify-center">
+              <div className="flex flex-col items-center gap-4">
+                <svg className="w-10 h-10 text-white/40 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                <span className="text-white/50 font-mono text-sm">Consulting your consumer panel…</span>
               </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            <div
+              ref={scrollRef}
+              className="flex-1 overflow-y-auto px-10 py-10 dark-scroll pb-48 flex flex-col gap-12"
+            >
+              {turns.map((turn, i) => (
+                <ConversationTurnBlock
+                  key={i}
+                  turn={turn}
+                  personas={personas}
+                  onPersonaClick={onPersonaClick ?? (() => {})}
+                />
+              ))}
+              {loading && (
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-white/50 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                  </div>
+                  <span className="text-white/50 font-mono text-sm">Analysing…</span>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Fixed bottom overlay */}
-          <div className="absolute bottom-0 left-0 right-0 px-10 pb-8 pt-6 bg-gradient-to-t from-[#2a3441] via-[#2a3441]/95 to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 px-10 pb-8 pt-6 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
             {followUps.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {followUps.map((fu, i) => (

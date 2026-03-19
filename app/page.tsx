@@ -2,14 +2,8 @@
 
 import { useState } from "react";
 import HomeSearch from "@/components/HomeSearch";
-import ResultsView from "@/components/ResultsView";
 import PersonaChatModal from "@/components/PersonaChatModal";
-import type { AskLabResponse } from "@/lib/types";
-
-interface ConversationTurn {
-  question: string;
-  result: AskLabResponse;
-}
+import type { AskLabResponse, ConversationTurn } from "@/lib/types";
 
 export default function HomePage() {
   const [view, setView] = useState<"home" | "results">("home");
@@ -36,19 +30,22 @@ export default function HomePage() {
     }
   }
 
+  function handleBack() {
+    setView("home");
+    setTurns([]);
+  }
+
   return (
     <>
-      {view === "home" && (
-        <HomeSearch onQuery={handleQuery} loading={loading} onPersonaClick={setChatPersonaId} />
-      )}
-      {view === "results" && (
-        <ResultsView
-          turns={turns}
-          loading={loading}
-          onFollowUp={handleQuery}
-          onPersonaClick={setChatPersonaId}
-        />
-      )}
+      <HomeSearch
+        onQuery={handleQuery}
+        loading={loading}
+        onPersonaClick={setChatPersonaId}
+        view={view}
+        turns={turns}
+        onFollowUp={handleQuery}
+        onBack={handleBack}
+      />
       {chatPersonaId && (
         <PersonaChatModal
           personaId={chatPersonaId}

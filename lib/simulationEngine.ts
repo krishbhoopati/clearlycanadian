@@ -285,7 +285,7 @@ function scoreBarriers(
 
   if (hasLowAwareness && isRetailOrShelf && persona.cc_awareness) {
     barriers.push(
-      `${persona.name}'s limited CC awareness ("${persona.cc_awareness}") means brand recognition won't drive the pick-up.`
+      `${persona.name}'s limited Clearly Canadian awareness ("${persona.cc_awareness}") means brand recognition won't drive the pick-up.`
     );
   }
 
@@ -352,7 +352,7 @@ function inferBeliefs(
   // Belief 1: cc_perception shapes unconscious brand filter
   if (persona.cc_perception) {
     beliefs.push(
-      `${persona.name}'s unconscious perception of CC — "${persona.cc_perception}" — shapes how they process any marketing or placement signal, even if they don't articulate it.`
+      `${persona.name}'s unconscious perception of Clearly Canadian — "${persona.cc_perception}" — shapes how they process any marketing or placement signal, even if they don't articulate it.`
     );
   }
 
