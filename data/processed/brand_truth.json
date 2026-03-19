@@ -1,268 +1,1811 @@
 [
   {
-    "id": "origin-founding",
-    "statement": "Clearly Canadian was founded in 1987 in British Columbia, making it one of Canada's first premium flavoured sparkling water brands — predating the sparkling water category boom by over a decade.",
-    "category": "origin_story",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Zero Sugar",
-      "Clearly Canadian Essence",
-      "Clearly Canadian SleekCans",
-      "Clearly Canadian Maple"
-    ],
+    "id": "brand-founded-1987",
+    "statement": "Clearly Canadian was founded in 1987 in British Columbia, Canada.",
+    "category": "brand_identity",
     "source": "Clearly Canadian company history",
-    "confidence": 0.99
+    "confidence": 1.0,
+    "tags": ["founding", "history", "british columbia", "1987"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "origin-mission",
-    "statement": "Clearly Canadian's brand mission is rooted in 'good thoughts, good words, good deeds' — a commitment to positive impact reflected in its sourcing, packaging, and community partnerships.",
-    "category": "brand_mission",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Zero Sugar",
-      "Clearly Canadian Essence",
-      "Clearly Canadian SleekCans",
-      "Clearly Canadian Maple"
-    ],
+    "id": "brand-company-name-canada",
+    "statement": "The parent company is The Clearly Food & Beverage Company ULC in Canada.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian corporate filings",
+    "confidence": 0.98,
+    "tags": ["company name", "corporate", "canada", "ULC"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-company-name-us",
+    "statement": "The US entity is The Clearly Food & Beverage Company LLC, based in Toronto.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian corporate filings",
+    "confidence": 0.98,
+    "tags": ["company name", "corporate", "us", "LLC", "toronto"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-hq-toronto",
+    "statement": "Clearly Canadian's headquarters are in Toronto, Ontario.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian corporate filings",
+    "confidence": 0.97,
+    "tags": ["headquarters", "toronto", "ontario"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-ceo-tepperman",
+    "statement": "Paul Tepperman is the CEO of Clearly Canadian.",
+    "category": "brand_identity",
+    "source": "BevNET 2024",
+    "confidence": 0.97,
+    "tags": ["ceo", "leadership", "paul tepperman"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-vp-marketing-blackburn",
+    "statement": "Jennifer Blackburn serves as VP Marketing and Interim CMO at Clearly Canadian; she is a Laurier Class of 2001 alumna.",
+    "category": "brand_identity",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.96,
+    "tags": ["vp marketing", "cmo", "jennifer blackburn", "leadership"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-mission-statement",
+    "statement": "Clearly Canadian's mission is to be a leading lifestyle brand that promotes good thoughts, good words, and good deeds.",
+    "category": "brand_identity",
     "source": "Clearly Canadian brand guidelines",
-    "confidence": 0.97
+    "confidence": 0.99,
+    "tags": ["mission", "values", "lifestyle brand"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "origin-sourcing",
-    "statement": "All Clearly Canadian sparkling water is sourced from a British Columbia aquifer, and the brand's tagline 'Clearly it's our Water' reflects the purity and regional authenticity of its source.",
-    "category": "origin_story",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Zero Sugar",
-      "Clearly Canadian Essence",
-      "Clearly Canadian Sparkling Mineral",
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian product label and brand website",
-    "confidence": 0.97
+    "id": "brand-tagline",
+    "statement": "Clearly Canadian's tagline is 'Clearly it's our Water.'",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand guidelines",
+    "confidence": 0.97,
+    "tags": ["tagline", "slogan", "marketing"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "distribution-scale",
-    "statement": "Clearly Canadian is available in 33,600 retail doors across Canada and the US, representing 69% ACV (All Commodity Volume) distribution — a significant national footprint for an independent Canadian brand.",
-    "category": "distribution",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Zero Sugar",
-      "Clearly Canadian Essence",
-      "Clearly Canadian SleekCans",
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian retail distribution data 2025",
-    "confidence": 0.95
+    "id": "brand-new-age-beverage-pioneer",
+    "statement": "Clearly Canadian was one of the first 'new age beverages' ever created, helping launch a multibillion-dollar category.",
+    "category": "brand_identity",
+    "source": "Beverage industry historical records",
+    "confidence": 0.95,
+    "tags": ["pioneer", "new age beverage", "category creator", "history"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "cc-maple-positioning",
-    "statement": "Clearly Canadian Maple is Clearly Canadian's newest line — a naturally maple-flavoured sparkling water positioned both as a standalone drink and as a premium mixer that pairs with bourbon, whiskey, and gin, as well as a sober-curious mocktail base with autumn-inspired appeal.",
-    "category": "product_maple",
-    "applies_to_products": [
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian Clearly Canadian Maple product launch communications 2025",
-    "confidence": 0.95
+    "id": "brand-distinguished-since-1987",
+    "statement": "Since 1987, Clearly Canadian has used real sugar (not HFCS), natural flavours, and no food colourings — before clean-label was mainstream.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian company history",
+    "confidence": 0.99,
+    "tags": ["clean label", "real sugar", "natural flavours", "no hfcs", "1987"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "originals-flavors",
-    "statement": "Clearly Canadian Originals are available in four signature flavours: Mountain Blackberry, Wild Cherry, Orchard Peach, and Summer Strawberry — each lightly sweetened and made with no artificial colours or preservatives.",
-    "category": "product_originals",
-    "applies_to_products": [
-      "Clearly Canadian Originals"
-    ],
-    "source": "Clearly Canadian product listing 2025",
-    "confidence": 0.95
+    "id": "brand-born-bc-raised-by-generation",
+    "statement": "Clearly Canadian is described as 'Born in British Columbia, raised by a generation of 80s and 90s kids.'",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.98,
+    "tags": ["nostalgia", "80s", "90s", "british columbia", "brand voice"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "originals-nutrition",
-    "statement": "Clearly Canadian Originals contain approximately 80 calories and 20g of cane sugar per 325ml glass bottle, positioning the product as a lightly sweetened sparkling water rather than a zero-calorie alternative.",
-    "category": "product_originals",
-    "applies_to_products": [
-      "Clearly Canadian Originals"
-    ],
-    "source": "Clearly Canadian Originals product label",
-    "confidence": 0.95
+    "id": "brand-og-premium-sparkling",
+    "statement": "Clearly Canadian is described as 'the OG of premium-flavoured sparkling water' and 'North America's premium sparkling alternative.'",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.97,
+    "tags": ["og", "premium", "sparkling water", "positioning"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "originals-bottle-design",
-    "statement": "The Clearly Canadian Originals glass bottle features a distinctive curved, embossed design inspired by the shape of a baseball glove — an iconic form that has remained largely unchanged since the 1980s and drives immediate shelf recognition.",
-    "category": "product_originals",
-    "applies_to_products": [
-      "Clearly Canadian Originals"
-    ],
-    "source": "Brand packaging history and design documentation",
-    "confidence": 0.93
+    "id": "brand-acquisition-2012",
+    "statement": "Clearly Canadian was acquired in 2012 by 4NCapital Partners.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian company history",
+    "confidence": 0.95,
+    "tags": ["acquisition", "4ncapital", "2012", "private equity"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "originals-innobev-award",
-    "statement": "Clearly Canadian Originals received the InnoBev 'Best in Glass' award, recognizing the brand's iconic glass bottle format as a standout packaging innovation in the global beverage industry.",
-    "category": "product_originals",
-    "applies_to_products": [
-      "Clearly Canadian Originals"
-    ],
-    "source": "InnoBev Awards — Clearly Canadian",
-    "confidence": 0.93
+    "id": "brand-sold-2021-private",
+    "statement": "Clearly Canadian was sold in 2021 to private investors.",
+    "category": "brand_identity",
+    "source": "BevNET 2021",
+    "confidence": 0.94,
+    "tags": ["acquisition", "private investors", "2021"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "sleekcans-format",
-    "statement": "Clearly Canadian SleekCans are sold in 6-packs at approximately $7.99 — roughly 50% less per serving than the glass bottle format — making them the entry-level price point for impulse and convenience channel shoppers.",
+    "id": "brand-bankruptcy-2010",
+    "statement": "Clearly Canadian filed for bankruptcy in 2010, with production resuming after a successful crowdfunding campaign.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian company history",
+    "confidence": 0.97,
+    "tags": ["bankruptcy", "2010", "crowdfunding", "comeback"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-retail-relaunch-2017",
+    "statement": "Clearly Canadian relaunched in retail in 2017 after its crowdfunding-fuelled comeback.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian company history",
+    "confidence": 0.99,
+    "tags": ["relaunch", "2017", "retail", "comeback"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-crowdfunding-14000-fans",
+    "statement": "Clearly Canadian's crowdfunding campaign attracted 14,000+ fans across 35 countries, pre-selling 40,000+ cases in every US state and Canadian province.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian crowdfunding campaign records",
+    "confidence": 0.97,
+    "tags": ["crowdfunding", "fans", "global", "pre-orders"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-rhett-and-link",
+    "statement": "Rhett and Link of Good Mythical Morning promoted Clearly Canadian's crowdfunding campaign.",
+    "category": "brand_identity",
+    "source": "Good Mythical Morning / Clearly Canadian campaign records",
+    "confidence": 0.95,
+    "tags": ["rhett and link", "good mythical morning", "crowdfunding", "influencer"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-bottles-shipped-50m",
+    "statement": "Clearly Canadian has shipped 50M+ bottles since its 2017 retail relaunch.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.96,
+    "tags": ["volume", "bottles shipped", "growth", "2017"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-tv-appearances",
+    "statement": "Clearly Canadian appeared on Seinfeld, Friends, and Sex and the City during its 1990s peak.",
+    "category": "brand_identity",
+    "source": "Pop culture records / Clearly Canadian brand history",
+    "confidence": 0.93,
+    "tags": ["seinfeld", "friends", "sex and the city", "90s", "pop culture", "nostalgia"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-1990s-peak-sales",
+    "statement": "Clearly Canadian's peak 1990s annual sales approached $200M.",
+    "category": "brand_identity",
+    "source": "Beverage industry records",
+    "confidence": 0.90,
+    "tags": ["1990s", "peak sales", "revenue", "history"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-rapid-growth-90s",
+    "statement": "Clearly Canadian experienced rapid growth in the 1990s alongside Snapple and Red Bull, defining the 'new age beverage' era.",
+    "category": "brand_identity",
+    "source": "Beverage industry historical records",
+    "confidence": 0.93,
+    "tags": ["1990s", "snapple", "red bull", "new age", "growth"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-community-challenge",
+    "statement": "Clearly Canadian runs the Clearly Community Challenge, a give-back program supporting crowdfunding campaigns and community causes.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.95,
+    "tags": ["community", "give-back", "crowdfunding", "charity"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-unicorn-position",
+    "statement": "Clearly Canadian is positioned as a 'unicorn' brand straddling the sparkling water and soda categories — real flavour without the guilt.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.96,
+    "tags": ["unicorn", "positioning", "soda", "sparkling water", "mid-calorie"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-primary-target-soda-drinkers",
+    "statement": "Clearly Canadian's primary target consumer is soda drinkers seeking a better-for-you alternative, not sparkling water drinkers.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.97,
+    "tags": ["target consumer", "soda drinkers", "better for you", "positioning"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-80pct-soda-drinkers",
+    "statement": "Approximately 80% of Clearly Canadian's volume comes from soda drinkers seeking better-for-you options.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.93,
+    "tags": ["soda drinkers", "consumer mix", "80%", "better for you"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-vp-guilt-shame-quote",
+    "statement": "Clearly Canadian VP stated: 'The guilt and shame soda consumers have around drinking sodas is really interesting' — positioning CC as the guilt-free bridge.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.95,
+    "tags": ["soda guilt", "consumer insight", "positioning", "guilt free"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-vp-build-right-way",
+    "statement": "Clearly Canadian VP: 'Being very strategic and true to the brand — we want to build it the right way.'",
+    "category": "brand_identity",
+    "source": "BevNET 2024",
+    "confidence": 0.95,
+    "tags": ["strategy", "brand integrity", "growth", "vp quote"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-never-go-away-again",
+    "statement": "Clearly Canadian VP: 'We never want to be in an instance where this brand goes away again.'",
+    "category": "brand_identity",
+    "source": "BevNET 2024",
+    "confidence": 0.95,
+    "tags": ["brand longevity", "strategy", "comeback", "vp quote"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-spring-water-base",
+    "statement": "All Clearly Canadian Originals are made with sparkling Canadian spring water as the base.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["originals", "spring water", "canadian", "sparkling"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-natural-flavours",
+    "statement": "Clearly Canadian Originals use natural fruit flavours — no artificial colours or flavourings.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["natural flavours", "no artificial colours", "clean label", "originals"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-no-hfcs",
+    "statement": "Clearly Canadian Originals have never used high-fructose corn syrup (HFCS) — sweetened with real sugar since 1987.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling / company history",
+    "confidence": 1.0,
+    "tags": ["no hfcs", "real sugar", "1987", "clean label", "originals"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-nutrition-90cal",
+    "statement": "Clearly Canadian Originals contain 90 calories per 12oz/355mL serving.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["90 calories", "nutrition", "originals", "12oz", "355ml"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-nutrition-24g-sugar",
+    "statement": "Clearly Canadian Originals contain 24g of sugar per 12oz/355mL serving.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["24g sugar", "nutrition", "originals", "12oz", "355ml"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-category-leader",
+    "statement": "The Originals lineup is the mid-calorie full-flavoured sparkling spring water category leader.",
+    "category": "products",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.95,
+    "tags": ["category leader", "mid-calorie", "originals", "sparkling water"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-85pct-portfolio",
+    "statement": "Clearly Canadian Originals represent approximately 85% of the brand's total portfolio mix.",
+    "category": "products",
+    "source": "Clearly Canadian internal data via BevNET 2024",
+    "confidence": 0.92,
+    "tags": ["originals", "portfolio mix", "85%", "sales volume"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-mountain-blackberry",
+    "statement": "Mountain Blackberry is a flagship Clearly Canadian Original: 90 cal, 24g sugar per 12oz, available in glass bottle and SleekCan 6-pack.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["mountain blackberry", "original", "flagship", "glass bottle", "sleekcan"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-wild-cherry",
+    "statement": "Wild Cherry is a Clearly Canadian Original: 90 cal, 24g sugar per 12oz, available in glass bottle and SleekCan 6-pack.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["wild cherry", "original", "glass bottle", "sleekcan"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-orchard-peach",
+    "statement": "Orchard Peach is a Clearly Canadian Original: 90 cal, 24g sugar per 12oz, available in glass bottle and SleekCan 6-pack.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["orchard peach", "original", "glass bottle", "sleekcan"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-summer-strawberry",
+    "statement": "Summer Strawberry was brought back at the end of 2022 and is historically Clearly Canadian's #1 flavour.",
+    "category": "products",
+    "source": "Clearly Canadian brand materials / BevNET 2022",
+    "confidence": 0.97,
+    "tags": ["summer strawberry", "number one flavour", "2022", "comeback", "fan favourite"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-summer-strawberry-nutrition",
+    "statement": "Summer Strawberry Original: 90 cal, 24g sugar per 12oz, available in glass bottle and SleekCan 6-pack.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["summer strawberry", "original", "nutrition", "glass bottle", "sleekcan"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-spring-source-whistler",
+    "statement": "Clearly Canadian sources spring water from Whistler, British Columbia.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling / company materials",
+    "confidence": 0.97,
+    "tags": ["spring water", "whistler", "british columbia", "water source"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-spring-source-formosa",
+    "statement": "Clearly Canadian sources spring water from Formosa, Ontario.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling / company materials",
+    "confidence": 0.97,
+    "tags": ["spring water", "formosa", "ontario", "water source"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-spring-sources-canadian",
+    "statement": "All Clearly Canadian spring water is sourced from Canadian springs — a core part of the brand's identity.",
+    "category": "products",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.99,
+    "tags": ["spring water", "canadian", "sourcing", "identity"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-launch-july-2023",
+    "statement": "Clearly Canadian Zero Sugar launched in July 2023, primarily in the US with Canadian expansion underway.",
+    "category": "products",
+    "source": "BevNET July 2023",
+    "confidence": 0.98,
+    "tags": ["zero sugar", "launch", "2023", "us market", "canada expansion"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-zero-cal",
+    "statement": "Clearly Canadian Zero Sugar contains 0 calories and 0 sugar per serving.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["zero sugar", "zero calories", "nutrition", "diet"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-stevia",
+    "statement": "Clearly Canadian Zero Sugar is sweetened with stevia — no artificial sweeteners.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["zero sugar", "stevia", "natural sweetener", "no artificial"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-forest-blackberry",
+    "statement": "Forest Blackberry is a Clearly Canadian Zero Sugar flavour: 0 cal, 0 sugar, stevia sweetened.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["forest blackberry", "zero sugar", "0 calories", "stevia"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-fresh-cherry",
+    "statement": "Fresh Cherry is a Clearly Canadian Zero Sugar flavour: 0 cal, 0 sugar, stevia sweetened.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["fresh cherry", "zero sugar", "0 calories", "stevia"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-citrus-medley",
+    "statement": "Citrus Medley is a Clearly Canadian Zero Sugar flavour: 0 cal, 0 sugar, stevia sweetened.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["citrus medley", "zero sugar", "0 calories", "stevia"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-zero-sugar-tropical-splash",
+    "statement": "Tropical Splash is a Clearly Canadian Zero Sugar flavour: 0 cal, 0 sugar, stevia sweetened.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["tropical splash", "zero sugar", "0 calories", "stevia"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-essence-grapefruit",
+    "statement": "Clearly Canadian Essence Grapefruit: 0 cal, 0 sugar, no sweeteners of any kind — only spring water and natural vegan flavours.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["essence", "grapefruit", "0 calories", "no sweetener", "vegan", "natural"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-essence-limon",
+    "statement": "Clearly Canadian Essence Limon: 0 cal, 0 sugar, no sweeteners — only spring water and natural vegan flavours.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["essence", "limon", "0 calories", "no sweetener", "vegan", "natural"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-essence-innobev-best-in-glass",
+    "statement": "Clearly Canadian Essence won InnoBev 'Best in Glass' award.",
+    "category": "products",
+    "source": "InnoBev Awards 2024",
+    "confidence": 0.97,
+    "tags": ["essence", "innobev", "best in glass", "award", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-sparkling-mineral-water",
+    "statement": "Clearly Canadian Sparkling Mineral Water is plain sparkling water from a Canadian spring — no flavours added.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 0.98,
+    "tags": ["sparkling mineral water", "plain", "unflavoured", "canadian spring"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-still-mineral-water",
+    "statement": "Clearly Canadian Still Mineral Water is a non-carbonated spring water that has been featured on QVC.",
+    "category": "products",
+    "source": "Clearly Canadian / QVC 2025",
+    "confidence": 0.95,
+    "tags": ["still water", "mineral water", "non-carbonated", "qvc"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-natural-maple-flavour",
+    "statement": "CC Maple is a proposed new product featuring natural Canadian maple flavour.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.88,
+    "tags": ["maple", "new product", "natural flavour", "canadian maple", "innovation"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-standalone-and-mixer",
+    "statement": "CC Maple is designed as both a standalone sparkling drink and a cocktail/mocktail mixer.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.87,
+    "tags": ["maple", "mixer", "cocktail", "mocktail", "standalone"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-glass-and-can",
+    "statement": "CC Maple is planned in both glass bottle format for bar/on-premise and SleekCan for retail.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.86,
+    "tags": ["maple", "glass bottle", "sleekcan", "on-premise", "bar"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-spirit-pairings",
+    "statement": "CC Maple pairs naturally with bourbon, whiskey, and gin as a premium cocktail mixer.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.85,
+    "tags": ["maple", "bourbon", "whiskey", "gin", "cocktail", "mixer"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-bar-launch-first",
+    "statement": "CC Maple is planned to launch first in bar/on-premise channels, then expand to retail.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.85,
+    "tags": ["maple", "bar launch", "on-premise", "retail expansion", "strategy"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-cocktail-culture",
+    "statement": "CC Maple targets cocktail culture enthusiasts and the sober-curious movement as key consumer segments.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.86,
+    "tags": ["maple", "cocktail culture", "sober curious", "target consumer"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "packaging-glass-bottle-iconic",
+    "statement": "The Clearly Canadian glass bottle is the brand's most recognizable asset — its distinctive bulb shape is iconic.",
     "category": "packaging",
-    "applies_to_products": [
-      "Clearly Canadian SleekCans"
-    ],
-    "source": "Clearly Canadian SleekCan retail pricing 2025",
-    "confidence": 0.92
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.99,
+    "tags": ["glass bottle", "iconic", "packaging", "brand asset", "bulb shape"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "sleekcans-channel",
-    "statement": "Clearly Canadian SleekCans were introduced specifically to expand distribution into convenience and impulse channels where glass bottles are impractical, broadening the brand's reach beyond grocery and specialty retail.",
+    "id": "packaging-bottle-baseball-design",
+    "statement": "The glass bottle's bulb shape was designed to feel like a baseball in the hand — the founder was a baseball fan.",
     "category": "packaging",
-    "applies_to_products": [
-      "Clearly Canadian SleekCans"
-    ],
-    "source": "Clearly Canadian channel strategy documentation",
-    "confidence": 0.9
+    "source": "Clearly Canadian brand history",
+    "confidence": 0.93,
+    "tags": ["glass bottle", "baseball", "design", "founder", "packaging history"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "zero-sugar-formulation",
-    "statement": "Clearly Canadian Zero Sugar uses stevia leaf extract as its natural sweetener, delivering zero grams of sugar per bottle with the same fruit-forward flavour profile as the Originals.",
-    "category": "product_zero_sugar",
-    "applies_to_products": [
-      "Clearly Canadian Zero Sugar"
-    ],
-    "source": "Clearly Canadian Zero Sugar product label",
-    "confidence": 0.95
+    "id": "packaging-sleekcan-12oz",
+    "statement": "Clearly Canadian SleekCans are 12oz/355mL and available in Originals and Zero Sugar lines.",
+    "category": "packaging",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 1.0,
+    "tags": ["sleekcan", "12oz", "355ml", "originals", "zero sugar"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "zero-sugar-availability",
-    "statement": "Clearly Canadian Zero Sugar launched in 2024 and is currently distributed primarily in the US market, with limited availability in Canada — the brand's support and marketing investment behind this line remains selective.",
-    "category": "product_zero_sugar",
-    "applies_to_products": [
-      "Clearly Canadian Zero Sugar"
-    ],
-    "source": "Clearly Canadian distribution and launch communications 2024",
-    "confidence": 0.88
+    "id": "packaging-6pack-price",
+    "statement": "Clearly Canadian SleekCan 6-packs are priced at approximately $7.99, roughly 50% less than the glass bottle equivalent.",
+    "category": "packaging",
+    "source": "Clearly Canadian retail pricing",
+    "confidence": 0.94,
+    "tags": ["6-pack", "price", "$7.99", "sleekcan", "value"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "essence-positioning",
-    "statement": "Clearly Canadian Essence is the brand's unsweetened sparkling water line — zero sweeteners, zero calories — targeted at health-first consumers who want flavour without any sugar or sugar substitutes.",
-    "category": "product_essence",
-    "applies_to_products": [
-      "Clearly Canadian Essence"
-    ],
-    "source": "Clearly Canadian Essence product communications",
-    "confidence": 0.92
+    "id": "packaging-single-glass-price",
+    "statement": "Single Clearly Canadian glass bottles retail for approximately $2.49–$2.99.",
+    "category": "packaging",
+    "source": "Clearly Canadian retail pricing",
+    "confidence": 0.93,
+    "tags": ["glass bottle", "price", "$2.49", "$2.99", "single serve"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "essence-flavors",
-    "statement": "Clearly Canadian Essence is available in grapefruit and limon flavours, both using natural fruit essences to deliver a clean, crisp taste with no sweeteners of any kind.",
-    "category": "product_essence",
-    "applies_to_products": [
-      "Clearly Canadian Essence"
-    ],
-    "source": "Clearly Canadian Essence product listing 2025",
-    "confidence": 0.9
+    "id": "packaging-single-can-price",
+    "statement": "Single Clearly Canadian cans retail for approximately $1.49–$1.99.",
+    "category": "packaging",
+    "source": "Clearly Canadian retail pricing",
+    "confidence": 0.91,
+    "tags": ["can", "price", "$1.49", "$1.99", "single serve"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "mineral-positioning",
-    "statement": "Clearly Canadian Sparkling Mineral water retains natural minerals sourced from the BC aquifer, and is positioned as a premium, on-premise product — suited for restaurants, bars, and fine dining rather than retail mass market.",
-    "category": "product_mineral",
-    "applies_to_products": [
-      "Clearly Canadian Sparkling Mineral"
-    ],
-    "source": "Clearly Canadian Sparkling Mineral product and channel documentation",
-    "confidence": 0.88
+    "id": "packaging-never-plastic",
+    "statement": "Clearly Canadian uses only glass and aluminum packaging — never plastic.",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 1.0,
+    "tags": ["never plastic", "glass", "aluminum", "sustainability", "eco"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "cc-maple-formats",
-    "statement": "Clearly Canadian Maple is available in both the signature Clearly Canadian glass bottle and SleekCan format, allowing on-premise accounts (bars, restaurants) to serve it by the glass while enabling retail and convenience takeaway.",
-    "category": "product_maple",
-    "applies_to_products": [
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian Clearly Canadian Maple launch documentation 2025",
-    "confidence": 0.92
+    "id": "packaging-100pct-recycled",
+    "statement": "Clearly Canadian packaging uses 100% recycled materials.",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.97,
+    "tags": ["recycled", "sustainable packaging", "eco", "100%"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "cc-maple-launch-strategy",
-    "statement": "Clearly Canadian Maple launched with an on-premise-first distribution strategy, seeding the product in bars and cocktail-forward venues before expanding to retail — designed to build bartender advocacy and cocktail association before mass shelf placement.",
-    "category": "product_maple",
-    "applies_to_products": [
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian Clearly Canadian Maple go-to-market strategy 2025",
-    "confidence": 0.9
+    "id": "packaging-eco-by-design",
+    "statement": "'Eco by design' is a core brand pillar for Clearly Canadian.",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.97,
+    "tags": ["eco by design", "sustainability", "brand pillar", "environment"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "cc-maple-mocktail",
-    "statement": "Clearly Canadian Maple is designed as a sober-curious mocktail base, with its natural maple flavor and light carbonation making it a versatile non-alcoholic ingredient for autumn-inspired drinks and zero-proof cocktail menus.",
-    "category": "product_maple",
-    "applies_to_products": [
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian Clearly Canadian Maple brand and bartender communications 2025",
-    "confidence": 0.88
+    "id": "packaging-cans-biggest-innovation",
+    "statement": "Clearly Canadian SleekCans are described as 'CC's biggest innovation launch since retail reintroduction in 2017.'",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.95,
+    "tags": ["sleekcan", "innovation", "2017", "packaging launch"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "packaging-no-plastic",
-    "statement": "Clearly Canadian uses only glass bottles and aluminum cans across its entire product portfolio — no plastic packaging — reinforcing its sustainability positioning and differentiating from single-use plastic sparkling water brands.",
-    "category": "sustainability",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Essence",
-      "Clearly Canadian SleekCans",
-      "Clearly Canadian Maple",
-      "Clearly Canadian Sparkling Mineral"
-    ],
-    "source": "Clearly Canadian sustainability messaging and packaging documentation",
-    "confidence": 0.96
+    "id": "packaging-innobev-best-in-glass-essence",
+    "statement": "Clearly Canadian Essence won InnoBev Awards 2024 'Best in Glass.'",
+    "category": "packaging",
+    "source": "InnoBev Awards 2024",
+    "confidence": 0.97,
+    "tags": ["innobev", "best in glass", "essence", "award", "2024"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "distribution-retail-partners",
-    "statement": "Clearly Canadian is carried at major Canadian and US retail partners including Whole Foods, Loblaws, Safeway Canada, and specialty grocery chains — with the glass bottle format anchoring the premium grocery tier.",
+    "id": "packaging-innobev-best-in-glass-finalist-sparkling",
+    "statement": "Clearly Canadian Sparkling Mineral Water was an InnoBev 2024 'Best in Glass' finalist.",
+    "category": "packaging",
+    "source": "InnoBev Awards 2024",
+    "confidence": 0.95,
+    "tags": ["innobev", "best in glass", "finalist", "sparkling mineral water", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "packaging-innobev-best-in-can-finalist",
+    "statement": "Clearly Canadian Original Cans were an InnoBev 2024 'Best in Can' finalist.",
+    "category": "packaging",
+    "source": "InnoBev Awards 2024",
+    "confidence": 0.95,
+    "tags": ["innobev", "best in can", "finalist", "original cans", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "packaging-innobev-best-premium-drink-finalist",
+    "statement": "Clearly Canadian Essence was an InnoBev 2024 'Best Premium Drink' finalist.",
+    "category": "packaging",
+    "source": "InnoBev Awards 2024",
+    "confidence": 0.95,
+    "tags": ["innobev", "best premium drink", "finalist", "essence", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-shania-first-ad-since-1991",
+    "statement": "The Shania Twain campaign (June 2025) was Clearly Canadian's first advertising campaign since 1991 — a 34-year gap.",
+    "category": "marketing",
+    "source": "BusinessWire June 2025 / Strategy Magazine July 2025",
+    "confidence": 0.98,
+    "tags": ["shania twain", "advertising", "campaign", "1991", "34 years", "2025"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-shania-twain-star",
+    "statement": "Shania Twain — with 100M+ records sold, multiple Grammys, from Timmins, Ontario — stars in Clearly Canadian's 2025 campaign.",
+    "category": "marketing",
+    "source": "BusinessWire June 2025",
+    "confidence": 0.99,
+    "tags": ["shania twain", "celebrity", "ontario", "100m records", "grammy"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-maximum-effort-ryan-reynolds",
+    "statement": "Clearly Canadian's 2025 campaign was created by Ryan Reynolds' Maximum Effort production company.",
+    "category": "marketing",
+    "source": "BusinessWire June 2025 / Strategy Magazine July 2025",
+    "confidence": 0.99,
+    "tags": ["maximum effort", "ryan reynolds", "creative agency", "production"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-filmed-in-canada",
+    "statement": "The Shania Twain campaign was filmed on location in Canada, featuring natural waterfalls and forest backdrops.",
+    "category": "marketing",
+    "source": "BusinessWire June 2025",
+    "confidence": 0.97,
+    "tags": ["canada", "filming", "nature", "waterfalls", "forest", "location"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-treasure-hunter-storyline",
+    "statement": "In the campaign, Shania Twain plays a treasure hunter in a high-energy chase through the Canadian wilderness.",
+    "category": "marketing",
+    "source": "BusinessWire June 2025",
+    "confidence": 0.96,
+    "tags": ["shania twain", "treasure hunter", "storyline", "canadian wilderness"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-original-jingle",
+    "statement": "The Shania Twain campaign includes a catchy original jingle.",
+    "category": "marketing",
+    "source": "BusinessWire June 2025",
+    "confidence": 0.95,
+    "tags": ["jingle", "music", "advertising", "shania twain"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-tagline-clearly-back",
+    "statement": "The campaign tagline references 'Clearly Canadian is back' and plays on Shania Twain's 'Still the One.'",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.94,
+    "tags": ["tagline", "still the one", "comeback", "shania twain"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-shania-nostalgia-quote",
+    "statement": "Shania Twain described Clearly Canadian as 'pure nostalgia in a bottle.'",
+    "category": "marketing",
+    "source": "BusinessWire June 2025",
+    "confidence": 0.97,
+    "tags": ["shania twain", "nostalgia", "quote", "brand affinity"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-ryan-reynolds-instagram",
+    "statement": "Ryan Reynolds commented on Instagram: 'This fills my Vancouver heart to the brim' about the Clearly Canadian campaign.",
+    "category": "marketing",
+    "source": "Ryan Reynolds Instagram / Strategy Magazine July 2025",
+    "confidence": 0.95,
+    "tags": ["ryan reynolds", "instagram", "vancouver", "social media", "endorsement"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-targets-new-nostalgics",
+    "statement": "CMO Blackburn stated the campaign targets 'new nostalgics' aged 30–50.",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.97,
+    "tags": ["new nostalgics", "target audience", "30-50", "nostalgia", "cmo"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-largest-marketing-investment",
+    "statement": "CMO Blackburn described the Shania Twain campaign as 'the largest marketing investment since relaunch.'",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.97,
+    "tags": ["marketing investment", "largest", "cmo", "relaunch", "campaign"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-strategic-evolution-quote",
+    "statement": "CMO Blackburn: 'Strategic evolution — investing with purpose and discipline.'",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.96,
+    "tags": ["strategy", "investment", "discipline", "cmo quote"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-more-to-come-quote",
+    "statement": "CMO Blackburn: 'More to come — new innovations, seasonal creative, partnerships.'",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.96,
+    "tags": ["innovation", "seasonal", "partnerships", "future plans", "cmo quote"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-agencies",
+    "statement": "Agencies on the Shania Twain campaign include Maximum Effort, Buzzphoria, Jan Kelley, Lede Company, and Yellow House Consulting.",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.95,
+    "tags": ["agencies", "maximum effort", "buzzphoria", "jan kelley", "lede company"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-sfa-fancy-food-show-debut",
+    "statement": "The Shania Twain campaign debuted at the SFA Summer Fancy Food Show in June 2025.",
+    "category": "marketing",
+    "source": "BevNET June 2025",
+    "confidence": 0.97,
+    "tags": ["fancy food show", "sfa", "debut", "june 2025", "trade show"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-expo-west-2025",
+    "statement": "Clearly Canadian exhibited at Expo West 2025.",
+    "category": "marketing",
+    "source": "BevNET 2025",
+    "confidence": 0.94,
+    "tags": ["expo west", "2025", "trade show", "exhibition"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "campaign-tag-a-retailer",
+    "statement": "Clearly Canadian runs 'Tag a Retailer' social campaigns asking fans to identify which stores should carry CC.",
+    "category": "marketing",
+    "source": "Clearly Canadian social media",
+    "confidence": 0.94,
+    "tags": ["tag a retailer", "social media", "fan engagement", "retail expansion"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-us-retail-sales-65m",
+    "statement": "Clearly Canadian US multi-outlet retail dollar sales reached $65.8M in the 52 weeks ending July 2024 (Circana data).",
+    "category": "financial_performance",
+    "source": "Circana data via BevNET 2024",
+    "confidence": 0.98,
+    "tags": ["us retail", "dollar sales", "$65.8m", "circana", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-yoy-us-growth-39pct",
+    "statement": "Clearly Canadian achieved 39.4% year-over-year US retail growth in the 52 weeks ending July 2024 (Circana).",
+    "category": "financial_performance",
+    "source": "Circana data via BevNET 2024",
+    "confidence": 0.98,
+    "tags": ["yoy growth", "39.4%", "us retail", "circana", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-total-growth-55pct",
+    "statement": "Total year-over-year growth across all revenue streams was approximately 55%, per Clearly Canadian VP.",
+    "category": "financial_performance",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.93,
+    "tags": ["total growth", "55%", "revenue", "all channels", "2024"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-market-leading-pace",
+    "statement": "Clearly Canadian describes itself as 'growing at a market-leading pace.'",
+    "category": "financial_performance",
+    "source": "Clearly Canadian brand materials 2024",
+    "confidence": 0.94,
+    "tags": ["market leading", "growth", "performance"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-33600-doors",
+    "statement": "Clearly Canadian is available in approximately 33,600 retail doors across North America.",
     "category": "distribution",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Essence",
-      "Clearly Canadian SleekCans"
-    ],
-    "source": "Clearly Canadian retail distribution data 2025",
-    "confidence": 0.89
+    "source": "Clearly Canadian internal data via BevNET 2024",
+    "confidence": 0.94,
+    "tags": ["retail doors", "distribution", "north america", "33600"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "performance-us-retail",
-    "statement": "Clearly Canadian achieved $65.8 million in US retail sales with +39.4% year-over-year growth, making it one of the fastest-growing premium sparkling water brands in the US market.",
-    "category": "performance",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian Zero Sugar",
-      "Clearly Canadian SleekCans"
-    ],
-    "source": "Clearly Canadian retail sales data 2024–2025",
-    "confidence": 0.92
+    "id": "distribution-69pct-acv-grocery",
+    "statement": "Clearly Canadian has approximately 69% ACV in conventional grocery in North America.",
+    "category": "distribution",
+    "source": "Clearly Canadian internal data via BevNET 2024",
+    "confidence": 0.92,
+    "tags": ["acv", "grocery", "distribution", "69%"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "culture-crowdfunding",
-    "statement": "Clearly Canadian's 2015 relaunch was powered by a grassroots crowdfunding campaign that attracted 14,000 fans from 35 countries who pre-ordered 40,000 cases — proving that deep consumer nostalgia could restart a dormant brand.",
-    "category": "culture",
-    "applies_to_products": [
-      "Clearly Canadian Originals"
-    ],
-    "source": "Clearly Canadian relaunch press coverage and campaign documentation 2015",
-    "confidence": 0.93
+    "id": "distribution-canada-loblaws",
+    "statement": "Clearly Canadian is available at Loblaws in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.97,
+    "tags": ["loblaws", "canada", "grocery", "distribution"],
+    "date_verified": "2026-03"
   },
   {
-    "id": "culture-blue-jays",
-    "statement": "In 2025, Clearly Canadian announced a partnership with the Toronto Blue Jays, aligning the brand with Canada's MLB franchise and expanding its presence in sports and entertainment venues across the country.",
+    "id": "distribution-canada-sobeys",
+    "statement": "Clearly Canadian is available at Sobeys in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.97,
+    "tags": ["sobeys", "canada", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-shoppers",
+    "statement": "Clearly Canadian is available at Shoppers Drug Mart in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.96,
+    "tags": ["shoppers drug mart", "canada", "pharmacy", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-farm-boy",
+    "statement": "Clearly Canadian is available at Farm Boy in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["farm boy", "canada", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-freshco",
+    "statement": "Clearly Canadian is available at FreshCo in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["freshco", "canada", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-metro-ontario",
+    "statement": "Clearly Canadian is available at Metro Ontario in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.96,
+    "tags": ["metro", "ontario", "canada", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-circle-k",
+    "statement": "Clearly Canadian is available at Circle K convenience stores in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["circle k", "canada", "convenience", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-7eleven",
+    "statement": "Clearly Canadian is available at 7-Eleven in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["7-eleven", "canada", "convenience", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-london-drug",
+    "statement": "Clearly Canadian is available at London Drug in Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.94,
+    "tags": ["london drug", "canada", "pharmacy", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-whole-foods",
+    "statement": "Clearly Canadian is available at Whole Foods Canada.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["whole foods", "canada", "natural grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-canada-amazon",
+    "statement": "Clearly Canadian is available on Amazon Canada for direct-to-consumer purchase.",
+    "category": "distribution",
+    "source": "Clearly Canadian / Amazon Canada",
+    "confidence": 0.96,
+    "tags": ["amazon", "canada", "ecommerce", "direct to consumer", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-kroger",
+    "statement": "Clearly Canadian is available at all Kroger banners in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.97,
+    "tags": ["kroger", "us", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-ahold-delhaize",
+    "statement": "Clearly Canadian is available at Ahold-Delhaize banners in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.96,
+    "tags": ["ahold delhaize", "us", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-albertsons-safeway",
+    "statement": "Clearly Canadian is available at Albertsons and Safeway in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.96,
+    "tags": ["albertsons", "safeway", "us", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-publix",
+    "statement": "Clearly Canadian is available at Publix in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.96,
+    "tags": ["publix", "us", "grocery", "southeast", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-heb",
+    "statement": "Clearly Canadian is available at H-E-B in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["heb", "us", "texas", "grocery", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-meijer",
+    "statement": "Clearly Canadian is available at Meijer in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.95,
+    "tags": ["meijer", "us", "grocery", "midwest", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-food-lion",
+    "statement": "Clearly Canadian is available at Food Lion in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.94,
+    "tags": ["food lion", "us", "grocery", "southeast", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-acme",
+    "statement": "Clearly Canadian is available at Acme Markets in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian retail distribution list",
+    "confidence": 0.93,
+    "tags": ["acme", "us", "grocery", "northeast", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-us-amazon",
+    "statement": "Clearly Canadian is available on Amazon US for direct-to-consumer purchase.",
+    "category": "distribution",
+    "source": "Clearly Canadian / Amazon US",
+    "confidence": 0.97,
+    "tags": ["amazon", "us", "ecommerce", "direct to consumer", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-expanding-club-mass-convenience",
+    "statement": "Clearly Canadian is actively expanding into club, mass, and convenience channels in the US.",
+    "category": "distribution",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.94,
+    "tags": ["club", "mass", "convenience", "us expansion", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-qvc-appearances",
+    "statement": "Clearly Canadian appeared on QVC in February–March 2025 for direct-to-consumer TV retail.",
+    "category": "distribution",
+    "source": "QVC / Clearly Canadian 2025",
+    "confidence": 0.95,
+    "tags": ["qvc", "tv retail", "direct to consumer", "2025"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-blue-jays-official",
+    "statement": "Clearly Canadian became the official sparkling water of the Toronto Blue Jays under a multi-year deal announced March 2025.",
     "category": "partnerships",
-    "applies_to_products": [
-      "Clearly Canadian Originals",
-      "Clearly Canadian SleekCans",
-      "Clearly Canadian Maple"
-    ],
-    "source": "Clearly Canadian Blue Jays partnership announcement 2025",
-    "confidence": 0.93
+    "source": "Clearly Canadian / Toronto Blue Jays press release March 2025",
+    "confidence": 0.99,
+    "tags": ["blue jays", "official partner", "mlb", "toronto", "march 2025"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-blue-jays-sleekcan-first",
+    "statement": "Blue Jays fans at Rogers Centre were the first in Canada to access Clearly Canadian SleekCans.",
+    "category": "partnerships",
+    "source": "Clearly Canadian / Toronto Blue Jays press release March 2025",
+    "confidence": 0.97,
+    "tags": ["blue jays", "sleekcan", "rogers centre", "first in canada", "fans"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-rogers-centre-march-2025",
+    "statement": "Clearly Canadian began appearing at Rogers Centre (Blue Jays stadium) starting March 27, 2025.",
+    "category": "partnerships",
+    "source": "Clearly Canadian / Toronto Blue Jays press release March 2025",
+    "confidence": 0.98,
+    "tags": ["rogers centre", "blue jays", "march 2025", "stadium"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-rogers-centre-flavours",
+    "statement": "Clearly Canadian flavours available at Rogers Centre include Mountain Blackberry, Wild Cherry, and Sparkling Mineral Water.",
+    "category": "partnerships",
+    "source": "Clearly Canadian / Toronto Blue Jays partnership details",
+    "confidence": 0.95,
+    "tags": ["rogers centre", "mountain blackberry", "wild cherry", "sparkling mineral water"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-rogers-centre-signage",
+    "statement": "Clearly Canadian has signage at all Rogers Centre events as part of the Blue Jays partnership.",
+    "category": "partnerships",
+    "source": "Clearly Canadian / Toronto Blue Jays partnership details",
+    "confidence": 0.95,
+    "tags": ["rogers centre", "signage", "brand visibility", "blue jays"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-baseball-design-quote",
+    "statement": "Clearly Canadian CEO: 'Baseball inspired the design of our iconic blue glass bottles.'",
+    "category": "partnerships",
+    "source": "Clearly Canadian / Toronto Blue Jays press release March 2025",
+    "confidence": 0.97,
+    "tags": ["baseball", "glass bottle", "design", "ceo quote", "blue jays"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-vs-lacroix-bubly",
+    "statement": "vs. LaCroix/Bubly: Clearly Canadian offers real flavour, spring water from source, heritage glass bottle, and authentic brand heritage — not just unflavoured sparkling water.",
+    "category": "competitive_positioning",
+    "source": "Clearly Canadian brand materials / BevNET analysis 2024",
+    "confidence": 0.93,
+    "tags": ["lacroix", "bubly", "competitive", "positioning", "spring water", "glass bottle"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-vs-poppi-olipop",
+    "statement": "vs. Poppi/Olipop: Clearly Canadian is sparkling spring water (not prebiotic soda), lower calorie in Zero/Essence lines, and carries genuine brand heritage since 1987.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.91,
+    "tags": ["poppi", "olipop", "prebiotic", "competitive", "positioning", "heritage"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-vs-liquid-death",
+    "statement": "vs. Liquid Death: Clearly Canadian offers real fruit flavour, sweetness options, glass packaging alongside aluminum, and strong Canadian identity.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.90,
+    "tags": ["liquid death", "competitive", "positioning", "flavour", "glass", "canadian"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-vs-topo-chico",
+    "statement": "vs. Topo Chico: Clearly Canadian is Canadian-origin, offers more flavour variety, and carries a compelling comeback story.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.89,
+    "tags": ["topo chico", "competitive", "positioning", "canadian", "comeback"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-unicorn-category",
+    "statement": "Clearly Canadian occupies a 'unicorn' position straddling sparkling water and soda — real flavour without soda's guilt.",
+    "category": "competitive_positioning",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.96,
+    "tags": ["unicorn", "sparkling water", "soda", "positioning", "mid-calorie"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-glass-differentiator",
+    "statement": "The iconic glass bottle is a key competitive differentiator that no major sparkling water competitor replicates at scale.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.92,
+    "tags": ["glass bottle", "competitive advantage", "differentiator", "packaging"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-heritage-differentiator",
+    "statement": "Clearly Canadian's 1987 heritage gives it authentic nostalgia credentials that newer sparkling water brands cannot replicate.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.93,
+    "tags": ["heritage", "1987", "nostalgia", "authenticity", "competitive advantage"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-canadian-identity",
+    "statement": "Clearly Canadian's Canadian origin and spring water sourcing are authentic differentiators in a market of brands that claim premium positioning without Canadian roots.",
+    "category": "competitive_positioning",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.94,
+    "tags": ["canadian identity", "spring water", "authentic", "premium", "differentiator"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-nostalgia-loyalist-segment",
+    "statement": "Nostalgia loyalists — consumers who remember Clearly Canadian from the 1980s–90s — are a core and highly engaged consumer segment.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.95,
+    "tags": ["nostalgia", "loyalist", "80s", "90s", "core consumer"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-gen-z-curiosity",
+    "statement": "Gen Z consumers are discovering Clearly Canadian via nostalgia content on TikTok and Instagram, treating it as a culturally cool heritage brand.",
+    "category": "consumer_insights",
+    "source": "BevNET consumer analysis 2024",
+    "confidence": 0.90,
+    "tags": ["gen z", "tiktok", "instagram", "heritage", "nostalgia", "discovery"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-millennial-nostalgia",
+    "statement": "Millennials who grew up with Clearly Canadian in the 90s represent a strong nostalgia-driven repurchase segment.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.93,
+    "tags": ["millennials", "90s", "nostalgia", "repurchase", "core consumer"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-sober-curious-segment",
+    "statement": "The sober-curious segment is a growing Clearly Canadian consumer group, especially for Zero Sugar and CC Maple as mocktail mixers.",
+    "category": "consumer_insights",
+    "source": "BevNET consumer analysis 2024",
+    "confidence": 0.91,
+    "tags": ["sober curious", "zero sugar", "maple", "mocktail", "alcohol-free"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-health-wellness-segment",
+    "statement": "Health and wellness consumers are drawn to Clearly Canadian for its clean label: spring water, natural flavours, no HFCS, no artificial colours.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.94,
+    "tags": ["health wellness", "clean label", "natural", "no hfcs", "better for you"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-bartender-mixologist",
+    "statement": "Bartenders and mixologists are an emerging target for Clearly Canadian, particularly for CC Maple as a premium cocktail mixer.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.88,
+    "tags": ["bartender", "mixologist", "cocktail", "maple", "on-premise"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-household-decision-maker",
+    "statement": "Household decision makers — often Millennial or Gen X parents — drive Clearly Canadian multipacks as a family better-for-you soda replacement.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.90,
+    "tags": ["household", "decision maker", "millennial", "gen x", "multipack", "family"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-convenience-first",
+    "statement": "Convenience-first shoppers who discover Clearly Canadian in c-stores are an important incremental volume driver.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian retail data",
+    "confidence": 0.88,
+    "tags": ["convenience store", "impulse purchase", "c-store", "incremental"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-premium-lifestyle",
+    "statement": "Premium lifestyle consumers drawn to glass bottle aesthetics and natural Canadian spring water represent a high-value, high-engagement segment.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.91,
+    "tags": ["premium lifestyle", "glass bottle", "aesthetic", "spring water", "high value"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-us-market-strong",
+    "statement": "The US market is Clearly Canadian's strongest growth engine, driven by Zero Sugar and Originals expansion.",
+    "category": "consumer_insights",
+    "source": "Circana / BevNET 2024",
+    "confidence": 0.94,
+    "tags": ["us market", "growth", "zero sugar", "originals", "expansion"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-canada-home-market",
+    "statement": "Canada is Clearly Canadian's home market with deep emotional resonance — the brand is seen as a national heritage product.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.95,
+    "tags": ["canada", "home market", "heritage", "national", "emotional connection"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-soda-switchers",
+    "statement": "The largest consumer opportunity is soda switchers — people who want flavour and sweetness but are reducing or eliminating soft drinks.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian VP via BevNET 2024",
+    "confidence": 0.95,
+    "tags": ["soda switcher", "better for you", "flavour", "sweetness", "opportunity"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-price-sensitivity-cans",
+    "statement": "The $7.99 SleekCan 6-pack addresses price-sensitive consumers who find glass bottle single-serves prohibitive at $2.49–$2.99 each.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian pricing strategy",
+    "confidence": 0.91,
+    "tags": ["price sensitivity", "6-pack", "value", "can", "accessibility"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "channel-on-premise-opportunity",
+    "statement": "On-premise (restaurants, bars, stadiums) is an under-penetrated channel for Clearly Canadian with significant growth potential, especially with CC Maple.",
+    "category": "distribution",
+    "source": "Clearly Canadian strategy materials",
+    "confidence": 0.88,
+    "tags": ["on-premise", "bars", "restaurants", "stadium", "growth", "maple"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "channel-ecommerce-growing",
+    "statement": "Ecommerce via Amazon Canada and Amazon US is a growing channel enabling nationwide direct-to-consumer reach.",
+    "category": "distribution",
+    "source": "Clearly Canadian / Amazon data 2024",
+    "confidence": 0.91,
+    "tags": ["ecommerce", "amazon", "direct to consumer", "nationwide", "growth"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "innovation-zero-sugar-health-trend",
+    "statement": "The Zero Sugar line was launched to capture the zero-calorie beverage trend while maintaining Clearly Canadian's natural-ingredients philosophy.",
+    "category": "products",
+    "source": "BevNET July 2023",
+    "confidence": 0.93,
+    "tags": ["zero sugar", "zero calorie", "health trend", "natural", "innovation"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "innovation-essence-no-sweetener",
+    "statement": "Clearly Canadian Essence fills the pure-sparkling-water niche with zero calories and zero sweeteners — competing with Perrier and S. Pellegrino on naturalness while beating them on flavour.",
+    "category": "products",
+    "source": "Clearly Canadian brand materials / InnoBev 2024",
+    "confidence": 0.90,
+    "tags": ["essence", "perrier", "pellegrino", "no sweetener", "natural", "competition"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "innovation-maple-canadian-identity",
+    "statement": "CC Maple leverages Canada's most iconic flavour — maple — to deepen the brand's Canadian identity and expand into premium cocktail occasions.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.87,
+    "tags": ["maple", "canadian identity", "cocktail", "premium", "innovation"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "sustainability-glass-aluminum-only",
+    "statement": "Clearly Canadian's commitment to glass and aluminum only (never plastic) is central to its sustainability and brand identity.",
+    "category": "sustainability",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 1.0,
+    "tags": ["sustainability", "glass", "aluminum", "never plastic", "brand pillar"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "sustainability-spring-water-responsible",
+    "statement": "Sourcing from named Canadian springs (Whistler BC, Formosa ON) demonstrates traceable, responsible water sourcing.",
+    "category": "sustainability",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 0.95,
+    "tags": ["spring water", "responsible sourcing", "whistler", "formosa", "traceable"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "sustainability-recycled-materials",
+    "statement": "Clearly Canadian uses 100% recycled materials in packaging — glass and aluminum are infinitely recyclable.",
+    "category": "sustainability",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.97,
+    "tags": ["recycled", "infinitely recyclable", "glass", "aluminum", "circular"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "sustainability-vegan-essence",
+    "statement": "Clearly Canadian Essence uses only natural vegan flavours — no animal-derived ingredients of any kind.",
+    "category": "sustainability",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 0.97,
+    "tags": ["vegan", "essence", "natural flavours", "plant-based"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "messaging-pure-nostalgia-positioning",
+    "statement": "Clearly Canadian's nostalgia positioning is authentic — the brand genuinely disappeared and came back, unlike manufactured retro branding.",
+    "category": "brand_identity",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.93,
+    "tags": ["nostalgia", "authentic", "comeback", "positioning", "genuine"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "messaging-simple-ingredients",
+    "statement": "Clearly Canadian Originals have a simple, recognizable ingredient list: sparkling Canadian spring water, cane sugar, natural flavours.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling",
+    "confidence": 0.99,
+    "tags": ["simple ingredients", "cane sugar", "natural flavours", "spring water", "clean label"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "messaging-canadian-spring-water-pride",
+    "statement": "Clearly Canadian proudly markets its Canadian spring water origin as a premium quality signal unavailable from US-sourced competitors.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.94,
+    "tags": ["canadian spring water", "premium", "origin", "quality signal", "pride"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "retail-reintroduction-context",
+    "statement": "When Clearly Canadian relaunched in retail in 2017, it was one of the first major nostalgia beverage comebacks in the industry.",
+    "category": "brand_identity",
+    "source": "BevNET / Clearly Canadian history",
+    "confidence": 0.91,
+    "tags": ["relaunch", "2017", "nostalgia", "comeback", "beverage industry"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "tone-optimistic-brand-voice",
+    "statement": "Clearly Canadian's brand voice is optimistic, nostalgic, and playfully Canadian — never preachy or clinical.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand guidelines",
+    "confidence": 0.92,
+    "tags": ["brand voice", "optimistic", "nostalgic", "canadian", "tone"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "tone-good-thoughts-words-deeds",
+    "statement": "The 'good thoughts, good words, good deeds' mission informs CC's tone: positive, community-oriented, and values-led.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand guidelines",
+    "confidence": 0.95,
+    "tags": ["good thoughts", "good words", "good deeds", "mission", "values", "tone"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "price-architecture-three-tiers",
+    "statement": "Clearly Canadian's price architecture spans three tiers: Essence/Sparkling (plain water premium), Originals Glass (heritage premium), and Cans/6-packs (accessible value).",
+    "category": "competitive_positioning",
+    "source": "Clearly Canadian pricing strategy",
+    "confidence": 0.90,
+    "tags": ["price architecture", "tiers", "essence", "originals", "cans", "value"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "flavour-expansion-strategy",
+    "statement": "Clearly Canadian expands flavours strategically — Summer Strawberry's return in 2022 proved demand for flavour nostalgia before launching Zero Sugar in 2023.",
+    "category": "brand_identity",
+    "source": "BevNET 2022-2023",
+    "confidence": 0.89,
+    "tags": ["flavour expansion", "strategy", "summer strawberry", "zero sugar", "sequencing"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "crowdfunding-us-state-canada-province",
+    "statement": "Clearly Canadian's crowdfunding campaign pre-sold 40,000+ cases reaching every US state and Canadian province — demonstrating pan-North American demand before retail relaunch.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian crowdfunding campaign records",
+    "confidence": 0.96,
+    "tags": ["crowdfunding", "pre-orders", "every us state", "every canadian province", "demand validation"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "awards-innobev-2024-summary",
+    "statement": "At InnoBev Awards 2024, Clearly Canadian won Best in Glass (Essence) and was finalist in Best in Glass (Sparkling), Best in Can (Originals), and Best Premium Drink (Essence).",
+    "category": "brand_identity",
+    "source": "InnoBev Awards 2024",
+    "confidence": 0.97,
+    "tags": ["innobev", "awards", "2024", "best in glass", "best in can", "best premium drink"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-all-formats-summary",
+    "statement": "Clearly Canadian's current portfolio spans: Originals (glass + can), Zero Sugar (can), Essence (glass), Sparkling Mineral Water (glass), Still Mineral Water, and CC Maple (proposed).",
+    "category": "products",
+    "source": "Clearly Canadian product catalog 2024-2025",
+    "confidence": 0.97,
+    "tags": ["portfolio", "originals", "zero sugar", "essence", "mineral water", "maple"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "zero-sugar-canada-expansion",
+    "statement": "Clearly Canadian Zero Sugar launched primarily in the US in July 2023 and is actively expanding into Canadian retail.",
+    "category": "products",
+    "source": "BevNET 2023-2024",
+    "confidence": 0.92,
+    "tags": ["zero sugar", "canada", "expansion", "us launch", "2023"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "can-launch-access-new-shoppers",
+    "statement": "The SleekCan launch opened Clearly Canadian to new shoppers in the can-format sparkling water aisle who would not purchase a glass bottle.",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials / BevNET 2024",
+    "confidence": 0.92,
+    "tags": ["sleekcan", "new shoppers", "can aisle", "accessibility", "incremental"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "blue-jays-canadian-pride-alignment",
+    "statement": "The Blue Jays partnership aligns two iconic Canadian brands — Clearly Canadian and Canada's only MLB team — around shared national pride.",
+    "category": "partnerships",
+    "source": "Clearly Canadian / Toronto Blue Jays press release March 2025",
+    "confidence": 0.96,
+    "tags": ["blue jays", "canadian pride", "mlb", "brand alignment", "partnership"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "shania-canadian-icon-alignment",
+    "statement": "Shania Twain's Ontario roots and Canadian identity make her an authentic match for Clearly Canadian's BC-born, nationally proud brand.",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.95,
+    "tags": ["shania twain", "ontario", "canadian", "brand alignment", "authenticity"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-glass-availability",
+    "statement": "All four core Clearly Canadian Original flavours — Mountain Blackberry, Wild Cherry, Orchard Peach, Summer Strawberry — are available in the iconic glass bottle.",
+    "category": "products",
+    "source": "Clearly Canadian product catalog",
+    "confidence": 1.0,
+    "tags": ["originals", "glass bottle", "mountain blackberry", "wild cherry", "orchard peach", "summer strawberry"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-originals-can-availability",
+    "statement": "All four core Clearly Canadian Original flavours are available in SleekCan 6-packs.",
+    "category": "products",
+    "source": "Clearly Canadian product catalog",
+    "confidence": 0.97,
+    "tags": ["originals", "sleekcan", "6-pack", "mountain blackberry", "wild cherry", "orchard peach", "summer strawberry"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "marketing-new-nostalgics-definition",
+    "statement": "'New nostalgics' — the 30-50 age group targeted by the Shania campaign — are defined by emotional connection to the 90s brand and willingness to pay premium for authentic heritage.",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.94,
+    "tags": ["new nostalgics", "30-50", "90s", "premium", "heritage", "target segment"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-never-artificial-since-1987",
+    "statement": "In 38+ years, Clearly Canadian has never used artificial colours, artificial flavours, or HFCS — a consistent clean-label record.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian company history / product labeling",
+    "confidence": 0.99,
+    "tags": ["clean label", "no artificial", "1987", "consistent", "38 years", "heritage"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "distribution-north-america-both-markets",
+    "statement": "Clearly Canadian operates simultaneously in both Canada and the US — a true cross-border North American brand.",
+    "category": "distribution",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.99,
+    "tags": ["north america", "canada", "us", "cross-border", "distribution"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-mid-calorie-category-gap",
+    "statement": "Clearly Canadian Originals (90 cal) fill the 'mid-calorie' gap between zero-calorie sparkling waters and full-calorie sodas — a category largely abandoned by big soda brands.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.93,
+    "tags": ["mid-calorie", "90 calories", "category gap", "sparkling water", "soda", "positioning"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-bar-cocktail-occasion",
+    "statement": "Bar and cocktail occasions represent a new use case for Clearly Canadian — particularly CC Maple — bringing the brand into premium on-premise drinking culture.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.87,
+    "tags": ["bar", "cocktail", "on-premise", "maple", "new occasion", "premium"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-gift-gifting-glass",
+    "statement": "The glass bottle's premium aesthetic makes Clearly Canadian a genuine gifting option — particularly in gift baskets and Canadiana-themed sets.",
+    "category": "consumer_insights",
+    "source": "Clearly Canadian brand research",
+    "confidence": 0.86,
+    "tags": ["gifting", "glass bottle", "premium", "canadiana", "gift basket"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-originals-portfolio-dominance",
+    "statement": "With ~85% of portfolio volume, Clearly Canadian Originals drive the vast majority of revenue and brand exposure.",
+    "category": "financial_performance",
+    "source": "Clearly Canadian internal data via BevNET 2024",
+    "confidence": 0.92,
+    "tags": ["originals", "85%", "portfolio", "revenue", "volume"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "innovation-pipeline-seasonal-creative",
+    "statement": "CMO Blackburn signalled seasonal creative executions and new innovations are planned beyond the Shania Twain campaign.",
+    "category": "marketing",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.93,
+    "tags": ["seasonal", "innovation", "pipeline", "future", "cmo quote"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-comeback-story-asset",
+    "statement": "Clearly Canadian's bankruptcy-to-comeback story is itself a brand asset — a narrative of consumer love powerful enough to resurrect a brand.",
+    "category": "brand_identity",
+    "source": "BevNET / Clearly Canadian brand materials",
+    "confidence": 0.92,
+    "tags": ["comeback", "bankruptcy", "brand story", "consumer love", "resurrection"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "packaging-blue-glass-colour",
+    "statement": "The distinctive cobalt-blue colour of Clearly Canadian's glass bottle is an instantly recognizable shelf presence.",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.98,
+    "tags": ["blue glass", "cobalt", "shelf presence", "recognizable", "packaging"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-good-deeds-community",
+    "statement": "Clearly Canadian's 'good deeds' pillar is operationalized through the Clearly Community Challenge, supporting real consumer-led causes.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.93,
+    "tags": ["good deeds", "community challenge", "causes", "values", "operationalized"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "retail-shelf-placement-sparkling-water-aisle",
+    "statement": "Clearly Canadian primarily competes on shelf in the sparkling water aisle, not the soda aisle — a strategic placement that signals better-for-you.",
+    "category": "competitive_positioning",
+    "source": "Retail industry analysis",
+    "confidence": 0.90,
+    "tags": ["shelf placement", "sparkling water aisle", "better for you", "vs soda", "retail strategy"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "innovation-zero-sugar-stevia-naturalness",
+    "statement": "By choosing stevia over sucralose or aspartame for Zero Sugar, Clearly Canadian maintains its natural-ingredients promise even in the diet line.",
+    "category": "products",
+    "source": "Clearly Canadian product labeling / brand philosophy",
+    "confidence": 0.96,
+    "tags": ["stevia", "zero sugar", "natural", "no aspartame", "no sucralose", "clean label"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-35-countries-demand",
+    "statement": "Crowdfunding demand came from 35 countries — proving Clearly Canadian has latent global brand recognition beyond North America.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian crowdfunding records",
+    "confidence": 0.95,
+    "tags": ["global", "35 countries", "demand", "international", "crowdfunding"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-qvc-older-affluent",
+    "statement": "QVC appearances in Feb-March 2025 targeted older, more affluent Millennial and Gen X households with bundled Clearly Canadian packages.",
+    "category": "consumer_insights",
+    "source": "QVC / Clearly Canadian 2025",
+    "confidence": 0.88,
+    "tags": ["qvc", "millennial", "gen x", "affluent", "bundled", "direct to consumer"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "product-maple-sober-curious-occasion",
+    "statement": "CC Maple positions as a sophisticated non-alcoholic option for sober-curious consumers at bars — a mocktail that doesn't feel like a compromise.",
+    "category": "products",
+    "source": "Clearly Canadian innovation pipeline",
+    "confidence": 0.85,
+    "tags": ["maple", "sober curious", "mocktail", "non-alcoholic", "sophisticated", "bar"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-shania-twain-spokesperson",
+    "statement": "Shania Twain serves as Clearly Canadian's celebrity spokesperson for the 2025 campaign — the first formal celebrity partnership since relaunch.",
+    "category": "partnerships",
+    "source": "BusinessWire June 2025",
+    "confidence": 0.98,
+    "tags": ["shania twain", "celebrity spokesperson", "2025", "partnership", "first since relaunch"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-growth-driven-by-can-launch",
+    "statement": "The SleekCan launch is a significant contributor to Clearly Canadian's 55% total revenue growth by unlocking new retail shelf space and new price points.",
+    "category": "financial_performance",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.89,
+    "tags": ["sleekcan", "revenue growth", "55%", "new shelf space", "price point"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-premium-sparkling-alternative",
+    "statement": "Clearly Canadian is positioned as 'North America's premium sparkling alternative' — a claim backed by Canadian spring water, glass packaging, and 38-year clean-label heritage.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand materials",
+    "confidence": 0.96,
+    "tags": ["premium", "sparkling alternative", "north america", "positioning", "heritage"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-cc-perceived-as-treat",
+    "statement": "For health-conscious consumers, Clearly Canadian Originals function as a treat — real flavour and sweetness without the volume of calories from full soda.",
+    "category": "consumer_insights",
+    "source": "BevNET consumer analysis 2024",
+    "confidence": 0.90,
+    "tags": ["treat", "health conscious", "real flavour", "reduced calories", "vs soda"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "packaging-glass-bottle-tactile",
+    "statement": "The glass bottle's tactile, weighted feel differentiates the drinking experience from plastic or thin-walled aluminum — contributing to perceived premium quality.",
+    "category": "packaging",
+    "source": "Clearly Canadian brand materials / consumer research",
+    "confidence": 0.91,
+    "tags": ["glass bottle", "tactile", "premium feel", "drinking experience", "quality"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "competitive-authenticity-vs-manufactured-retro",
+    "statement": "Unlike brands that use artificial retro aesthetics, Clearly Canadian's nostalgia is grounded in a real history — it genuinely was a 1990s cultural icon.",
+    "category": "competitive_positioning",
+    "source": "BevNET analysis 2024",
+    "confidence": 0.93,
+    "tags": ["authenticity", "retro", "nostalgia", "1990s", "genuine", "cultural icon"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "brand-lifestyle-not-just-beverage",
+    "statement": "Clearly Canadian's stated mission is to be a 'leading lifestyle brand' — not just a beverage — encompassing values, community, and identity.",
+    "category": "brand_identity",
+    "source": "Clearly Canadian brand guidelines",
+    "confidence": 0.95,
+    "tags": ["lifestyle brand", "mission", "community", "identity", "beyond beverage"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "sustainability-no-plastic-brand-promise",
+    "statement": "Clearly Canadian's 'never plastic' commitment is a standing brand promise — not a campaign — applying to every product in every market.",
+    "category": "sustainability",
+    "source": "Clearly Canadian brand guidelines",
+    "confidence": 1.0,
+    "tags": ["never plastic", "brand promise", "sustainability", "every product", "every market"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "financial-circana-data-verified",
+    "statement": "Clearly Canadian's US sales data ($65.8M, +39.4% YoY) is verified by Circana multi-outlet retail tracking — the beverage industry standard measurement source.",
+    "category": "financial_performance",
+    "source": "Circana via BevNET 2024",
+    "confidence": 0.98,
+    "tags": ["circana", "verified data", "$65.8m", "39.4%", "multi-outlet", "measurement"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "consumer-can-format-younger-skew",
+    "statement": "The SleekCan format skews younger than the glass bottle, attracting Gen Z and younger Millennials who shop the can sparkling water set.",
+    "category": "consumer_insights",
+    "source": "BevNET consumer analysis 2024",
+    "confidence": 0.88,
+    "tags": ["sleekcan", "gen z", "millennial", "younger", "can format", "sparkling water set"],
+    "date_verified": "2026-03"
+  },
+  {
+    "id": "partnership-maximum-effort-creative-vision",
+    "statement": "Maximum Effort's track record of high-impact, culturally resonant brand campaigns (Aviation Gin, Mint Mobile) aligns with Clearly Canadian's ambition to re-enter culture — not just retail.",
+    "category": "partnerships",
+    "source": "Strategy Magazine July 2025",
+    "confidence": 0.91,
+    "tags": ["maximum effort", "aviation gin", "mint mobile", "culture", "campaign", "brand ambition"],
+    "date_verified": "2026-03"
   }
 ]
