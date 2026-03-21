@@ -121,17 +121,10 @@ export default function PersonaCard({ result, persona, onChatClick, streamingTex
     );
   }
 
-  // ── Full result mode (existing) ──
+  // ── Full result mode ──
   if (!result) return null;
 
   const sentiment = SENTIMENT[result.decision] ?? SENTIMENT.indifferent;
-  const resonance = Math.round(result.confidence * 100);
-
-  const isPositive = ['immediate_yes', 'already_buying', 'likely_try'].includes(result.decision);
-  const keyLabel = FOOTER_LABEL[result.decision] ?? 'Condition';
-  const keyValue = isPositive
-    ? extractShortLabel(result.drivers[0] ?? result.barriers[0] ?? '')
-    : extractShortLabel(result.barriers[0] ?? result.drivers[0] ?? '');
 
   const displayName = persona
     ? `${persona.name}, ${persona.age ?? persona.age_range}`
@@ -143,20 +136,19 @@ export default function PersonaCard({ result, persona, onChatClick, streamingTex
   return (
     <div
       onClick={onChatClick}
-      className="bg-white rounded-[20px] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.13)] flex flex-col gap-5 hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden cursor-pointer"
+      className="bg-white rounded-[20px] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.13)] flex flex-row items-start gap-6 hover:-translate-y-0.5 transition-transform duration-300 relative overflow-hidden cursor-pointer"
     >
       <div className="absolute top-0 left-0 w-full h-[3px]" style={{ backgroundColor: sentiment.bar }} />
 
-      <div className="flex items-center justify-between pt-1">
-        <div className="flex items-center gap-3">
-          <PersonaAvatar name={result.persona_name} avatarUrl={persona?.avatar_url} size="w-12 h-12" textSize="text-sm" />
-          <div>
-            <div className="font-bold text-gray-900 text-[15px] leading-tight">{displayName}</div>
-            {subtitle && <div className="text-gray-400 text-xs mt-0.5">{subtitle}</div>}
-          </div>
+      {/* Left column: avatar + name + segment + sentiment */}
+      <div className="flex flex-col items-center gap-2 pt-1 shrink-0 w-[100px]">
+        <PersonaAvatar name={result.persona_name} avatarUrl={persona?.avatar_url} size="w-16 h-16" textSize="text-base" />
+        <div className="text-center">
+          <div className="font-bold text-gray-900 text-[13px] leading-tight">{displayName}</div>
+          {subtitle && <div className="text-gray-400 text-[11px] mt-0.5">{subtitle}</div>}
         </div>
         <div
-          className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
+          className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold"
           style={{ backgroundColor: sentiment.bg, color: sentiment.text }}
         >
           <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: sentiment.dot }} />
@@ -164,21 +156,11 @@ export default function PersonaCard({ result, persona, onChatClick, streamingTex
         </div>
       </div>
 
-      <p className="text-gray-700 text-[15px] italic leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-        &ldquo;{result.response_text}&rdquo;
-      </p>
-
-      <div className="flex items-end justify-between border-t border-gray-100 pt-4">
-        <div className="flex flex-col gap-1">
-          <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">Resonance</span>
-          <span className="text-xl font-bold text-gray-800 font-mono leading-none">{resonance}/100</span>
-        </div>
-        {keyValue && (
-          <div className="flex flex-col gap-1 text-right">
-            <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">{keyLabel}</span>
-            <span className="text-base font-bold text-gray-800 leading-none">{keyValue}</span>
-          </div>
-        )}
+      {/* Right column: response text in bordered box */}
+      <div className="flex-1 border border-gray-200 rounded-2xl p-5">
+        <p className="text-gray-700 text-[15px] italic leading-relaxed">
+          &ldquo;{result.response_text}&rdquo;
+        </p>
       </div>
     </div>
   );

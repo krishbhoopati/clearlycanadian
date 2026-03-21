@@ -14,6 +14,7 @@ function formatTurnTime(ts: number): string {
 import PersonaCard from "@/components/PersonaCard";
 import AnalysisSidebar from "@/components/AnalysisSidebar";
 import PersonaAvatar from "@/components/PersonaAvatar";
+import AllPersonasModal from "@/components/AllPersonasModal";
 import type { Persona, ConversationTurn, AIStreamState, AnalysisResult } from "@/lib/types";
 
 interface ResultsPanelProps {
@@ -89,7 +90,7 @@ function ConversationTurnBlock({
         </div>
 
         {turn.result.consulted_personas.length > 0 && (
-          <div className="grid grid-cols-3 gap-6 pl-[56px]">
+          <div className="flex flex-col gap-4 pl-[56px]">
             {turn.result.consulted_personas.map(p => (
               <PersonaCard
                 key={p.persona_id}
@@ -175,7 +176,7 @@ function StreamingTurnBlock({
 
         {/* Streaming persona cards */}
         {stream.selectedPersonaIds.length > 0 && (
-          <div className="grid grid-cols-3 gap-6 pl-[56px]">
+          <div className="flex flex-col gap-4 pl-[56px]">
             {stream.selectedPersonaIds.map(id => {
               const persona = personaMap[id];
               const text = stream.personaTexts[id] ?? "";
@@ -220,6 +221,7 @@ export default function ResultsView({
   lastAiAnalysis,
 }: ResultsPanelProps) {
   const [input, setInput] = useState("");
+  const [showAllPersonas, setShowAllPersonas] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevTurnsLen = useRef(0);
   const prevStreamLen = useRef(0);
@@ -368,6 +370,15 @@ export default function ResultsView({
 
           {/* Fixed bottom overlay */}
           <div className="absolute bottom-0 left-0 right-0 px-10 pb-8 pt-6 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
+            <button
+              onClick={() => setShowAllPersonas(true)}
+              className="absolute bottom-8 right-10 flex items-center gap-2 text-white/50 hover:text-white/90 text-xs font-medium transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.75}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              View All Personas
+            </button>
             <div className="glass-input rounded-full p-2 pl-6 flex items-center gap-3 transition-all">
               <input
                 className="bg-transparent text-white placeholder:text-white/40 flex-1 outline-none text-sm"
@@ -399,6 +410,13 @@ export default function ResultsView({
           />
         )}
       </div>
+
+      {showAllPersonas && (
+        <AllPersonasModal
+          personas={personas}
+          onClose={() => setShowAllPersonas(false)}
+        />
+      )}
     </div>
   );
 }

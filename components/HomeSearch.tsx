@@ -6,6 +6,7 @@ import PersonaAvatar from "@/components/PersonaAvatar";
 import PersonaPopover from "@/components/PersonaPopover";
 import ResultsView from "@/components/ResultsView";
 import LoadingOverlay from "@/components/LoadingOverlay";
+import AllPersonasModal from "@/components/AllPersonasModal";
 import type { Persona, ConversationTurn, AIStreamState, AnalysisResult } from "@/lib/types";
 
 interface HomeSearchProps {
@@ -121,6 +122,7 @@ export default function HomeSearch({
   const [isFocused, setIsFocused] = useState(false);
   const restartRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [hoveredPersona, setHoveredPersona] = useState<{ persona: Persona; rect: DOMRect } | null>(null);
+  const [showAllPersonas, setShowAllPersonas] = useState(false);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [scale, setScale] = useState(1);
   const [windowHeight, setWindowHeight] = useState(900);
@@ -453,6 +455,15 @@ export default function HomeSearch({
                           </span>
                         </div>
                       </div>
+                      <button
+                        onClick={() => setShowAllPersonas(true)}
+                        className="flex items-center gap-2 text-white/50 hover:text-white/90 text-xs font-medium transition-colors"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.75}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        View All Personas
+                      </button>
                     </>
                   )}
                 </div>
@@ -487,6 +498,13 @@ export default function HomeSearch({
         personas={personas}
         query={input}
       />
+
+      {showAllPersonas && (
+        <AllPersonasModal
+          personas={personas}
+          onClose={() => setShowAllPersonas(false)}
+        />
+      )}
 
       {/* Persona hover popover — rendered via portal to escape overflow:hidden */}
       {hoveredPersona && (

@@ -258,7 +258,9 @@ ${formatNutritionData(nutritionData)}
 
 ═══ YOUR INSTRUCTIONS ═══
 Respond to the following question AS ${persona.name}.
-- Write 2-4 sentences maximum.
+- Write 3-5 sentences as a single cohesive paragraph.
+- Go beyond your personal reaction: surface ONE concrete insight Clearly Canadian could act on (a channel, price point, message, occasion, or barrier the brand needs to solve).
+- Ground it in your lived experience and the data above.
 - Use your language style described above.
 - Reference at least ONE specific data point naturally (not as a citation).
 - Reveal your DECISION — would you or wouldn't you, and WHY.
