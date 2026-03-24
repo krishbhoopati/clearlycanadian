@@ -327,3 +327,72 @@ export interface AIStreamState {
   selectedPersonaIds: string[];
   timestamp: number;
 }
+
+// ─── Swarm Simulation Types ───────────────────────────────────────────────────
+
+export interface SimAgent {
+  id: string;
+  name: string;
+  age: number;
+  location: string;
+  archetype: string;
+  awareness_level: "loyal" | "aware" | "vaguely_aware" | "never_heard";
+  maple_stance: string;
+  persona_id: string; // maps to a real persona in personas.json
+  avatar_color: string;
+  segment: string; // "Gen Z" | "Millennial" | etc.
+  handle: string; // @handle for social posts
+}
+
+export interface GraphNode {
+  id: string;
+  label: string;
+  group: "center" | "product" | "competitor" | "channel" | "persona" | "concept" | "market" | "micro";
+  color: string;
+  tooltip?: string;
+  isMicro?: boolean;
+}
+
+export interface GraphLink {
+  source: string;
+  target: string;
+  label?: string;
+  strength?: number;
+  isDotted?: boolean;
+}
+
+export interface SimPost {
+  id: string;
+  type: "featured" | "background";
+  platform: "twitter" | "reddit";
+  persona_id: string;
+  persona_name: string;
+  handle: string;
+  avatar_color: string;
+  body: string;
+  likes: number;
+  replies: number;
+  timestamp_label: string;
+  sentiment: "positive" | "neutral" | "friction";
+  subreddit?: string;
+  // background-post only fields
+  agentId?: string;
+  segment?: string;
+  city?: string;
+}
+
+export interface SentimentPoint {
+  t: number;
+  positive: number;
+  neutral: number;
+  friction: number;
+}
+
+export interface SwarmSegment {
+  name: string;
+  color: string;
+  count: number;
+  persona_ids: string[];
+}
+
+export type SimStage = 1 | 2 | 3 | 4 | 5;
