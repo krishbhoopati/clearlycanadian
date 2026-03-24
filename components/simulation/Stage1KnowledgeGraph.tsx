@@ -215,16 +215,16 @@ export default function Stage1KnowledgeGraph({ onComplete, onBeginAnalysis }: Pr
         </p>
         <div className={`mt-5 pt-5 border-t border-slate-100 grid grid-cols-3 gap-4 text-center ${graphDone ? "animate-sim-post-in" : "opacity-30"}`}>
           <div>
-            <div className="text-slate-800 font-bold text-3xl">{totalMainNodes}</div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Entity Node</div>
+            <div className="text-slate-800 font-black text-5xl tabular-nums">{totalMainNodes}</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">Entity Nodes</div>
           </div>
           <div>
-            <div className="text-slate-800 font-bold text-3xl">{ALL_LINKS.length}</div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Relationship</div>
+            <div className="text-slate-800 font-black text-5xl tabular-nums">{ALL_LINKS.length}</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">Relationships</div>
           </div>
           <div>
-            <div className="text-slate-800 font-bold text-3xl">6</div>
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Wave Type</div>
+            <div className="text-slate-800 font-black text-5xl tabular-nums">6</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">Wave Types</div>
           </div>
         </div>
       </StepCard>
