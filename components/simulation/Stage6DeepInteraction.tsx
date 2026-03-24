@@ -10,7 +10,7 @@ interface Props {
 
 const FOLLOW_UP_PILLS = Object.keys(followUpResponses);
 
-export default function Stage5DeepInteraction({ onPersonaChat }: Props) {
+export default function Stage6DeepInteraction({ onPersonaChat }: Props) {
   const [activeResponse, setActiveResponse] = useState<string | null>(null);
   const [activeKey, setActiveKey] = useState<string | null>(null);
 

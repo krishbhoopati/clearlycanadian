@@ -18,12 +18,9 @@ export default function Stage2AgentGrid({ onComplete, onAgentClick }: Props) {
   const [swarmVisible, setSwarmVisible] = useState(false);
 
   useEffect(() => {
-    // After all cards are visible + 1.5s, show swarm cluster
     const t1 = setTimeout(() => setSwarmVisible(true), simulationAgents.length * STAGGER_MS + 800);
-    // Then advance
-    const t2 = setTimeout(() => onComplete(), simulationAgents.length * STAGGER_MS + 6000);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, [onComplete]);
+    return () => clearTimeout(t1);
+  }, []);
 
   return (
     <div className="flex flex-col gap-6">
@@ -53,6 +50,20 @@ export default function Stage2AgentGrid({ onComplete, onAgentClick }: Props) {
       </div>
 
       <SwarmCluster visible={swarmVisible} />
+
+      {swarmVisible && (
+        <div className="flex justify-end mt-2">
+          <button
+            onClick={onComplete}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200"
+          >
+            Configure Simulation
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

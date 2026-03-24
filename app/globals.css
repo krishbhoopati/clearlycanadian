@@ -165,3 +165,13 @@
 .animate-report-cursor {
   animation: report-cursor 0.8s ease-in-out infinite;
 }
+@keyframes edge-draw {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+.animate-edge-draw { animation: edge-draw 0.6s ease-out forwards; }
+@keyframes log-entry-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-log-entry { animation: log-entry-in 0.25s ease-out forwards; }

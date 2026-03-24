@@ -1,20 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { mainNodes, mainLinks, microNodes, microLinks } from "@/data/simulation/mapleSimulationData";
+import { graphNodes, graphLinks } from "@/data/simulation/mapleSimulationData";
 import type { GraphNode, GraphLink } from "@/lib/types";
 
 interface Props {
   onComplete: () => void;
+  onBeginAnalysis?: () => void;
 }
 
-// Merge all nodes/links
-const ALL_NODES = [...mainNodes, ...microNodes];
-const ALL_LINKS = [...mainLinks, ...microLinks];
+// All nodes/links from data
+const ALL_NODES = graphNodes;
+const ALL_LINKS = graphLinks;
 
-const GROUP_ORDER: GraphNode["group"][] = ["center", "product", "competitor", "channel", "persona", "concept", "market", "micro"];
-
-export default function Stage1KnowledgeGraph({ onComplete }: Props) {
+export default function Stage1KnowledgeGraph({ onComplete, onBeginAnalysis }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const hasInit = useRef(false);
   const [started, setStarted] = useState(false);
@@ -23,6 +22,7 @@ export default function Stage1KnowledgeGraph({ onComplete }: Props) {
 
   function handleBeginAnalysis() {
     setStarted(true);
+    onBeginAnalysis?.();
   }
 
   useEffect(() => {
@@ -159,19 +159,17 @@ export default function Stage1KnowledgeGraph({ onComplete }: Props) {
         labelSel.attr("x", (d) => d.x ?? 0).attr("y", (d) => d.y ?? 0);
       });
 
-      // Reveal nodes in waves by group order
-      const mainNodesList = nodes.filter((n) => !n.isMicro);
-      const microNodesList = nodes.filter((n) => n.isMicro);
-
-      let revealDelay = 300;
-      GROUP_ORDER.filter((g) => g !== "micro").forEach((group) => {
-        const groupNodes = mainNodesList.filter((n) => n.group === group);
-        groupNodes.forEach((node, i) => {
+      // Reveal nodes in 6 waves based on wave field
+      const WAVE_DELAY = 1500; // ms between waves
+      for (let wave = 1; wave <= 6; wave++) {
+        const waveNodes = nodes.filter((n) => n.wave === wave);
+        const waveStart = (wave - 1) * WAVE_DELAY + 300;
+        waveNodes.forEach((node, i) => {
           setTimeout(() => {
             d3.selectAll<SVGCircleElement, DNode>("circle")
               .filter((d) => d.id === node.id)
               .transition().duration(400)
-              .attr("opacity", 1);
+              .attr("opacity", node.isMicro ? 0.4 : 1);
             d3.selectAll<SVGTextElement, DNode>("text")
               .filter((d) => d.id === node.id)
               .transition().duration(400)
@@ -183,36 +181,17 @@ export default function Stage1KnowledgeGraph({ onComplete }: Props) {
                 return s === node.id || t === node.id;
               })
               .transition().duration(500)
-              .attr("opacity", 1);
-          }, revealDelay + i * 120);
+              .attr("opacity", node.isMicro ? 0.3 : 0.6);
+          }, waveStart + i * 80);
         });
-        revealDelay += groupNodes.length * 120 + 400;
-      });
+      }
 
-      // Second wave: micro nodes after main nodes
+      // After all waves complete, show summary and enable button
+      const totalTime = 6 * WAVE_DELAY + 1500;
       setTimeout(() => {
-        microNodesList.forEach((node, i) => {
-          setTimeout(() => {
-            d3.selectAll<SVGCircleElement, DNode>("circle")
-              .filter((d) => d.id === node.id)
-              .transition().duration(600)
-              .attr("opacity", 0.4);
-            d3.selectAll<SVGLineElement, DLink>("line")
-              .filter((d) => {
-                const s = typeof d.source === "object" ? (d.source as DNode).id : d.source;
-                const t = typeof d.target === "object" ? (d.target as DNode).id : d.target;
-                return (s === node.id || t === node.id);
-              })
-              .transition().duration(400)
-              .attr("opacity", 0.4);
-          }, i * 30);
-        });
-        setTimeout(() => {
-          setGraphDone(true);
-          setSummaryVisible(true);
-          setTimeout(onComplete, 3000);
-        }, microNodesList.length * 30 + 1500);
-      }, revealDelay + 500);
+        setGraphDone(true);
+        setSummaryVisible(true);
+      }, totalTime);
 
       return () => {
         sim.stop();
@@ -269,23 +248,34 @@ export default function Stage1KnowledgeGraph({ onComplete }: Props) {
         )}
 
         {summaryVisible && (
-          <div className="glass-dark rounded-xl p-4 border border-emerald-500/30">
-            <div className="text-emerald-400 text-xs font-semibold mb-2">Knowledge Graph Complete</div>
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div>
-                <div className="text-white font-bold text-lg">78</div>
-                <div className="text-white/40 text-xs">entities</div>
-              </div>
-              <div>
-                <div className="text-white font-bold text-lg">94</div>
-                <div className="text-white/40 text-xs">relationships</div>
-              </div>
-              <div>
-                <div className="text-white font-bold text-lg">6</div>
-                <div className="text-white/40 text-xs">segments</div>
+          <>
+            <div className="glass-dark rounded-xl p-4 border border-emerald-500/30">
+              <div className="text-emerald-400 text-xs font-semibold mb-2">Knowledge Graph Complete</div>
+              <div className="grid grid-cols-3 gap-3 text-center">
+                <div>
+                  <div className="text-white font-bold text-lg">{ALL_NODES.filter(n => !n.isMicro).length}</div>
+                  <div className="text-white/40 text-xs">entities</div>
+                </div>
+                <div>
+                  <div className="text-white font-bold text-lg">{ALL_LINKS.length}</div>
+                  <div className="text-white/40 text-xs">relationships</div>
+                </div>
+                <div>
+                  <div className="text-white font-bold text-lg">6</div>
+                  <div className="text-white/40 text-xs">waves</div>
+                </div>
               </div>
             </div>
-          </div>
+            <button
+              onClick={onComplete}
+              className="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2"
+            >
+              Enter Environment Setup
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
         )}
 
         {/* Legend */}

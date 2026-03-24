@@ -344,21 +344,26 @@ export interface SimAgent {
   handle: string; // @handle for social posts
 }
 
+export type GraphWave = 1 | 2 | 3 | 4 | 5 | 6;
+
 export interface GraphNode {
   id: string;
   label: string;
-  group: "center" | "product" | "competitor" | "channel" | "persona" | "concept" | "market" | "micro";
+  group: string;
   color: string;
   tooltip?: string;
   isMicro?: boolean;
+  wave: GraphWave;
 }
 
 export interface GraphLink {
   source: string;
   target: string;
   label?: string;
+  edgeLabel?: string;
   strength?: number;
   isDotted?: boolean;
+  wave?: GraphWave;
 }
 
 export interface SimPost {
@@ -395,4 +400,59 @@ export interface SwarmSegment {
   persona_ids: string[];
 }
 
-export type SimStage = 1 | 2 | 3 | 4 | 5;
+export type SimStage = 1 | 2 | 3 | 4 | 5 | 6;
+
+// ─── Report Generation Log Types ─────────────────────────────────────────────
+
+export interface ReportInterview {
+  agent_id: string;
+  agent_name: string;
+  role: string;
+  avatar_color: string;
+  qa: Array<{ q: string; a: string }>;
+  key_quotes: string[];
+  summary: string;
+}
+
+export interface ReportLogExpandable {
+  type: "memory_list" | "interview_cards" | "search_results" | "deep_insight";
+  summary: string;
+  items?: string[];
+  interviews?: ReportInterview[];
+}
+
+export interface ReportLogEntry {
+  id: string;
+  type: "planning" | "plan_complete" | "section_start" | "llm_response"
+     | "tool_call" | "tool_result" | "content_ready" | "section_done" | "complete";
+  offset_ms: number;
+  label: string;
+  detail?: string;
+  expandable?: ReportLogExpandable;
+  section?: number;
+}
+
+// ─── Simulation Configuration Types ──────────────────────────────────────────
+
+export interface SimConfigAgent {
+  id: string;
+  name: string;
+  role: string;
+  avatar_color: string;
+  hourlyActivity: number[];
+  stats: { when_posting: number; comments_per_time: number; response_delay: string };
+  activity_pct: number;
+  emotional_tendency: number;
+  influence: number;
+}
+
+export interface SimConfigData {
+  stats: Array<{ label: string; value: string; sub?: string }>;
+  timeOfDayMultipliers: Array<{ label: string; times: string; multiplier: number; pct: number }>;
+  agentCards: SimConfigAgent[];
+  recommendationWeights: Array<{ platform: string; weights: Record<string, number> }>;
+  llmConfigText: string;
+  narrativeDirection: string;
+  hotTopics: string[];
+  activationPosts: Array<{ agentType: string; color: string; body: string; agentName: string }>;
+}
