@@ -9,9 +9,9 @@ interface Props {
 }
 
 const SENTIMENT_COLORS = {
-  positive: "text-emerald-400",
-  neutral: "text-yellow-400",
-  friction: "text-red-400",
+  positive: "text-emerald-500",
+  neutral: "text-amber-500",
+  friction: "text-red-500",
 };
 
 function HeartIcon() {
@@ -52,7 +52,7 @@ function FeaturedPost({ post, isNew }: Props) {
   const initials = post.persona_name.split(" ").map((n: string) => n[0]).join("").slice(0, 2).toUpperCase();
 
   return (
-    <div className="glass-dark rounded-xl p-4 animate-sim-post-in">
+    <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm animate-sim-post-in">
       <div className="flex items-start gap-3">
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
@@ -62,22 +62,22 @@ function FeaturedPost({ post, isNew }: Props) {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-semibold text-white text-sm">{post.persona_name}</span>
-            <span className="text-white/40 text-xs">{post.handle}</span>
+            <span className="font-semibold text-slate-800 text-sm">{post.persona_name}</span>
+            <span className="text-slate-400 text-xs">{post.handle}</span>
             {post.subreddit && (
-              <span className="text-white/30 text-xs">in {post.subreddit}</span>
+              <span className="text-slate-400 text-xs">in {post.subreddit}</span>
             )}
-            <span className="text-white/30 text-xs ml-auto">{post.timestamp_label}</span>
+            <span className="text-slate-400 text-xs ml-auto">{post.timestamp_label}</span>
           </div>
-          <p className="text-white/80 text-sm mt-1.5 leading-relaxed">
+          <p className="text-slate-700 text-sm mt-1.5 leading-relaxed">
             {displayed}
-            {!done && <span className="animate-report-cursor text-blue-400">|</span>}
+            {!done && <span className="animate-report-cursor text-orange-500">|</span>}
           </p>
           <div className="flex items-center gap-4 mt-2">
             <span className={`flex items-center gap-1 text-xs ${SENTIMENT_COLORS[post.sentiment]}`}>
               <HeartIcon /> {post.likes}
             </span>
-            <span className="flex items-center gap-1 text-xs text-white/40">
+            <span className="flex items-center gap-1 text-xs text-slate-400">
               <CommentIcon /> {post.replies}
             </span>
           </div>
@@ -90,14 +90,14 @@ function FeaturedPost({ post, isNew }: Props) {
 // Background (compact) post
 function BackgroundPost({ post, isNew }: Props) {
   return (
-    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5 animate-sim-post-in ${isNew ? "" : ""}`}>
-      <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-        <span className="text-white/30 text-[8px] font-mono">#</span>
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 animate-sim-post-in">
+      <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
+        <span className="text-slate-300 text-[8px] font-mono">#</span>
       </div>
-      <span className="text-white/30 text-xs font-mono flex-shrink-0">
+      <span className="text-slate-400 text-xs font-mono flex-shrink-0">
         Agent {post.agentId} ({post.segment}, {post.city}):
       </span>
-      <span className="text-white/50 text-xs truncate italic">"{post.body}"</span>
+      <span className="text-slate-500 text-xs truncate italic">"{post.body}"</span>
     </div>
   );
 }

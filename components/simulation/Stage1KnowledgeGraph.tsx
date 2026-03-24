@@ -1,24 +1,104 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { graphNodes, graphLinks } from "@/data/simulation/mapleSimulationData";
-import type { GraphNode, GraphLink } from "@/lib/types";
 
 interface Props {
   onComplete: () => void;
   onBeginAnalysis?: () => void;
 }
 
-// All nodes/links from data
 const ALL_NODES = graphNodes;
 const ALL_LINKS = graphLinks;
+const WAVE_DELAY = 1500;
+const TOTAL_WAVE_TIME = 6 * WAVE_DELAY + 1500;
+
+const ENTITY_TYPES = [
+  "CC Products", "Competitors", "Consumer Segments",
+  "Retail Channels", "Tourist Destinations", "Market Data",
+  "Cultural Concepts", "Digital Platforms", "Influencers",
+];
+
+const RELATION_TYPES = [
+  "COMPETES_WITH", "DISTRIBUTED_AT", "TARGETS",
+  "BENEFITS_FROM", "ACTIVE_ON", "ASSOCIATED_WITH",
+];
+
+const WAVES = [
+  { n: 1, label: "CC Brand Core", count: 8 },
+  { n: 2, label: "Competitors", count: 10 },
+  { n: 3, label: "Consumer Segments", count: 14 },
+  { n: 4, label: "Channels & Destinations", count: 20 },
+  { n: 5, label: "Market Data & Concepts", count: 22 },
+  { n: 6, label: "Digital Platforms", count: 6 },
+];
+
+type StepStatus = "pending" | "processing" | "completed";
+
+function StatusBadge({ status }: { status: StepStatus }) {
+  if (status === "completed") {
+    return (
+      <span className="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-md tracking-wide">
+        COMPLETED
+      </span>
+    );
+  }
+  if (status === "processing") {
+    return (
+      <span className="flex items-center gap-1.5 bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-md tracking-wide">
+        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+        PROCESSING
+      </span>
+    );
+  }
+  return (
+    <span className="bg-slate-100 text-slate-400 text-xs font-bold px-3 py-1 rounded-md tracking-wide">
+      PENDING
+    </span>
+  );
+}
+
+function ApiPill({ method, path }: { method: string; path: string }) {
+  return (
+    <div className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5">
+      <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded font-mono">
+        {method}
+      </span>
+      <span className="text-slate-500 text-xs font-mono">{path}</span>
+    </div>
+  );
+}
+
+function StepCard({
+  n, title, status, children, orangeBorder = false,
+}: {
+  n: string; title: string; status: StepStatus; children: React.ReactNode; orangeBorder?: boolean;
+}) {
+  return (
+    <div className={[
+      "bg-white rounded-xl shadow-sm border overflow-hidden",
+      orangeBorder ? "border-orange-300 border-l-[5px] border-l-orange-400" : "border-slate-200",
+    ].join(" ")}>
+      <div className="p-6">
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3">
+            <span className="text-4xl font-bold text-slate-200 leading-none select-none">{n}</span>
+            <h3 className="text-slate-800 font-bold text-lg leading-tight">{title}</h3>
+          </div>
+          <div className="flex-shrink-0 pt-1">
+            <StatusBadge status={status} />
+          </div>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function Stage1KnowledgeGraph({ onComplete, onBeginAnalysis }: Props) {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const hasInit = useRef(false);
   const [started, setStarted] = useState(false);
+  const [completedWaves, setCompletedWaves] = useState<number[]>([]);
   const [graphDone, setGraphDone] = useState(false);
-  const [summaryVisible, setSummaryVisible] = useState(false);
 
   function handleBeginAnalysis() {
     setStarted(true);
@@ -26,293 +106,165 @@ export default function Stage1KnowledgeGraph({ onComplete, onBeginAnalysis }: Pr
   }
 
   useEffect(() => {
-    if (!started || !svgRef.current || hasInit.current) return;
-    hasInit.current = true;
+    if (!started) return;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    for (let w = 1; w <= 6; w++) {
+      timers.push(setTimeout(
+        () => setCompletedWaves((prev) => [...prev, w]),
+        (w - 1) * WAVE_DELAY + WAVE_DELAY - 100
+      ));
+    }
+    timers.push(setTimeout(() => setGraphDone(true), TOTAL_WAVE_TIME));
+    return () => timers.forEach(clearTimeout);
+  }, [started]);
 
-    import("d3").then((d3) => {
-      const svg = d3.select(svgRef.current!);
-      const rect = svgRef.current!.getBoundingClientRect();
-      const W = rect.width || 600;
-      const H = rect.height || 500;
-
-      svg.selectAll("*").remove();
-
-      const g = svg.append("g");
-
-      // Zoom
-      const zoom = d3.zoom<SVGSVGElement, unknown>()
-        .scaleExtent([0.3, 3])
-        .on("zoom", (event) => g.attr("transform", event.transform));
-      svg.call(zoom);
-
-      // Build typed nodes/links for D3
-      type DNode = GraphNode & d3.SimulationNodeDatum & { revealed?: boolean };
-      type DLink = { source: string | DNode; target: string | DNode; label?: string; strength?: number; isDotted?: boolean };
-
-      const nodes: DNode[] = ALL_NODES.map((n) => ({
-        ...n,
-        revealed: false,
-      }));
-
-      const links: DLink[] = ALL_LINKS.map((l) => ({ ...l }));
-
-      const nodeMap = new Map<string, DNode>(nodes.map((n) => [n.id, n]));
-
-      // Radius per node
-      function nodeRadius(n: DNode) {
-        if (n.group === "center") return 22;
-        if (n.isMicro) return 5;
-        return 11;
-      }
-
-      const sim = d3.forceSimulation<DNode>(nodes)
-        .force("link", d3.forceLink<DNode, DLink>(links)
-          .id((d) => d.id)
-          .distance((l) => {
-            const src = typeof l.source === "object" ? l.source as DNode : nodeMap.get(l.source as string);
-            const tgt = typeof l.target === "object" ? l.target as DNode : nodeMap.get(l.target as string);
-            if (src?.isMicro || tgt?.isMicro) return 80;
-            return 120 + (1 - ((l as GraphLink).strength ?? 0.5)) * 60;
-          })
-          .strength(0.4))
-        .force("charge", d3.forceManyBody().strength((d) => (d as DNode).isMicro ? -40 : -180))
-        .force("center", d3.forceCenter(W / 2, H / 2))
-        .force("collision", d3.forceCollide<DNode>().radius((d) => nodeRadius(d) + 6));
-
-      // Draw links
-      const linkGroup = g.append("g").attr("class", "links");
-      const linkSel = linkGroup.selectAll("line")
-        .data(links)
-        .enter()
-        .append("line")
-        .attr("stroke", (d) => (d as GraphLink).isDotted ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.12)")
-        .attr("stroke-width", (d) => (d as GraphLink).isDotted ? 0.5 : 1)
-        .attr("stroke-dasharray", (d) => (d as GraphLink).isDotted ? "3,3" : null)
-        .attr("opacity", 0);
-
-      // Draw nodes
-      const nodeGroup = g.append("g").attr("class", "nodes");
-      const nodeSel = nodeGroup.selectAll<SVGCircleElement, DNode>("circle")
-        .data(nodes)
-        .enter()
-        .append("circle")
-        .attr("r", (d) => nodeRadius(d))
-        .attr("fill", (d) => d.isMicro ? d.color + "66" : d.color)
-        .attr("stroke", (d) => d.isMicro ? "none" : "rgba(255,255,255,0.15)")
-        .attr("stroke-width", 1.5)
-        .attr("opacity", 0)
-        .style("cursor", "pointer");
-
-      // Labels for main nodes
-      const labelSel = nodeGroup.selectAll<SVGTextElement, DNode>("text")
-        .data(nodes.filter((n) => !n.isMicro))
-        .enter()
-        .append("text")
-        .attr("text-anchor", "middle")
-        .attr("dy", (d) => nodeRadius(d) + 12)
-        .attr("font-size", (d) => d.group === "center" ? 11 : 9)
-        .attr("font-family", "Plus Jakarta Sans, sans-serif")
-        .attr("fill", "rgba(255,255,255,0.7)")
-        .attr("opacity", 0)
-        .text((d) => d.label.length > 16 ? d.label.slice(0, 14) + "…" : d.label);
-
-      // Tooltip
-      const tooltip = d3.select("body").append("div")
-        .attr("class", "sim-tooltip")
-        .style("position", "fixed")
-        .style("background", "rgba(30,40,55,0.97)")
-        .style("border", "1px solid rgba(255,255,255,0.15)")
-        .style("border-radius", "8px")
-        .style("padding", "8px 12px")
-        .style("font-size", "12px")
-        .style("color", "rgba(255,255,255,0.85)")
-        .style("pointer-events", "none")
-        .style("z-index", "9999")
-        .style("max-width", "220px")
-        .style("opacity", 0)
-        .style("transition", "opacity 0.15s");
-
-      nodeSel
-        .on("mouseover", (event, d) => {
-          if (!d.tooltip) return;
-          tooltip.style("opacity", 1).html(`<strong>${d.label}</strong><br/><span style="color:rgba(255,255,255,0.6)">${d.tooltip}</span>`);
-        })
-        .on("mousemove", (event) => {
-          tooltip.style("left", (event.clientX + 14) + "px").style("top", (event.clientY - 10) + "px");
-        })
-        .on("mouseout", () => tooltip.style("opacity", 0));
-
-      // Drag
-      const drag = d3.drag<SVGCircleElement, DNode>()
-        .on("start", (event, d) => { if (!event.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-        .on("drag", (event, d) => { d.fx = event.x; d.fy = event.y; })
-        .on("end", (event, d) => { if (!event.active) sim.alphaTarget(0); d.fx = null; d.fy = null; });
-      nodeSel.call(drag);
-
-      sim.on("tick", () => {
-        linkSel
-          .attr("x1", (d) => ((d.source as DNode).x ?? 0))
-          .attr("y1", (d) => ((d.source as DNode).y ?? 0))
-          .attr("x2", (d) => ((d.target as DNode).x ?? 0))
-          .attr("y2", (d) => ((d.target as DNode).y ?? 0));
-        nodeSel.attr("cx", (d) => d.x ?? 0).attr("cy", (d) => d.y ?? 0);
-        labelSel.attr("x", (d) => d.x ?? 0).attr("y", (d) => d.y ?? 0);
-      });
-
-      // Reveal nodes in 6 waves based on wave field
-      const WAVE_DELAY = 1500; // ms between waves
-      for (let wave = 1; wave <= 6; wave++) {
-        const waveNodes = nodes.filter((n) => n.wave === wave);
-        const waveStart = (wave - 1) * WAVE_DELAY + 300;
-        waveNodes.forEach((node, i) => {
-          setTimeout(() => {
-            d3.selectAll<SVGCircleElement, DNode>("circle")
-              .filter((d) => d.id === node.id)
-              .transition().duration(400)
-              .attr("opacity", node.isMicro ? 0.4 : 1);
-            d3.selectAll<SVGTextElement, DNode>("text")
-              .filter((d) => d.id === node.id)
-              .transition().duration(400)
-              .attr("opacity", 1);
-            d3.selectAll<SVGLineElement, DLink>("line")
-              .filter((d) => {
-                const s = typeof d.source === "object" ? (d.source as DNode).id : d.source;
-                const t = typeof d.target === "object" ? (d.target as DNode).id : d.target;
-                return s === node.id || t === node.id;
-              })
-              .transition().duration(500)
-              .attr("opacity", node.isMicro ? 0.3 : 0.6);
-          }, waveStart + i * 80);
-        });
-      }
-
-      // After all waves complete, show summary and enable button
-      const totalTime = 6 * WAVE_DELAY + 1500;
-      setTimeout(() => {
-        setGraphDone(true);
-        setSummaryVisible(true);
-      }, totalTime);
-
-      return () => {
-        sim.stop();
-        tooltip.remove();
-      };
-    });
-  }, [started, onComplete]);
+  const card1Status: StepStatus = !started ? "pending" : graphDone ? "completed" : "processing";
+  const card2Status: StepStatus = graphDone ? "completed" : "pending";
+  const card3Status: StepStatus = graphDone ? "processing" : "pending";
+  const totalMainNodes = ALL_NODES.filter((n) => !n.isMicro).length;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 w-full min-h-[520px]">
-      {/* Left panel */}
-      <div className="lg:w-72 flex-shrink-0 flex flex-col gap-4">
-        <div className="glass-dark rounded-xl p-5 flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-              <svg className="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
-              </svg>
-            </div>
-            <div>
-              <div className="text-white text-sm font-semibold">CC Maple Zero Sugar</div>
-              <div className="text-white/40 text-xs">Growth Strategy Brief</div>
-            </div>
-          </div>
-          <p className="text-white/60 text-xs leading-relaxed">
-            Market analysis, consumer insights, and distribution strategy for Clearly Canadian's new Maple Zero Sugar product launch across tourist retail, on-premise, and grocery channels.
-          </p>
-          <div className="flex items-center gap-2 text-white/30 text-xs">
-            <span className="bg-white/5 px-2 py-0.5 rounded">PDF</span>
-            <span>•</span>
-            <span>12 pages</span>
-            <span>•</span>
-            <span>CC Marketing Team</span>
+    <div className="flex flex-col gap-4 w-full">
+
+      {/* Card 01 — Knowledge Extraction */}
+      <StepCard n="01" title="Knowledge Extraction" status={card1Status}>
+        <ApiPill method="POST" path="/api/graph/extract" />
+
+        <p className="text-slate-600 text-base leading-relaxed mt-4 mb-4">
+          LLM analyzes the seed document, extracts the reality context and simulation requirements, and automatically generates a structured ontology of entities and relationships.
+        </p>
+
+        {/* Seed doc */}
+        <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 mb-5">
+          <svg className="w-5 h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
+          </svg>
+          <div>
+            <div className="text-slate-700 text-sm font-semibold">CC Maple Zero Sugar — Growth Strategy Brief</div>
+            <div className="text-slate-400 text-xs mt-0.5">PDF · 12 pages · CC Marketing Team</div>
           </div>
         </div>
 
-        {!started && (
-          <button
-            onClick={handleBeginAnalysis}
-            className="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2"
-          >
-            <span>Begin Analysis</span>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        )}
+        {/* Entity types — always shown */}
+        <div className="mb-4">
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Generated Entity Types</div>
+          <div className="flex flex-wrap gap-2">
+            {ENTITY_TYPES.map((t) => (
+              <span key={t} className="border border-slate-200 text-slate-700 text-sm font-medium px-3 py-1.5 rounded-lg bg-white">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
 
+        {/* Relation types — always shown */}
+        <div className="mb-2">
+          <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5">Generated Relation Types</div>
+          <div className="flex flex-wrap gap-2">
+            {RELATION_TYPES.map((r) => (
+              <span key={r} className="border border-slate-200 text-slate-500 text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-50">
+                {r}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Wave progress — shown while building */}
         {started && !graphDone && (
-          <div className="glass-dark rounded-xl p-4 text-xs text-white/50 flex items-center gap-2">
-            <div className="w-3 h-3 border-2 border-blue-400 border-t-transparent rounded-full animate-spin flex-shrink-0" />
-            Extracting entities and relationships…
-          </div>
-        )}
-
-        {summaryVisible && (
-          <>
-            <div className="glass-dark rounded-xl p-4 border border-emerald-500/30">
-              <div className="text-emerald-400 text-xs font-semibold mb-2">Knowledge Graph Complete</div>
-              <div className="grid grid-cols-3 gap-3 text-center">
-                <div>
-                  <div className="text-white font-bold text-lg">{ALL_NODES.filter(n => !n.isMicro).length}</div>
-                  <div className="text-white/40 text-xs">entities</div>
-                </div>
-                <div>
-                  <div className="text-white font-bold text-lg">{ALL_LINKS.length}</div>
-                  <div className="text-white/40 text-xs">relationships</div>
-                </div>
-                <div>
-                  <div className="text-white font-bold text-lg">6</div>
-                  <div className="text-white/40 text-xs">waves</div>
-                </div>
-              </div>
+          <div className="mt-5 pt-5 border-t border-slate-100">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Wave Progress</div>
+            <div className="flex flex-col gap-2.5">
+              {WAVES.map((wave) => {
+                const done = completedWaves.includes(wave.n);
+                return (
+                  <div key={wave.n} className="flex items-center gap-3">
+                    {done ? (
+                      <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    ) : (
+                      <div className="w-5 h-5 rounded-full border-2 border-slate-200 flex-shrink-0" />
+                    )}
+                    <span className={`text-sm flex-1 ${done ? "text-slate-700" : "text-slate-400"}`}>{wave.label}</span>
+                    <span className={`text-xs font-mono font-medium ${done ? "text-emerald-600" : "text-slate-300"}`}>+{wave.count}</span>
+                  </div>
+                );
+              })}
             </div>
-            <button
-              onClick={onComplete}
-              className="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2"
-            >
-              Enter Environment Setup
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </>
-        )}
-
-        {/* Legend */}
-        {started && (
-          <div className="glass-dark rounded-xl p-4">
-            <div className="text-white/40 text-xs font-medium mb-2">Node Legend</div>
-            <div className="flex flex-col gap-1.5">
-              {[
-                { color: "#1B6EC2", label: "CC Maple (center)" },
-                { color: "#EF4444", label: "Competitors" },
-                { color: "#10B981", label: "Channels" },
-                { color: "#8B5CF6", label: "Consumer Segments" },
-                { color: "#F59E0B", label: "Concepts" },
-                { color: "#14B8A6", label: "Markets" },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
-                  <span className="text-white/50 text-xs">{item.label}</span>
-                </div>
-              ))}
+            <div className="mt-4 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-orange-400 rounded-full transition-all duration-700"
+                style={{ width: `${(completedWaves.length / 6) * 100}%` }}
+              />
+            </div>
+            <div className="flex items-center justify-between mt-1.5">
+              <span className="text-slate-400 text-xs">{completedWaves.length}/6 waves complete</span>
+              <span className="text-slate-400 text-xs font-mono">{completedWaves.reduce((s, w) => s + (WAVES[w - 1]?.count ?? 0), 0)} nodes</span>
             </div>
           </div>
         )}
-      </div>
+      </StepCard>
 
-      {/* Right panel — graph */}
-      <div className="flex-1 glass-dark rounded-xl overflow-hidden min-h-[400px] relative">
-        {!started && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-5xl mb-4 opacity-20">⬡</div>
-              <div className="text-white/30 text-sm">Knowledge graph will appear here</div>
-            </div>
+      {/* Card 02 — Graph Build */}
+      <StepCard n="02" title="Knowledge Graph Build" status={card2Status}>
+        <ApiPill method="POST" path="/api/graph/build" />
+        <p className="text-slate-600 text-base leading-relaxed mt-4">
+          Based on the generated ontology, the document is automatically segmented and the knowledge graph is constructed with entities, relationships, and community summaries.
+        </p>
+        <div className={`mt-5 pt-5 border-t border-slate-100 grid grid-cols-3 gap-4 text-center ${graphDone ? "animate-sim-post-in" : "opacity-30"}`}>
+          <div>
+            <div className="text-slate-800 font-bold text-3xl">{totalMainNodes}</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Entity Node</div>
           </div>
-        )}
-        <svg ref={svgRef} className="w-full h-full" style={{ minHeight: 400 }} />
-      </div>
+          <div>
+            <div className="text-slate-800 font-bold text-3xl">{ALL_LINKS.length}</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Relationship</div>
+          </div>
+          <div>
+            <div className="text-slate-800 font-bold text-3xl">6</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Wave Type</div>
+          </div>
+        </div>
+      </StepCard>
+
+      {/* Begin Analysis button — sits directly above card 03 */}
+      {!started && (
+        <button
+          onClick={handleBeginAnalysis}
+          className="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base shadow-sm transition-all duration-200 flex items-center justify-center gap-2"
+        >
+          Begin Analysis
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
+
+      {/* Card 03 — Build Complete */}
+      <StepCard n="03" title="Build Complete" status={card3Status} orangeBorder={graphDone}>
+        <ApiPill method="POST" path="/api/simulation/setup" />
+        <p className="text-slate-600 text-base leading-relaxed mt-4 mb-5">
+          The knowledge graph construction is complete. Please proceed to the next step: setting up the simulation environment and configuring the agent swarm.
+        </p>
+        <button
+          onClick={graphDone ? onComplete : undefined}
+          disabled={!graphDone}
+          className={[
+            "w-full py-3.5 rounded-xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2",
+            graphDone
+              ? "bg-slate-900 hover:bg-slate-800 text-white shadow-sm cursor-pointer"
+              : "bg-slate-100 text-slate-400 cursor-not-allowed",
+          ].join(" ")}
+        >
+          Enter Environment Setup
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </StepCard>
+
     </div>
   );
 }

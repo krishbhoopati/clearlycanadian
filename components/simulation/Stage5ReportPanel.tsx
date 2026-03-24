@@ -51,12 +51,12 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
     <div className="flex flex-col gap-4">
       {!started ? (
         <div className="flex flex-col items-center justify-center py-16 gap-4">
-          <div className="text-white/50 text-sm text-center max-w-xs">
+          <div className="text-slate-500 text-sm text-center max-w-xs">
             The simulation has completed. Generate a comprehensive research report from the 1,247-agent swarm data.
           </div>
           <button
             onClick={handleStartReport}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm shadow-sm transition-all duration-200"
           >
             Generate Report
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,13 +65,13 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
           </button>
         </div>
       ) : (
-        <div className="flex flex-col lg:flex-row gap-4 min-h-[600px]">
-          {/* Report text (55%) */}
-          <div className="lg:w-[55%] flex flex-col gap-4">
-            <div className="glass-dark rounded-xl p-5">
+        <div className="flex flex-col gap-4">
+          {/* Report text */}
+          <div className="flex flex-col gap-4">
+            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                <span className="text-white/60 text-sm font-medium">CC Maple Zero Sugar — Swarm Intelligence Report</span>
+                <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+                <span className="text-slate-600 text-sm font-medium">CC Maple Zero Sugar — Swarm Intelligence Report</span>
               </div>
 
               {[1, 2, 3].map((sectionNum) => {
@@ -84,25 +84,25 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
                   <div key={sectionNum} className="mb-6">
                     {isUnlocked ? (
                       <div className="animate-sim-post-in">
-                        <div className="text-white/70 text-sm leading-relaxed whitespace-pre-line">
+                        <div className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
                           {reportSections[sectionNum]?.split("\n").map((line, i) => {
                             if (line.startsWith("## ")) {
-                              return <h3 key={i} className="text-white font-bold text-base mb-2 mt-3">{line.slice(3)}</h3>;
+                              return <h3 key={i} className="text-slate-800 font-bold text-base mb-2 mt-3">{line.slice(3)}</h3>;
                             }
                             if (line.startsWith("**") && line.endsWith("**")) {
-                              return <strong key={i} className="text-white/90 block mb-1">{line.slice(2, -2)}</strong>;
+                              return <strong key={i} className="text-slate-700 block mb-1">{line.slice(2, -2)}</strong>;
                             }
                             if (line.startsWith("- ")) {
-                              return <li key={i} className="text-white/65 ml-4 mb-0.5 text-sm">{line.slice(2)}</li>;
+                              return <li key={i} className="text-slate-600 ml-4 mb-0.5 text-sm">{line.slice(2)}</li>;
                             }
                             if (line.trim() === "") return <div key={i} className="h-2" />;
-                            return <p key={i} className="text-white/65 mb-1.5 text-sm">{line}</p>;
+                            return <p key={i} className="text-slate-600 mb-1.5 text-sm">{line}</p>;
                           })}
                         </div>
                       </div>
                     ) : isGenerating ? (
-                      <div className="flex items-center gap-2 text-white/30 text-xs py-3">
-                        <div className="w-3 h-3 border-2 border-blue-400/60 border-t-transparent rounded-full animate-spin flex-shrink-0" />
+                      <div className="flex items-center gap-2 text-slate-400 text-xs py-3">
+                        <div className="w-3 h-3 border-2 border-orange-400/60 border-t-transparent rounded-full animate-spin flex-shrink-0" />
                         Writing section {sectionNum}…
                         <span className="animate-report-cursor ml-1">|</span>
                       </div>
@@ -113,14 +113,14 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
             </div>
           </div>
 
-          {/* Generation Log (45%) */}
-          <div className="lg:w-[45%] flex flex-col gap-2">
-            <div className="glass-dark rounded-xl p-4 sticky top-4">
+          {/* Generation Log */}
+          <div className="flex flex-col gap-2">
+            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
               <div className="flex items-center justify-between mb-3">
-                <div className="text-white/60 text-xs font-semibold uppercase tracking-wider">Generation Log</div>
-                <div className="text-white/25 text-xs font-mono">{(elapsedMs / 1000).toFixed(1)}s</div>
+                <div className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Generation Log</div>
+                <div className="text-slate-400 text-xs font-mono">{(elapsedMs / 1000).toFixed(1)}s</div>
               </div>
-              <div className="max-h-[500px] overflow-y-auto dark-scroll">
+              <div className="max-h-[360px] overflow-y-auto light-scroll">
                 <ReportGenerationLog entries={reportLog} elapsedMs={elapsedMs} />
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
         <div className="flex justify-end">
           <button
             onClick={onComplete}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm shadow-sm transition-all duration-200"
           >
             Deep Interaction
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

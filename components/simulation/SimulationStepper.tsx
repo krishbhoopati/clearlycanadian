@@ -33,10 +33,10 @@ export default function SimulationStepper({ currentStage, onStageClick }: Props)
                 className={[
                   "w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300",
                   done
-                    ? "bg-blue-500 text-white"
+                    ? "bg-emerald-500 text-white"
                     : active
-                    ? "bg-blue-500 text-white ring-2 ring-blue-400 ring-offset-2 ring-offset-transparent animate-pulse"
-                    : "border border-white/20 text-white/30",
+                    ? "bg-orange-500 text-white ring-2 ring-orange-400 ring-offset-1 ring-offset-transparent"
+                    : "border border-white/20 text-white/30 bg-white/5",
                 ].join(" ")}
               >
                 {done ? "✓" : s.n}
@@ -54,7 +54,7 @@ export default function SimulationStepper({ currentStage, onStageClick }: Props)
               <div
                 className={[
                   "flex-1 h-px mx-2 transition-colors duration-500",
-                  done ? "bg-blue-500" : "bg-white/10",
+                  done ? "bg-emerald-400" : "bg-white/10",
                 ].join(" ")}
               />
             )}

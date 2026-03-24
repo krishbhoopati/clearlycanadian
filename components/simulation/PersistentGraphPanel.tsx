@@ -69,7 +69,7 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
         .data(links)
         .enter()
         .append("line")
-        .attr("stroke", (d) => (d as GraphLink).isDotted ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.1)")
+        .attr("stroke", (d) => (d as GraphLink).isDotted ? "#e2e8f0" : "#cbd5e1")
         .attr("stroke-width", (d) => (d as GraphLink).isDotted ? 0.5 : 0.8)
         .attr("stroke-dasharray", (d) => (d as GraphLink).isDotted ? "3,3" : null)
         .attr("opacity", 0);
@@ -93,26 +93,27 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
         .enter()
         .append("text")
         .attr("text-anchor", "middle")
-        .attr("dy", (d) => nodeRadius(d) + 10)
-        .attr("font-size", (d) => d.group === "center" ? 9 : 7)
+        .attr("dy", (d) => nodeRadius(d) + 14)
+        .attr("font-size", (d) => d.group === "center" ? 13 : 11)
         .attr("font-family", "Plus Jakarta Sans, sans-serif")
-        .attr("fill", "rgba(255,255,255,0.65)")
+        .attr("fill", "#475569")
         .attr("opacity", 0)
-        .text((d) => d.label.length > 14 ? d.label.slice(0, 12) + "…" : d.label);
+        .text((d) => d.label.length > 18 ? d.label.slice(0, 16) + "…" : d.label);
 
       // Tooltip
       const tooltip = d3.select("body").append("div")
         .attr("class", "sim-tooltip-graph")
         .style("position", "fixed")
-        .style("background", "rgba(20,30,45,0.97)")
-        .style("border", "1px solid rgba(255,255,255,0.12)")
+        .style("background", "white")
+        .style("border", "1px solid #e2e8f0")
         .style("border-radius", "8px")
         .style("padding", "6px 10px")
         .style("font-size", "11px")
-        .style("color", "rgba(255,255,255,0.85)")
+        .style("color", "#1e293b")
         .style("pointer-events", "none")
         .style("z-index", "9999")
         .style("max-width", "180px")
+        .style("box-shadow", "0 4px 12px rgba(0,0,0,0.08)")
         .style("opacity", 0)
         .style("transition", "opacity 0.12s");
 
@@ -182,15 +183,15 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
 
   return (
     <div
-      className="flex flex-col h-full transition-all duration-300 overflow-hidden"
+      className="flex flex-col h-full transition-all duration-300 overflow-hidden bg-slate-50"
       style={{ width: visible ? undefined : 0, opacity: visible ? 1 : 0 }}
     >
       {/* Panel header */}
-      <div className="flex items-center justify-between px-3 py-2 border-b border-white/5 flex-shrink-0">
-        <div className="text-white/40 text-xs font-mono uppercase tracking-wider">Knowledge Graph</div>
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-200 bg-white flex-shrink-0">
+        <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Knowledge Graph</div>
         <button
           onClick={onToggle}
-          className="text-white/30 hover:text-white/60 text-xs flex items-center gap-1 transition-colors duration-150"
+          className="text-slate-400 hover:text-slate-700 text-xs flex items-center gap-1 border border-slate-200 rounded-md px-2 py-1 hover:bg-slate-50 transition-colors duration-150"
           title="Hide graph"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -201,34 +202,34 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
       </div>
 
       {/* SVG */}
-      <div className="flex-1 relative overflow-hidden">
+      <div className="flex-1 relative overflow-hidden sim-grid">
         {!buildStarted && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-4">
-              <div className="text-4xl mb-3 opacity-10">⬡</div>
-              <div className="text-white/20 text-xs text-center">Graph builds in Stage 1</div>
+              <div className="text-4xl mb-3 opacity-20">⬡</div>
+              <div className="text-slate-400 text-xs text-center">Graph builds in Stage 1</div>
             </div>
           </div>
         )}
         <svg ref={svgRef} className="w-full h-full" />
-      </div>
 
-      {/* Legend */}
-      <div className="px-3 py-2 border-t border-white/5 flex-shrink-0">
-        <div className="flex flex-wrap gap-x-3 gap-y-1">
-          {[
-            { color: "#1B6EC2", label: "CC Products" },
-            { color: "#EF4444", label: "Competitors" },
-            { color: "#10B981", label: "Channels" },
-            { color: "#8B5CF6", label: "Consumers" },
-            { color: "#F59E0B", label: "Concepts" },
-            { color: "#14B8A6", label: "Markets" },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center gap-1">
-              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
-              <span className="text-white/30 text-xs">{item.label}</span>
-            </div>
-          ))}
+        {/* Legend — floating bottom-left inside graph area */}
+        <div className="absolute bottom-4 left-3 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-xl p-3 shadow-sm pointer-events-none">
+          <div className="flex flex-col gap-1">
+            {[
+              { color: "#1B6EC2", label: "CC Products" },
+              { color: "#EF4444", label: "Competitors" },
+              { color: "#10B981", label: "Channels" },
+              { color: "#8B5CF6", label: "Consumers" },
+              { color: "#F59E0B", label: "Concepts" },
+              { color: "#14B8A6", label: "Markets" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
+                <span className="text-[11px] text-slate-600">{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

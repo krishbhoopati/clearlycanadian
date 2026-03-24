@@ -112,7 +112,7 @@ export default function SimulationPage() {
         {graphVisible && (
           <div
             className="flex-shrink-0 border-r border-white/5 flex flex-col h-full transition-all duration-300"
-            style={{ width: stage === 1 ? "50%" : "38%" }}
+            style={{ width: stage === 1 ? "60%" : "65%" }}
           >
             <PersistentGraphPanel
               visible={graphVisible}
@@ -124,26 +124,26 @@ export default function SimulationPage() {
 
         {/* Right: Stage Content */}
         <div className="flex-1 overflow-y-auto dark-scroll">
-          <div className="px-5 py-5">
+          <div className="px-4 py-4">
             {/* Stage label + skip */}
-            <div className="mb-5">
-              <div className="text-white/30 text-xs font-mono uppercase tracking-widest mb-1">
-                Stage {stage} of 6
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <div className="text-white/30 text-[10px] font-mono uppercase tracking-widest">
+                  Stage {stage} of 6
+                </div>
+                <h2 className="text-white font-bold text-base leading-tight">{STAGE_LABELS[stage]}</h2>
               </div>
-              <div className="flex items-center justify-between">
-                <h2 className="text-white font-bold text-xl">{STAGE_LABELS[stage]}</h2>
-                {stage < 6 && (
-                  <button
-                    onClick={advanceStage}
-                    className="text-white/30 hover:text-white/60 text-xs flex items-center gap-1 transition-colors duration-200"
-                  >
-                    Skip
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                )}
-              </div>
+              {stage < 6 && (
+                <button
+                  onClick={advanceStage}
+                  className="text-white/30 hover:text-white/60 text-xs flex items-center gap-1 transition-colors duration-200 flex-shrink-0 ml-2"
+                >
+                  Skip
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
             </div>
 
             {/* Stage content */}

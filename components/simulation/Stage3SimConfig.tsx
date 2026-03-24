@@ -14,31 +14,31 @@ export default function Stage3SimConfig({ onComplete }: Props) {
       {/* Stat boxes */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {stats.map((s) => (
-          <div key={s.label} className="glass-dark rounded-xl p-4">
-            <div className="text-white font-bold text-2xl">{s.value}</div>
-            <div className="text-white/50 text-xs mt-0.5">{s.label}</div>
-            {s.sub && <div className="text-white/30 text-xs mt-0.5">{s.sub}</div>}
+          <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+            <div className="text-slate-800 font-bold text-3xl">{s.value}</div>
+            <div className="text-slate-400 text-sm mt-0.5">{s.label}</div>
+            {s.sub && <div className="text-slate-300 text-sm mt-0.5">{s.sub}</div>}
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="flex flex-col gap-4">
         {/* Time-of-Day Multipliers */}
-        <div className="glass-dark rounded-xl p-5">
-          <div className="text-white/70 text-sm font-semibold mb-4">Time-of-Day Activity Multipliers</div>
+        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+          <div className="text-slate-700 text-base font-semibold mb-4">Time-of-Day Activity Multipliers</div>
           <div className="flex flex-col gap-3">
             {timeOfDayMultipliers.map((row) => (
               <div key={row.label} className="flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-white/80 text-xs font-medium">{row.label}</span>
-                    <span className="text-white/30 text-xs ml-2">{row.times}</span>
+                    <span className="text-slate-700 text-sm font-medium">{row.label}</span>
+                    <span className="text-slate-400 text-sm ml-2">{row.times}</span>
                   </div>
-                  <span className="text-blue-400 text-xs font-mono font-bold">×{row.multiplier}</span>
+                  <span className="text-orange-500 text-sm font-mono font-bold">×{row.multiplier}</span>
                 </div>
-                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-blue-500/70 rounded-full transition-all duration-700"
+                    className="h-full bg-orange-400/80 rounded-full transition-all duration-700"
                     style={{ width: `${row.pct}%` }}
                   />
                 </div>
@@ -48,18 +48,18 @@ export default function Stage3SimConfig({ onComplete }: Props) {
         </div>
 
         {/* LLM Config */}
-        <div className="glass-dark rounded-xl p-5">
-          <div className="text-white/70 text-sm font-semibold mb-3">LLM Simulation Config</div>
-          <p className="text-white/50 text-xs leading-relaxed mb-4">{llmConfigText}</p>
+        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+          <div className="text-slate-700 text-base font-semibold mb-3">LLM Simulation Config</div>
+          <p className="text-slate-500 text-sm leading-relaxed mb-4">{llmConfigText}</p>
           <div className="flex flex-col gap-2">
             {recommendationWeights.map((rw) => (
-              <div key={rw.platform} className="glass-dark rounded-lg p-3">
-                <div className="text-white/60 text-xs font-medium mb-2">{rw.platform}</div>
+              <div key={rw.platform} className="bg-slate-50 border border-slate-100 rounded-lg p-3">
+                <div className="text-slate-600 text-sm font-medium mb-2">{rw.platform}</div>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(rw.weights).map(([k, v]) => (
-                    <div key={k} className="flex items-center gap-1 bg-white/5 px-2 py-0.5 rounded text-xs">
-                      <span className="text-white/40">{k}</span>
-                      <span className="text-blue-400 font-mono">{(v * 100).toFixed(0)}%</span>
+                    <div key={k} className="flex items-center gap-1 bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-sm">
+                      <span>{k}</span>
+                      <span className="text-orange-600 font-mono">{(v * 100).toFixed(0)}%</span>
                     </div>
                   ))}
                 </div>
@@ -70,21 +70,21 @@ export default function Stage3SimConfig({ onComplete }: Props) {
       </div>
 
       {/* Agent Config Cards */}
-      <div className="glass-dark rounded-xl p-5">
-        <div className="text-white/70 text-sm font-semibold mb-4">Agent Configuration</div>
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <div className="text-slate-700 text-base font-semibold mb-4">Agent Configuration</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {agentCards.map((agent) => (
-            <div key={agent.id} className="bg-white/5 rounded-xl p-4">
+            <div key={agent.id} className="bg-slate-50 border border-slate-100 rounded-xl p-4">
               <div className="flex items-center gap-3 mb-3">
                 <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-base flex-shrink-0"
                   style={{ backgroundColor: agent.avatar_color }}
                 >
                   {agent.name[0]}
                 </div>
                 <div>
-                  <div className="text-white text-sm font-semibold">{agent.name}</div>
-                  <div className="text-white/40 text-xs">{agent.role}</div>
+                  <div className="text-slate-800 text-base font-semibold">{agent.name}</div>
+                  <div className="text-slate-400 text-sm">{agent.role}</div>
                 </div>
               </div>
 
@@ -97,50 +97,50 @@ export default function Stage3SimConfig({ onComplete }: Props) {
                     style={{
                       height: 20,
                       backgroundColor: level > 0.7
-                        ? "rgba(59,130,246,0.8)"
+                        ? "#f97316"
                         : level > 0.4
-                        ? "rgba(59,130,246,0.4)"
+                        ? "#fdba74"
                         : level > 0.1
-                        ? "rgba(59,130,246,0.15)"
-                        : "rgba(255,255,255,0.04)",
+                        ? "#fed7aa"
+                        : "#f1f5f9",
                     }}
                     title={`${h}:00`}
                   />
                 ))}
               </div>
-              <div className="flex items-center justify-between text-white/25 text-xs mb-3">
+              <div className="flex items-center justify-between text-slate-300 text-sm mb-3">
                 <span>12am</span><span>6am</span><span>12pm</span><span>6pm</span><span>11pm</span>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 text-xs">
+              <div className="grid grid-cols-3 gap-2 text-sm">
                 <div className="text-center">
-                  <div className="text-white/60 font-medium">{agent.stats.when_posting}</div>
-                  <div className="text-white/25">posts/day</div>
+                  <div className="text-slate-600 font-medium">{agent.stats.when_posting}</div>
+                  <div className="text-slate-400">posts/day</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-white/60 font-medium">{agent.stats.comments_per_time}</div>
-                  <div className="text-white/25">comments</div>
+                  <div className="text-slate-600 font-medium">{agent.stats.comments_per_time}</div>
+                  <div className="text-slate-400">comments</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-white/60 font-medium">{Math.round(agent.activity_pct * 100)}%</div>
-                  <div className="text-white/25">activity</div>
+                  <div className="text-slate-600 font-medium">{Math.round(agent.activity_pct * 100)}%</div>
+                  <div className="text-slate-400">activity</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 mt-2 text-xs">
+              <div className="flex items-center gap-4 mt-2 text-sm">
                 <div className="flex items-center gap-1">
-                  <span className="text-white/30">Emotion</span>
-                  <span className={agent.emotional_tendency >= 0 ? "text-emerald-400" : "text-red-400"}>
+                  <span className="text-slate-400">Emotion</span>
+                  <span className={agent.emotional_tendency >= 0 ? "text-emerald-600" : "text-red-500"}>
                     {agent.emotional_tendency > 0 ? "+" : ""}{agent.emotional_tendency.toFixed(1)}
                   </span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="text-white/30">Influence</span>
-                  <span className="text-amber-400">{agent.influence}x</span>
+                  <span className="text-slate-400">Influence</span>
+                  <span className="text-orange-500">{agent.influence}x</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="text-white/30">Delay</span>
-                  <span className="text-white/50">{agent.stats.response_delay}</span>
+                  <span className="text-slate-400">Delay</span>
+                  <span className="text-slate-500">{agent.stats.response_delay}</span>
                 </div>
               </div>
             </div>
@@ -149,20 +149,20 @@ export default function Stage3SimConfig({ onComplete }: Props) {
       </div>
 
       {/* Initial Activation Orchestration */}
-      <div className="glass-dark rounded-xl p-5 border border-orange-500/20">
-        <div className="text-white/70 text-sm font-semibold mb-1">Initial Activation Orchestration</div>
-        <div className="text-white/30 text-xs mb-4">Narrative direction and seed posts that kick off the simulation</div>
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <div className="text-slate-700 text-base font-semibold mb-1">Initial Activation Orchestration</div>
+        <div className="text-slate-400 text-sm mb-4">Narrative direction and seed posts that kick off the simulation</div>
 
-        <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-4 mb-4">
-          <div className="text-orange-400 text-xs font-semibold mb-1">Narrative Direction</div>
-          <p className="text-white/60 text-sm leading-relaxed">{narrativeDirection}</p>
+        <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-4">
+          <div className="text-orange-700 text-sm font-semibold mb-1">Narrative Direction</div>
+          <p className="text-slate-600 text-base leading-relaxed">{narrativeDirection}</p>
         </div>
 
         <div className="mb-4">
-          <div className="text-white/40 text-xs mb-2">Initial Hot Topics</div>
+          <div className="text-slate-400 text-sm mb-2">Initial Hot Topics</div>
           <div className="flex flex-wrap gap-2">
             {hotTopics.map((topic) => (
-              <span key={topic} className="text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
+              <span key={topic} className="text-sm px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-600">
                 {topic}
               </span>
             ))}
@@ -170,22 +170,22 @@ export default function Stage3SimConfig({ onComplete }: Props) {
         </div>
 
         <div>
-          <div className="text-white/40 text-xs mb-3">Initial Activation Sequence</div>
+          <div className="text-slate-400 text-sm mb-3">Initial Activation Sequence</div>
           <div className="flex flex-col gap-2">
             {activationPosts.map((post, i) => (
-              <div key={i} className="flex items-start gap-3 bg-white/5 rounded-lg p-3">
+              <div key={i} className="flex items-start gap-3 bg-white border border-slate-100 rounded-lg p-3">
                 <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
                   style={{ backgroundColor: post.color }}
                 >
                   {post.agentName[0]}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-white/70 text-xs font-medium">{post.agentName}</span>
-                    <span className="text-white/25 text-xs">{post.agentType}</span>
+                    <span className="text-slate-700 text-sm font-medium">{post.agentName}</span>
+                    <span className="text-slate-400 text-sm">{post.agentType}</span>
                   </div>
-                  <p className="text-white/50 text-xs leading-relaxed">{post.body}</p>
+                  <p className="text-slate-500 text-sm leading-relaxed">{post.body}</p>
                 </div>
               </div>
             ))}
@@ -196,7 +196,7 @@ export default function Stage3SimConfig({ onComplete }: Props) {
       <div className="flex justify-end">
         <button
           onClick={onComplete}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200"
+          className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-base shadow-sm transition-all duration-200"
         >
           Begin Simulation
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -105,34 +105,34 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
     <div className="flex flex-col gap-4">
       {/* Header stats */}
       <div className="grid grid-cols-3 gap-3">
-        <div className="glass-dark rounded-xl p-3 text-center">
-          <div className="text-white font-bold text-xl font-mono">{round}/{TOTAL_ROUNDS}</div>
-          <div className="text-white/40 text-xs">Round</div>
+        <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-sm">
+          <div className="text-slate-800 font-bold text-3xl font-mono">{round}/{TOTAL_ROUNDS}</div>
+          <div className="text-slate-400 text-sm">Round</div>
         </div>
-        <div className="glass-dark rounded-xl p-3 text-center">
-          <div className="text-white font-bold text-xl font-mono">{eventCount.toLocaleString()}</div>
-          <div className="text-white/40 text-xs">Total Events</div>
+        <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-sm">
+          <div className="text-slate-800 font-bold text-3xl font-mono">{eventCount.toLocaleString()}</div>
+          <div className="text-slate-400 text-sm">Total Events</div>
         </div>
-        <div className="glass-dark rounded-xl p-3 text-center">
-          <div className="text-white font-bold text-xl font-mono">1,247</div>
-          <div className="text-white/40 text-xs">Active Agents</div>
+        <div className="bg-white border border-slate-200 rounded-xl p-3 text-center shadow-sm">
+          <div className="text-slate-800 font-bold text-3xl font-mono">1,247</div>
+          <div className="text-slate-400 text-sm">Active Agents</div>
         </div>
       </div>
 
-      {/* Dual feed columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Dual feed columns — stacked in narrow sidebar */}
+      <div className="flex flex-col gap-4">
         {/* Twitter */}
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <svg className="w-4 h-4 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
-            <span className="text-sky-400 text-sm font-medium">Twitter / X</span>
-            <span className="text-white/20 text-xs">· {twitterPosts.length} posts</span>
+            <span className="text-sky-600 text-base font-medium">Twitter / X</span>
+            <span className="text-slate-400 text-sm">· {twitterPosts.length} posts</span>
           </div>
           <div
             ref={twitterRef}
-            className="h-[460px] overflow-y-auto dark-scroll flex flex-col gap-2 pr-1"
+            className="h-[280px] overflow-y-auto light-scroll flex flex-col gap-2 pr-1 bg-slate-50 border border-slate-200 rounded-xl p-2"
           >
             {twitterPosts.map((post) => (
               <div key={post.id} className="animate-sim-post-in">
@@ -141,8 +141,8 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
             ))}
             {twitterPosts.length === 0 && (
               <div className="flex items-center justify-center h-full">
-                <div className="text-white/20 text-sm flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                <div className="text-slate-400 text-base flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
                   Waiting for posts…
                 </div>
               </div>
@@ -156,12 +156,12 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
             <svg className="w-4 h-4 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
             </svg>
-            <span className="text-orange-400 text-sm font-medium">Reddit</span>
-            <span className="text-white/20 text-xs">· {redditPosts.length} posts</span>
+            <span className="text-orange-600 text-base font-medium">Reddit</span>
+            <span className="text-slate-400 text-sm">· {redditPosts.length} posts</span>
           </div>
           <div
             ref={redditRef}
-            className="h-[460px] overflow-y-auto dark-scroll flex flex-col gap-2 pr-1"
+            className="h-[280px] overflow-y-auto light-scroll flex flex-col gap-2 pr-1 bg-slate-50 border border-slate-200 rounded-xl p-2"
           >
             {redditPosts.map((post) => (
               <div key={post.id} className="animate-sim-post-in">
@@ -170,7 +170,7 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
             ))}
             {redditPosts.length === 0 && (
               <div className="flex items-center justify-center h-full">
-                <div className="text-white/20 text-sm flex items-center gap-2">
+                <div className="text-slate-400 text-base flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
                   Waiting for posts…
                 </div>
@@ -181,23 +181,23 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
       </div>
 
       {/* Sentiment bars + chart */}
-      <div className="glass-dark rounded-xl p-4">
+      <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-white/50 text-xs font-medium">Sentiment Distribution</div>
-          <div className="text-white/30 text-xs font-mono">{eventCount.toLocaleString()} events analyzed</div>
+          <div className="text-slate-600 text-sm font-medium">Sentiment Distribution</div>
+          <div className="text-slate-400 text-sm font-mono">{eventCount.toLocaleString()} events analyzed</div>
         </div>
         <div className="flex gap-3 mb-4">
           {[
             { label: "Positive", count: positiveCount, color: "bg-emerald-500" },
-            { label: "Neutral", count: neutralCount, color: "bg-white/30" },
+            { label: "Neutral", count: neutralCount, color: "bg-slate-300" },
             { label: "Friction", count: frictionCount, color: "bg-red-400" },
           ].map((s) => (
             <div key={s.label} className="flex-1">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-white/40 text-xs">{s.label}</span>
-                <span className="text-white/60 text-xs font-mono">{s.count.toLocaleString()}</span>
+                <span className="text-slate-500 text-sm">{s.label}</span>
+                <span className="text-slate-600 text-sm font-mono">{s.count.toLocaleString()}</span>
               </div>
-              <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+              <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                 <div
                   className={`h-full ${s.color} rounded-full transition-all duration-300`}
                   style={{ width: eventCount > 0 ? `${(s.count / eventCount) * 100}%` : "0%" }}
@@ -213,7 +213,7 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
         <div className="flex justify-end">
           <button
             onClick={onComplete}
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm transition-all duration-200"
+            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-base shadow-sm transition-all duration-200"
           >
             Start Generating Results Report
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
