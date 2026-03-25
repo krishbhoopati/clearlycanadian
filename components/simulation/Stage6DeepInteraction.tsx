@@ -164,7 +164,7 @@ export default function Stage6DeepInteraction({ onPersonaChat }: Props) {
           <span className="text-slate-600 text-sm font-semibold">CC Maple Zero Sugar — Swarm Intelligence Report</span>
         </div>
         <div className="flex-1 overflow-y-auto light-scroll px-5 py-4">
-          {[1, 2, 3].map((n) => (
+          {[1, 2, 3, 4, 5].map((n) => (
             <ReportSection key={n} content={reportSections[n] ?? ""} />
           ))}
         </div>

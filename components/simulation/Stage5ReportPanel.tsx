@@ -85,7 +85,7 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
               <span className="text-slate-600 text-sm font-medium">CC Maple Zero Sugar — Swarm Intelligence Report</span>
             </div>
 
-            {[1, 2, 3].map((sectionNum) => {
+            {[1, 2, 3, 4, 5].map((sectionNum) => {
               const isUnlocked = unlockedSections.includes(sectionNum);
               const isGenerating = !isUnlocked && started && reportLog.some(
                 (e) => e.type === "section_start" && e.section === sectionNum && e.offset_ms <= elapsedMs

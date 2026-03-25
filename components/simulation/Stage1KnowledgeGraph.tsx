@@ -140,8 +140,9 @@ export default function Stage1KnowledgeGraph({ onComplete, onBeginAnalysis }: Pr
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
           </svg>
           <div>
-            <div className="text-slate-700 text-sm font-semibold">CC Maple Zero Sugar — Growth Strategy Brief</div>
-            <div className="text-slate-400 text-xs mt-0.5">PDF · 12 pages · CC Marketing Team</div>
+            <div className="text-slate-700 text-sm font-semibold">Clearly Maple Zero — Enterprise-Scale Maple Zero-Sugar Beverage and Souvenir Placement Program</div>
+            <div className="text-slate-500 text-xs mt-0.5">STP analysis, consumer behavior synthesis from digital twin, full marketing mix, 6-month content calendar, KPI dashboard, competitor benchmarks, and risk analysis</div>
+            <div className="text-slate-400 text-xs mt-0.5">PDF · 19 pages · Uploaded by CC Marketing Team</div>
           </div>
         </div>
 

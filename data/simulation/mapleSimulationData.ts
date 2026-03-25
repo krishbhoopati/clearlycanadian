@@ -927,42 +927,32 @@ const karenInterview: ReportInterview = {
 
 export const reportLog: ReportLogEntry[] = [
   { id: "r1", type: "planning", offset_ms: 0, label: "Planning", detail: "11:25:50 — Start planning report outline" },
-  { id: "r2", type: "plan_complete", offset_ms: 21000, label: "Plan Complete", detail: "+20.8s — Outline planning completed, 3 sections planned" },
-  { id: "r3", type: "section_start", offset_ms: 21500, label: "Section Start — #1", detail: "Consumer Sentiment Analysis: CC Maple resonance across segments", section: 1 },
+  { id: "r2", type: "plan_complete", offset_ms: 21000, label: "Plan Complete", detail: "+20.8s — Outline planning completed, 5 sections planned" },
+  { id: "r3", type: "section_start", offset_ms: 21500, label: "Section Start — #1", detail: "STP & Consumer Behavior Synthesis: segmentation archetypes, targeting, digital twin patterns", section: 1 },
   { id: "r4", type: "llm_response", offset_ms: 43000, label: "LLM Response — Iteration 1", detail: "+21.4s — Tools: Yes, Final: No" },
   { id: "r5", type: "tool_call", offset_ms: 43500, label: "Tool Call — Panorama Search", detail: "+22.8s" },
   {
-    id: "r6", type: "tool_result", offset_ms: 44000, label: "Tool Result — Panorama Search", detail: "147 Nodes / 312 Edges · 13.6k characters",
+    id: "r6", type: "tool_result", offset_ms: 44000, label: "Tool Result — Panorama Search", detail: "$837.3M maple industry gross value (Statistics Canada 2024) · $130B tourism spending (Destination Canada) · 147 Nodes",
     expandable: {
       type: "memory_list",
-      summary: "147 Nodes / 312 Edges · 13.6k characters",
+      summary: "$837.3M maple industry gross value · $130B tourism · 147 Nodes",
       items: [
-        "Social media analysis indicates #CCMaple trending in beverage communities within 12 hours, with discussions centered on flavor innovation, cocktail potential, and Canadian identity.",
-        "Reddit r/cocktails post about maple as a mixer base received 847 upvotes and 234 comments within the first simulation cycle.",
-        "Gen Z agents showed 73% positive sentiment, primarily driven by aesthetic appeal and crowdfunding comeback story.",
-        "Price sensitivity emerged as primary barrier for household segment — $1.33/can vs $0.42/can LaCroix creates a 3x premium that requires context justification.",
-        "Tourist channel identified as zero-competition opportunity — no sparkling water brands present in souvenir retail sector.",
-        "Bartender segment (represented by 100 agents) has highest conversion rate at 81% positive decision when sampled at events.",
-        "Sober Curious segment actively seeking premium NA alternatives — CC Maple fills gap left by limited mocktail menu options.",
-        "Millennial premium lifestyle segment (300 agents) converted by glass bottle aesthetic before tasting product in 44% of cases.",
-        "Shania Twain campaign association resonated with Gen X segment at 78% positive attribution vs 31% for Gen Z.",
-        "Buy Canadian sentiment boost measured at +38% vs baseline — CC Maple benefits disproportionately as an authentic Canadian product.",
-        "Nostalgia trigger activated in 61% of Gen X agents upon first CC brand mention — Mountain Blackberry recall highest.",
-        "Airport retail channel conversion rate modeled at 34% for impulse purchase at $3.49 — highest single-SKU margin opportunity.",
-        "Reddit r/ClearlyCanadian community seeding generated 3.2x organic amplification vs direct brand content.",
-        "Convenience buyer segment (Tyler-type, 15% of swarm) requires sub-$1.99 price point — glass bottle format incompatible.",
-        "Ethan-type bartenders show 'The Northern Old Fashioned' cocktail spec spreading to 8 additional bartender agents within Round 12.",
-        "Karen-type agents show Costco variety pack as single critical path to household segment conversion.",
-        "Glass bottle aesthetic drives 31% of first-purchase decisions among Instagram-active Millennial agents.",
-        "Maple flavor correctly associated with 'real' (not artificial) by 67% of ingredient-conscious Sofia-type agents.",
-        "CC brand comeback story generates earned media equivalent of 4.2x paid equivalent among agents with social sharing behavior.",
-        "International tourist agents show highest price tolerance (+40% vs domestic) in tourist retail channel.",
-        "Granville Island and Whistler gift shop environments modeled as highest-revenue-per-unit tourist channels.",
-        "Rogers Centre partnership drives co-purchase behavior between Blue Jays game attendance and CC Maple trial.",
-        "Platform analysis: TikTok seeding yields 2.8x Gen Z conversion rate vs Instagram seeding for same product.",
-        "Historical Memory: 90s nostalgia wave in CPG sector averages 23% premium over comparable non-nostalgic launches.",
-        "Historical Memory: Fan-funded brand revivals (Indiegogo model) generate 4.1x media coverage vs traditional VC-backed launches.",
-        "Competitive gap: Perrier and San Pellegrino hold hotel minibar territory — CC Maple glass bottle is credible replacement at lower price.",
+        "Statistics Canada: Canadian maple producers harvested 119.5M kg of maple syrup in 2024; gross value reached $837.3M.",
+        "Destination Canada: Tourism generated $130B in direct visitor spending in 2024 — primary demand engine for placement strategy.",
+        "Toronto Pearson Sweet Maple Market explicitly positions itself as selling products 'symbolic of Canada, such as delicious maple syrup' — validates souvenir shelf context.",
+        "U CANADA Gifts: publicly positions Toronto stores as carrying 2,000+ Canadian souvenirs and gifts in major tourist districts — shelf availability confirmed.",
+        "Health Canada: 'Free of sugars' requires <0.5g sugars per reference amount + low-energy conditions — 'zero sugar' claim is compliance-dependent.",
+        "CFIA: Mandatory food label information on consumer prepackaged food must generally appear in English and French.",
+        "CFIA: Steviol glycosides have standard labeling requirements and cannot be grouped as 'Sugars' in ingredient lists.",
+        "EventTrack: 72% of consumers positively view brands that provide quality event experiences; 74% say branded event marketing makes them more likely to buy.",
+        "Sofia-type agents (Gen Z + young Millennials): label readers, sugar avoiders, skeptical of sweeteners/aftertaste — want 'clean' while demanding premium taste.",
+        "Chloe-type agents (Gen Z): discovery via short-form video and peer cues; low willingness to buy unseen; values brand story shareability.",
+        "Raj-type agents (Millennials, urban): buys with status logic (design, story, provenance); will pay for premium signals; dislikes 'grocery relic' cues.",
+        "Jake-type agents (Millennials): identity signaling through brand choices; higher responsiveness to events and design-forward experiences.",
+        "Positioning: 'premium, Canada-coded consumption experience' — move CC from nostalgia sparkling water to experience-driven.",
+        "Primary target confirmed: 18–35 (Millennials + Gen Z), tourist retail contexts, experience-driven discovery environments.",
+        "Tourism-first placement: no sparkling water brand has meaningful presence in Canadian souvenir shops or tourist destination retail.",
+        "Maple exports: mainly to United States, Germany, United Kingdom, Australia, France, and Japan — global provenance anchor confirmed.",
       ],
     },
   },
@@ -973,10 +963,10 @@ export const reportLog: ReportLogEntry[] = [
       type: "deep_insight",
       summary: "41 Facts / 36 Entities / 37 Relations · 28.1k characters",
       items: [
-        "Current key memory (41): Core purchase driver analysis, barrier mapping, segment-specific conversion pathways, channel opportunity ranking, competitive displacement modeling",
-        "Core Entities (36): 12 featured agents, 6 consumer segments, 10 retail channels, 10 tourist destinations, 8 product SKUs",
-        "Relationship chain (37): Discovery → Trial → Repeat → Advocacy pathways mapped per segment with probability weights",
-        "Subproblem (5): Price barrier resolution, format gap (no Costco variety pack), Gen Z social proof dependency, tourist channel white space, bartender seeding velocity",
+        "Toronto Pearson Sweet Maple Market validates souvenir retail — maple is already 'symbolic of Canada' in airport gift retail context.",
+        "4 archetypes map to conversion patterns: Sofia (health + zero sugar compliance), Chloe (trial friction + social proof), Raj (premium signals before taste), Jake (event-driven discovery).",
+        "EventTrack: 74% more likely to buy after engaging with branded event marketing — event-first strategy is conversion infrastructure, not optional.",
+        "Ontario Maple Weekend runs first weekend in April; Québec sugar shack season late February to late April — seasonal activation windows confirmed.",
       ],
     },
   },
@@ -1010,8 +1000,8 @@ export const reportLog: ReportLogEntry[] = [
     },
   },
   { id: "r13", type: "content_ready", offset_ms: 220000, label: "Content Ready — Section #1", detail: "+180.6s", section: 1 },
-  { id: "r14", type: "section_done", offset_ms: 220500, label: "Section Done", detail: "Consumer Sentiment Analysis complete", section: 1 },
-  { id: "r15", type: "section_start", offset_ms: 221000, label: "Section Start — #2", detail: "Channel & Pricing Strategy: Distribution priority and format gaps", section: 2 },
+  { id: "r14", type: "section_done", offset_ms: 220500, label: "Section Done", detail: "STP & Consumer Behavior Synthesis complete", section: 1 },
+  { id: "r15", type: "section_start", offset_ms: 221000, label: "Section Start — #2", detail: "Marketing Mix & Distribution Design: SKU architecture, pricing scenarios, placement pillars, 3 campaigns", section: 2 },
   { id: "r16", type: "llm_response", offset_ms: 240000, label: "LLM Response — Iteration 1", detail: "+19.2s — Tools: Yes, Final: No" },
   { id: "r17", type: "tool_call", offset_ms: 240500, label: "Tool Call — Panorama Search", detail: "+14.3s" },
   {
@@ -1031,8 +1021,8 @@ export const reportLog: ReportLogEntry[] = [
     },
   },
   { id: "r19", type: "content_ready", offset_ms: 280000, label: "Content Ready — Section #2", detail: "+39.2s", section: 2 },
-  { id: "r20", type: "section_done", offset_ms: 280500, label: "Section Done", detail: "Channel & Pricing Strategy complete", section: 2 },
-  { id: "r21", type: "section_start", offset_ms: 281000, label: "Section Start — #3", detail: "Strategic Recommendations & Risk Assessment", section: 3 },
+  { id: "r20", type: "section_done", offset_ms: 280500, label: "Section Done", detail: "Marketing Mix & Distribution Design complete", section: 2 },
+  { id: "r21", type: "section_start", offset_ms: 281000, label: "Section Start — #3", detail: "Launch Roadmap & KPIs: 6-month content calendar, KPI dashboard, Gantt timeline", section: 3 },
   { id: "r22", type: "llm_response", offset_ms: 295000, label: "LLM Response — Iteration 1", detail: "+13.8s — Tools: Yes, Final: No" },
   { id: "r23", type: "tool_call", offset_ms: 295500, label: "Tool Call — Deep Insight", detail: "+12.1s" },
   {
@@ -1048,68 +1038,194 @@ export const reportLog: ReportLogEntry[] = [
     },
   },
   { id: "r25", type: "content_ready", offset_ms: 330000, label: "Content Ready — Section #3", detail: "+34.7s", section: 3 },
-  { id: "r26", type: "section_done", offset_ms: 330500, label: "Section Done", detail: "Strategic Recommendations complete", section: 3 },
-  { id: "r27", type: "complete", offset_ms: 331000, label: "Complete", detail: "Report Generation Complete · 3 sections · 47 tool calls · 1,247 agents analyzed" },
+  { id: "r26", type: "section_done", offset_ms: 330500, label: "Section Done", detail: "Launch Roadmap & KPIs complete", section: 3 },
+  { id: "r28", type: "section_start", offset_ms: 331000, label: "Section Start — #4", detail: "Competitor Benchmarks: Bubly, Topo Chico, Poppi, OLIPOP, Maple 3", section: 4 },
+  { id: "r29", type: "llm_response", offset_ms: 346000, label: "LLM Response — Iteration 1", detail: "+15.2s — Tools: Yes, Final: No" },
+  { id: "r30", type: "tool_call", offset_ms: 346500, label: "Tool Call — Quick Search", detail: "+15.7s" },
+  {
+    id: "r31", type: "tool_result", offset_ms: 347500, label: "Tool Result — Quick Search", detail: "Bubly CAD $6.98/12pk · Topo Chico CAD $4.37/355ml · Poppi $19.97–22.00/12pk · Maple 3 $32.99/12pk",
+    expandable: {
+      type: "search_results",
+      summary: "Competitor price benchmarks: 4 brands retrieved",
+      items: [
+        "Bubly (PepsiCo): CAD $6.98 for 12×355ml at Walmart Canada — commodity baseline, mass retail + grocery.",
+        "Topo Chico (Coca-Cola): ~CAD $4.37 for 355ml glass bottle at specialty retailers — premium heritage cues, strong on-premise.",
+        "Poppi: ~$19.97–$22.00 for 12-pack on Amazon.ca — 'better soda' narrative + ACV ingredient story + lifestyle branding.",
+        "OLIPOP: premium 12-pack pricing varies on Amazon.ca — functional positioning + brand-led flavor culture.",
+        "Maple 3: ~$32.99 / 12-pack sparkling maple water (DTC) — maple-adjacent, not a souvenir-first brand.",
+      ],
+    },
+  },
+  { id: "r32", type: "content_ready", offset_ms: 370000, label: "Content Ready — Section #4", detail: "+22.4s", section: 4 },
+  { id: "r33", type: "section_done", offset_ms: 370500, label: "Section Done", detail: "Competitor Benchmarks complete", section: 4 },
+  { id: "r34", type: "section_start", offset_ms: 371000, label: "Section Start — #5", detail: "Risk & Failure Analysis: zero sugar mismatch, low trial, premium conflict, loyalist backlash", section: 5 },
+  { id: "r35", type: "llm_response", offset_ms: 387000, label: "LLM Response — Iteration 1", detail: "+16.3s — Tools: Yes, Final: No" },
+  { id: "r36", type: "tool_call", offset_ms: 387500, label: "Tool Call — Deep Insight", detail: "+16.8s" },
+  {
+    id: "r37", type: "tool_result", offset_ms: 388500, label: "Tool Result — Deep Insight", detail: "4 failure modes identified · Sofia disengages on sweetener ambiguity · Chloe requires event-led trial",
+    expandable: {
+      type: "deep_insight",
+      summary: "4 failure modes from simulation + PDF mitigations",
+      items: [
+        "'Zero sugar' claim mismatch: Sofia-types disengage when sweetener strategy is unclear. Health Canada <0.5g sugars condition must be met; CFIA sweetener labeling required.",
+        "Low trial → low conversion: Chloe-types need event-based experience before purchase. EventTrack 74% purchase-intent lift from branded event engagement validates sampling as core infrastructure.",
+        "Premium positioning conflict: Raj-types classify CC as nostalgia, not premium, when signals are inconsistent. Airport gift retail + dedicated visual system (maple-amber + deep navy) corrects this.",
+        "Loyalist backlash: Loyalists resist Maple Zero if it appears to replace Originals. Explicit line extension architecture + channel separation mitigates this.",
+      ],
+    },
+  },
+  { id: "r38", type: "content_ready", offset_ms: 415000, label: "Content Ready — Section #5", detail: "+26.6s", section: 5 },
+  { id: "r39", type: "section_done", offset_ms: 415500, label: "Section Done", detail: "Risk & Failure Analysis complete", section: 5 },
+  { id: "r27", type: "complete", offset_ms: 416000, label: "Complete", detail: "Report Generation Complete · 5 sections · 47 tool calls · 1,247 agents analyzed" },
 ];
 
 // ─── Report Text (3 sections, unlocked sequentially) ─────────────────────────
 
 export const reportSections: Record<number, string> = {
-  1: `## Section 1: Consumer Sentiment Analysis
+  1: `## Section 1: STP & Consumer Behavior Synthesis
 
-**Based on analysis of 1,247 simulated consumer agents across 6 demographic segments**
+**Segmentation: Needs-Based, Four Primary Archetypes**
 
-CC Maple Zero Sugar generates strong positive reception across consumer segments, with **847 of 1,247 agents (68%)** expressing positive purchase intent. The strongest consensus emerged among the 350 Gen Z agents, **73%** of whom indicated they would try CC Maple if discovered through social media or a peer recommendation.
+This plan uses needs-based segmentation (behavior + motivation) rather than purely demographic cuts, because sparkling beverages have low switching costs and saturated shelves, making "why they buy" more predictive than "who they are."
 
-Among 300 Millennial agents, **71%** expressed strong interest — particularly those who discovered CC through the premium glass bottle format. The Bartender/Industry segment (100 agents) shows the highest conversion rate at **81%** — driven by cocktail utility and back-bar aesthetic.
+- **Sofia-types (Health + Ingredient Scrutinizers)** — Gen Z and young Millennials; label readers, sugar avoiders, skeptical of sweeteners/aftertaste, influencer-adjacent. Key tension: wants "clean" while demanding premium taste and authenticity.
+- **Chloe-types (Social Discovery, Low-Trial)** — Gen Z; discovery via short-form video and peer cues; low willingness to buy unseen; values brand story shareability and packaging aesthetics.
+- **Raj-types (Premium Lifestyle Curators)** — Millennials, urban professionals; buys with status logic (design, story, provenance); will pay for premium signals; dislikes "grocery relic" cues.
+- **Jake-types (Experience-Forward Discovery)** — Millennials; identity signaling through brand choices; higher responsiveness to events and design-forward experiences; affected by "premium, curated" contexts.
 
-**Featured Agent Deep Dives:**
-- **Ethan (Bartender)** — Immediate yes. Already building cocktail specs. Highest influence multiplier (2.1×).
-- **Raj (Premium Millennial)** — Immediate yes. Glass bottle aesthetic closes the sale before tasting.
-- **Marie (Sober Curious)** — Immediate yes for bar/mocktail context. NA menu gap perfectly filled.
-- **Linda (Gen X Nostalgic)** — Immediate yes. 90s CC memory + maple = emotional purchase trigger.
-- **Chloe (Gen Z)** — Conditional yes. Requires TikTok seeding or peer recommendation first.
-- **Karen H. (Household)** — Conditional yes. Requires Costco variety pack format.
-- **Tyler (Convenience)** — Neutral. Price and convenience threshold not met by current format.`,
+**Targeting: Concentrated at Launch, Then Controlled Expansion**
 
-  2: `## Section 2: Channel & Pricing Strategy
+Primary target: North American consumers aged **18–35** (Millennials + Gen Z), with emphasis on tourist retail contexts (airports, attractions, city souvenir retail) and experience-driven discovery environments. Tourism scale — **$130B in direct visitor spending** (Destination Canada, 2024) — supports this focus. Geographic focus: Canada and the U.S., starting where visitor volume and souvenir retail density are highest.
 
-**Tourist Retail — Zero Competition Zone**
+**Positioning Statement**
 
-The tourist retail channel represents CC Maple's highest-priority, lowest-competition distribution opportunity. No sparkling water brand — LaCroix, Poppi, Perrier, or Topo Chico — has meaningful presence in Canadian souvenir shops, museum gift shops, or tourist destination retail. Maple Syrup is Canada's #1 purchased souvenir; CC Maple in a glass bottle is a direct adjacency purchase.
+For health-conscious Gen Z and Millennials who want premium flavor discovery without sugar, **Clearly Canadian Maple Zero** is a modern, Canada-inspired sparkling beverage that delivers a premium consumption experience (design, story, and discovery moments), unlike mainstream sparkling waters that compete primarily on commodity refreshment.
 
-Channel priority ranking by modeled ROI:
-1. **Tourist Retail** — No competition, +40% price tolerance, natural maple adjacency
-2. **Bars & Restaurants** — 48% sample-to-purchase conversion, cocktail spec amplification
-3. **Airport Retail** — $3.49 viable, last Canadian purchase premium
-4. **Costco Variety Pack** — Unlocks 97 household agents at 2 cases/month volume
-5. **Premium Grocery** — Shelf competition exists but glass bottle differentiates
+**Digital Twin: 4 Patterns Explain Most Conversion Lift**
 
-**Pricing Architecture**
+"We simulated thousands of persona interactions in a digital-twin swarm. Across scenarios, four patterns consistently explained the biggest changes in intent and conversion."
 
-- Tourist retail: $3.49–$3.99 (tourist premium tolerance confirmed)
-- Bar/restaurant: $12–$16 as cocktail ingredient (spec price)
-- Grocery: $2.29–$2.99 single, $13.79 12-pack
-- Costco variety pack: $15.99–$17.99 (≤$1.33/can to compete with LaCroix)
-- 7-Eleven/Convenience: Not recommended — glass format incompatible with price ceiling`,
+- **Health + premium flavor demand (Sofia)** — Interest is driven by low/zero sugar plus differentiation. The "zero sugar" promise must be compliance-safe and any sweetener strategy clearly declared in ingredients.
+- **Low trial is the conversion bottleneck (Chloe)** — Consumers hesitate to commit without experience. EventTrack reports **74% of consumers** say engaging with branded event marketing makes them more likely to buy.
+- **Premium positioning must be earned through design + context (Raj)** — Premium buyers are converted by signals before taste: packaging, story, and placement context (hotel minibar, premium bar, gift retail).
+- **Experience-driven discovery outperforms static advertising (Jake)** — Consumers are more likely to engage and purchase after real experiences (events, tastings, pop-ups).`,
 
-  3: `## Section 3: Strategic Recommendations & Risk Assessment
+  2: `## Section 2: Marketing Mix & Distribution Design
 
-**Top 4 Recommendations**
+**Product: SKU Architecture**
 
-1. **Lead with bartender seeding** — Ethan-type personas are highest-conviction and fastest-converting. Bar placement creates a cocktail content flywheel that amplifies into Gen Z and Millennial segments organically. Budget: $50K sample program → 8–12 cocktail specs → 40–60 pieces of organic content.
+Core SKUs: Maple Zero single-serve (chilled-ready), 4-pack (tourist gift + hotel), 12-pack can (household expansion phase).
 
-2. **Tourist retail placement before grocery** — Zero competition, premium pricing, maple souvenir adjacency. Priority destinations: CN Tower, Niagara Falls Clifton Hill, Banff Springs, Granville Island Public Market. Target: 200 tourist retail doors before mainstream grocery launch.
+Travel retail / souvenir SKUs: **"Carry-On Canada" souvenir sleeve** (single-serve + bilingual story card EN/FR mandatory), **"Taste of Canada" mini 3-pack** for gift shops.
 
-3. **Costco variety pack as household conversion vehicle** — Create 12-pack (4x Maple, 4x Mountain Blackberry, 4x Wild Cherry) at $15.99 MSRP. Karen-type agents (97 in model, millions in real market) require this format to switch from LaCroix. Format launch: Q1 2026.
+On-premise SKUs: Bar-focused case pack to support sampling, mocktails, and cocktail specs.
 
-4. **TikTok seeding through food/cocktail creators** — Gen Z won't trial without social proof. 5–8 creator partnerships ($3K–$8K each) that showcase the comeback story + cocktail content. Target: 2M Gen Z impressions before retail launch.
+Compliance guardrails: "Zero sugar / sugar-free" claims only if product meets Health Canada "Free of sugars" conditions (<0.5g sugars per reference amount + low-energy conditions). Bilingual EN/FR labeling generally required on consumer prepackaged foods.
 
-**Risk Factors**
+**Price: Three Scenario Design**
 
-- **Brand dilution** (Doug segment) — Launch as clearly separate product line. Never replace. Run as line extension with distinct visual language from Originals.
-- **Price gap vs LaCroix** — $1.33/can vs $0.42/can is 3× premium. Requires channel context justification everywhere.
-- **Gen Z social proof dependency** — 73% intent is conditional. Without TikTok activation, Gen Z conversion falls to 18%.`,
+- **Lean (penetration + placement)** — Maximize souvenir shop door count and facings; fewer SKUs, lower packaging complexity, partner-friendly margin structure.
+- **Standard (premium souvenir beverage)** — Defend premium positioning and maximize trial-to-repeat; travel sleeves, story insert, sampling program support, 4-pack gift format.
+- **Ambitious (premium + exclusives)** — Airport exclusives, limited edition seasonal sleeves, on-premise cocktail specs, high-visibility pop-ups.
+
+Reference price anchors: Bubly 12-pack **CAD $6.98** (Walmart Canada, commodity baseline). Topo Chico 355ml glass **~CAD $4.37** (premium sparkling reference). Poppi 12-pack **~$19.97–$22.00** on Amazon.ca (modern functional soda band).
+
+**Place: Placement is a Positioning Engine**
+
+Souvenir and travel retail are not just channels — they provide premium context, instant "Canada symbolism," and high-intent buyer missions.
+
+1. **Airport + travel retail (priority)** — Toronto Pearson's Sweet Maple Market explicitly merchandises maple and Canadian branded gifts after security, proving traveler propensity for "Canada-coded" purchases.
+2. **City souvenir retail clusters** — U CANADA Gifts (2,000+ Canadian souvenirs across Toronto tourist districts) validates shelf availability and tourist demand.
+3. **Attraction and museum gift shops** — High "souvenir mission" alignment, lower beverage category clutter, strong storytelling fit.
+4. **E-commerce (supporting)** — Use for post-trip reorder and subscription conversion.
+5. **On-premise (bars/hotels)** — Turns Maple Zero into a mocktail/cocktail ingredient and accelerates social proof creation.
+
+**Promotion: Three Campaigns**
+
+- **Sugaring Season Pop-Ups (Spring)** — Anchored to Ontario Maple Weekend (first weekend in April) and Québec sugar shack season (late February to late April). Pop-up sampling in souvenir shops + maple attractions; "Sugaring Season Sleeve" limited packaging.
+- **Carry-On Canada (Summer travel peak)** — Airport activation with travel-friendly multipacks; gift-with-purchase (postcard/story card); influencer "airport haul" content.
+- **Maple Mixology (Year-round)** — Bartender seeding, mocktail menus, branded "Northern Old Fashioned" style recipes. Generates social proof that converts Chloe-types and premium signals that convert Raj-types.`,
+
+  3: `## Section 3: Launch Roadmap & KPIs
+
+**Six-Month Content Calendar**
+
+- **Month 1** — Establish "Maple Zero" narrative + compliance-safe claims. Assets: "Maple Zero explained" page; label-reading reels; retailer pitch one-pager.
+- **Month 2** — Build trial infrastructure. Assets: Sampling playbook + partner training; ambassador kit; "Where to Buy" store locator push.
+- **Month 3** — Event-led conversion. Assets: Maple season activations; Maple Weekend pop-up recap; UGC prompt; "taste before you buy" CTA.
+- **Month 4** — Scale souvenir placement. Assets: Airport/city shop showcases; "Found this at the airport" series; travel pack photography.
+- **Month 5** — Repeat purchase. Assets: Bundles + subscriptions; "Bring home a case" offer; seasonal sleeve teaser.
+- **Month 6** — Optimize and expand. Assets: KPI snapshot; testimonial edits; partner case studies.
+
+**KPI Dashboard**
+
+Awareness + Intent: branded search uplift, social save/share rate (proxy for "I intend to try"), store locator visits and "get directions" clicks.
+
+Distribution + Velocity: active doors (souvenir shops, airports, attractions), facings per door and cooler placement rate, units per store per week and gross margin by channel.
+
+Trial Conversion: sample-to-purchase conversion (tracked via QR coupons), event attendance to purchase intent, repeat purchase rate within 30–60 days.
+
+Compliance + Trust: "zero sugar" claim qualification pass rate (internal QA gate), label bilingual compliance check pass rate, customer service contacts about sweeteners/aftertaste (trend metric).
+
+**Six-Month Gantt Timeline**
+
+- **Foundation (Month 1–2):** Positioning + channel thesis lock → Compliance pathway (claims + labels) → Packaging system + bilingual layouts
+- **Build (Month 2–3):** Pilot production + QA gates → Souvenir door list + pitch rollout → Airport partner outreach
+- **Activate (Month 3–4):** Sampling SOP + training → Sugaring season campaign (events) → Carry-On Canada travel campaign
+- **Optimize (Month 5–6):** KPI review + iteration sprint → Scale decision (new doors + SKUs)`,
+
+  4: `## Section 4: Competitor Benchmarks
+
+**Five-Brand Comparison**
+
+- **Bubly (PepsiCo)** — Multiple fruit-flavored sparkling waters. **CAD $6.98 / 12×355ml** at Walmart Canada. Mass retail + grocery + convenience. Commodity "everyday" sparkling water baseline; playful flavor variety and wide distribution. *Implication: this is the price floor Maple Zero must justify a premium over.*
+
+- **Topo Chico (Coca-Cola)** — Sparkling mineral water, multiple sizes, flavored variants. **~CAD $4.37 / 355ml glass bottle** at specialty retailers. Grocery + foodservice; strong on-premise presence. Premium heritage cues (bottled since 1895) and restaurant association. *Implication: our glass bottle premium reference — this is the aesthetic tier we occupy.*
+
+- **Poppi** — Multiple soda flavors; apple cider vinegar as signature ingredient. **~$19.97–$22.00 / 12-pack** on Amazon.ca. Retail + online via major retailers. "Better soda" narrative + ingredient story + strong lifestyle branding. *Implication: the modern functional soda band — shows consumers will pay $1.65+/can for a brand story.*
+
+- **OLIPOP** — Broad flavor portfolio; "new kind of soda" (fiber/prebiotic framing). Premium 12-pack pricing varies on Amazon.ca. DTC + retail distribution; wholesale pathway. Functional positioning + brand-led flavor culture; "less sugar" narrative. *Implication: functional + lifestyle premiumization is a proven category move.*
+
+- **Maple 3** — Sparkling maple water flavors and case formats; sports hydration line. **~$32.99 / 12-pack** sparkling maple water (DTC example). DTC + store locator for retail availability. Maple-adjacent provenance + "from Canada's forests" positioning; not a souvenir-first brand. *Implication: direct maple competitor, but no tourism-first placement strategy — our clearest white space.*
+
+**Competitive Implication for Maple Zero**
+
+Win by combining: **(a)** Topo Chico-level premium cues, **(b)** a Poppi/OLIPOP-style modern story, and **(c)** tourism-first placement that commodity sparkling waters rarely own. No competitor in this table has meaningful presence in Canadian souvenir shops, airport maple retail, or attraction gift shops.`,
+
+  5: `## Section 5: Risk & Failure Analysis
+
+**Failure Mode: "Zero Sugar" Claim Mismatch**
+
+Simulation evidence: Trust-sensitive Sofia-types disengage when sweetener strategy feels unclear or "too processed." Consumers conflate "zero sugar" with "clean," but zero sugar often requires sweeteners — transparency is mandatory and sentiment-sensitive.
+
+Mitigation: Build a "label-first" design pass — ingredient list legibility, sweetener disclosure clarity, short "why we use it" FAQ. If formulation cannot meet Health Canada "Free of sugars" conditions (<0.5g sugars), reframe claims to "low in sugars" or "no added sugar" only if compliant.
+
+**Failure Mode: Low Trial → Low Conversion**
+
+Simulation evidence: High curiosity but no purchase without experience (Chloe-types). Shelf clutter + sensory uncertainty means online ads are insufficient. EventTrack confirms: **74% of consumers** say engaging with branded event marketing makes them more likely to buy.
+
+Mitigation: Make sampling a KPI-driven program (sample-to-purchase tracked by QR). Pop-ups aligned to maple season windows (Ontario Maple Weekend; Québec sugar shack season, late February to late April) to maximize relevance.
+
+**Failure Mode: Premium Positioning Conflict**
+
+Simulation evidence: Raj-types "like it" but classify it as nostalgia rather than premium. Root cause: inconsistent premium signals (packaging, placement, price).
+
+Mitigation: Ensure premium context first — airport gift retail and curated souvenir doors reinforce premium positioning before mass grocery. Use a dedicated Maple Zero visual system: **maple-amber + deep navy**; restrained typography; gifting-ready packaging.
+
+**Failure Mode: Loyalist Backlash / Brand Dilution**
+
+Simulation evidence: Loyalists resist if Maple Zero appears to "replace" Originals. Brand equity tension between nostalgia function and premium innovation.
+
+Mitigation: Use explicit architecture — "Maple Zero" as a clear line extension with distinct visual language; Originals protected messaging ("Originals aren't changing"). Channel separation reduces perceived replacement risk: tourism-first placement keeps the innovation additive, not substitutive.
+
+**Creative Taglines**
+
+- "Sip the True North — zero sugar."
+- "A souvenir you can sip."
+- "Designed to be discovered."
+- "The maple moment in your hand."
+- "Maple, modernized."
+- "Canada-coded. Gift-ready."`,
 };
 
 // ─── Social Simulation Graph Events (wave 7 — appear during Stage 3) ──────────
@@ -1192,8 +1308,15 @@ export const socialGraphEvents: SocialGraphEvent[] = [
 // ─── Follow-Up Pill Responses ──────────────────────────────────────────────────
 
 export const followUpResponses: Record<string, string> = {
-  "Ask Ethan: What specific cocktails would you build?": `**Ethan (@ethan_westend):**\n\nHere's my starting three-drink menu for CC Maple:\n\n**The Northern Old Fashioned** — 2oz rye whisky, 4oz CC Maple, dash Angostura, orange peel. The maple carbonation adds a texture dimension you don't get with flat maple syrup. Clean, interesting, definitely Canadian.\n\n**Maple Gin Fizz** — 1.5oz London Dry, 4oz CC Maple, squeeze of lime, sprig of thyme. The earthiness of the gin plays against the maple sweetness beautifully.\n\n**The Sober Cabin** (NA) — CC Maple, fresh ginger juice, lemon, muddled rosemary. Would put this on the NA menu. Marie-type customers would order this over any other option we currently have.\n\nRunning these as specials this weekend. Will report back.`,
-  "Ask Karen: What price point makes you switch from LaCroix?": `**Karen H. (@karen_atl):**\n\nMy LaCroix cost is $0.42/can at Costco in the 35-pack. That's my baseline.\n\nFor me to switch, even partially:\n— Under $1.29/can at Costco in a 12-pack variety, I'd try it for special occasions.\n— At $1.99+ I'm not buying it as an everyday beverage.\n\nThe smart play is a 6-pack sampler at Shoppers for $7.99. Let me try it before I commit 12. If the kids like it, I'll buy more.\n\nThe maple thing could actually work for Thanksgiving. I'd pay a holiday premium for that context. Just don't ask me to replace my weekly LaCroix run.`,
-  "Ask Aisha: What would the packaging need to look like for you to post it?": `**Aisha (@aisha_atx):**\n\nthe glass bottle already has it. that shape is already content. amber-toned label — warm not halloween orange. gold or brass cap? that's shelf aesthetic right there.\n\nfor the post: vibe photo in natural light at a cozy bar or cabin window. caption uses the comeback story — 'fans brought this brand back from the dead' is genuinely interesting.\n\nI would NOT post an unboxing. I'd post 'this is what I'm drinking at [occasion] and here's the weird history behind it.' that's the format.`,
-  "Run scenario: CC Maple at Niagara Falls souvenir shops": `**Scenario Analysis: Niagara Falls Tourist Retail**\n\nOf 13M annual Niagara Falls visitors, this agent set models price tolerance at +40% vs grocery context. Viable price range: $2.99–$3.49/unit.\n\n**Competitive Position:** LaCroix, Poppi, and Olipop have zero distribution in tourist souvenir shops. CC Maple would be the only sparkling beverage positioned as a Canadian souvenir experience.\n\n**Adjacent Product Context:** Maple syrup is Canada's #1 purchased souvenir. CC Maple placed adjacent to maple syrup creates a natural purchase association.\n\n**Segment Response:** 91% of tourist segment agents expressed purchase intent. Even Tyler said "yeah if it's in the shop I'd grab one." That's remarkable consensus.\n\n**Recommended Format:** Glass bottle 4-packs or gift sets. "Taste of Canada" bundle (1x CC Maple + 1x CC Original + maple syrup) at $22–$26 CAD.`,
+  "What's the core positioning strategy?": `**Report Agent:**\n\nThe core positioning is tourism-first, experience-led premium line extension — summarized as: "Sip the True North — zero sugar."\n\nThe strategic logic has three external anchors:\n\n**1. Maple industry scale** — Canadian maple producers harvested 119.5M kg in 2024; gross value reached $837.3M (Statistics Canada). This gives CC Maple a credible, globally-proven provenance story.\n\n**2. Tourism demand** — $130B in direct visitor spending in Canada in 2024 (Destination Canada). Tourism is the distribution amplifier, not just a channel.\n\n**3. Souvenir retail validation** — Toronto Pearson's Sweet Maple Market already sells maple-symbolic Canadian gifts after security. The shelf context exists; CC Maple just needs to occupy it.\n\nPositioning statement: "For health-conscious Gen Z and Millennials who want premium flavor discovery without sugar, Clearly Canadian Maple Zero is a modern, Canada-inspired sparkling beverage that delivers a premium consumption experience, unlike mainstream sparkling waters that compete on commodity refreshment."`,
+
+  "Which segment should we prioritize first?": `**Report Agent:**\n\nAt launch: concentrate on **Sofia-types and Raj-types** in tourist retail and airport contexts.\n\n**Sofia-types** (health + ingredient scrutinizers) are your proof-of-concept segment. If they trust the label and the 'zero sugar' claim is compliance-safe, they become advocates. They're influencer-adjacent — their approval unlocks organic reach.\n\n**Raj-types** (premium lifestyle curators) convert on design + placement context before they even taste the product. Airport gift retail and souvenir shops give you the premium signal for free.\n\n**Chloe-types** (Gen Z, low trial) come next — they need social proof from Sofia and Raj first. Without TikTok seeding and peer evidence, conversion stays low.\n\n**Jake-types** (event-forward) are activated through Sugaring Season Pop-Ups and Maple Mixology events — a Month 3–4 priority.\n\nThe sequencing matters: premium context first (Raj), then ingredient trust (Sofia), then social proof (Chloe), then events (Jake).`,
+
+  "What are the competitor price benchmarks?": `**Report Agent:**\n\nFrom the report's competitor analysis (public pricing examples, variable by retailer and date):\n\n**Bubly (PepsiCo)** — CAD $6.98 / 12×355ml at Walmart Canada. This is the commodity baseline — what an "everyday" sparkling water costs. CC Maple needs to justify a premium over this.\n\n**Topo Chico (Coca-Cola)** — ~CAD $4.37 / 355ml glass bottle at specialty retailers. This is our aesthetic reference tier. The heritage brand + glass bottle = the premium cue we're aiming for.\n\n**Poppi** — ~$19.97–$22.00 / 12-pack on Amazon.ca (~$1.65+/can). Proves consumers will pay a significant premium for a modern brand story + ingredient narrative.\n\n**OLIPOP** — Premium 12-pack pricing varies. Similar story to Poppi — functional/lifestyle premiumization works.\n\n**Maple 3** — ~$32.99 / 12-pack sparkling maple water (DTC). Our closest maple-adjacent competitor, but no tourism-first placement strategy — that's our white space.\n\nStrategic implication: win by combining Topo Chico-level premium cues + Poppi/OLIPOP-style modern story + tourism-first placement no competitor currently owns.`,
+
+  "What's the biggest risk from the simulation?": `**Report Agent:**\n\nTwo risks tied for highest concern:\n\n**1. "Zero sugar" claim mismatch (Sofia-types)**\nSofia-types disengage when sweetener strategy feels unclear. They conflate "zero sugar" with "clean," but zero sugar requires sweeteners — and those sweeteners must be declared. Health Canada's "Free of sugars" conditions require <0.5g sugars per reference amount + low-energy conditions. If the formulation doesn't qualify, the claim must be reframed.\n\nMitigation: "label-first" design pass — ingredient list legibility, sweetener disclosure, short "why we use it" FAQ.\n\n**2. Low trial → low conversion (Chloe-types)**\nHigh curiosity but no purchase without an experience. Online ads don't move this segment. EventTrack data confirms: 74% more likely to buy after a branded event experience.\n\nMitigation: sampling as a KPI-driven program (QR-tracked), pop-ups aligned to Ontario Maple Weekend (first weekend April) and Québec sugar shack season (late February–late April).\n\nThe other two risks (premium positioning conflict for Raj-types, loyalist backlash) are real but more controllable through channel separation and explicit line extension architecture.`,
+
+  "Which channels should we launch in first?": `**Report Agent:**\n\nChannel priority ranking from the report, by modeled ROI and competitive white space:\n\n**1. Airport + travel retail (top priority)** — Toronto Pearson's Sweet Maple Market explicitly positions maple-symbolic products in post-security gift retail. Zero sparkling water competition. Negotiate placement in "Canada symbolic goods" stores; run chilled single-serve and travel multipacks.\n\n**2. City souvenir retail clusters** — U CANADA Gifts carries 2,000+ Canadian souvenirs across Toronto tourist districts. Low category clutter, high "souvenir mission" alignment. Cooler-first negotiation; chilled placement days.\n\n**3. Attraction + museum gift shops** — Same souvenir mission, strong storytelling fit, lower beverage category clutter.\n\n**4. On-premise (bars/hotels)** — Cocktail spec creation flywheel that amplifies into Gen Z and Millennial social proof.\n\n**5. E-commerce (supporting)** — Post-trip reorder and subscription conversion, not primary at launch.\n\n**Not recommended at launch:** Mass grocery and convenience. Price floor + shelf clutter undermines premium positioning before the brand has souvenir/premium context established.`,
+
+  "What are the three launch campaigns?": `**Report Agent:**\n\nThe three campaigns from the report's promotional strategy:\n\n**1. Sugaring Season Pop-Ups (Spring)**\nAnchor to Ontario Maple Weekend (first weekend in April) and Québec sugar shack season (late February – late April). Pop-up sampling in souvenir shops and nearby maple attractions. "Sugaring Season Sleeve" limited packaging. Goal: first trial + UGC content.\n\n**2. Carry-On Canada (Summer travel peak)**\nAirport activation with travel-friendly multipacks. Gift-with-purchase (postcard/story card). Influencer "airport haul" content. "Found this at the airport" organic content series. Goal: scale souvenir placement + post-trip reorder via e-commerce.\n\n**3. Maple Mixology (Year-round)**\nBartender seeding, mocktail menus, branded cocktail specs (e.g., "Northern Old Fashioned" style). Goal: generate social proof that converts Chloe-types + premium signals that convert Raj-types. This campaign also fuels the on-premise "experience channel" positioning.\n\nAll three campaigns are grounded in the EventTrack finding: 74% purchase-intent lift from branded event engagement. Experience is the conversion infrastructure, not a nice-to-have.`,
 };
