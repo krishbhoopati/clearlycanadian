@@ -31,22 +31,24 @@ export default function Stage2AgentGrid({ onComplete, onAgentClick }: Props) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        {simulationAgents.map((agent, i) => (
-          <div
-            key={agent.id}
-            className="opacity-0 animate-agent-pop-in"
-            style={{
-              animationDelay: `${i * STAGGER_MS}ms`,
-              animationFillMode: "forwards",
-            }}
-          >
-            <SimulationAgentCard
-              agent={agent}
-              onClick={() => onAgentClick?.(agent.persona_id)}
-            />
-          </div>
-        ))}
+      <div className="overflow-y-auto light-scroll" style={{ maxHeight: 420 }}>
+        <div className="grid grid-cols-2 gap-3">
+          {simulationAgents.map((agent, i) => (
+            <div
+              key={agent.id}
+              className="opacity-0 animate-agent-pop-in"
+              style={{
+                animationDelay: `${i * STAGGER_MS}ms`,
+                animationFillMode: "forwards",
+              }}
+            >
+              <SimulationAgentCard
+                agent={agent}
+                onClick={() => onAgentClick?.(agent.persona_id)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       <SwarmCluster visible={swarmVisible} />
