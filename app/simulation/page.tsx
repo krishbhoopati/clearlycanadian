@@ -112,7 +112,7 @@ export default function SimulationPage() {
         {graphVisible && (
           <div
             className="flex-shrink-0 border-r border-white/5 flex flex-col h-full transition-all duration-300"
-            style={{ width: stage === 1 ? "60%" : "65%" }}
+            style={{ width: stage === 1 ? "60%" : stage <= 4 ? "50%" : "65%" }}
           >
             <PersistentGraphPanel
               visible={graphVisible}
