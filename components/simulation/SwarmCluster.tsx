@@ -38,7 +38,7 @@ export default function SwarmCluster({ visible }: Props) {
     hasInit.current = true;
 
     const W = 600;
-    const H = 220;
+    const H = 360;
 
     // Pre-calculate dot positions (radial cluster per segment)
     const segmentDefs = swarmSegments;
@@ -50,8 +50,8 @@ export default function SwarmCluster({ visible }: Props) {
 
     segmentDefs.forEach((seg, si) => {
       const angle = si * segmentAngleStep - Math.PI / 2;
-      const clusterCX = centerX + Math.cos(angle) * 160;
-      const clusterCY = centerY + Math.sin(angle) * 70;
+      const clusterCX = centerX + Math.cos(angle) * 200;
+      const clusterCY = centerY + Math.sin(angle) * 120;
 
       // Small background dots
       for (let i = 0; i < seg.count; i++) {
@@ -169,7 +169,7 @@ export default function SwarmCluster({ visible }: Props) {
       <svg
         ref={svgRef}
         className="w-full"
-        style={{ height: 220 }}
+        style={{ height: 360 }}
         preserveAspectRatio="xMidYMid meet"
       />
     </div>

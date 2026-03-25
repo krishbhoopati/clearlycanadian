@@ -35,11 +35,10 @@ const PersonaChatModal = dynamic(
 
 const STAGE_LABELS: Record<SimStage, string> = {
   1: "Seed Document & Knowledge Graph",
-  2: "Agent Generation",
-  3: "Simulation Configuration",
-  4: "Social Simulation",
-  5: "Report Generation",
-  6: "Deep Interaction",
+  2: "Environment",
+  3: "Social Simulation",
+  4: "Report Generation",
+  5: "Deep Interaction",
 };
 
 export default function SimulationPage() {
@@ -49,7 +48,7 @@ export default function SimulationPage() {
   const [graphBuildStarted, setGraphBuildStarted] = useState(false);
 
   const advanceStage = useCallback(() => {
-    setStage((s) => (Math.min(s + 1, 6) as SimStage));
+    setStage((s) => (Math.min(s + 1, 5) as SimStage));
   }, []);
 
   // When Stage 1 begins analysis, signal PersistentGraphPanel to start building
@@ -112,7 +111,7 @@ export default function SimulationPage() {
         {graphVisible && (
           <div
             className="flex-shrink-0 border-r border-white/5 flex flex-col h-full transition-all duration-300"
-            style={{ width: stage === 1 ? "60%" : stage <= 4 ? "50%" : "65%" }}
+            style={{ width: stage === 1 ? "60%" : stage <= 3 ? "50%" : "65%" }}
           >
             <PersistentGraphPanel
               visible={graphVisible}
@@ -129,11 +128,11 @@ export default function SimulationPage() {
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <div className="text-white/30 text-[10px] font-mono uppercase tracking-widest">
-                  Stage {stage} of 6
+                  Stage {stage} of 5
                 </div>
                 <h2 className="text-white font-bold text-base leading-tight">{STAGE_LABELS[stage]}</h2>
               </div>
-              {stage < 6 && (
+              {stage < 5 && (
                 <button
                   onClick={advanceStage}
                   className="text-white/30 hover:text-white/60 text-xs flex items-center gap-1 transition-colors duration-200 flex-shrink-0 ml-2"
@@ -154,21 +153,21 @@ export default function SimulationPage() {
               />
             )}
             {stage === 2 && (
-              <Stage2AgentGrid
-                onComplete={advanceStage}
-                onAgentClick={setChatPersonaId}
-              />
+              <div className="flex flex-col gap-8">
+                <Stage2AgentGrid
+                  onComplete={() => {}}
+                  onAgentClick={setChatPersonaId}
+                />
+                <Stage3SimConfig onComplete={advanceStage} />
+              </div>
             )}
             {stage === 3 && (
-              <Stage3SimConfig onComplete={advanceStage} />
-            )}
-            {stage === 4 && (
               <Stage4SocialFeed onComplete={advanceStage} />
             )}
-            {stage === 5 && (
+            {stage === 4 && (
               <Stage5ReportPanel onComplete={advanceStage} />
             )}
-            {stage === 6 && (
+            {stage === 5 && (
               <Stage6DeepInteraction onPersonaChat={setChatPersonaId} />
             )}
           </div>

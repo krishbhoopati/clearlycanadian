@@ -1,6 +1,9 @@
 "use client";
 
-import { simConfigData } from "@/data/simulation/mapleSimulationData";
+import { useEffect, useState } from "react";
+import { simConfigData, simulationAgents } from "@/data/simulation/mapleSimulationData";
+import PersonaAvatar from "@/components/PersonaAvatar";
+import type { Persona } from "@/lib/types";
 
 interface Props {
   onComplete: () => void;
@@ -8,6 +11,19 @@ interface Props {
 
 export default function Stage3SimConfig({ onComplete }: Props) {
   const { stats, timeOfDayMultipliers, agentCards, recommendationWeights, llmConfigText, narrativeDirection, hotTopics, activationPosts } = simConfigData;
+  const [personas, setPersonas] = useState<Persona[]>([]);
+
+  useEffect(() => {
+    fetch("/api/personas")
+      .then((r) => r.json())
+      .then((data) => setPersonas(Array.isArray(data) ? data : (data.personas ?? [])));
+  }, []);
+
+  const personaMap = new Map(personas.map((p) => [p.id, p]));
+  // Map agentCard id → persona via simulationAgents lookup
+  const agentPersonaMap = new Map(
+    simulationAgents.map((a) => [a.id, personaMap.get(a.persona_id)])
+  );
 
   return (
     <div className="flex flex-col gap-6">
@@ -72,19 +88,25 @@ export default function Stage3SimConfig({ onComplete }: Props) {
       {/* Agent Config Cards */}
       <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
         <div className="text-slate-700 text-base font-semibold mb-4">Agent Configuration</div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {agentCards.map((agent) => (
+        <div className="overflow-y-auto light-scroll" style={{ maxHeight: 420 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-1">
+          {agentCards.map((agent) => {
+            const persona = agentPersonaMap.get(agent.id);
+            const displayName = persona?.name ?? agent.name;
+            const displayRole = persona ? `${persona.occupation ?? persona.generation} · ${persona.location ?? ""}`.trim().replace(/·\s*$/, "") : agent.role;
+            const avatarUrl = persona?.avatar_url;
+            return (
             <div key={agent.id} className="bg-slate-50 border border-slate-100 rounded-xl p-4">
               <div className="flex items-center gap-3 mb-3">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-base flex-shrink-0"
-                  style={{ backgroundColor: agent.avatar_color }}
-                >
-                  {agent.name[0]}
-                </div>
+                <PersonaAvatar
+                  name={displayName}
+                  avatarUrl={avatarUrl}
+                  size="w-10 h-10"
+                  textSize="text-sm"
+                />
                 <div>
-                  <div className="text-slate-800 text-base font-semibold">{agent.name}</div>
-                  <div className="text-slate-400 text-sm">{agent.role}</div>
+                  <div className="text-slate-800 text-base font-semibold">{displayName}</div>
+                  <div className="text-slate-600 text-sm">{displayRole}</div>
                 </div>
               </div>
 
@@ -108,43 +130,45 @@ export default function Stage3SimConfig({ onComplete }: Props) {
                   />
                 ))}
               </div>
-              <div className="flex items-center justify-between text-slate-300 text-sm mb-3">
+              <div className="flex items-center justify-between text-slate-500 text-sm mb-3">
                 <span>12am</span><span>6am</span><span>12pm</span><span>6pm</span><span>11pm</span>
               </div>
 
               <div className="grid grid-cols-3 gap-2 text-sm">
                 <div className="text-center">
-                  <div className="text-slate-600 font-medium">{agent.stats.when_posting}</div>
-                  <div className="text-slate-400">posts/day</div>
+                  <div className="text-slate-800 font-semibold">{agent.stats.when_posting}</div>
+                  <div className="text-slate-500">posts/day</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-slate-600 font-medium">{agent.stats.comments_per_time}</div>
-                  <div className="text-slate-400">comments</div>
+                  <div className="text-slate-800 font-semibold">{agent.stats.comments_per_time}</div>
+                  <div className="text-slate-500">comments</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-slate-600 font-medium">{Math.round(agent.activity_pct * 100)}%</div>
-                  <div className="text-slate-400">activity</div>
+                  <div className="text-slate-800 font-semibold">{Math.round(agent.activity_pct * 100)}%</div>
+                  <div className="text-slate-500">activity</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 mt-2 text-sm">
                 <div className="flex items-center gap-1">
-                  <span className="text-slate-400">Emotion</span>
-                  <span className={agent.emotional_tendency >= 0 ? "text-emerald-600" : "text-red-500"}>
+                  <span className="text-slate-500">Emotion</span>
+                  <span className={agent.emotional_tendency >= 0 ? "text-emerald-600 font-semibold" : "text-red-500 font-semibold"}>
                     {agent.emotional_tendency > 0 ? "+" : ""}{agent.emotional_tendency.toFixed(1)}
                   </span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="text-slate-400">Influence</span>
-                  <span className="text-orange-500">{agent.influence}x</span>
+                  <span className="text-slate-500">Influence</span>
+                  <span className="text-orange-500 font-semibold">{agent.influence}x</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="text-slate-400">Delay</span>
-                  <span className="text-slate-500">{agent.stats.response_delay}</span>
+                  <span className="text-slate-500">Delay</span>
+                  <span className="text-slate-700 font-medium">{agent.stats.response_delay}</span>
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
+        </div>
         </div>
       </div>
 

@@ -340,6 +340,7 @@ export interface SimAgent {
   maple_stance: string;
   persona_id: string; // maps to a real persona in personas.json
   avatar_color: string;
+  avatar_url?: string;
   segment: string; // "Gen Z" | "Millennial" | etc.
   handle: string; // @handle for social posts
 }
@@ -400,7 +401,7 @@ export interface SwarmSegment {
   persona_ids: string[];
 }
 
-export type SimStage = 1 | 2 | 3 | 4 | 5 | 6;
+export type SimStage = 1 | 2 | 3 | 4 | 5;
 
 // ─── Report Generation Log Types ─────────────────────────────────────────────
 

@@ -4,11 +4,10 @@ import type { SimStage } from "@/lib/types";
 
 const STAGES: { n: SimStage; label: string }[] = [
   { n: 1, label: "Knowledge Graph" },
-  { n: 2, label: "Agent Generation" },
-  { n: 3, label: "Sim Config" },
-  { n: 4, label: "Social Simulation" },
-  { n: 5, label: "Report" },
-  { n: 6, label: "Deep Interaction" },
+  { n: 2, label: "Environment" },
+  { n: 3, label: "Social Simulation" },
+  { n: 4, label: "Report" },
+  { n: 5, label: "Deep Interaction" },
 ];
 
 interface Props {
