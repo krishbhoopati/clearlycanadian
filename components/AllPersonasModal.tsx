@@ -1,6 +1,7 @@
 "use client";
 
-import PersonaAvatar from "@/components/PersonaAvatar";
+import { useEffect, useRef } from "react";
+import * as d3 from "d3";
 import type { Persona } from "@/lib/types";
 
 interface AllPersonasModalProps {
@@ -8,240 +9,288 @@ interface AllPersonasModalProps {
   onClose: () => void;
 }
 
-const GEN_BADGE: Record<string, { bg: string; text: string }> = {
-  "Gen Z":    { bg: "bg-violet-100", text: "text-violet-700" },
-  Millennial: { bg: "bg-blue-100",   text: "text-blue-700"   },
-  "Gen X":    { bg: "bg-amber-100",  text: "text-amber-700"  },
-  Boomer:     { bg: "bg-rose-100",   text: "text-rose-700"   },
-};
+const SEGMENTS = [
+  { key: "health",     label: "Health Scrutinizer",  color: "#f97316" },
+  { key: "social",     label: "Social Discovery",     color: "#8b5cf6" },
+  { key: "premium",    label: "Premium Curator",      color: "#3b82f6" },
+  { key: "experience", label: "Experience-Forward",   color: "#10b981" },
+  { key: "genz",       label: "Gen Z Explorer",       color: "#ec4899" },
+  { key: "urban",      label: "Urban Professional",   color: "#f59e0b" },
+  { key: "sober",      label: "Sober-Curious",        color: "#a78bfa" },
+  { key: "bartender",  label: "Bartender Tastemaker", color: "#14b8a6" },
+];
 
-function getAwarenessColor(cc_awareness: string): string {
-  const l = (cc_awareness ?? "").toLowerCase();
-  if (l.includes("existing") || l.includes("loyal") || l.includes("buying") || l.includes("customer")) return "#10b981";
-  if (l.includes("never") || l.includes("unaware") || l.includes("no awareness")) return "#ef4444";
-  return "#f59e0b";
+const FIRST_NAMES = [
+  "Sofia","Chloe","Raj","Jake","Emma","Liam","Olivia","Noah","Ava","Ethan",
+  "Mia","Lucas","Isabella","Mason","Sophia","Logan","Amelia","James","Charlotte","Aiden",
+  "Harper","Elijah","Evelyn","Oliver","Abigail","Benjamin","Emily","Sebastian","Zoe","Jack",
+  "Avery","Owen","Daniel","Ella","Henry","Madison","Carter","Scarlett","Wyatt","Natalie",
+  "Victoria","Gabriel","Aria","Jayden","Grace","Lincoln","Leo","Penelope","Julian","Riley",
+  "Nathan","Hazel","Aaron","Layla","Ryan","Nora","Dylan","Hannah","Caleb","Lily",
+  "Hunter","Addison","Connor","Aubrey","Luke","Ellie","Isaiah","Stella","Adam","Aurora",
+  "Tyler","Leah","Evan","Violet","Gavin","Iris","Chase","Claire","Ian","Maya",
+  "Marcus","Sadie","Derek","Piper","Miles","Brielle","Finn","Camille","Reid","Naomi",
+  "Kai","Isla","Theo","Luna","Max","Jade","Cole","Sienna","Drew","Freya",
+];
+
+interface SwarmNode extends d3.SimulationNodeDatum {
+  id: string;
+  name: string;
+  color: string;
+  segKey: string;
+  r: number;
+  isFeatured: boolean;
 }
 
-function SectionLabel({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <div className="flex items-center gap-1.5 mb-1.5">
-      <span className="text-gray-400">{icon}</span>
-      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</span>
-    </div>
-  );
+interface SwarmLink extends d3.SimulationLinkDatum<SwarmNode> {
+  color: string;
+  opacity: number;
 }
 
-const AtIcon = (
-  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-  </svg>
-);
+// 8 featured anchors
+const FEATURED_NODES: SwarmNode[] = SEGMENTS.map((seg, i) => ({
+  id: `featured-${seg.key}`,
+  name: ["Sofia","Chloe","Raj","Jake","Mia","Lucas","Emma","Liam"][i],
+  color: seg.color,
+  segKey: seg.key,
+  r: 20,
+  isFeatured: true,
+}));
 
-const TagIcon = (
-  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-  </svg>
-);
+// 992 micro agents (evenly split across segments)
+const MICRO_NODES: SwarmNode[] = Array.from({ length: 992 }, (_, i) => {
+  const seg = SEGMENTS[i % SEGMENTS.length];
+  return {
+    id: `agent-${i}`,
+    name: FIRST_NAMES[i % FIRST_NAMES.length],
+    color: seg.color,
+    segKey: seg.key,
+    r: 4,
+    isFeatured: false,
+  };
+});
 
-const StarIcon = (
-  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-);
+function buildLinks(allNodes: SwarmNode[]): SwarmLink[] {
+  const links: SwarmLink[] = [];
+  const featuredById = new Map(FEATURED_NODES.map(f => [f.segKey, f.id]));
 
-export default function AllPersonasModal({ personas, onClose }: AllPersonasModalProps) {
+  // Every micro node → its segment anchor
+  for (const n of allNodes.filter(n => !n.isFeatured)) {
+    links.push({
+      source: n.id,
+      target: featuredById.get(n.segKey)!,
+      color: n.color,
+      opacity: 0.12,
+    });
+  }
+
+  // Every 5th micro node → another random micro in same segment (mesh feel)
+  const bySegment = new Map<string, SwarmNode[]>();
+  for (const n of allNodes.filter(n => !n.isFeatured)) {
+    if (!bySegment.has(n.segKey)) bySegment.set(n.segKey, []);
+    bySegment.get(n.segKey)!.push(n);
+  }
+  bySegment.forEach((group) => {
+    for (let i = 0; i < group.length; i += 4) {
+      const next = group[(i + 1) % group.length];
+      links.push({ source: group[i].id, target: next.id, color: group[i].color, opacity: 0.08 });
+    }
+  });
+
+  // Featured nodes connected to each other in a ring
+  for (let i = 0; i < FEATURED_NODES.length; i++) {
+    const j = (i + 1) % FEATURED_NODES.length;
+    links.push({ source: FEATURED_NODES[i].id, target: FEATURED_NODES[j].id, color: "#ffffff", opacity: 0.1 });
+  }
+  // A few cross-connections between featured for extra mesh
+  const crosses = [[0,3],[1,5],[2,6],[3,7],[0,4],[1,6]];
+  for (const [a, b] of crosses) {
+    links.push({ source: FEATURED_NODES[a].id, target: FEATURED_NODES[b].id, color: "#ffffff", opacity: 0.07 });
+  }
+
+  return links;
+}
+
+export default function AllPersonasModal({ onClose }: AllPersonasModalProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const svg = svgRef.current;
+    if (!container || !svg) return;
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    const allNodes: SwarmNode[] = [
+      ...FEATURED_NODES.map(n => ({ ...n, x: width / 2, y: height / 2 })),
+      ...MICRO_NODES.map(n => ({ ...n })),
+    ];
+
+    const nodeById = new Map(allNodes.map(n => [n.id, n]));
+    const rawLinks = buildLinks(allNodes);
+
+    // Resolve source/target to node objects for D3
+    const links: SwarmLink[] = rawLinks.map(l => ({
+      ...l,
+      source: nodeById.get(l.source as string)!,
+      target: nodeById.get(l.target as string)!,
+    }));
+
+    const sel = d3.select(svg).attr("width", width).attr("height", height);
+    sel.selectAll("*").remove();
+
+    sel.append("rect").attr("width", width).attr("height", height).attr("fill", "#0b1120");
+
+    const g = sel.append("g");
+
+    // Zoom
+    sel.call(
+      d3.zoom<SVGSVGElement, unknown>()
+        .scaleExtent([0.15, 5])
+        .on("zoom", e => g.attr("transform", e.transform))
+    );
+
+    // Links layer
+    const linkSel = g.append("g")
+      .selectAll<SVGLineElement, SwarmLink>("line")
+      .data(links)
+      .enter()
+      .append("line")
+      .attr("stroke", d => d.color)
+      .attr("stroke-opacity", d => d.opacity)
+      .attr("stroke-width", 0.7);
+
+    // Micro nodes
+    const microG = g.append("g")
+      .selectAll<SVGGElement, SwarmNode>(".micro")
+      .data(allNodes.filter(n => !n.isFeatured))
+      .enter()
+      .append("g");
+
+    microG.append("circle")
+      .attr("r", d => d.r)
+      .attr("fill", d => d.color)
+      .attr("opacity", 0.75);
+
+    microG.append("text")
+      .text(d => d.name)
+      .attr("dy", d => d.r + 8)
+      .attr("text-anchor", "middle")
+      .attr("fill", d => d.color)
+      .attr("opacity", 0.8)
+      .attr("font-size", "7px")
+      .attr("font-weight", "500")
+      .attr("font-family", "ui-sans-serif, system-ui, sans-serif");
+
+    // Featured nodes
+    const featuredG = g.append("g")
+      .selectAll<SVGGElement, SwarmNode>(".featured")
+      .data(allNodes.filter(n => n.isFeatured))
+      .enter()
+      .append("g");
+
+    // Outer glow
+    featuredG.append("circle")
+      .attr("r", d => d.r + 10)
+      .attr("fill", d => d.color)
+      .attr("opacity", 0.12);
+
+    featuredG.append("circle")
+      .attr("r", d => d.r)
+      .attr("fill", d => d.color)
+      .attr("stroke", "white")
+      .attr("stroke-width", 2);
+
+    // Segment label below (primary label — no person name)
+    featuredG.append("text")
+      .text(d => SEGMENTS.find(s => s.key === d.segKey)?.label ?? "")
+      .attr("dy", d => d.r + 15)
+      .attr("text-anchor", "middle")
+      .attr("fill", "white")
+      .attr("font-size", "10px")
+      .attr("font-weight", "bold")
+      .attr("font-family", "ui-sans-serif, system-ui, sans-serif");
+
+    // Force simulation
+    const forceLink = d3.forceLink<SwarmNode, SwarmLink>(links)
+      .id(d => d.id)
+      .distance(d => {
+        const s = d.source as SwarmNode;
+        const t = d.target as SwarmNode;
+        if (s.isFeatured && t.isFeatured) return 130;
+        if (s.isFeatured || t.isFeatured) return 28;
+        return 12;
+      })
+      .strength(d => {
+        const s = d.source as SwarmNode;
+        const t = d.target as SwarmNode;
+        if (s.isFeatured && t.isFeatured) return 0.06;
+        if (s.isFeatured || t.isFeatured) return 0.7;
+        return 0.3;
+      });
+
+    const simulation = d3.forceSimulation<SwarmNode>(allNodes)
+      .force("link", forceLink)
+      .force("charge", d3.forceManyBody<SwarmNode>().strength(d => d.isFeatured ? -200 : -8))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collide", d3.forceCollide<SwarmNode>().radius(d => d.r + (d.isFeatured ? 6 : 2)).iterations(2))
+      .alphaDecay(0.01)
+      .velocityDecay(0.4);
+
+    simulation.on("tick", () => {
+      linkSel
+        .attr("x1", d => (d.source as SwarmNode).x ?? 0)
+        .attr("y1", d => (d.source as SwarmNode).y ?? 0)
+        .attr("x2", d => (d.target as SwarmNode).x ?? 0)
+        .attr("y2", d => (d.target as SwarmNode).y ?? 0);
+
+      microG.attr("transform", d => `translate(${d.x ?? 0},${d.y ?? 0})`);
+      featuredG.attr("transform", d => `translate(${d.x ?? 0},${d.y ?? 0})`);
+    });
+
+    return () => { simulation.stop(); };
+  }, []);
+
   return (
-    <div
-      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex flex-col"
-      onClick={e => { if (e.target === e.currentTarget) onClose(); }}
-    >
-      <div className="flex-1 flex flex-col bg-[#f0f3f7] overflow-hidden">
-
-        {/* Header */}
-        <div className="shrink-0 flex items-center justify-between px-8 py-5 bg-white border-b border-gray-200">
-          <div className="flex items-center gap-3">
-            <span className="text-gray-900 font-bold text-xl">Consumer Panel</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-500 text-xs font-semibold">
-              {personas.length} personas
-            </span>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-9 h-9 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+    <div className="fixed inset-0 z-50 flex flex-col" style={{ background: "#0b1120" }}>
+      {/* Header */}
+      <div className="shrink-0 flex items-center justify-between px-8 py-4 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <span className="text-white font-bold text-lg">Agent Swarm</span>
+          <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white/70 text-xs font-semibold">
+            1,247 agents
+          </span>
         </div>
+        <button
+          onClick={onClose}
+          className="w-9 h-9 rounded-full flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
 
-        {/* Grid */}
-        <div className="flex-1 overflow-y-auto p-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {personas.map(p => {
-              const badge = GEN_BADGE[p.generation] ?? { bg: "bg-gray-100", text: "text-gray-600" };
-              const segLabel = p.segment_label ?? (p.behavioral_segment ?? "").replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
-              const location = p.location ?? p.region ?? (p.market === "CA" ? "Canada" : p.market);
-              const ageStr = p.age ? String(p.age) : p.age_range;
+      {/* Graph */}
+      <div ref={containerRef} className="flex-1 relative overflow-hidden" style={{ background: "#0b1120" }}>
+        <svg ref={svgRef} className="w-full h-full" />
 
-              return (
-                <div
-                  key={p.id}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col gap-4"
-                >
-                  {/* Top: avatar + name + meta + badges */}
-                  <div className="flex items-start gap-4">
-                    <PersonaAvatar
-                      name={p.name}
-                      avatarUrl={p.avatar_url}
-                      size="w-[60px] h-[60px]"
-                      textSize="text-lg"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="font-bold text-gray-900 text-[1.1rem] leading-tight">{p.name}</div>
-                      <div className="text-gray-500 text-sm mt-0.5">
-                        {ageStr}{location ? ` · ${location}` : ""}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2 mt-2">
-                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${badge.bg} ${badge.text}`}>
-                          {p.generation}
-                        </span>
-                        {segLabel && (
-                          <span className="text-gray-400 text-[12px]">{segLabel}</span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  {p.description && (
-                    <p className="text-gray-700 text-[13.5px] leading-relaxed">
-                      {p.description}
-                    </p>
-                  )}
-
-                  <div className="border-t border-gray-100" />
-
-                  {/* Motivations */}
-                  {(p.motivations?.length ?? 0) > 0 && (
-                    <div>
-                      <SectionLabel icon={AtIcon} label="Motivations" />
-                      <ul className="flex flex-col gap-1">
-                        {p.motivations.slice(0, 3).map((m, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[12.5px] text-gray-600">
-                            <span className="mt-[7px] w-[4px] h-[4px] rounded-full bg-gray-400 shrink-0" />
-                            {m}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Pain Points */}
-                  {(p.pain_points?.length ?? 0) > 0 && (
-                    <div>
-                      <SectionLabel icon={AtIcon} label="Pain Points" />
-                      <ul className="flex flex-col gap-1">
-                        {p.pain_points.slice(0, 2).map((m, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[12.5px] text-gray-600">
-                            <span className="mt-[7px] w-[4px] h-[4px] rounded-full bg-gray-400 shrink-0" />
-                            {m}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Buying Triggers */}
-                  {(p.buying_triggers?.length ?? 0) > 0 && (
-                    <div>
-                      <SectionLabel icon={AtIcon} label="Buying Triggers" />
-                      <ul className="flex flex-col gap-1">
-                        {p.buying_triggers.slice(0, 2).map((m, i) => (
-                          <li key={i} className="flex items-start gap-2 text-[12.5px] text-gray-600">
-                            <span className="mt-[7px] w-[4px] h-[4px] rounded-full bg-gray-400 shrink-0" />
-                            {m}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Core Traits */}
-                  {(p.core_traits?.length ?? 0) > 0 && (
-                    <div>
-                      <SectionLabel icon={TagIcon} label="Core Traits" />
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.core_traits.map((t, i) => (
-                          <span key={i} className="px-2.5 py-0.5 rounded-full text-[11px] font-medium text-gray-600 bg-white border border-gray-200">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Current Drinks */}
-                  {(p.current_beverages?.length ?? 0) > 0 && (
-                    <div>
-                      <SectionLabel icon={TagIcon} label="Current Drinks" />
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.current_beverages!.map((b, i) => (
-                          <span key={i} className="px-2.5 py-0.5 rounded-full text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100">
-                            {b}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Price / Decision / Social / Beverage psychology */}
-                  {(p.price_sensitivity || p.decision_style || p.social_media_behavior || p.beverage_psychology) && (
-                    <div className="flex flex-col gap-1.5">
-                      {p.beverage_psychology && (
-                        <p className="text-gray-500 text-[12px] italic leading-relaxed">"{p.beverage_psychology}"</p>
-                      )}
-                      <div className="flex flex-wrap gap-x-4 gap-y-0.5">
-                        {p.price_sensitivity && (
-                          <span className="text-[12px] text-gray-600">
-                            <span className="text-gray-400">Price: </span>{p.price_sensitivity}
-                          </span>
-                        )}
-                        {p.decision_style && (
-                          <span className="text-[12px] text-gray-600">
-                            <span className="text-gray-400">Decides: </span>{p.decision_style}
-                          </span>
-                        )}
-                      </div>
-                      {p.social_media_behavior && (
-                        <p className="text-gray-500 text-[12px]">{p.social_media_behavior}</p>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Brand Awareness */}
-                  {(p.cc_awareness_label ?? p.cc_awareness) && (
-                    <div className="rounded-xl bg-gray-50 border border-gray-100 px-4 py-3 mt-auto">
-                      <div className="flex items-center gap-1.5 mb-1">
-                        <span style={{ color: getAwarenessColor(p.cc_awareness ?? "") }}>
-                          {StarIcon}
-                        </span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                          Brand Awareness
-                        </span>
-                      </div>
-                      <p className="text-gray-900 font-bold text-[13px] leading-snug">
-                        {p.cc_awareness_label ?? p.cc_awareness}
-                      </p>
-                    </div>
-                  )}
-
-                </div>
-              );
-            })}
+        {/* Legend */}
+        <div className="absolute bottom-6 left-6 bg-black/40 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-sm">
+          <div className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-2">Consumer Segments</div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+            {SEGMENTS.map(seg => (
+              <div key={seg.key} className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: seg.color }} />
+                <span className="text-white/60 text-xs">{seg.label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
+        <div className="absolute bottom-6 right-6 text-white/25 text-xs">Scroll to zoom · Drag to pan</div>
       </div>
     </div>
   );
