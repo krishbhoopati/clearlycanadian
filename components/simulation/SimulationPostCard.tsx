@@ -3,6 +3,21 @@
 import { useEffect, useState } from "react";
 import type { SimPost } from "@/lib/types";
 
+const NAMES = [
+  "Alex","Jordan","Taylor","Morgan","Casey","Riley","Quinn","Avery","Peyton","Dakota",
+  "Skyler","Jamie","Drew","Sam","Logan","Cameron","Blake","Reese","Finley","Harper",
+  "Rowan","Emery","Sage","River","Phoenix","Kai","Kendall","Hayden","Parker","Elliot",
+  "Addison","Bailey","Carter","Devon","Eden","Frankie","Gray","Haven","Indigo","Jules",
+  "Keaton","Lane","Marlow","Nova","Oakley","Pax","Remy","Scout","Tatum","Wren",
+  "Ash","Briar","Cove","Dani","Ellis","Fern","Glen","Harlow","Ira","Jade",
+  "Kira","Luca","Mika","Noel","Onyx","Piper","Rae","Shea","Tao","Uma",
+];
+
+function agentName(agentId?: string): string {
+  const num = parseInt((agentId ?? "0").replace(/\D/g, ""), 10) || 0;
+  return NAMES[num % NAMES.length];
+}
+
 interface Props {
   post: SimPost;
   isNew: boolean;
@@ -95,7 +110,7 @@ function BackgroundPost({ post, isNew }: Props) {
         <span className="text-slate-300 text-[8px] font-mono">#</span>
       </div>
       <span className="text-slate-400 text-xs font-mono flex-shrink-0">
-        Agent {post.agentId} ({post.segment}, {post.city}):
+        {agentName(post.agentId)} ({post.segment}, {post.city}):
       </span>
       <span className="text-slate-500 text-xs truncate italic">"{post.body}"</span>
     </div>

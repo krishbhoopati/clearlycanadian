@@ -10,7 +10,7 @@
     "generation": "Gen Z",
     "customer_type": "potential",
     "behavioral_segment": "general_potential",
-    "description": "A 22-year-old Toronto university student who discovers beverages through TikTok and Instagram. She swapped soda for sparkling water two years ago and gravitates toward Canadian brands with aesthetic packaging. She's never bought Clearly Canadian but has seen it on her FYP.",
+    "description": "A 22-year-old Toronto university student who discovers beverages entirely through TikTok — not in-store. Despite seeing CC on her For You Page, she has never actually tried it. She needs social proof, a friend recommendation, or a direct taste experience before she will convert.",
     "motivations": [
       "Canadian brand pride",
       "aesthetic glass bottle",
@@ -61,10 +61,11 @@
     "price_sensitivity": "moderate — won't exceed $3.50 single-serve for a brand she hasn't tried",
     "language_style": "casual, emoji-heavy, trend-aware, short punchy sentences, uses 'lowkey', 'slay', 'no cap'",
     "core_traits": [
-      "brand curious",
-      "aesthetics-first",
-      "Canadian identity proud",
-      "sugar-conscious"
+      "Social proof dependent",
+      "TikTok discovery loop",
+      "High interest, low trial",
+      "Peer-influenced buyer",
+      "Experiential converter"
     ],
     "canadian_identity_relevance": "High — actively prefers Canadian-origin brands when she's aware of them",
     "sustainability_attitude": "Cares about packaging waste; glass > plastic in her mind",
@@ -121,7 +122,7 @@
     "generation": "Millennial",
     "customer_type": "potential",
     "behavioral_segment": "premium_lifestyle",
-    "description": "A 32-year-old Vancouver UX designer who curates his life around premium, design-forward products. He drinks sparkling water daily but hasn't tried Clearly Canadian — he's aware of the brand but sees it as a grocery-aisle relic. A beautifully designed can or a tasteful rebrand would change his mind instantly.",
+    "description": "A 32-year-old Vancouver UX designer who treats his drink choices as identity signals. He values aesthetic, branding, and lifestyle fit above all. He would engage with CC Maple if it feels curated and experiential — through events, premium mocktail menus, and design-forward presentation.",
     "motivations": [
       "premium aesthetics",
       "clean ingredients",
@@ -171,10 +172,11 @@
     "price_sensitivity": "low — will pay $4–5 for a single-serve if the brand earns it",
     "language_style": "thoughtful, design-vocabulary, uses 'intentional', 'considered', 'elevated'",
     "core_traits": [
-      "design-oriented",
-      "brand-values driven",
-      "quality over price",
-      "Canadian pride"
+      "Identity-driven buyer",
+      "Design + experience led",
+      "Event-discovery oriented",
+      "Lifestyle brand alignment",
+      "Treats drinks as self-expression"
     ],
     "canadian_identity_relevance": "Very high — actively seeks Canadian-origin premium products",
     "sustainability_attitude": "Strongly prefers glass or aluminum; avoids plastic",
@@ -671,7 +673,7 @@
     "generation": "Gen Z",
     "customer_type": "potential",
     "behavioral_segment": "health_wellness",
-    "description": "A 23-year-old Austin dietitian assistant and micro-influencer who scrutinizes every ingredient label. She's heard of Clearly Canadian but hasn't tried it because she's worried about sweeteners in the Zero Sugar line. She'd try it and post about it if she's satisfied with the ingredient list.",
+    "description": "A 23-year-old Portland dietitian assistant who scrutinizes every ingredient label before buying. She prioritizes clean, zero-sugar products without artificial sweeteners — stevia included. She will only try a new beverage if it aligns with her health values and feels authentically natural.",
     "motivations": [
       "clean ingredients (no artificial sweeteners)",
       "real fruit flavor",
@@ -722,10 +724,11 @@
     "price_sensitivity": "low — will pay a premium for clean ingredients",
     "language_style": "educational, precise, uses nutrition terminology, measured enthusiasm, 'evidence-based'",
     "core_traits": [
-      "ingredient-first",
-      "health educator",
-      "micro-influencer",
-      "stevia-averse"
+      "Ingredient-first buyer",
+      "Avoids artificial sweeteners",
+      "Values clean labels",
+      "Health-authentic purchasing",
+      "Micro-influencer mindset"
     ],
     "canadian_identity_relevance": "Low — care about ingredients, not origin",
     "sustainability_attitude": "Very high — glass and aluminum only; posts about packaging waste",
@@ -998,7 +1001,7 @@
     "generation": "Millennial",
     "customer_type": "potential",
     "behavioral_segment": "premium_lifestyle",
-    "description": "A 35-year-old Toronto finance partner who curates every aspect of his lifestyle for quality. He drinks premium sparkling water at home and in client meetings. He's aware of Clearly Canadian but has never bought it — he sees it as a nostalgia drink, not a premium one. A repositioned premium SKU in a sleek can or upscale packaging would get him to try it.",
+    "description": "A 35-year-old Toronto finance partner who curates every aspect of his lifestyle for quality and story. He currently perceives CC as nostalgic rather than premium. He will pay more for a product that signals modern luxury — quality, narrative, and elevated presentation are non-negotiable.",
     "motivations": [
       "premium quality signals",
       "Canadian-made status",
@@ -1049,10 +1052,11 @@
     "price_sensitivity": "very low — will pay $5–6 single-serve if the positioning matches",
     "language_style": "precise, quality-vocabulary, confident, uses 'caliber', 'considered', 'exceptional'",
     "core_traits": [
-      "premium curator",
-      "status-conscious",
-      "Canadian pride",
-      "quality over everything"
+      "Story-driven buyer",
+      "Modern luxury seeker",
+      "Aesthetic-first",
+      "Premium price acceptance",
+      "Canadian identity resonance"
     ],
     "canadian_identity_relevance": "High — Canadian-made is a positive signal if paired with premium quality",
     "sustainability_attitude": "High — glass or aluminum; associates premium with sustainability",

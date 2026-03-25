@@ -160,6 +160,90 @@ export const graphNodes: GraphNode[] = [
   { id: "sm-substack", label: "Substack", group: "platform", color: "#06B6D4", wave: 6, tooltip: "Food & beverage newsletters — premium editorial placement" },
   { id: "sm-snapchat", label: "Snapchat", group: "platform", color: "#06B6D4", wave: 6, tooltip: "Under-25 Gen Z supplement to TikTok — regional Canadian geo-filters" },
   { id: "sm-google-shopping", label: "Google Shopping", group: "platform", color: "#06B6D4", wave: 6, tooltip: "DTC conversion layer — captures 'buy Clearly Canadian' search intent" },
+  { id: "sm-threads", label: "Threads", group: "platform", color: "#06B6D4", wave: 6, tooltip: "Meta's text platform — Millennial & Gen Z brand conversation layer" },
+  { id: "sm-discord", label: "Discord Community", group: "platform", color: "#06B6D4", wave: 6, tooltip: "Brand fan communities — CC loyalist server for crowdfunding backers" },
+  { id: "sm-twitch", label: "Twitch", group: "platform", color: "#06B6D4", wave: 6, tooltip: "Gaming streamer audience — Gen Z reach via sponsored drink-and-play" },
+
+  // WAVE 1 — New Product SKUs (+4)
+  { id: "cc-subscription-box", label: "CC Subscription Box", group: "product", color: "#2563EB", wave: 1, tooltip: "Monthly curated variety box — highest LTV channel, recurring revenue" },
+  { id: "cc-cocktail-kit", label: "CC Cocktail Mixer Kit", group: "product", color: "#2563EB", wave: 1, tooltip: "Bundled cocktail kit: CC Maple + bitters + maple syrup + recipe card" },
+  { id: "cc-hotel-amenity", label: "CC Hotel Amenity Format", group: "product", color: "#3B82F6", wave: 1, tooltip: "Single-serve 200ml glass for hotel room amenity programs" },
+  { id: "cc-catering-keg", label: "CC Draft Keg", group: "product", color: "#3B82F6", wave: 1, tooltip: "5L catering/event keg format — on-tap sparkling maple for venues" },
+
+  // WAVE 2 — New Competitors (+6)
+  { id: "c-fever-tree", label: "Fever-Tree", group: "competitor", color: "#EF4444", wave: 2, tooltip: "Premium mixer leader — direct compete for bartender and home mixologist" },
+  { id: "c-q-mixers", label: "Q Mixers", group: "competitor", color: "#EF4444", wave: 2, tooltip: "Craft cocktail mixers — high-end grocery, premium bar segment" },
+  { id: "c-canada-dry", label: "Canada Dry", group: "competitor", color: "#EF4444", wave: 2, tooltip: "Iconic Canadian ginger ale — heritage brand overlap, grocery shelf space" },
+  { id: "c-pellegrino-tasteful", label: "S.Pellegrino Tasteful", group: "competitor", color: "#EF4444", wave: 2, tooltip: "Nestle's new low-sugar sparkling launch — direct premium shelf challenger" },
+  { id: "c-recess", label: "Recess", group: "competitor", color: "#EF4444", wave: 2, tooltip: "CBD sparkling water — wellness positioning, millennial DTC-first" },
+  { id: "c-with-nothing", label: "With/Nothing", group: "competitor", color: "#EF4444", wave: 2, tooltip: "Canadian NA sparkling — shared national identity, premium zero-sugar" },
+
+  // WAVE 3 — New Segments (+8)
+  { id: "seg-wedding-planner", label: "Wedding Planners", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "Event planners sourcing premium NA options — glass bottle is perfect table water" },
+  { id: "seg-hotel-buyer", label: "Hotel & Resort Buyers", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "F&B procurement for hotels — replacing Perrier in minibar and lobby" },
+  { id: "seg-yoga-wellness", label: "Yoga & Wellness", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "Studio regulars — clean label, zero sweeteners, glass bottle ritual" },
+  { id: "seg-college-student", label: "College Students", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "Gen Z campus buyers — price-sensitive but trend-responsive" },
+  { id: "seg-vegan-conscious", label: "Vegan / Conscious", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "Ingredient-scrutinizing buyers — never plastic + real maple resonates" },
+  { id: "seg-craft-beer-crossover", label: "Craft Beer Crossover", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "Craft beer drinkers reducing alcohol — bridge segment for CC premium" },
+  { id: "seg-senior-health", label: "Senior Health-Conscious", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "55+ health-aware buyers — zero sugar, glass (no BPA), nostalgic brand" },
+  { id: "seg-expat-canadian", label: "Canadian Expats Abroad", group: "segment", color: "#8B5CF6", wave: 3, tooltip: "Canadians living abroad seeking taste of home — DTC and international retail" },
+
+  // WAVE 3 — New Flavors (+5)
+  { id: "fl-blood-orange", label: "Blood Orange", group: "flavor", color: "#7C3AED", wave: 3, tooltip: "Italian-inspired premium — restaurant and bar adjacent, visual appeal" },
+  { id: "fl-yuzu-citrus", label: "Yuzu Citrus", group: "flavor", color: "#7C3AED", wave: 3, tooltip: "Japanese citrus profile — premium grocery, sushi restaurant crossover" },
+  { id: "fl-green-apple", label: "Green Apple", group: "flavor", color: "#7C3AED", wave: 3, tooltip: "Crisp and tart — Gen Z flavor preference, TikTok aesthetic" },
+  { id: "fl-hibiscus", label: "Hibiscus Rose", group: "flavor", color: "#7C3AED", wave: 3, tooltip: "Floral and premium — bartender darling, Instagram-worthy pink hue" },
+  { id: "fl-pineapple", label: "Pineapple Coconut", group: "flavor", color: "#7C3AED", wave: 3, tooltip: "Tropical summer SKU — beachside tourism, Muskoka cottage crowd" },
+
+  // WAVE 4 — New Channels (+12)
+  { id: "ch-duty-free", label: "Duty Free Shops", group: "channel", color: "#10B981", wave: 4, tooltip: "YYZ/YVR international departure — tax-free premium, last Canadian purchase" },
+  { id: "ch-yoga-studios", label: "Yoga Studios", group: "channel", color: "#10B981", wave: 4, tooltip: "Post-class hydration — clean label, glass bottle aligns with wellness ethos" },
+  { id: "ch-craft-cocktail-bars", label: "Craft Cocktail Bars", group: "channel", color: "#10B981", wave: 4, tooltip: "Premium bar back — CC Maple as hero mixer, premium price tolerance" },
+  { id: "ch-farmers-market", label: "Farmers Markets", group: "channel", color: "#10B981", wave: 4, tooltip: "Local premium discovery — artisan adjacency, high dwell time, sampling" },
+  { id: "ch-hotel-minibar", label: "Hotel Minibar", group: "channel", color: "#10B981", wave: 4, tooltip: "In-room minibar placements — Perrier's territory, CC glass bottle upgrade" },
+  { id: "ch-airlines", label: "Airline F&B", group: "channel", color: "#10B981", wave: 4, tooltip: "Porter & Air Canada — Canadian carrier, in-flight premium beverage" },
+  { id: "ch-corporate-gifting", label: "Corporate Gifting", group: "channel", color: "#10B981", wave: 4, tooltip: "B2B gift baskets — premium Canadian gift, Q4 corporate orders" },
+  { id: "ch-meal-kit", label: "Meal Kit Services", group: "channel", color: "#10B981", wave: 4, tooltip: "HelloFresh / Chefs Plate add-on — beverage discovery through cooking" },
+  { id: "ch-erewhon-equiv", label: "Erewhon / Healthy Planet", group: "channel", color: "#10B981", wave: 4, tooltip: "Ultra-premium wellness grocery — CC glass bottle natural home" },
+  { id: "ch-sams-club", label: "Sam's Club US", group: "channel", color: "#10B981", wave: 4, tooltip: "US bulk channel — variety pack format, Costco-equivalent household buyer" },
+  { id: "ch-cruise-ships", label: "Cruise Ship F&B", group: "channel", color: "#10B981", wave: 4, tooltip: "Captive premium audience — Canadian departure ports, souvenir adjacency" },
+  { id: "ch-sports-bars", label: "Sports Bar Chains", group: "channel", color: "#10B981", wave: 4, tooltip: "NA mixer for sports watching — sober curious, designated driver segment" },
+
+  // WAVE 4 — New Destinations (+7)
+  { id: "dest-toronto-island", label: "Toronto Island / CNE", group: "destination", color: "#14B8A6", wave: 4, tooltip: "1.3M summer visitors — CNE is premium seasonal Canadian experience" },
+  { id: "dest-mont-tremblant", label: "Mont-Tremblant", group: "destination", color: "#14B8A6", wave: 4, tooltip: "Ski & golf resort — Quebec premium buyer, four-season tourism" },
+  { id: "dest-cape-breton", label: "Cape Breton Highlands", group: "destination", color: "#14B8A6", wave: 4, tooltip: "Cabot Trail — scenery tourism, passionate Nova Scotia local pride" },
+  { id: "dest-rideau-canal", label: "Rideau Canal Ottawa", group: "destination", color: "#14B8A6", wave: 4, tooltip: "UNESCO World Heritage — summer boating + winter skating tourism" },
+  { id: "dest-thousand-islands", label: "Thousand Islands", group: "destination", color: "#14B8A6", wave: 4, tooltip: "Ontario River tourism — cottage country crossover, US day-tripper market" },
+  { id: "dest-kananaskis", label: "Kananaskis Country", group: "destination", color: "#14B8A6", wave: 4, tooltip: "Alberta wilderness resort — premium outdoor experience, eco-buyer profile" },
+  { id: "dest-saltspring", label: "Salt Spring Island BC", group: "destination", color: "#14B8A6", wave: 4, tooltip: "Artisan island market — premium craft buyer, farmers market ideal fit" },
+
+  // WAVE 5 — New Market Data (+7)
+  { id: "md-can-seltzer-growth", label: "Canadian Seltzer +22%", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "Canadian sparkling/seltzer category YoY growth — outpacing US growth rate" },
+  { id: "md-na-beverage-tam", label: "NA Beverage TAM $26B", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "Total addressable market for non-alcoholic premium beverages globally" },
+  { id: "md-premium-trade-up", label: "Premium Trade-Up +31%", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "31% of mass-sparkling buyers willing to trade up to premium — CC headroom" },
+  { id: "md-tiktok-bev-views", label: "TikTok #Beverage 8B", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "#beverage content 8 billion TikTok views — enormous organic discovery pool" },
+  { id: "md-hotel-fb-rev", label: "Hotel F&B $4.2B CA", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "Canadian hotel food & beverage annual revenue — CC channel opportunity" },
+  { id: "md-genz-na-preference", label: "Gen Z 67% Prefer NA", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "67% of Gen Z prefer non-alcoholic options at social events — CC tailwind" },
+  { id: "md-duty-free-bev-size", label: "Duty-Free Bev $8.1B", group: "market_data", color: "#F59E0B", wave: 5, tooltip: "Global duty-free beverage market — premium glass bottle competes directly" },
+
+  // WAVE 5 — New People (+6)
+  { id: "p-david-mcnally", label: "Loblaw Buyer", group: "people", color: "#EC4899", wave: 5, tooltip: "Loblaw category buyer for sparkling water — gatekeeper for 2,400+ doors" },
+  { id: "p-oliver-bonacini", label: "Oliver & Bonacini Group", group: "people", color: "#EC4899", wave: 5, tooltip: "Premium Canadian restaurant group — on-premise ambassador for CC Maple" },
+  { id: "p-sam-james-coffee", label: "Sam James Coffee", group: "people", color: "#EC4899", wave: 5, tooltip: "Toronto tastemaker & café chain — food & beverage trendsetter partnership" },
+  { id: "p-tiktok-creator-1", label: "@canadianfoodie 2.1M", group: "people", color: "#EC4899", wave: 5, tooltip: "TikTok food creator 2.1M followers — lead micro-influencer for CC launch" },
+  { id: "p-porter-airlines", label: "Porter Airlines", group: "people", color: "#EC4899", wave: 5, tooltip: "Premium Canadian airline — in-flight CC Maple partnership, captive audience" },
+  { id: "p-canadian-tire-corp", label: "Canadian Tire Corp", group: "people", color: "#EC4899", wave: 5, tooltip: "Canadian Tire retail buyer — sports section + outdoor gifting adjacency" },
+
+  // WAVE 5 — New Concepts (+8)
+  { id: "con-glass-premium-signal", label: "Glass = Premium Signal", group: "concept", color: "#F97316", wave: 5, tooltip: "Glass bottle as instant premium cue — shortcut to elevated perception" },
+  { id: "con-cocktail-flywheel", label: "Cocktail Content Flywheel", group: "concept", color: "#F97316", wave: 5, tooltip: "Bartender recipe → social content → consumer demand → bar menus loop" },
+  { id: "con-health-halo", label: "Health Halo Effect", group: "concept", color: "#F97316", wave: 5, tooltip: "Maple + sparkling water = health adjacent perception, even at premium price" },
+  { id: "con-zero-waste-pledge", label: "Zero Waste Pledge", group: "concept", color: "#F97316", wave: 5, tooltip: "Brand commitment: 100% recyclable glass, no single-use plastic ever" },
+  { id: "con-reverse-logistics", label: "Glass Return Program", group: "concept", color: "#F97316", wave: 5, tooltip: "Returnable glass pilot — eco-credential + community engagement loop" },
+  { id: "con-souvenir-economy", label: "$4.1B Souvenir Economy", group: "concept", color: "#F97316", wave: 5, tooltip: "Canadian souvenir retail market — CC glass bottle is natural entry point" },
+  { id: "con-influencer-seeding", label: "Influencer Seeding Strategy", group: "concept", color: "#F97316", wave: 5, tooltip: "Product-first seeding to 500+ creators before paid media — organic amplification" },
+  { id: "con-subscription-moat", label: "Subscription Loyalty Moat", group: "concept", color: "#F97316", wave: 5, tooltip: "Subscribers churn 4× less than single-purchase buyers — DTC retention engine" },
 ];
 
 // ─── Knowledge Graph Links (150+ edges) ──────────────────────────────────────
@@ -387,6 +471,162 @@ export const graphLinks: GraphLink[] = [
   { source: "sm-instagram", target: "dest-muskoka", edgeLabel: "COTTAGE_CONTENT", wave: 6 },
   { source: "sm-youtube", target: "con-nostalgic-marketing", edgeLabel: "LONG_FORM_STORY", wave: 6 },
   { source: "sm-reddit", target: "con-crowdfunding", edgeLabel: "THREAD_ARCHIVE", wave: 6 },
+
+  // New Wave 6 platform links
+  { source: "sm-threads", target: "seg-millennials", edgeLabel: "BRAND_CONVERSATION", wave: 6 },
+  { source: "sm-threads", target: "sm-instagram", edgeLabel: "COMPANION_TO", wave: 6 },
+  { source: "sm-discord", target: "con-fans", edgeLabel: "COMMUNITY_HUB", wave: 6 },
+  { source: "sm-discord", target: "seg-genz", edgeLabel: "GAMER_CROSSOVER", wave: 6 },
+  { source: "sm-twitch", target: "seg-genz", edgeLabel: "STREAMING_AUDIENCE", wave: 6 },
+  { source: "sm-twitch", target: "seg-college-student", edgeLabel: "GAMING_REACH", wave: 6 },
+
+  // New Wave 1 product links
+  { source: "cc-subscription-box", target: "cc-maple", edgeLabel: "CONTAINS", wave: 1 },
+  { source: "cc-subscription-box", target: "cc-dtc-website", edgeLabel: "SOLD_VIA", wave: 1 },
+  { source: "cc-subscription-box", target: "con-subscription-moat", edgeLabel: "BUILDS", wave: 1 },
+  { source: "cc-cocktail-kit", target: "cc-maple", edgeLabel: "FEATURES", wave: 1 },
+  { source: "cc-cocktail-kit", target: "seg-bartenders", edgeLabel: "TARGETS", wave: 1 },
+  { source: "cc-cocktail-kit", target: "seg-cocktail", edgeLabel: "HOME_VERSION", wave: 1 },
+  { source: "cc-hotel-amenity", target: "ch-hotel-minibar", edgeLabel: "PLACED_IN", wave: 1 },
+  { source: "cc-hotel-amenity", target: "seg-hotel-buyer", edgeLabel: "SOLD_TO", wave: 1 },
+  { source: "cc-catering-keg", target: "seg-wedding-planner", edgeLabel: "SERVES", wave: 1 },
+  { source: "cc-catering-keg", target: "ch-craft-cocktail-bars", edgeLabel: "ON_TAP_AT", wave: 1 },
+
+  // New Wave 2 competitor links
+  { source: "c-fever-tree", target: "seg-bartenders", edgeLabel: "PREFERRED_BY", wave: 2 },
+  { source: "c-fever-tree", target: "cc-maple", edgeLabel: "MIXER_COMPETES", wave: 2 },
+  { source: "c-q-mixers", target: "ch-craft-cocktail-bars", edgeLabel: "PLACED_AT", wave: 2 },
+  { source: "c-q-mixers", target: "cc-cocktail-kit", edgeLabel: "COMPETES_WITH", wave: 2 },
+  { source: "c-canada-dry", target: "seg-genx", edgeLabel: "HERITAGE_BRAND", wave: 2 },
+  { source: "c-canada-dry", target: "cc-maple", edgeLabel: "CANADIAN_SHELF_RIVAL", wave: 2 },
+  { source: "c-pellegrino-tasteful", target: "c-sanpellegrino", edgeLabel: "SUB_BRAND", wave: 2 },
+  { source: "c-pellegrino-tasteful", target: "cc-zero-sugar", edgeLabel: "ZERO_SUGAR_COMPETES", wave: 2 },
+  { source: "c-recess", target: "seg-yoga-wellness", edgeLabel: "WELLNESS_POSITIONING", wave: 2 },
+  { source: "c-recess", target: "seg-sober", edgeLabel: "NA_ALTERNATIVE", wave: 2 },
+  { source: "c-with-nothing", target: "con-buy-canadian", edgeLabel: "CANADIAN_BRAND", wave: 2 },
+  { source: "c-with-nothing", target: "cc-maple", edgeLabel: "CANADIAN_NA_RIVAL", wave: 2 },
+
+  // New Wave 3 segment links
+  { source: "seg-wedding-planner", target: "cc-glass-bottle", edgeLabel: "PREMIUM_TABLE_WATER", wave: 3 },
+  { source: "seg-wedding-planner", target: "ch-corporate-gifting", edgeLabel: "EVENT_CHANNEL", wave: 3 },
+  { source: "seg-hotel-buyer", target: "ch-hotel-minibar", edgeLabel: "PROCURES_FOR", wave: 3 },
+  { source: "seg-hotel-buyer", target: "cc-hotel-amenity", edgeLabel: "ORDERS", wave: 3 },
+  { source: "seg-yoga-wellness", target: "ch-yoga-studios", edgeLabel: "FREQUENTS", wave: 3 },
+  { source: "seg-yoga-wellness", target: "con-health-halo", edgeLabel: "RESPONDS_TO", wave: 3 },
+  { source: "seg-college-student", target: "ch-university", edgeLabel: "SHOPS_AT", wave: 3 },
+  { source: "seg-college-student", target: "sm-tiktok", edgeLabel: "PRIMARY_PLATFORM", wave: 3 },
+  { source: "seg-vegan-conscious", target: "con-never-plastic", edgeLabel: "VALUES", wave: 3 },
+  { source: "seg-vegan-conscious", target: "con-real-maple-claim", edgeLabel: "SCRUTINIZES", wave: 3 },
+  { source: "seg-craft-beer-crossover", target: "seg-bartenders", edgeLabel: "ADJACENT_TO", wave: 3 },
+  { source: "seg-craft-beer-crossover", target: "ch-craft-cocktail-bars", edgeLabel: "FREQUENTS", wave: 3 },
+  { source: "seg-senior-health", target: "cc-zero-sugar", edgeLabel: "SEEKS", wave: 3 },
+  { source: "seg-senior-health", target: "seg-boomer", edgeLabel: "OVERLAPS_WITH", wave: 3 },
+  { source: "seg-expat-canadian", target: "con-buy-canadian", edgeLabel: "STRONGEST_SENTIMENT", wave: 3 },
+  { source: "seg-expat-canadian", target: "ch-amazon", edgeLabel: "ORDERS_VIA", wave: 3 },
+
+  // New Wave 3 flavor links
+  { source: "fl-blood-orange", target: "seg-bartenders", edgeLabel: "CRAFT_INGREDIENT", wave: 3 },
+  { source: "fl-blood-orange", target: "ch-craft-cocktail-bars", edgeLabel: "MENU_FIT", wave: 3 },
+  { source: "fl-yuzu-citrus", target: "seg-premium", edgeLabel: "PREMIUM_PROFILE", wave: 3 },
+  { source: "fl-yuzu-citrus", target: "ch-erewhon-equiv", edgeLabel: "PREMIUM_GROCERY_FIT", wave: 3 },
+  { source: "fl-green-apple", target: "seg-genz", edgeLabel: "GEN_Z_PREFERENCE", wave: 3 },
+  { source: "fl-green-apple", target: "sm-tiktok", edgeLabel: "TIKTOK_AESTHETIC", wave: 3 },
+  { source: "fl-hibiscus", target: "seg-yoga-wellness", edgeLabel: "FLORAL_APPEAL", wave: 3 },
+  { source: "fl-hibiscus", target: "sm-instagram", edgeLabel: "VISUAL_CONTENT", wave: 3 },
+  { source: "fl-pineapple", target: "dest-toronto-island", edgeLabel: "SUMMER_TOURISM", wave: 3 },
+  { source: "fl-pineapple", target: "dest-tofino", edgeLabel: "BEACH_FIT", wave: 3 },
+
+  // New Wave 4 channel links
+  { source: "ch-duty-free", target: "dest-niagara", edgeLabel: "BORDER_CROSSING", wave: 4 },
+  { source: "ch-duty-free", target: "seg-tourist-intl", edgeLabel: "PRIMARY_BUYER", wave: 4 },
+  { source: "ch-duty-free", target: "md-duty-free-bev-size", edgeLabel: "PART_OF_MARKET", wave: 4 },
+  { source: "ch-yoga-studios", target: "seg-yoga-wellness", edgeLabel: "CHANNEL_FOR", wave: 4 },
+  { source: "ch-yoga-studios", target: "con-health-halo", edgeLabel: "HEALTH_CONTEXT", wave: 4 },
+  { source: "ch-craft-cocktail-bars", target: "seg-bartenders", edgeLabel: "EMPLOYS", wave: 4 },
+  { source: "ch-craft-cocktail-bars", target: "con-cocktail-flywheel", edgeLabel: "ANCHOR_POINT", wave: 4 },
+  { source: "ch-farmers-market", target: "dest-saltspring", edgeLabel: "FLAGSHIP_MARKET", wave: 4 },
+  { source: "ch-farmers-market", target: "seg-vegan-conscious", edgeLabel: "PRIMARY_SHOPPER", wave: 4 },
+  { source: "ch-hotel-minibar", target: "seg-hotel-buyer", edgeLabel: "PROCUREMENT_TARGET", wave: 4 },
+  { source: "ch-hotel-minibar", target: "cc-hotel-amenity", edgeLabel: "HOUSES", wave: 4 },
+  { source: "ch-airlines", target: "p-porter-airlines", edgeLabel: "PARTNER", wave: 4 },
+  { source: "ch-airlines", target: "seg-tourist-intl", edgeLabel: "IN_FLIGHT_REACH", wave: 4 },
+  { source: "ch-corporate-gifting", target: "seg-corporate", edgeLabel: "SERVES", wave: 4 },
+  { source: "ch-corporate-gifting", target: "cc-holiday-bundle", edgeLabel: "FEATURES", wave: 4 },
+  { source: "ch-meal-kit", target: "seg-millennials", edgeLabel: "SUBSCRIBER_BASE", wave: 4 },
+  { source: "ch-meal-kit", target: "cc-maple", edgeLabel: "ADD_ON_BEVERAGE", wave: 4 },
+  { source: "ch-erewhon-equiv", target: "seg-premium", edgeLabel: "PREMIUM_SHOPPER", wave: 4 },
+  { source: "ch-erewhon-equiv", target: "cc-glass-bottle", edgeLabel: "SHELF_HOME", wave: 4 },
+  { source: "ch-sams-club", target: "seg-household", edgeLabel: "BULK_BUYER", wave: 4 },
+  { source: "ch-sams-club", target: "cc-sleekcan", edgeLabel: "VARIETY_PACK", wave: 4 },
+  { source: "ch-cruise-ships", target: "dest-halifax", edgeLabel: "PORT_OF_CALL", wave: 4 },
+  { source: "ch-cruise-ships", target: "seg-tourist-intl", edgeLabel: "CAPTIVE_AUDIENCE", wave: 4 },
+  { source: "ch-sports-bars", target: "seg-craft-beer-crossover", edgeLabel: "FREQUENTED_BY", wave: 4 },
+  { source: "ch-sports-bars", target: "seg-sober", edgeLabel: "NA_OPTION_NEEDED", wave: 4 },
+
+  // New Wave 4 destination links
+  { source: "dest-toronto-island", target: "ch-festival", edgeLabel: "CNE_FESTIVAL", wave: 4 },
+  { source: "dest-toronto-island", target: "seg-genz", edgeLabel: "SUMMER_CROWD", wave: 4 },
+  { source: "dest-mont-tremblant", target: "ch-hotel", edgeLabel: "RESORT_HOTEL", wave: 4 },
+  { source: "dest-mont-tremblant", target: "seg-premium", edgeLabel: "AFFLUENT_VISITOR", wave: 4 },
+  { source: "dest-cape-breton", target: "seg-tourist-intl", edgeLabel: "CABOT_TRAIL_VISITORS", wave: 4 },
+  { source: "dest-cape-breton", target: "ch-souvenir", edgeLabel: "LOCAL_GIFT_SHOPS", wave: 4 },
+  { source: "dest-rideau-canal", target: "dest-ottawa", edgeLabel: "PART_OF", wave: 4 },
+  { source: "dest-rideau-canal", target: "seg-athlete", edgeLabel: "SKATE_CYCLE_CROWD", wave: 4 },
+  { source: "dest-thousand-islands", target: "seg-tourist-intl", edgeLabel: "US_DAY_TRIPPERS", wave: 4 },
+  { source: "dest-thousand-islands", target: "ch-souvenir", edgeLabel: "RIVERSIDE_SHOPS", wave: 4 },
+  { source: "dest-kananaskis", target: "seg-athlete", edgeLabel: "OUTDOOR_SPORTS", wave: 4 },
+  { source: "dest-kananaskis", target: "con-never-plastic", edgeLabel: "ECO_BUYER", wave: 4 },
+  { source: "dest-saltspring", target: "ch-farmers-market", edgeLabel: "FLAGSHIP_MARKET", wave: 4 },
+  { source: "dest-saltspring", target: "seg-vegan-conscious", edgeLabel: "ARTISAN_COMMUNITY", wave: 4 },
+
+  // New Wave 5 market data links
+  { source: "md-can-seltzer-growth", target: "cc-maple", edgeLabel: "CATEGORY_TAILWIND", wave: 5 },
+  { source: "md-can-seltzer-growth", target: "mkt-cagr", edgeLabel: "CANADA_SLICE", wave: 5 },
+  { source: "md-na-beverage-tam", target: "seg-sober", edgeLabel: "LARGEST_SEGMENT", wave: 5 },
+  { source: "md-na-beverage-tam", target: "cc-zero-sugar", edgeLabel: "ADDRESSES_MARKET", wave: 5 },
+  { source: "md-premium-trade-up", target: "cc-glass-bottle", edgeLabel: "TRADE_UP_TARGET", wave: 5 },
+  { source: "md-premium-trade-up", target: "seg-household", edgeLabel: "CONVERSION_OPP", wave: 5 },
+  { source: "md-tiktok-bev-views", target: "sm-tiktok", edgeLabel: "PLATFORM_VOLUME", wave: 5 },
+  { source: "md-tiktok-bev-views", target: "fl-watermelon", edgeLabel: "VIRAL_CATEGORY", wave: 5 },
+  { source: "md-hotel-fb-rev", target: "ch-hotel-minibar", edgeLabel: "MARKET_SIZE", wave: 5 },
+  { source: "md-hotel-fb-rev", target: "seg-hotel-buyer", edgeLabel: "BUYER_CONTEXT", wave: 5 },
+  { source: "md-genz-na-preference", target: "seg-genz", edgeLabel: "QUANTIFIES", wave: 5 },
+  { source: "md-genz-na-preference", target: "seg-sober", edgeLabel: "OVERLAP_DATA", wave: 5 },
+  { source: "md-duty-free-bev-size", target: "ch-duty-free", edgeLabel: "MARKET_SIZE", wave: 5 },
+  { source: "md-duty-free-bev-size", target: "cc-glass-bottle", edgeLabel: "PREMIUM_SEGMENT", wave: 5 },
+
+  // New Wave 5 people links
+  { source: "p-david-mcnally", target: "ch-loblaws", edgeLabel: "BUYER_FOR", wave: 5 },
+  { source: "p-david-mcnally", target: "cc-maple", edgeLabel: "GATEKEEPS_LISTING", wave: 5 },
+  { source: "p-oliver-bonacini", target: "ch-craft-cocktail-bars", edgeLabel: "OPERATES", wave: 5 },
+  { source: "p-oliver-bonacini", target: "seg-bartenders", edgeLabel: "EMPLOYS", wave: 5 },
+  { source: "p-sam-james-coffee", target: "seg-premium", edgeLabel: "TASTEMAKER_FOR", wave: 5 },
+  { source: "p-sam-james-coffee", target: "sm-instagram", edgeLabel: "CONTENT_ON", wave: 5 },
+  { source: "p-tiktok-creator-1", target: "sm-tiktok", edgeLabel: "PLATFORM", wave: 5 },
+  { source: "p-tiktok-creator-1", target: "cc-maple", edgeLabel: "SEEDS_CONTENT", wave: 5 },
+  { source: "p-tiktok-creator-1", target: "con-influencer-seeding", edgeLabel: "PART_OF", wave: 5 },
+  { source: "p-porter-airlines", target: "ch-airlines", edgeLabel: "CARRIER_PARTNER", wave: 5 },
+  { source: "p-porter-airlines", target: "dest-toronto-island", edgeLabel: "BILLY_BISHOP_HUB", wave: 5 },
+  { source: "p-canadian-tire-corp", target: "seg-athlete", edgeLabel: "SPORTS_BUYER", wave: 5 },
+  { source: "p-canadian-tire-corp", target: "cc-sleekcan", edgeLabel: "SPORTS_SECTION", wave: 5 },
+
+  // New Wave 5 concept links
+  { source: "con-glass-premium-signal", target: "cc-glass-bottle", edgeLabel: "EMBODIED_BY", wave: 5 },
+  { source: "con-glass-premium-signal", target: "ch-hotel-minibar", edgeLabel: "PREMIUM_CONTEXT", wave: 5 },
+  { source: "con-cocktail-flywheel", target: "seg-bartenders", edgeLabel: "STARTS_WITH", wave: 5 },
+  { source: "con-cocktail-flywheel", target: "sm-instagram", edgeLabel: "AMPLIFIED_ON", wave: 5 },
+  { source: "con-health-halo", target: "cc-maple", edgeLabel: "APPLIED_TO", wave: 5 },
+  { source: "con-health-halo", target: "fl-maple", edgeLabel: "INGREDIENT_HALO", wave: 5 },
+  { source: "con-zero-waste-pledge", target: "con-never-plastic", edgeLabel: "EXTENDS", wave: 5 },
+  { source: "con-zero-waste-pledge", target: "seg-vegan-conscious", edgeLabel: "RESONATES_WITH", wave: 5 },
+  { source: "con-reverse-logistics", target: "con-zero-waste-pledge", edgeLabel: "IMPLEMENTS", wave: 5 },
+  { source: "con-reverse-logistics", target: "cc-glass-bottle", edgeLabel: "APPLIES_TO", wave: 5 },
+  { source: "con-souvenir-economy", target: "ch-souvenir", edgeLabel: "MARKET_CONTEXT", wave: 5 },
+  { source: "con-souvenir-economy", target: "con-maple-souvenir", edgeLabel: "INCLUDES", wave: 5 },
+  { source: "con-influencer-seeding", target: "ppl-modash-creators", edgeLabel: "EXECUTED_VIA", wave: 5 },
+  { source: "con-influencer-seeding", target: "mkt-influencer-roi", edgeLabel: "GENERATES", wave: 5 },
+  { source: "con-subscription-moat", target: "cc-subscription-box", edgeLabel: "BUILT_BY", wave: 5 },
+  { source: "con-subscription-moat", target: "ch-dtc", edgeLabel: "VIA_CHANNEL", wave: 5 },
 ];
 
 // ─── Simulation Agents (12 featured) ──────────────────────────────────────────
@@ -398,12 +638,12 @@ export const simulationAgents: SimAgent[] = [
   { id: "marie",   name: "Marie",   age: 24, location: "Montréal, QC",           archetype: "The Sober Curious Trendsetter",segment: "Gen Z",     awareness_level: "vaguely_aware",  maple_stance: "Un maple mocktail au lieu de mon Perrier? OUI. Finally something interesting.", persona_id: "ca_genz_sober_curious", handle: "@marie_mtl",    avatar_color: "#F59E0B" },
   { id: "linda",   name: "Linda",   age: 52, location: "North Vancouver, BC",    archetype: "The Proud Canadian",          segment: "Gen X",      awareness_level: "loyal",          maple_stance: "Oh my goodness, maple! That is SO Canadian. I remember buying CC after school. I'm emotional.", persona_id: "nostalgia_loyalist",    handle: "@linda_van",    avatar_color: "#8B5CF6" },
   { id: "tyler",   name: "Tyler",   age: 23, location: "Halifax, NS",            archetype: "The Indifferent Impulse Buyer",segment: "Millennial", awareness_level: "never_heard",   maple_stance: "Maple sparkling water? Weird. If it's cold and cheap at 7-Eleven, sure whatever.", persona_id: "us_mill_convenience",   handle: "@tyler_dal",    avatar_color: "#6B7280" },
-  { id: "sofia",   name: "Sofia",   age: 29, location: "Portland, OR",           archetype: "The Ingredient Inspector",    segment: "Gen Z",      awareness_level: "vaguely_aware",  maple_stance: "If it's clean ingredients and actually natural maple — not 'natural flavors' — I'm interested.", persona_id: "us_genz_wellness",      handle: "@sofia_pdx",    avatar_color: "#14B8A6" },
-  { id: "raj",     name: "Raj",     age: 34, location: "Toronto, ON",            archetype: "The Premium Aesthete",        segment: "Millennial", awareness_level: "aware",          maple_stance: "CC Maple in the glass bottle on my bar cart? Genuinely refined. Would pair beautifully with bourbon.", persona_id: "premium_lifestyle",     handle: "@raj_to",       avatar_color: "#F97316" },
+  { id: "sofia",   name: "Sofia",   age: 29, location: "Portland, OR",           archetype: "The Health-First Buyer",      segment: "Gen Z",      awareness_level: "vaguely_aware",  maple_stance: "Real maple, zero artificial sweeteners, clean label? Then I'm interested. Show me the ingredient panel first.", persona_id: "us_genz_wellness",      handle: "@sofia_pdx",    avatar_color: "#14B8A6", insight_label: "Key Drivers", insight_value: "Health + Premium Flavor", key_insight: "Health-conscious consumers don't just want 'zero sugar' — they want clean, trustworthy ingredients + real flavor.", key_implication: "Maple Zero must signal natural, premium, and clean positioning." },
+  { id: "raj",     name: "Raj",     age: 34, location: "Toronto, ON",            archetype: "The Premium Experience Seeker", segment: "Millennial", awareness_level: "aware",          maple_stance: "CC feels nostalgic right now — not premium. If they position Maple Zero as a modern luxury, it earns a place on my bar cart.", persona_id: "premium_lifestyle",     handle: "@raj_to",       avatar_color: "#F97316", insight_label: "Positioning", insight_value: "Premium Experience", key_insight: "To win premium consumers, CC must shift from nostalgia → modern premium experience.", key_implication: "Position Maple Zero as a premium, experience-driven beverage — not just sparkling water." },
   { id: "karen-h", name: "Karen H.",age: 44, location: "Alpharetta, GA",         archetype: "The Household Value Seeker",  segment: "Gen X",      awareness_level: "never_heard",    maple_stance: "Could be fun for Thanksgiving, but will this be at Costco in a variety pack?", persona_id: "household_stockup",     handle: "@karen_atl",    avatar_color: "#EF4444" },
-  { id: "jake",    name: "Jake",    age: 32, location: "Vancouver, BC",          archetype: "The Design-First Millennial", segment: "Millennial", awareness_level: "aware",          maple_stance: "Bringing CC Maple to Thanksgiving instead of wine. Very Canadian move. I'm in.", persona_id: "ca_mill_potential",     handle: "@jake_to",      avatar_color: "#06B6D4" },
+  { id: "jake",    name: "Jake",    age: 32, location: "Vancouver, BC",          archetype: "The Aesthetic Experience Curator", segment: "Millennial", awareness_level: "aware",          maple_stance: "I buy drinks that say something about who I am. If CC Maple feels curated — events, mocktails, premium presentation — I'm in.", persona_id: "ca_mill_potential",     handle: "@jake_to",      avatar_color: "#06B6D4", insight_label: "Experience-Driven", insight_value: "Identity Signal", key_insight: "Consumers don't just buy drinks — they buy experiences and identity.", key_implication: "Events, mocktails, and premium presentation → increase engagement + purchase likelihood (+74%)." },
   { id: "marcus",  name: "Marcus",  age: 35, location: "Chicago, IL",            archetype: "The Rediscoverer",            segment: "Millennial", awareness_level: "never_heard",    maple_stance: "Wait, Clearly Canadian is still around? AND they have a maple flavor now? Where do I buy this?", persona_id: "us_mill_lapsed",        handle: "@marcus_chi",   avatar_color: "#A78BFA" },
-  { id: "chloe",   name: "Chloe",   age: 22, location: "Toronto, ON",            archetype: "The TikTok Native",           segment: "Gen Z",      awareness_level: "vaguely_aware",  maple_stance: "My mom told me about this brand. The crowdfunding comeback story is actually kinda cool.", persona_id: "ca_genz_potential",     handle: "@chloe_uoft",   avatar_color: "#FB7185" },
+  { id: "chloe",   name: "Chloe",   age: 22, location: "Toronto, ON",            archetype: "The Discovery-Driven Buyer",  segment: "Gen Z",      awareness_level: "vaguely_aware",  maple_stance: "I've seen CC on my FYP but never actually tried it. I need to taste it or see my friends drinking it before I'd buy.", persona_id: "ca_genz_potential",     handle: "@chloe_uoft",   avatar_color: "#FB7185", insight_label: "Core Barrier", insight_value: "Low Trial", key_insight: "Consumers are interested but won't convert without first experiencing the product.", key_implication: "Sampling + experiential marketing reduces friction → drives first purchase." },
 ];
 
 // ─── Swarm Segments ────────────────────────────────────────────────────────────
@@ -871,6 +1111,83 @@ Channel priority ranking by modeled ROI:
 - **Price gap vs LaCroix** — $1.33/can vs $0.42/can is 3× premium. Requires channel context justification everywhere.
 - **Gen Z social proof dependency** — 73% intent is conditional. Without TikTok activation, Gen Z conversion falls to 18%.`,
 };
+
+// ─── Social Simulation Graph Events (wave 7 — appear during Stage 3) ──────────
+
+export interface SocialGraphEvent {
+  round: number;
+  node: GraphNode;
+  links: GraphLink[];
+}
+
+export const socialGraphEvents: SocialGraphEvent[] = [
+  {
+    round: 4,
+    node: { id: "social-bartender-buzz", label: "Bartender Buzz", group: "concept", color: "#F97316", wave: 1, tooltip: "Bartenders responding positively — cocktail use case gaining traction" },
+    links: [
+      { source: "social-bartender-buzz", target: "seg-bartenders", edgeLabel: "DRIVEN_BY", strength: 0.6 },
+      { source: "social-bartender-buzz", target: "sm-instagram", edgeLabel: "AMPLIFIED_VIA", strength: 0.5 },
+    ],
+  },
+  {
+    round: 8,
+    node: { id: "social-genz-discovery", label: "Gen Z Discovery Wave", group: "concept", color: "#8B5CF6", wave: 1, tooltip: "Gen Z agents discovering CC Maple for the first time via social feeds" },
+    links: [
+      { source: "social-genz-discovery", target: "seg-genz", edgeLabel: "REACHED", strength: 0.6 },
+      { source: "social-genz-discovery", target: "sm-tiktok", edgeLabel: "ORIGINATED_ON", strength: 0.6 },
+    ],
+  },
+  {
+    round: 12,
+    node: { id: "social-nostalgia-thread", label: "Nostalgia Reddit Thread", group: "concept", color: "#10B981", wave: 1, tooltip: "r/ClearlyCanadian thread going viral — Gen X nostalgia driving shares" },
+    links: [
+      { source: "social-nostalgia-thread", target: "seg-genx", edgeLabel: "RESONATES_WITH", strength: 0.7 },
+      { source: "social-nostalgia-thread", target: "sm-reddit", edgeLabel: "HOSTED_ON", strength: 0.7 },
+    ],
+  },
+  {
+    round: 18,
+    node: { id: "social-tiktok-viral", label: "TikTok Viral Moment", group: "concept", color: "#EC4899", wave: 1, tooltip: "#MapleWater trending — 2.1M views in 48-hour simulation window" },
+    links: [
+      { source: "social-tiktok-viral", target: "sm-tiktok", edgeLabel: "TRENDING_ON", strength: 0.8 },
+      { source: "social-tiktok-viral", target: "social-genz-discovery", edgeLabel: "ACCELERATES", strength: 0.5 },
+      { source: "social-tiktok-viral", target: "cc-maple", edgeLabel: "FEATURES", strength: 0.6 },
+    ],
+  },
+  {
+    round: 24,
+    node: { id: "social-tourism-spike", label: "Tourism Channel Spike", group: "concept", color: "#14B8A6", wave: 1, tooltip: "Tourist segment agents sharing CC Maple as Canadian souvenir discovery" },
+    links: [
+      { source: "social-tourism-spike", target: "dest-niagara", edgeLabel: "EMERGING_AT", strength: 0.6 },
+      { source: "social-tourism-spike", target: "ch-souvenir", edgeLabel: "BOOSTING", strength: 0.7 },
+    ],
+  },
+  {
+    round: 32,
+    node: { id: "social-sober-curious-act", label: "Sober Curious Activation", group: "concept", color: "#06B6D4", wave: 1, tooltip: "Sober-curious agents actively recommending CC Maple as a premium NA option" },
+    links: [
+      { source: "social-sober-curious-act", target: "seg-sober", edgeLabel: "ACTIVATING", strength: 0.7 },
+      { source: "social-sober-curious-act", target: "sm-instagram", edgeLabel: "SHARED_VIA", strength: 0.5 },
+    ],
+  },
+  {
+    round: 40,
+    node: { id: "social-brand-sentiment", label: "Positive Sentiment Wave", group: "concept", color: "#F59E0B", wave: 1, tooltip: "Cumulative positive sentiment exceeding model baseline — 68% positive" },
+    links: [
+      { source: "social-brand-sentiment", target: "cc-maple", edgeLabel: "VALIDATES", strength: 0.8 },
+      { source: "social-brand-sentiment", target: "con-buy-canadian", edgeLabel: "REINFORCED_BY", strength: 0.6 },
+    ],
+  },
+  {
+    round: 48,
+    node: { id: "social-proof-signal", label: "Social Proof Signal", group: "concept", color: "#1B6EC2", wave: 1, tooltip: "Simulation complete — strong cross-segment social proof established" },
+    links: [
+      { source: "social-proof-signal", target: "cc-maple", edgeLabel: "ESTABLISHES", strength: 0.9 },
+      { source: "social-proof-signal", target: "seg-premium", edgeLabel: "CONVERTS", strength: 0.6 },
+      { source: "social-proof-signal", target: "social-brand-sentiment", edgeLabel: "CONFIRMED_BY", strength: 0.5 },
+    ],
+  },
+];
 
 // ─── Follow-Up Pill Responses ──────────────────────────────────────────────────
 

@@ -5,13 +5,29 @@ import { simConfigData, simulationAgents } from "@/data/simulation/mapleSimulati
 import PersonaAvatar from "@/components/PersonaAvatar";
 import type { Persona } from "@/lib/types";
 
-interface Props {
-  onComplete: () => void;
+const STEP_MS = 900; // ms between each sub-step
+const TOTAL_STEPS = 11; // 5 sections × 2 (appear + complete) + 1 for button
+
+function CompletedBadge() {
+  return (
+    <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+      </svg>
+      Completed
+    </span>
+  );
 }
 
-export default function Stage3SimConfig({ onComplete }: Props) {
+interface Props {
+  onComplete: () => void;
+  visible?: boolean;
+}
+
+export default function Stage3SimConfig({ onComplete, visible = false }: Props) {
   const { stats, timeOfDayMultipliers, agentCards, recommendationWeights, llmConfigText, narrativeDirection, hotTopics, activationPosts } = simConfigData;
   const [personas, setPersonas] = useState<Persona[]>([]);
+  const [step, setStep] = useState(-1);
 
   useEffect(() => {
     fetch("/api/personas")
@@ -19,29 +35,57 @@ export default function Stage3SimConfig({ onComplete }: Props) {
       .then((data) => setPersonas(Array.isArray(data) ? data : (data.personas ?? [])));
   }, []);
 
+  useEffect(() => {
+    if (!visible) return;
+    let s = 0;
+    setStep(0);
+    const iv = setInterval(() => {
+      s++;
+      setStep(s);
+      if (s >= TOTAL_STEPS) clearInterval(iv);
+    }, STEP_MS);
+    return () => clearInterval(iv);
+  }, [visible]);
+
   const personaMap = new Map(personas.map((p) => [p.id, p]));
   // Map agentCard id → persona via simulationAgents lookup
   const agentPersonaMap = new Map(
     simulationAgents.map((a) => [a.id, personaMap.get(a.persona_id)])
   );
 
+  if (!visible && step < 0) return null;
+
+  const show = (i: number) => step >= i * 2;
+  const completed = (i: number) => step >= i * 2 + 1;
+  const sectionCls = (i: number) =>
+    `transition-all duration-500 ${show(i) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"}`;
+
   return (
     <div className="flex flex-col gap-6">
-      {/* Stat boxes */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {stats.map((s) => (
-          <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-            <div className="text-slate-800 font-bold text-3xl">{s.value}</div>
-            <div className="text-slate-400 text-sm mt-0.5">{s.label}</div>
-            {s.sub && <div className="text-slate-300 text-sm mt-0.5">{s.sub}</div>}
-          </div>
-        ))}
+      {/* Stat boxes — section 0 */}
+      <div className={sectionCls(0)}>
+        <div className="flex items-center justify-between mb-3">
+          <div className="text-white/60 text-sm font-semibold uppercase tracking-widest">Simulation Parameters</div>
+          {completed(0) && <CompletedBadge />}
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {stats.map((s) => (
+            <div key={s.label} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+              <div className="text-slate-800 font-bold text-3xl">{s.value}</div>
+              <div className="text-slate-400 text-sm mt-0.5">{s.label}</div>
+              {s.sub && <div className="text-slate-300 text-sm mt-0.5">{s.sub}</div>}
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
-        {/* Time-of-Day Multipliers */}
-        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-          <div className="text-slate-700 text-base font-semibold mb-4">Time-of-Day Activity Multipliers</div>
+        {/* Time-of-Day Multipliers — section 1 */}
+        <div className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm ${sectionCls(1)}`}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-slate-700 text-base font-semibold">Time-of-Day Activity Multipliers</div>
+            {completed(1) && <CompletedBadge />}
+          </div>
           <div className="flex flex-col gap-3">
             {timeOfDayMultipliers.map((row) => (
               <div key={row.label} className="flex flex-col gap-1">
@@ -63,9 +107,12 @@ export default function Stage3SimConfig({ onComplete }: Props) {
           </div>
         </div>
 
-        {/* LLM Config */}
-        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-          <div className="text-slate-700 text-base font-semibold mb-3">LLM Simulation Config</div>
+        {/* LLM Config — section 2 */}
+        <div className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm ${sectionCls(2)}`}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-slate-700 text-base font-semibold">LLM Simulation Config</div>
+            {completed(2) && <CompletedBadge />}
+          </div>
           <p className="text-slate-500 text-sm leading-relaxed mb-4">{llmConfigText}</p>
           <div className="flex flex-col gap-2">
             {recommendationWeights.map((rw) => (
@@ -85,9 +132,12 @@ export default function Stage3SimConfig({ onComplete }: Props) {
         </div>
       </div>
 
-      {/* Agent Config Cards */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <div className="text-slate-700 text-base font-semibold mb-4">Agent Configuration</div>
+      {/* Agent Config Cards — section 3 */}
+      <div className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm ${sectionCls(3)}`}>
+        <div className="flex items-center justify-between mb-4">
+          <div className="text-slate-700 text-base font-semibold">Agent Configuration</div>
+          {completed(3) && <CompletedBadge />}
+        </div>
         <div className="overflow-y-auto light-scroll" style={{ maxHeight: 420 }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-1">
           {agentCards.map((agent) => {
@@ -172,9 +222,12 @@ export default function Stage3SimConfig({ onComplete }: Props) {
         </div>
       </div>
 
-      {/* Initial Activation Orchestration */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <div className="text-slate-700 text-base font-semibold mb-1">Initial Activation Orchestration</div>
+      {/* Initial Activation Orchestration — section 4 */}
+      <div className={`bg-white border border-slate-200 rounded-xl p-5 shadow-sm ${sectionCls(4)}`}>
+        <div className="flex items-center justify-between mb-1">
+          <div className="text-slate-700 text-base font-semibold">Initial Activation Orchestration</div>
+          {completed(4) && <CompletedBadge />}
+        </div>
         <div className="text-slate-400 text-sm mb-4">Narrative direction and seed posts that kick off the simulation</div>
 
         <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-4">
@@ -217,7 +270,8 @@ export default function Stage3SimConfig({ onComplete }: Props) {
         </div>
       </div>
 
-      <div className="flex justify-end">
+      {/* Begin Simulation button — section 5 */}
+      <div className={`flex justify-end ${sectionCls(5)}`}>
         <button
           onClick={onComplete}
           className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-base shadow-sm transition-all duration-200"

@@ -343,6 +343,11 @@ export interface SimAgent {
   avatar_url?: string;
   segment: string; // "Gen Z" | "Millennial" | etc.
   handle: string; // @handle for social posts
+  // Optional strategic insight fields
+  insight_label?: string;  // e.g. "Key Drivers", "Core Barrier", "Positioning"
+  insight_value?: string;  // e.g. "Health + Premium Flavor"
+  key_insight?: string;    // one-sentence research insight
+  key_implication?: string; // one-sentence strategic implication
 }
 
 export type GraphWave = 1 | 2 | 3 | 4 | 5 | 6;

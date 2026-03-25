@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { graphNodes, graphLinks } from "@/data/simulation/mapleSimulationData";
 import type { GraphNode, GraphLink } from "@/lib/types";
 
@@ -8,6 +9,8 @@ interface Props {
   visible: boolean;
   onToggle: () => void;
   buildStarted: boolean;
+  pendingNodes?: GraphNode[];
+  pendingLinks?: GraphLink[];
 }
 
 type SelectedInfo = {
@@ -46,11 +49,25 @@ const LEGEND_ITEMS = [
   { color: "#06B6D4", label: "Platforms" },
 ];
 
-export default function PersistentGraphPanel({ visible, onToggle, buildStarted }: Props) {
+export default function PersistentGraphPanel({ visible, onToggle, buildStarted, pendingNodes, pendingLinks }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const hasInit = useRef(false);
-  const simRef = useRef<unknown>(null);
   const [selectedInfo, setSelectedInfo] = useState<SelectedInfo | null>(null);
+
+  // Refs that expose live D3 state for dynamic node injection
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const simRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const forceLinkRef = useRef<any>(null);
+  const nodesRef = useRef<Array<GraphNode & { revealed?: boolean; x?: number; y?: number; fx?: number | null; fy?: number | null }>>([]);
+  const linksRef = useRef<GraphLink[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const nodeGroupRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const linkGroupRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const d3Ref = useRef<any>(null);
+  const nodeMapRef = useRef<Map<string, GraphNode>>(new Map());
 
   // We store D3 selections in refs so click handlers can access them
   const nodeSyncRef = useRef<{
@@ -63,6 +80,7 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
     hasInit.current = true;
 
     import("d3").then((d3) => {
+      d3Ref.current = d3;
       const svg = d3.select(svgRef.current!);
       const rect = svgRef.current!.getBoundingClientRect();
       const W = rect.width || 400;
@@ -84,7 +102,12 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
       const nodes: DNode[] = graphNodes.map((n) => ({ ...n, revealed: false }));
       const links: DLink[] = graphLinks.map((l) => ({ ...l }));
 
+      // Populate refs for dynamic injection
+      nodesRef.current = nodes as GraphNode[];
+      linksRef.current = links as GraphLink[];
+
       const nodeMap = new Map<string, DNode>(nodes.map((n) => [n.id, n]));
+      nodeMapRef.current = nodeMap as Map<string, GraphNode>;
 
       function nodeRadius(n: DNode) {
         if (n.group === "center") return 18;
@@ -135,22 +158,27 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
         return path;
       }
 
+      const forceLink = d3.forceLink<DNode, DLink>(links)
+        .id((d) => d.id)
+        .distance((l) => {
+          const src = typeof l.source === "object" ? l.source as DNode : nodeMap.get(l.source as string);
+          const tgt = typeof l.target === "object" ? l.target as DNode : nodeMap.get(l.target as string);
+          if (src?.isMicro || tgt?.isMicro) return 60;
+          return 100 + (1 - ((l as GraphLink).strength ?? 0.5)) * 40;
+        })
+        .strength(0.4);
+      forceLinkRef.current = forceLink;
+
       const sim = d3.forceSimulation<DNode>(nodes)
-        .force("link", d3.forceLink<DNode, DLink>(links)
-          .id((d) => d.id)
-          .distance((l) => {
-            const src = typeof l.source === "object" ? l.source as DNode : nodeMap.get(l.source as string);
-            const tgt = typeof l.target === "object" ? l.target as DNode : nodeMap.get(l.target as string);
-            if (src?.isMicro || tgt?.isMicro) return 60;
-            return 100 + (1 - ((l as GraphLink).strength ?? 0.5)) * 40;
-          })
-          .strength(0.4))
+        .force("link", forceLink)
         .force("charge", d3.forceManyBody().strength((d) => (d as DNode).isMicro ? -25 : -120))
         .force("center", d3.forceCenter(W / 2, H / 2))
         .force("collision", d3.forceCollide<DNode>().radius((d) => nodeRadius(d) + 4));
+      simRef.current = sim;
 
       // Links
       const linkGroup = g.append("g");
+      linkGroupRef.current = linkGroup;
       const linkSel = linkGroup.selectAll("line")
         .data(links)
         .enter()
@@ -162,6 +190,7 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
 
       // Nodes
       const nodeGroup = g.append("g");
+      nodeGroupRef.current = nodeGroup;
       const nodeSel = nodeGroup.selectAll<SVGCircleElement, DNode>("circle")
         .data(nodes)
         .enter()
@@ -313,13 +342,20 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
       nodeSel.call(drag);
 
       sim.on("tick", () => {
-        linkSel
-          .attr("x1", (d) => ((d.source as DNode).x ?? 0))
-          .attr("y1", (d) => ((d.source as DNode).y ?? 0))
-          .attr("x2", (d) => ((d.target as DNode).x ?? 0))
-          .attr("y2", (d) => ((d.target as DNode).y ?? 0));
-        nodeSel.attr("cx", (d) => d.x ?? 0).attr("cy", (d) => d.y ?? 0);
-        labelSel.attr("x", (d) => d.x ?? 0).attr("y", (d) => d.y ?? 0);
+        // Use selectAll so newly injected elements are included automatically
+        linkGroup.selectAll("line")
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .attr("x1", (d: any) => (d.source?.x ?? 0))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .attr("y1", (d: any) => (d.source?.y ?? 0))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .attr("x2", (d: any) => (d.target?.x ?? 0))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .attr("y2", (d: any) => (d.target?.y ?? 0));
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        nodeGroup.selectAll("circle").attr("cx", (d: any) => d.x ?? 0).attr("cy", (d: any) => d.y ?? 0);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        nodeGroup.selectAll("text").attr("x", (d: any) => d.x ?? 0).attr("y", (d: any) => d.y ?? 0);
       });
 
       // 6-wave reveal
@@ -349,14 +385,95 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
         });
       }
 
-      (simRef as { current: unknown }).current = sim;
-
       return () => {
         sim.stop();
         tooltip.remove();
       };
     });
   }, [buildStarted]);
+
+  // Dynamically inject new nodes/links as social simulation progresses
+  useEffect(() => {
+    const d3 = d3Ref.current;
+    const sim = simRef.current;
+    const nodeGroup = nodeGroupRef.current;
+    const linkGroup = linkGroupRef.current;
+    const forceLink = forceLinkRef.current;
+    if (!d3 || !sim || !nodeGroup || !linkGroup || !pendingNodes?.length) return;
+
+    const existingIds = new Set(nodesRef.current.map((n) => n.id));
+
+    pendingNodes.forEach((newNode) => {
+      if (existingIds.has(newNode.id)) return;
+      existingIds.add(newNode.id);
+
+      // Add to data arrays
+      const dNode = { ...newNode, revealed: true };
+      nodesRef.current.push(dNode);
+      nodeMapRef.current.set(newNode.id, newNode);
+
+      const newLinks = (pendingLinks ?? []).filter((l) => {
+        if (l.source !== newNode.id && l.target !== newNode.id) return false;
+        // Only add link if both endpoints exist in the simulation
+        const srcId = typeof l.source === "string" ? l.source : (l.source as { id: string }).id;
+        const tgtId = typeof l.target === "string" ? l.target : (l.target as { id: string }).id;
+        return existingIds.has(srcId) && existingIds.has(tgtId);
+      });
+      newLinks.forEach((l) => linksRef.current.push(l));
+
+      // Append SVG circle
+      nodeGroup.append("circle")
+        .datum(dNode)
+        .attr("r", 9)
+        .attr("fill", newNode.color)
+        .attr("stroke", "#3B82F6")
+        .attr("stroke-width", 3)
+        .attr("opacity", 0)
+        .style("cursor", "pointer")
+        .transition().duration(500)
+        .attr("opacity", 0.9)
+        .on("end", function(this: SVGCircleElement) {
+          // Fade glow ring back to normal after 2s
+          d3.select(this)
+            .transition().delay(2000).duration(600)
+            .attr("stroke", "rgba(255,255,255,0.12)")
+            .attr("stroke-width", 1);
+        });
+
+      // Append SVG label
+      nodeGroup.append("text")
+        .datum(dNode)
+        .attr("text-anchor", "middle")
+        .attr("dy", 23)
+        .attr("font-size", 11)
+        .attr("font-family", "Plus Jakarta Sans, sans-serif")
+        .attr("fill", "#475569")
+        .attr("opacity", 0)
+        .text(newNode.label.length > 18 ? newNode.label.slice(0, 16) + "…" : newNode.label)
+        .transition().duration(500)
+        .attr("opacity", 1);
+
+      // Append SVG lines for new links
+      newLinks.forEach((l) => {
+        linkGroup.append("line")
+          .datum(l)
+          .attr("stroke", "#94a3b8")
+          .attr("stroke-width", 1.2)
+          .attr("opacity", 0)
+          .transition().duration(600)
+          .attr("opacity", 0.5);
+      });
+    });
+
+    if (pendingNodes.some((n) => !nodesRef.current.find((e) => e.id === n.id && e === n))) {
+      // Update simulation with new nodes + links
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      sim.nodes(nodesRef.current as any);
+      if (forceLink) forceLink.links(linksRef.current);
+      sim.alpha(0.3).restart();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingNodes]);
 
   return (
     <div
@@ -365,7 +482,18 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted }
     >
       {/* Panel header */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-200 bg-white flex-shrink-0">
-        <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Knowledge Graph</div>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="flex items-center gap-1 text-slate-400 hover:text-slate-700 text-[11px] font-medium border border-slate-200 rounded-md px-2 py-1 hover:bg-slate-50 transition-colors duration-150"
+          >
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Home
+          </Link>
+          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Knowledge Graph</div>
+        </div>
         <button
           onClick={onToggle}
           className="text-slate-400 hover:text-slate-700 text-xs flex items-center gap-1 border border-slate-200 rounded-md px-2 py-1 hover:bg-slate-50 transition-colors duration-150"

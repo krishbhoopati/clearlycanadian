@@ -1,21 +1,36 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { twitterPostSequence, redditPostSequence, sentimentTimeline } from "@/data/simulation/mapleSimulationData";
+import { twitterPostSequence, redditPostSequence, sentimentTimeline, socialGraphEvents } from "@/data/simulation/mapleSimulationData";
 import SimulationPostCard from "./SimulationPostCard";
-import type { SimPost } from "@/lib/types";
+import type { SimPost, GraphNode, GraphLink } from "@/lib/types";
+
+const SEGMENT_NODES: Record<string, string> = {
+  "Gen Z": "seg-genz",
+  "Millennial": "seg-millennials",
+  "Gen X": "seg-genx",
+  "Boomer": "seg-boomer",
+};
+
+const SEGMENT_COLORS: Record<string, string> = {
+  "Gen Z": "#8B5CF6",
+  "Millennial": "#3B82F6",
+  "Gen X": "#F59E0B",
+  "Boomer": "#F97316",
+};
 import dynamic from "next/dynamic";
 
 const SentimentChart = dynamic(() => import("./Stage3SentimentChart"), { ssr: false });
 
 interface Props {
   onComplete: () => void;
+  onGraphEvent?: (nodes: GraphNode[], links: GraphLink[]) => void;
 }
 
 const TOTAL_EVENTS = 1847;
 const TOTAL_ROUNDS = 48;
 
-export default function Stage4SocialFeed({ onComplete }: Props) {
+export default function Stage4SocialFeed({ onComplete, onGraphEvent }: Props) {
   const [twitterPosts, setTwitterPosts] = useState<SimPost[]>([]);
   const [redditPosts, setRedditPosts] = useState<SimPost[]>([]);
   const [done, setDone] = useState(false);
@@ -25,6 +40,7 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
   const twitterRef = useRef<HTMLDivElement>(null);
   const redditRef = useRef<HTMLDivElement>(null);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const addedNodesRef = useRef<Set<string>>(new Set());
 
   const addPost = useCallback((platform: "twitter" | "reddit", post: SimPost) => {
     if (platform === "twitter") {
@@ -34,7 +50,50 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
       setRedditPosts((prev) => [post, ...prev].slice(0, 30));
       setTimeout(() => redditRef.current?.scrollTo({ top: 0, behavior: "smooth" }), 50);
     }
-  }, []);
+
+    // Add poster as a new knowledge graph node (once per unique poster)
+    if (onGraphEvent) {
+      const nodeId = post.type === "featured"
+        ? `sf-${post.persona_id}`
+        : `sf-bg-${post.agentId}`;
+
+      if (nodeId && !addedNodesRef.current.has(nodeId)) {
+        addedNodesRef.current.add(nodeId);
+
+        const platformTarget = platform === "twitter" ? "sm-twitter" : "sm-reddit";
+        const links: GraphLink[] = [
+          { source: nodeId, target: platformTarget, edgeLabel: "POSTED_ON", wave: 6 },
+        ];
+
+        let node: GraphNode;
+        if (post.type === "featured") {
+          node = {
+            id: nodeId,
+            label: post.persona_name,
+            group: "people",
+            color: post.avatar_color,
+            wave: 6,
+            tooltip: `${post.handle} · ${post.sentiment} sentiment`,
+          };
+        } else {
+          const segTarget = SEGMENT_NODES[post.segment ?? ""];
+          if (segTarget) {
+            links.push({ source: nodeId, target: segTarget, edgeLabel: "IS_SEGMENT", wave: 6 });
+          }
+          node = {
+            id: nodeId,
+            label: `${post.segment ?? "Agent"} · ${post.city ?? ""}`.replace(/· $/, "").trim(),
+            group: "sim_agent",
+            color: SEGMENT_COLORS[post.segment ?? ""] ?? "#94A3B8",
+            wave: 6,
+            isMicro: true,
+            tooltip: `${post.segment} from ${post.city}`,
+          };
+        }
+        onGraphEvent([node], links);
+      }
+    }
+  }, [onGraphEvent]);
 
   useEffect(() => {
     const timers = timersRef.current;
@@ -67,16 +126,16 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
     }
 
     // Start both simultaneously
-    scheduleSequence(twitterPostSequence, "twitter", [300, 500], [1500, 2000]);
-    scheduleSequence(redditPostSequence, "reddit", [350, 550], [1600, 2100]);
+    scheduleSequence(twitterPostSequence, "twitter", [150, 280], [700, 1000]);
+    scheduleSequence(redditPostSequence, "reddit", [180, 300], [750, 1100]);
 
-    // Round counter — ticks every ~1.2s up to 48 rounds
+    // Round counter — ticks every ~500ms up to 48 rounds (~24s total)
     const roundInterval = setInterval(() => {
       setRound((r) => {
         if (r >= TOTAL_ROUNDS) { clearInterval(roundInterval); return r; }
         return r + 1;
       });
-    }, 1200);
+    }, 500);
     timers.push(roundInterval as unknown as ReturnType<typeof setTimeout>);
 
     // Event counter — ticks rapidly to ~1847
@@ -87,7 +146,7 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
       // Also advance chart periodically
       setChartIdx((c) => Math.min(c + 1, sentimentTimeline.length - 1));
       if (ev >= TOTAL_EVENTS) clearInterval(evInterval);
-    }, 80);
+    }, 50);
     timers.push(evInterval as unknown as ReturnType<typeof setTimeout>);
 
     return () => {
@@ -96,6 +155,13 @@ export default function Stage4SocialFeed({ onComplete }: Props) {
       clearInterval(evInterval);
     };
   }, [addPost]);
+
+  // Fire graph events when round milestones are reached
+  useEffect(() => {
+    if (round === 0) return;
+    const events = socialGraphEvents.filter((e) => e.round === round);
+    events.forEach((e) => onGraphEvent?.([e.node], e.links));
+  }, [round, onGraphEvent]);
 
   const positiveCount = Math.round(eventCount * 0.48);
   const neutralCount = Math.round(eventCount * 0.33);

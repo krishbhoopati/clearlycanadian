@@ -17,6 +17,13 @@ const GEN_BADGE: Record<string, { bg: string; text: string }> = {
   Boomer:     { bg: "bg-rose-100",   text: "text-rose-700"   },
 };
 
+const INSIGHT_COLORS: Record<string, { bar: string; label: string; badge: string; text: string }> = {
+  "Key Drivers":          { bar: "bg-emerald-500", label: "text-emerald-700", badge: "bg-emerald-50 border-emerald-200", text: "text-emerald-800" },
+  "Core Barrier":         { bar: "bg-blue-500",    label: "text-blue-700",    badge: "bg-blue-50 border-blue-200",       text: "text-blue-800"   },
+  "Positioning":          { bar: "bg-violet-500",  label: "text-violet-700",  badge: "bg-violet-50 border-violet-200",   text: "text-violet-800" },
+  "Experience-Driven":    { bar: "bg-amber-500",   label: "text-amber-700",   badge: "bg-amber-50 border-amber-200",     text: "text-amber-800"  },
+};
+
 interface Props {
   agent: SimAgent;
   persona?: Persona;
@@ -78,6 +85,36 @@ export default function SimulationAgentCard({ agent, persona, onClick, showChatB
       <div className={["font-semibold text-gray-500 bg-gray-50 border border-gray-100 rounded-lg self-start", compact ? "text-[10px] px-2 py-1" : "text-xs px-3 py-1.5"].join(" ")}>
         {agent.archetype}
       </div>
+
+      {/* Strategic insight banner */}
+      {agent.insight_label && (() => {
+        const ic = INSIGHT_COLORS[agent.insight_label!] ?? INSIGHT_COLORS["Key Drivers"];
+        return (
+          <div className={`rounded-lg border ${ic.badge} overflow-hidden`}>
+            <div className={`flex items-center gap-1.5 px-2.5 pt-2 pb-1`}>
+              <div className={`w-1.5 h-1.5 rounded-full ${ic.bar} shrink-0`} />
+              <span className={`font-bold uppercase tracking-widest ${compact ? "text-[9px]" : "text-[10px]"} ${ic.label}`}>
+                {agent.insight_label}
+              </span>
+              {agent.insight_value && (
+                <span className={`font-semibold ${compact ? "text-[9px]" : "text-[11px]"} ${ic.label}`}>
+                  · {agent.insight_value}
+                </span>
+              )}
+            </div>
+            {agent.key_insight && (
+              <div className={`px-2.5 pb-1 ${ic.text} ${compact ? "text-[10px]" : "text-[11px]"} leading-snug`}>
+                <span className="font-semibold">Insight:</span> {agent.key_insight}
+              </div>
+            )}
+            {agent.key_implication && (
+              <div className={`px-2.5 pb-2 ${ic.text} ${compact ? "text-[10px]" : "text-[11px]"} leading-snug opacity-80`}>
+                <span className="font-semibold">Implication:</span> {agent.key_implication}
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Description from persona */}
       {description && (

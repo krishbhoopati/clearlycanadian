@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Stage2AgentGrid from "@/components/simulation/Stage2AgentGrid";
 import Stage3SimConfig from "@/components/simulation/Stage3SimConfig";
 import Stage6DeepInteraction from "@/components/simulation/Stage6DeepInteraction";
-import type { SimStage } from "@/lib/types";
+import type { SimStage, GraphNode, GraphLink } from "@/lib/types";
 
 // D3 / heavy components loaded client-only
 const PersistentGraphPanel = dynamic(
@@ -44,10 +44,17 @@ export default function SimulationPage() {
   const [stage, setStage] = useState<SimStage>(1);
   const [chatPersonaId, setChatPersonaId] = useState<string | null>(null);
   const [graphVisible, setGraphVisible] = useState(true);
+  const [agentsDone, setAgentsDone] = useState(false);
   const [graphBuildStarted, setGraphBuildStarted] = useState(false);
+  const [discoveredNodes, setDiscoveredNodes] = useState<GraphNode[]>([]);
+  const [discoveredLinks, setDiscoveredLinks] = useState<GraphLink[]>([]);
 
   const advanceStage = useCallback(() => {
-    setStage((s) => (Math.min(s + 1, 5) as SimStage));
+    setStage((s) => {
+      const next = Math.min(s + 1, 5) as SimStage;
+      if (s === 2) setAgentsDone(false);
+      return next;
+    });
   }, []);
 
   // When Stage 1 begins analysis, signal PersistentGraphPanel to start building
@@ -60,6 +67,11 @@ export default function SimulationPage() {
   // We pass a proxy onComplete that marks graphBuildStarted first
   const handleBeginAnalysis = useCallback(() => {
     setGraphBuildStarted(true);
+  }, []);
+
+  const handleGraphEvent = useCallback((nodes: GraphNode[], links: GraphLink[]) => {
+    setDiscoveredNodes((prev) => [...prev, ...nodes]);
+    setDiscoveredLinks((prev) => [...prev, ...links]);
   }, []);
 
   return (
@@ -76,6 +88,8 @@ export default function SimulationPage() {
               visible={graphVisible}
               onToggle={() => setGraphVisible(false)}
               buildStarted={graphBuildStarted}
+              pendingNodes={discoveredNodes}
+              pendingLinks={discoveredLinks}
             />
           </div>
         )}
@@ -96,10 +110,10 @@ export default function SimulationPage() {
             {/* Stage label + skip */}
             <div className="mb-4 flex items-center justify-between">
               <div>
-                <div className="text-white/30 text-[10px] font-mono uppercase tracking-widest">
+                <div className="text-white/70 text-xs font-mono uppercase tracking-widest">
                   Stage {stage} of 5
                 </div>
-                <h2 className="text-white font-bold text-base leading-tight">{STAGE_LABELS[stage]}</h2>
+                <h2 className="text-white font-bold text-2xl leading-tight">{STAGE_LABELS[stage]}</h2>
               </div>
               {stage < 5 && (
                 <button
@@ -124,14 +138,14 @@ export default function SimulationPage() {
             {stage === 2 && (
               <div className="flex flex-col gap-8">
                 <Stage2AgentGrid
-                  onComplete={() => {}}
+                  onComplete={() => setAgentsDone(true)}
                   onAgentClick={setChatPersonaId}
                 />
-                <Stage3SimConfig onComplete={advanceStage} />
+                <Stage3SimConfig visible={agentsDone} onComplete={advanceStage} />
               </div>
             )}
             {stage === 3 && (
-              <Stage4SocialFeed onComplete={advanceStage} />
+              <Stage4SocialFeed onComplete={advanceStage} onGraphEvent={handleGraphEvent} />
             )}
             {stage === 4 && (
               <Stage5ReportPanel onComplete={advanceStage} />
