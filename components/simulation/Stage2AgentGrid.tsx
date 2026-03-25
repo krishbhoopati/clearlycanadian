@@ -33,31 +33,31 @@ export default function Stage2AgentGrid({ onComplete, onAgentClick }: Props) {
   const personaMap = new Map(personas.map((p) => [p.id, p]));
 
   return (
-    <div className="flex flex-col gap-6 py-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-white font-bold text-xl">Agent Generation</h3>
-          <p className="text-white/50 text-base mt-0.5">Initializing {simulationAgents.length} featured archetypes from 1,247-agent swarm</p>
-        </div>
+    <div className="glass-dark rounded-xl flex flex-col py-4 gap-3">
+      {/* Fixed header */}
+      <div className="flex-shrink-0 px-4">
+        <h3 className="text-white font-bold text-xl">Agent Generation</h3>
+        <p className="text-white/50 text-base mt-0.5">Initializing {simulationAgents.length} featured archetypes from 1,247-agent swarm</p>
       </div>
 
-      <SwarmCluster visible={swarmVisible} />
+      <div className="flex-shrink-0 px-4">
+        <SwarmCluster visible={swarmVisible} />
+      </div>
 
-      <div className="overflow-y-auto light-scroll" style={{ maxHeight: 500 }}>
-        <div className="grid grid-cols-2 gap-3 items-stretch">
+      {/* Scrollable card grid — fixed height so header stays visible */}
+      <div className="overflow-y-auto light-scroll px-3" style={{ height: 460 }}>
+        <div className="grid grid-cols-3 gap-2.5">
           {simulationAgents.map((agent, i) => (
             <div
               key={agent.id}
               className="opacity-0 animate-agent-pop-in"
-              style={{
-                animationDelay: `${i * STAGGER_MS}ms`,
-                animationFillMode: "forwards",
-              }}
+              style={{ animationDelay: `${i * STAGGER_MS}ms`, animationFillMode: "forwards" }}
             >
               <SimulationAgentCard
                 agent={agent}
                 persona={personaMap.get(agent.persona_id)}
                 onClick={() => onAgentClick?.(agent.persona_id)}
+                compact
               />
             </div>
           ))}

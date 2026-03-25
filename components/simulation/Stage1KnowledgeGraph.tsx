@@ -233,7 +233,7 @@ export default function Stage1KnowledgeGraph({ onComplete, onBeginAnalysis }: Pr
       {!started && (
         <button
           onClick={handleBeginAnalysis}
-          className="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base shadow-sm transition-all duration-200 flex items-center justify-center gap-2"
+          className="w-full py-3.5 rounded-xl bg-white hover:bg-white/90 text-slate-900 font-bold text-base shadow-sm transition-all duration-200 flex items-center justify-center gap-2"
         >
           Begin Analysis
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -22,6 +22,7 @@ interface Props {
   persona?: Persona;
   onClick?: () => void;
   showChatButton?: boolean;
+  compact?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -32,7 +33,7 @@ function SectionLabel({ label }: { label: string }) {
   );
 }
 
-export default function SimulationAgentCard({ agent, persona, onClick, showChatButton, style, className }: Props) {
+export default function SimulationAgentCard({ agent, persona, onClick, showChatButton, compact, style, className }: Props) {
   const aw = AWARENESS_LABELS[agent.awareness_level];
   const generation = persona?.generation ?? agent.segment;
   const badge = GEN_BADGE[generation] ?? { bg: "bg-gray-100", text: "text-gray-600" };
@@ -42,31 +43,31 @@ export default function SimulationAgentCard({ agent, persona, onClick, showChatB
   const avatarUrl = persona?.avatar_url;
   const description = persona?.description;
   const motivations = persona?.motivations?.slice(0, 2) ?? [];
-  const coreTraits = persona?.core_traits?.slice(0, 4) ?? [];
-  const currentDrinks = persona?.current_beverages?.slice(0, 3) ?? [];
+  const coreTraits = persona?.core_traits?.slice(0, compact ? 3 : 4) ?? [];
+  const currentDrinks = persona?.current_beverages?.slice(0, compact ? 2 : 3) ?? [];
 
   return (
     <div
-      className={["bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex flex-col gap-3 h-full hover:shadow-md transition-shadow duration-200 cursor-pointer", className ?? ""].join(" ")}
+      className={["bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col h-full hover:shadow-md transition-shadow duration-200 cursor-pointer", compact ? "p-3 gap-2" : "p-5 gap-3", className ?? ""].join(" ")}
       style={style}
       onClick={onClick}
     >
       {/* Avatar + name + badges */}
-      <div className="flex items-start gap-3">
+      <div className={["flex items-start", compact ? "gap-2" : "gap-3"].join(" ")}>
         <PersonaAvatar
           name={name}
           avatarUrl={avatarUrl}
-          size="w-14 h-14"
-          textSize="text-lg"
+          size={compact ? "w-10 h-10" : "w-14 h-14"}
+          textSize={compact ? "text-sm" : "text-lg"}
         />
         <div className="flex-1 min-w-0">
-          <div className="font-bold text-gray-900 text-base leading-tight">{name}</div>
-          <div className="text-gray-500 text-sm mt-0.5">{age} · {location}</div>
-          <div className="flex flex-wrap items-center gap-1.5 mt-2">
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${badge.bg} ${badge.text}`}>
+          <div className={["font-bold text-gray-900 leading-tight", compact ? "text-sm" : "text-base"].join(" ")}>{name}</div>
+          <div className={["text-gray-500 mt-0.5", compact ? "text-xs" : "text-sm"].join(" ")}>{age} · {location}</div>
+          <div className={["flex flex-wrap items-center", compact ? "gap-1 mt-1" : "gap-1.5 mt-2"].join(" ")}>
+            <span className={`px-2 py-0.5 rounded-full font-bold uppercase tracking-widest ${compact ? "text-[9px]" : "text-[10px]"} ${badge.bg} ${badge.text}`}>
               {generation}
             </span>
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold ${aw.color}`}>
+            <span className={`px-2 py-0.5 rounded-full font-semibold ${compact ? "text-[9px]" : "text-[10px]"} ${aw.color}`}>
               {aw.label}
             </span>
           </div>
@@ -74,13 +75,13 @@ export default function SimulationAgentCard({ agent, persona, onClick, showChatB
       </div>
 
       {/* Archetype tag */}
-      <div className="text-xs font-semibold text-gray-500 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-lg self-start">
+      <div className={["font-semibold text-gray-500 bg-gray-50 border border-gray-100 rounded-lg self-start", compact ? "text-[10px] px-2 py-1" : "text-xs px-3 py-1.5"].join(" ")}>
         {agent.archetype}
       </div>
 
       {/* Description from persona */}
       {description && (
-        <p className="text-gray-700 text-[13px] leading-relaxed">{description}</p>
+        <p className={["text-gray-700 leading-relaxed", compact ? "text-[11px]" : "text-[13px]"].join(" ")}>{description}</p>
       )}
 
       {description && <div className="border-t border-gray-100" />}
@@ -91,8 +92,8 @@ export default function SimulationAgentCard({ agent, persona, onClick, showChatB
           <SectionLabel label="Motivations" />
           <ul className="flex flex-col gap-1">
             {motivations.map((m, i) => (
-              <li key={i} className="flex items-start gap-2 text-[12.5px] text-gray-600">
-                <span className="mt-[7px] w-[4px] h-[4px] rounded-full bg-gray-400 shrink-0" />
+              <li key={i} className={["flex items-start gap-1.5 text-gray-600", compact ? "text-[11px]" : "text-[12.5px]"].join(" ")}>
+                <span className="mt-[6px] w-[3px] h-[3px] rounded-full bg-gray-400 shrink-0" />
                 {m}
               </li>
             ))}
@@ -103,16 +104,16 @@ export default function SimulationAgentCard({ agent, persona, onClick, showChatB
       {/* CC Maple Stance */}
       <div>
         <SectionLabel label="CC Maple Stance" />
-        <p className="text-gray-600 text-[12.5px] leading-relaxed italic">"{agent.maple_stance}"</p>
+        <p className={["text-gray-600 leading-relaxed italic", compact ? "text-[11px]" : "text-[12.5px]"].join(" ")}>"{agent.maple_stance}"</p>
       </div>
 
       {/* Core traits */}
       {coreTraits.length > 0 && (
         <div>
           <SectionLabel label="Core Traits" />
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1">
             {coreTraits.map((t, i) => (
-              <span key={i} className="px-2.5 py-0.5 rounded-full text-[11px] font-medium text-gray-600 bg-white border border-gray-200">
+              <span key={i} className={["font-medium text-gray-600 bg-white border border-gray-200 rounded-full", compact ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-0.5 text-[11px]"].join(" ")}>
                 {t}
               </span>
             ))}
@@ -124,9 +125,9 @@ export default function SimulationAgentCard({ agent, persona, onClick, showChatB
       {currentDrinks.length > 0 && (
         <div>
           <SectionLabel label="Currently Drinks" />
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1">
             {currentDrinks.map((b, i) => (
-              <span key={i} className="px-2.5 py-0.5 rounded-full text-[11px] font-medium text-blue-600 bg-blue-50 border border-blue-100">
+              <span key={i} className={["font-medium text-blue-600 bg-blue-50 border border-blue-100 rounded-full", compact ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-0.5 text-[11px]"].join(" ")}>
                 {b}
               </span>
             ))}

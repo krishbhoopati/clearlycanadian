@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
-import SimulationStepper from "@/components/simulation/SimulationStepper";
 import Stage2AgentGrid from "@/components/simulation/Stage2AgentGrid";
 import Stage3SimConfig from "@/components/simulation/Stage3SimConfig";
 import Stage6DeepInteraction from "@/components/simulation/Stage6DeepInteraction";
@@ -65,46 +64,6 @@ export default function SimulationPage() {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-[#2a3441]">
-      {/* Fixed header */}
-      <div className="flex-shrink-0 z-20 bg-[#2a3441]/90 backdrop-blur-xl border-b border-white/5">
-        <div className="px-4 sm:px-5 py-3 flex items-center gap-4">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 text-white/50 hover:text-white/80 text-sm transition-colors duration-200 flex-shrink-0"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="hidden sm:inline">Clearly Voices</span>
-          </Link>
-
-          <div className="flex-1 max-w-2xl">
-            <SimulationStepper
-              currentStage={stage}
-              onStageClick={(s) => {
-                if (s < stage) setStage(s as SimStage);
-              }}
-            />
-          </div>
-
-          <div className="flex items-center gap-2 flex-shrink-0 ml-auto">
-            {!graphVisible && (
-              <button
-                onClick={() => setGraphVisible(true)}
-                className="text-white/40 hover:text-white/70 text-xs flex items-center gap-1 border border-white/10 hover:border-white/25 px-2.5 py-1.5 rounded-lg transition-all duration-150"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                Show Graph
-              </button>
-            )}
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-white/40 text-xs hidden sm:inline">Swarm Simulation</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main split-panel body */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left: Persistent Graph Panel */}
@@ -122,8 +81,18 @@ export default function SimulationPage() {
         )}
 
         {/* Right: Stage Content */}
-        <div className="flex-1 overflow-y-auto dark-scroll">
-          <div className="px-4 py-4">
+        <div className="flex-1 overflow-y-auto dark-scroll relative">
+          {/* Mountain background — same as homepage */}
+          <Image
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=90&w=3840&auto=format&fit=crop"
+            alt=""
+            fill
+            quality={90}
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="pointer-events-none select-none"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[#2a3441]/85 pointer-events-none" />
+          <div className="relative z-10 px-4 py-4">
             {/* Stage label + skip */}
             <div className="mb-4 flex items-center justify-between">
               <div>
@@ -170,9 +139,9 @@ export default function SimulationPage() {
             {stage === 5 && (
               <Stage6DeepInteraction onPersonaChat={setChatPersonaId} />
             )}
-          </div>
-        </div>
-      </div>
+          </div>{/* end relative z-10 */}
+        </div>{/* end right panel */}
+      </div>{/* end split body */}
 
       {/* Bottom branding */}
       <div className="fixed bottom-4 left-6 pointer-events-none select-none z-10">
