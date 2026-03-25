@@ -366,11 +366,11 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
         waveNodes.forEach((node, i) => {
           setTimeout(() => {
             d3.selectAll<SVGCircleElement, DNode>("circle")
-              .filter((d) => d.id === node.id)
+              .filter((d) => d?.id === node.id)
               .transition().duration(400)
               .attr("opacity", node.isMicro ? 0.35 : 0.9);
             d3.selectAll<SVGTextElement, DNode>("text")
-              .filter((d) => d.id === node.id)
+              .filter((d) => d?.id === node.id)
               .transition().duration(400)
               .attr("opacity", 1);
             d3.selectAll<SVGLineElement, DLink>("line")

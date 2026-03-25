@@ -163,10 +163,6 @@ export default function Stage4SocialFeed({ onComplete, onGraphEvent }: Props) {
     events.forEach((e) => onGraphEvent?.([e.node], e.links));
   }, [round, onGraphEvent]);
 
-  const positiveCount = Math.round(eventCount * 0.48);
-  const neutralCount = Math.round(eventCount * 0.33);
-  const frictionCount = eventCount - positiveCount - neutralCount;
-
   return (
     <div className="flex flex-col gap-4">
       {/* Header stats */}
@@ -246,33 +242,13 @@ export default function Stage4SocialFeed({ onComplete, onGraphEvent }: Props) {
         </div>
       </div>
 
-      {/* Sentiment bars + chart */}
+      {/* Live sentiment intelligence */}
       <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-        <div className="flex items-center justify-between mb-3">
-          <div className="text-slate-600 text-sm font-medium">Sentiment Distribution</div>
-          <div className="text-slate-400 text-sm font-mono">{eventCount.toLocaleString()} events analyzed</div>
+        <div className="flex items-center justify-between mb-4">
+          <div className="text-slate-700 text-sm font-semibold">Live Sentiment Intelligence</div>
+          <div className="text-slate-400 text-xs font-mono">{eventCount.toLocaleString()} events analyzed</div>
         </div>
-        <div className="flex gap-3 mb-4">
-          {[
-            { label: "Positive", count: positiveCount, color: "bg-emerald-500" },
-            { label: "Neutral", count: neutralCount, color: "bg-slate-300" },
-            { label: "Friction", count: frictionCount, color: "bg-red-400" },
-          ].map((s) => (
-            <div key={s.label} className="flex-1">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-slate-500 text-sm">{s.label}</span>
-                <span className="text-slate-600 text-sm font-mono">{s.count.toLocaleString()}</span>
-              </div>
-              <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                <div
-                  className={`h-full ${s.color} rounded-full transition-all duration-300`}
-                  style={{ width: eventCount > 0 ? `${(s.count / eventCount) * 100}%` : "0%" }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-        <SentimentChart currentDataIdx={chartIdx} />
+        <SentimentChart currentDataIdx={chartIdx} eventCount={eventCount} />
       </div>
 
       {done && (

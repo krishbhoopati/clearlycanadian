@@ -115,17 +115,30 @@ export default function SimulationPage() {
                 </div>
                 <h2 className="text-white font-bold text-2xl leading-tight">{STAGE_LABELS[stage]}</h2>
               </div>
-              {stage < 5 && (
-                <button
-                  onClick={advanceStage}
-                  className="text-white/30 hover:text-white/60 text-xs flex items-center gap-1 transition-colors duration-200 flex-shrink-0 ml-2"
-                >
-                  Skip
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              )}
+              <div className="flex items-center gap-3 flex-shrink-0 ml-2">
+                {!graphVisible && (
+                  <button
+                    onClick={() => setGraphVisible(true)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white/60 hover:text-white text-xs font-medium transition-all duration-200 backdrop-blur-sm border border-white/10"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                    Graph
+                  </button>
+                )}
+                {stage < 5 && (
+                  <button
+                    onClick={advanceStage}
+                    className="text-white/30 hover:text-white/60 text-xs flex items-center gap-1 transition-colors duration-200"
+                  >
+                    Skip
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Stage content */}
