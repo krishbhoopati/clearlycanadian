@@ -627,6 +627,7 @@ export const graphLinks: GraphLink[] = [
   { source: "con-influencer-seeding", target: "mkt-influencer-roi", edgeLabel: "GENERATES", wave: 5 },
   { source: "con-subscription-moat", target: "cc-subscription-box", edgeLabel: "BUILT_BY", wave: 5 },
   { source: "con-subscription-moat", target: "ch-dtc", edgeLabel: "VIA_CHANNEL", wave: 5 },
+
 ];
 
 // ─── Simulation Agents (12 featured) ──────────────────────────────────────────

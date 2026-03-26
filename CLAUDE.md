@@ -56,3 +56,11 @@ Uses `next.config.mjs` (not `.ts`) — Next.js 14 does not support TypeScript co
 ### Path alias
 
 `@/*` maps to the project root. Use `@/lib/types`, `@/components/...`, etc. in all imports.
+
+### Knowledge graph — dynamic node injection
+
+**CRITICAL**: `graphLinks` in `data/simulation/mapleSimulationData.ts` is loaded at D3 init time. Any link whose `source` or `target` ID does not exist in `graphNodes` will cause a runtime crash: `Error: node not found: <id>`.
+
+- Never add links to `graphLinks` for nodes that don't exist in `graphNodes`.
+- Nodes injected dynamically at runtime (via `pendingNodes` prop on `PersistentGraphPanel`) must also have their links passed via `pendingLinks` — **not** pre-loaded in the static `graphLinks` array.
+- The `pendingNodes`/`pendingLinks` pipeline: component calls `onGraphEvent(nodes, links)` → `handleGraphEvent` in `app/simulation/page.tsx` accumulates into `discoveredNodes`/`discoveredLinks` state → passed to `PersistentGraphPanel` which injects them into D3 at runtime.

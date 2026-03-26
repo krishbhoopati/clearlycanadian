@@ -23,6 +23,14 @@ type SelectedInfo = {
   path: Array<{ id: string; label: string; edgeLabel?: string }>;
 };
 
+interface CanvasAgent {
+  id: string;
+  color: string;
+  x: number;       // absolute random position on canvas
+  y: number;
+  targets: string[]; // all entity node IDs to draw lines to
+}
+
 const GROUP_LABELS: Record<string, string> = {
   center: "Brand Core",
   product: "CC Product",
@@ -35,6 +43,7 @@ const GROUP_LABELS: Record<string, string> = {
   people: "People / Partners",
   concept: "Strategic Concept",
   platform: "Digital Platform",
+  agent: "Simulation Agent",
 };
 
 const LEGEND_ITEMS = [
@@ -68,6 +77,10 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const d3Ref = useRef<any>(null);
   const nodeMapRef = useRef<Map<string, GraphNode>>(new Map());
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const agentLayerRef = useRef<CanvasAgent[]>([]);
+  const zoomTransformRef = useRef<{ x: number; y: number; k: number }>({ x: 0, y: 0, k: 1 });
+  const drawCanvasRef = useRef<(() => void) | null>(null);
 
   // We store D3 selections in refs so click handlers can access them
   const nodeSyncRef = useRef<{
@@ -86,6 +99,8 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
       const W = rect.width || 400;
       const H = rect.height || 600;
 
+      if (canvasRef.current) { canvasRef.current.width = W; canvasRef.current.height = H; }
+
       svg.selectAll("*").remove();
 
       const g = svg.append("g");
@@ -93,7 +108,11 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
       // Zoom + pan
       const zoom = d3.zoom<SVGSVGElement, unknown>()
         .scaleExtent([0.2, 4])
-        .on("zoom", (event) => g.attr("transform", event.transform));
+        .on("zoom", (event) => {
+          g.attr("transform", event.transform);
+          zoomTransformRef.current = { x: event.transform.x, y: event.transform.y, k: event.transform.k };
+          drawCanvasRef.current?.();
+        });
       svg.call(zoom);
 
       type DNode = GraphNode & d3.SimulationNodeDatum & { revealed?: boolean };
@@ -110,9 +129,9 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
       nodeMapRef.current = nodeMap as Map<string, GraphNode>;
 
       function nodeRadius(n: DNode) {
-        if (n.group === "center") return 18;
-        if (n.isMicro) return 4;
-        return 9;
+        if (n.group === "center") return 24;
+        if (n.isMicro) return 5;
+        return 13;
       }
 
       // BFS from cc-maple to find shortest path
@@ -163,17 +182,17 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
         .distance((l) => {
           const src = typeof l.source === "object" ? l.source as DNode : nodeMap.get(l.source as string);
           const tgt = typeof l.target === "object" ? l.target as DNode : nodeMap.get(l.target as string);
-          if (src?.isMicro || tgt?.isMicro) return 60;
-          return 100 + (1 - ((l as GraphLink).strength ?? 0.5)) * 40;
+          if (src?.isMicro || tgt?.isMicro) return 100;
+          return 200 + (1 - ((l as GraphLink).strength ?? 0.5)) * 120;
         })
-        .strength(0.4);
+        .strength(0.25);
       forceLinkRef.current = forceLink;
 
       const sim = d3.forceSimulation<DNode>(nodes)
         .force("link", forceLink)
-        .force("charge", d3.forceManyBody().strength((d) => (d as DNode).isMicro ? -25 : -120))
-        .force("center", d3.forceCenter(W / 2, H / 2))
-        .force("collision", d3.forceCollide<DNode>().radius((d) => nodeRadius(d) + 4));
+        .force("charge", d3.forceManyBody().strength((d) => (d as DNode).isMicro ? -60 : -400))
+        .force("center", d3.forceCenter(W / 2, H / 2).strength(0.04))
+        .force("collision", d3.forceCollide<DNode>().radius((d) => nodeRadius(d) + 10));
       simRef.current = sim;
 
       // Links
@@ -202,16 +221,32 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
         .attr("opacity", 0)
         .style("cursor", "pointer");
 
-      // Labels (main nodes only)
+      // Label badge backgrounds (white pill, rendered before text so it sits behind)
+      const labelData = nodes.filter((n) => !n.isMicro);
+      const labelBgSel = nodeGroup.selectAll<SVGRectElement, DNode>("rect.label-bg")
+        .data(labelData)
+        .enter()
+        .append("rect")
+        .attr("class", "label-bg")
+        .attr("rx", 4).attr("ry", 4)
+        .attr("height", 17)
+        .attr("width", (d) => {
+          const t = d.label.length > 18 ? d.label.slice(0, 16) + "…" : d.label;
+          return t.length * (d.group === "center" ? 7.5 : 6.5) + 14;
+        })
+        .attr("fill", "rgba(255,255,255,0.93)")
+        .attr("opacity", 0);
+
+      // Labels (main nodes only — dark text positioned right of node)
       const labelSel = nodeGroup.selectAll<SVGTextElement, DNode>("text")
-        .data(nodes.filter((n) => !n.isMicro))
+        .data(labelData)
         .enter()
         .append("text")
-        .attr("text-anchor", "middle")
-        .attr("dy", (d) => nodeRadius(d) + 14)
-        .attr("font-size", (d) => d.group === "center" ? 13 : 11)
+        .attr("text-anchor", "start")
+        .attr("font-size", (d) => d.group === "center" ? 12 : 10)
+        .attr("font-weight", "600")
         .attr("font-family", "Plus Jakarta Sans, sans-serif")
-        .attr("fill", "#475569")
+        .attr("fill", "#0f172a")
         .attr("opacity", 0)
         .text((d) => d.label.length > 18 ? d.label.slice(0, 16) + "…" : d.label);
 
@@ -240,11 +275,12 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
           .attr("stroke", (d) => d.isMicro ? "none" : "rgba(255,255,255,0.12)")
           .attr("stroke-width", 1)
           .attr("r", (d) => nodeRadius(d));
+        labelBgSel.transition().duration(200).attr("opacity", 1);
         labelSel
           .transition().duration(200)
           .attr("opacity", 1)
-          .attr("fill", "#475569")
-          .attr("font-size", (d) => d.group === "center" ? 13 : 11);
+          .attr("fill", "#0f172a")
+          .attr("font-size", (d) => d.group === "center" ? 12 : 10);
         linkSel
           .transition().duration(200)
           .attr("stroke", (d) => (d as GraphLink).isDotted ? "#94a3b8" : "#475569")
@@ -259,11 +295,12 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
           .attr("stroke", (d) => pathNodeIds.has(d.id) ? "#3B82F6" : "rgba(255,255,255,0.05)")
           .attr("stroke-width", (d) => pathNodeIds.has(d.id) ? 2.5 : 1)
           .attr("r", (d) => pathNodeIds.has(d.id) ? nodeRadius(d) * 1.3 : nodeRadius(d));
+        labelBgSel.transition().duration(200).attr("opacity", (d) => pathNodeIds.has(d.id) ? 1 : 0.05);
         labelSel
           .transition().duration(200)
           .attr("opacity", (d) => pathNodeIds.has(d.id) ? 1 : 0.05)
-          .attr("fill", (d) => pathNodeIds.has(d.id) ? "#1e40af" : "#475569")
-          .attr("font-size", (d) => pathNodeIds.has(d.id) ? (d.group === "center" ? 14 : 12) : (d.group === "center" ? 13 : 11));
+          .attr("fill", (d) => pathNodeIds.has(d.id) ? "#1e40af" : "#0f172a")
+          .attr("font-size", (d) => pathNodeIds.has(d.id) ? (d.group === "center" ? 13 : 11) : (d.group === "center" ? 12 : 10));
         linkSel
           .transition().duration(200)
           .attr("stroke", (d) => {
@@ -354,9 +391,71 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
           .attr("y2", (d: any) => (d.target?.y ?? 0));
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         nodeGroup.selectAll("circle").attr("cx", (d: any) => d.x ?? 0).attr("cy", (d: any) => d.y ?? 0);
+        // Label bg rects — positioned to the right of each node
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        nodeGroup.selectAll("text").attr("x", (d: any) => d.x ?? 0).attr("y", (d: any) => d.y ?? 0);
+        nodeGroup.selectAll<SVGRectElement, any>("rect.label-bg")
+          .attr("x", (d) => (d.x ?? 0) + nodeRadius(d) + 5)
+          .attr("y", (d) => (d.y ?? 0) - 8.5);
+        // Labels — right-side badge text
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        nodeGroup.selectAll("text").attr("x", (d: any) => (d.x ?? 0) + nodeRadius(d) + 12).attr("y", (d: any) => (d.y ?? 0) + 4);
+        drawCanvasRef.current?.();
       });
+
+      // Canvas draw: renders agent swarm overlay (1,235 synthetic agents)
+      function drawAgentCanvas() {
+        const canvas = canvasRef.current;
+        const ctx = canvas?.getContext("2d");
+        if (!ctx || !canvas) return;
+        const { x: tx, y: ty, k } = zoomTransformRef.current;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(tx, ty);
+        ctx.scale(k, k);
+
+        // Batch lines by color for performance
+        const linesByColor = new Map<string, Array<[number, number, number, number]>>();
+        const dotsByColor = new Map<string, Array<[number, number]>>();
+
+        for (const agent of agentLayerRef.current) {
+          if (!linesByColor.has(agent.color)) linesByColor.set(agent.color, []);
+          if (!dotsByColor.has(agent.color)) dotsByColor.set(agent.color, []);
+
+          for (const tId of agent.targets) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const t = nodeMapRef.current.get(tId) as any;
+            if (t?.x == null || t?.y == null) continue;
+            linesByColor.get(agent.color)!.push([agent.x, agent.y, t.x, t.y]);
+          }
+          dotsByColor.get(agent.color)!.push([agent.x, agent.y]);
+        }
+
+        // Draw all lines — visible enough to show relationships without overwhelming
+        ctx.lineWidth = 0.8;
+        linesByColor.forEach((lines, color) => {
+          ctx.strokeStyle = color + "38"; // ~22% alpha — faint colored threads
+          ctx.beginPath();
+          for (const [x1, y1, x2, y2] of lines) {
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+          }
+          ctx.stroke();
+        });
+
+        // Draw dots (3.5px radius, very faint — ghost-like so main nodes pop)
+        dotsByColor.forEach((dots, color) => {
+          ctx.fillStyle = color + "22"; // ~13% alpha — very faint pastel tint
+          ctx.beginPath();
+          for (const [x, y] of dots) {
+            ctx.moveTo(x + 3.5, y);
+            ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+          }
+          ctx.fill();
+        });
+
+        ctx.restore();
+      }
+      drawCanvasRef.current = drawAgentCanvas;
 
       // 6-wave reveal
       const WAVE_DELAY = 1500;
@@ -369,6 +468,10 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
               .filter((d) => d?.id === node.id)
               .transition().duration(400)
               .attr("opacity", node.isMicro ? 0.35 : 0.9);
+            d3.selectAll<SVGRectElement, DNode>("rect.label-bg")
+              .filter((d) => d?.id === node.id)
+              .transition().duration(400)
+              .attr("opacity", 1);
             d3.selectAll<SVGTextElement, DNode>("text")
               .filter((d) => d?.id === node.id)
               .transition().duration(400)
@@ -402,10 +505,40 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
     if (!d3 || !sim || !nodeGroup || !linkGroup || !pendingNodes?.length) return;
 
     const existingIds = new Set(nodesRef.current.map((n) => n.id));
+    let addedRegularNode = false;
 
     pendingNodes.forEach((newNode) => {
       if (existingIds.has(newNode.id)) return;
       existingIds.add(newNode.id);
+
+      // Synthetic agents (syn-*) go to canvas layer only — not D3 sim or SVG
+      if (newNode.id.startsWith("syn-")) {
+        const nodeLinks = (pendingLinks ?? []).filter(l => l.source === newNode.id);
+        const targets = nodeLinks.map(l => l.target as string).filter(Boolean);
+
+        // Organic elliptical scatter — fills the panel area with no visible rectangular edge
+        const W = canvasRef.current?.width ?? 600;
+        const H = canvasRef.current?.height ?? 400;
+        const idx = agentLayerRef.current.length;
+        const s1 = (((idx * 2654435761) >>> 0) ^ 0x9e3779b9) >>> 0;
+        const s2 = ((s1 * 1664525 + 1013904223) >>> 0);
+        const s3 = ((s2 * 1664525 + 1013904223) >>> 0);
+        const s4 = ((s3 * 1664525 + 1013904223) >>> 0);
+        const angle = (s1 / 0x100000000) * Math.PI * 2;
+        // Uniform ellipse fill (sqrt gives uniform disc density)
+        const baseR = Math.sqrt(s2 / 0x100000000);
+        // Per-angle radius noise: each direction gets a unique perturbation so the edge is jagged/organic
+        const angularNoise = 0.7 + (s3 / 0x100000000) * 0.6; // 0.7–1.3
+        const radialSpike = 1 + (s4 / 0x100000000) * 0.4;    // occasional outward spikes
+        const r = baseR * angularNoise * radialSpike;
+        const x = W / 2 + Math.cos(angle) * r * W * 0.48;
+        const y = H / 2 + Math.sin(angle) * r * H * 0.46;
+
+        agentLayerRef.current.push({ id: newNode.id, color: newNode.color, x, y, targets });
+        return; // Skip D3 sim + SVG entirely
+      }
+
+      addedRegularNode = true;
 
       // Add to data arrays
       const dNode = { ...newNode, revealed: true };
@@ -424,34 +557,51 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
       // Append SVG circle
       nodeGroup.append("circle")
         .datum(dNode)
-        .attr("r", 9)
-        .attr("fill", newNode.color)
-        .attr("stroke", "#3B82F6")
-        .attr("stroke-width", 3)
+        .attr("r", dNode.isMicro ? 4 : (dNode.group === "center" ? 18 : 9))
+        .attr("fill", dNode.isMicro ? dNode.color + "55" : dNode.color)
+        .attr("stroke", dNode.isMicro ? "none" : "#3B82F6")
+        .attr("stroke-width", dNode.isMicro ? 0 : 3)
         .attr("opacity", 0)
-        .style("cursor", "pointer")
-        .transition().duration(500)
-        .attr("opacity", 0.9)
+        .style("cursor", dNode.isMicro ? "default" : "pointer")
+        .transition().duration(dNode.isMicro ? 200 : 500)
+        .attr("opacity", dNode.isMicro ? 0.35 : 0.9)
         .on("end", function(this: SVGCircleElement) {
-          // Fade glow ring back to normal after 2s
-          d3.select(this)
-            .transition().delay(2000).duration(600)
-            .attr("stroke", "rgba(255,255,255,0.12)")
-            .attr("stroke-width", 1);
+          if (!dNode.isMicro) {
+            d3.select(this)
+              .transition().delay(2000).duration(600)
+              .attr("stroke", "rgba(255,255,255,0.12)")
+              .attr("stroke-width", 1);
+          }
         });
 
-      // Append SVG label
-      nodeGroup.append("text")
-        .datum(dNode)
-        .attr("text-anchor", "middle")
-        .attr("dy", 23)
-        .attr("font-size", 11)
-        .attr("font-family", "Plus Jakarta Sans, sans-serif")
-        .attr("fill", "#475569")
-        .attr("opacity", 0)
-        .text(newNode.label.length > 18 ? newNode.label.slice(0, 16) + "…" : newNode.label)
-        .transition().duration(500)
-        .attr("opacity", 1);
+      // Append SVG label badge (skip for micro nodes)
+      if (!dNode.isMicro) {
+        const truncLabel = newNode.label.length > 18 ? newNode.label.slice(0, 16) + "…" : newNode.label;
+        const r = dNode.group === "center" ? 18 : 9;
+        nodeGroup.append("rect")
+          .datum(dNode)
+          .attr("class", "label-bg")
+          .attr("rx", 4).attr("ry", 4)
+          .attr("height", 17)
+          .attr("width", truncLabel.length * (dNode.group === "center" ? 7.5 : 6.5) + 14)
+          .attr("x", r + 5)
+          .attr("y", -8.5)
+          .attr("fill", "rgba(255,255,255,0.93)")
+          .attr("opacity", 0)
+          .transition().duration(500)
+          .attr("opacity", 1);
+        nodeGroup.append("text")
+          .datum(dNode)
+          .attr("text-anchor", "start")
+          .attr("font-size", dNode.group === "center" ? 12 : 10)
+          .attr("font-weight", "600")
+          .attr("font-family", "Plus Jakarta Sans, sans-serif")
+          .attr("fill", "#0f172a")
+          .attr("opacity", 0)
+          .text(truncLabel)
+          .transition().duration(500)
+          .attr("opacity", 1);
+      }
 
       // Append SVG lines for new links
       newLinks.forEach((l) => {
@@ -465,13 +615,13 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
       });
     });
 
-    if (pendingNodes.some((n) => !nodesRef.current.find((e) => e.id === n.id && e === n))) {
-      // Update simulation with new nodes + links
+    if (addedRegularNode) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       sim.nodes(nodesRef.current as any);
       if (forceLink) forceLink.links(linksRef.current);
       sim.alpha(0.3).restart();
     }
+    drawCanvasRef.current?.();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pendingNodes]);
 
@@ -516,7 +666,8 @@ export default function PersistentGraphPanel({ visible, onToggle, buildStarted, 
             </div>
           </div>
         )}
-        <svg ref={svgRef} className="w-full h-full" />
+        <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }} />
+        <svg ref={svgRef} className="w-full h-full relative" style={{ zIndex: 1 }} />
 
         {/* Legend — floating bottom-left */}
         {!selectedInfo && (

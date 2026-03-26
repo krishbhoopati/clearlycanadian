@@ -350,7 +350,7 @@ export interface SimAgent {
   key_implication?: string; // one-sentence strategic implication
 }
 
-export type GraphWave = 1 | 2 | 3 | 4 | 5 | 6;
+export type GraphWave = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export interface GraphNode {
   id: string;

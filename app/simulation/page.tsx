@@ -78,21 +78,19 @@ export default function SimulationPage() {
     <div className="flex flex-col h-screen overflow-hidden bg-[#2a3441]">
       {/* Main split-panel body */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Left: Persistent Graph Panel */}
-        {graphVisible && (
-          <div
-            className="flex-shrink-0 border-r border-white/5 flex flex-col h-full transition-all duration-300"
-            style={{ width: stage === 1 ? "60%" : stage <= 3 ? "50%" : "65%" }}
-          >
-            <PersistentGraphPanel
-              visible={graphVisible}
-              onToggle={() => setGraphVisible(false)}
-              buildStarted={graphBuildStarted}
-              pendingNodes={discoveredNodes}
-              pendingLinks={discoveredLinks}
-            />
-          </div>
-        )}
+        {/* Left: Persistent Graph Panel — always mounted so state survives hide/show */}
+        <div
+          className="flex-shrink-0 border-r border-white/5 flex flex-col h-full transition-all duration-300 overflow-hidden"
+          style={{ width: !graphVisible ? 0 : stage === 1 ? "60%" : stage <= 3 ? "50%" : "65%" }}
+        >
+          <PersistentGraphPanel
+            visible={graphVisible}
+            onToggle={() => setGraphVisible(false)}
+            buildStarted={graphBuildStarted}
+            pendingNodes={discoveredNodes}
+            pendingLinks={discoveredLinks}
+          />
+        </div>
 
         {/* Right: Stage Content */}
         <div className="flex-1 overflow-y-auto dark-scroll relative">
@@ -153,6 +151,7 @@ export default function SimulationPage() {
                 <Stage2AgentGrid
                   onComplete={() => setAgentsDone(true)}
                   onAgentClick={setChatPersonaId}
+                  onGraphEvent={handleGraphEvent}
                 />
                 <Stage3SimConfig visible={agentsDone} onComplete={advanceStage} />
               </div>
