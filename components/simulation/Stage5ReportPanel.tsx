@@ -10,6 +10,76 @@ interface Props {
 
 const SPEED = 15;
 
+const SECTION_LABELS: Record<number, string> = {
+  1: "STP & Consumer Behavior",
+  2: "Marketing Mix & Distribution",
+  3: "Launch Roadmap & KPIs",
+  4: "Competitor Benchmarks",
+  5: "Risk & Failure Analysis",
+};
+
+function renderLine(line: string, i: number) {
+  // Section heading ## → skip, handled by wrapper
+  if (line.startsWith("## ")) return null;
+
+  // Standalone bold line → subheading
+  if (line.startsWith("**") && line.endsWith("**")) {
+    return (
+      <h4 key={i} className="text-slate-800 font-bold text-base mt-6 mb-2 leading-snug">
+        {line.slice(2, -2)}
+      </h4>
+    );
+  }
+
+  // Numbered list: "1. **Title** — rest"
+  const numMatch = line.match(/^(\d+)\.\s+\*\*(.+?)\*\*(.*)$/);
+  if (numMatch) {
+    return (
+      <div key={i} className="flex gap-3 mb-3 ml-1">
+        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-slate-700 text-white text-[11px] font-bold flex items-center justify-center mt-0.5">
+          {numMatch[1]}
+        </span>
+        <p className="text-slate-600 text-sm leading-relaxed">
+          <strong className="text-slate-800 font-semibold">{numMatch[2]}</strong>
+          {numMatch[3]}
+        </p>
+      </div>
+    );
+  }
+
+  // Bullet: "- **Name** — text" or "- text"
+  if (line.startsWith("- ")) {
+    const bulletBoldMatch = line.slice(2).match(/^\*\*(.+?)\*\*(.*)$/);
+    return (
+      <div key={i} className="flex gap-2.5 mb-2.5 ml-1">
+        <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-slate-400 mt-2" />
+        <p className="text-slate-600 text-sm leading-relaxed">
+          {bulletBoldMatch ? (
+            <>
+              <strong className="text-slate-800 font-semibold">{bulletBoldMatch[1]}</strong>
+              {bulletBoldMatch[2]}
+            </>
+          ) : line.slice(2)}
+        </p>
+      </div>
+    );
+  }
+
+  if (line.trim() === "") return <div key={i} className="h-3" />;
+
+  // Inline bold in body paragraph
+  const parts = line.split(/\*\*(.+?)\*\*/g);
+  return (
+    <p key={i} className="text-slate-600 text-sm leading-relaxed mb-3">
+      {parts.map((part, j) =>
+        j % 2 === 1
+          ? <strong key={j} className="text-slate-800 font-semibold">{part}</strong>
+          : part
+      )}
+    </p>
+  );
+}
+
 export default function Stage5ReportPanel({ onComplete }: Props) {
   const [started, setStarted] = useState(false);
   const [elapsedMs, setElapsedMs] = useState(0);
@@ -28,7 +98,6 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
       const effectiveMs = elapsed * SPEED;
       setElapsedMs(effectiveMs);
 
-      // Unlock sections based on section_done events
       reportLog.forEach((entry) => {
         if (entry.type === "section_done" && entry.section && effectiveMs >= entry.offset_ms) {
           setUnlockedSections((prev) => prev.includes(entry.section!) ? prev : [...prev, entry.section!]);
@@ -51,12 +120,9 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Auto-scroll log panel to bottom as new entries appear
   useEffect(() => {
     const el = logScrollRef.current;
-    if (el) {
-      el.scrollTop = el.scrollHeight;
-    }
+    if (el) el.scrollTop = el.scrollHeight;
   }, [elapsedMs]);
 
   return (
@@ -77,97 +143,64 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-[55fr_45fr] gap-4">
+        <div className="grid grid-cols-[38fr_62fr] gap-4">
+
           {/* Left: Live Report */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm overflow-y-auto light-scroll max-h-[calc(100vh-200px)]">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-              <span className="text-slate-600 text-sm font-medium">CC Maple Zero Sugar — Swarm Intelligence Report</span>
+          <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-y-auto light-scroll max-h-[calc(100vh-200px)]">
+
+            {/* Report header */}
+            <div className="px-6 pt-6 pb-4 border-b border-slate-100">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="bg-slate-900 text-white text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded">
+                  Swarm Report
+                </span>
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
+              </div>
+              <h1 className="text-slate-900 font-extrabold text-2xl leading-tight mb-2">
+                CC Maple Zero Sugar
+              </h1>
+              <p className="text-slate-500 text-xs leading-relaxed">
+                1,247-agent swarm intelligence synthesis across 5 research sections — consumer behavior, marketing mix, launch roadmap, competitor benchmarks, and risk analysis.
+              </p>
             </div>
 
-            {[1, 2, 3, 4, 5].map((sectionNum) => {
-              const isUnlocked = unlockedSections.includes(sectionNum);
-              const isGenerating = !isUnlocked && started && reportLog.some(
-                (e) => e.type === "section_start" && e.section === sectionNum && e.offset_ms <= elapsedMs
-              );
+            {/* Sections */}
+            <div className="px-6 py-4 flex flex-col gap-1">
+              {[1, 2, 3, 4, 5].map((sectionNum) => {
+                const isUnlocked = unlockedSections.includes(sectionNum);
+                const isGenerating = !isUnlocked && started && reportLog.some(
+                  (e) => e.type === "section_start" && e.section === sectionNum && e.offset_ms <= elapsedMs
+                );
 
-              return (
-                <div key={sectionNum} className="mb-6">
-                  {isUnlocked ? (
-                    <div className="animate-sim-post-in">
-                      <div className="prose prose-sm max-w-none">
-                        {reportSections[sectionNum]?.split("\n").map((line, i) => {
-                          if (line.startsWith("## ")) {
-                            return (
-                              <h2 key={i} className="text-slate-800 font-bold text-xl mt-6 mb-3 pb-2 border-b border-slate-100 first:mt-0">
-                                {line.slice(3)}
-                              </h2>
-                            );
-                          }
-                          if (line.startsWith("**") && line.endsWith("**")) {
-                            return (
-                              <h3 key={i} className="text-slate-700 font-bold text-base mt-5 mb-2">
-                                {line.slice(2, -2)}
-                              </h3>
-                            );
-                          }
-                          // numbered list: "1. **Title** — rest"
-                          const numMatch = line.match(/^(\d+)\.\s+\*\*(.+?)\*\*(.*)$/);
-                          if (numMatch) {
-                            return (
-                              <div key={i} className="flex gap-3 mb-3 ml-1">
-                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-slate-800 text-white text-xs font-bold flex items-center justify-center mt-0.5">
-                                  {numMatch[1]}
-                                </span>
-                                <p className="text-slate-600 text-base leading-relaxed">
-                                  <strong className="text-slate-800 font-semibold">{numMatch[2]}</strong>
-                                  {numMatch[3]}
-                                </p>
-                              </div>
-                            );
-                          }
-                          // bullet: "- **Name** — text" or "- text"
-                          if (line.startsWith("- ")) {
-                            const bulletBoldMatch = line.slice(2).match(/^\*\*(.+?)\*\*(.*)$/);
-                            return (
-                              <div key={i} className="flex gap-2.5 mb-2 ml-1">
-                                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-slate-400 mt-2.5" />
-                                <p className="text-slate-600 text-base leading-relaxed">
-                                  {bulletBoldMatch ? (
-                                    <>
-                                      <strong className="text-slate-800 font-semibold">{bulletBoldMatch[1]}</strong>
-                                      {bulletBoldMatch[2]}
-                                    </>
-                                  ) : line.slice(2)}
-                                </p>
-                              </div>
-                            );
-                          }
-                          if (line.trim() === "") return <div key={i} className="h-3" />;
-                          // inline bold
-                          const parts = line.split(/\*\*(.+?)\*\*/g);
-                          return (
-                            <p key={i} className="text-slate-600 text-base leading-relaxed mb-2.5">
-                              {parts.map((part, j) =>
-                                j % 2 === 1
-                                  ? <strong key={j} className="text-slate-800 font-semibold">{part}</strong>
-                                  : part
-                              )}
-                            </p>
-                          );
-                        })}
+                return (
+                  <div key={sectionNum} className="border-b border-slate-100 last:border-0 pb-4 mb-2 last:pb-0 last:mb-0">
+                    {/* Section number + title row */}
+                    <div className="flex items-baseline gap-3 mb-3">
+                      <span className="text-slate-300 font-black text-2xl tabular-nums leading-none select-none flex-shrink-0">
+                        {String(sectionNum).padStart(2, "0")}
+                      </span>
+                      <h3 className={`font-bold text-base leading-snug ${isUnlocked ? "text-slate-800" : "text-slate-400"}`}>
+                        {SECTION_LABELS[sectionNum]}
+                      </h3>
+                    </div>
+
+                    {isUnlocked ? (
+                      <div className="animate-sim-post-in">
+                        {reportSections[sectionNum]?.split("\n").map((line, i) => renderLine(line, i))}
                       </div>
-                    </div>
-                  ) : isGenerating ? (
-                    <div className="flex items-center gap-2 text-slate-400 text-xs py-3">
-                      <div className="w-3 h-3 border-2 border-orange-400/60 border-t-transparent rounded-full animate-spin flex-shrink-0" />
-                      Writing section {sectionNum}…
-                      <span className="animate-report-cursor ml-1">|</span>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
+                    ) : isGenerating ? (
+                      <div className="flex items-center gap-2 text-slate-400 text-xs py-2">
+                        <div className="w-3 h-3 border-2 border-orange-400/60 border-t-transparent rounded-full animate-spin flex-shrink-0" />
+                        Writing section {sectionNum}…
+                        <span className="animate-report-cursor ml-1">|</span>
+                      </div>
+                    ) : (
+                      <div className="text-slate-300 text-xs">Pending…</div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Right: AI Thinking */}
@@ -180,6 +213,7 @@ export default function Stage5ReportPanel({ onComplete }: Props) {
               <ReportGenerationLog entries={reportLog} elapsedMs={elapsedMs} />
             </div>
           </div>
+
         </div>
       )}
 
