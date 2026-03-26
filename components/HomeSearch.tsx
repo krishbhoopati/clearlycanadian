@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import PersonaAvatar from "@/components/PersonaAvatar";
 import PersonaPopover from "@/components/PersonaPopover";
 import ResultsView from "@/components/ResultsView";
@@ -255,14 +256,26 @@ export default function HomeSearch({
             <div className="flex flex-col gap-10">
               {/* Top section */}
               <div className="flex flex-col gap-6">
-                <div>
-                  <h1 className="text-[4rem] font-bold font-sans text-white leading-tight tracking-tight">
-                    Your consumer panel{" "}
-                    <span>is ready.</span>
-                  </h1>
-                  <p className="text-white/75 text-[1.35rem] font-bold mt-3">
-                    12 AI personas built on real market data. Test any product, price, message, or channel decision instantly.
-                  </p>
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <h1 className="text-[4rem] font-bold font-sans text-white leading-tight tracking-tight">
+                      Your consumer panel{" "}
+                      <span>is ready.</span>
+                    </h1>
+                    <p className="text-white/75 text-[1.35rem] font-bold mt-3">
+                      12 AI personas built on real market data. Test any product, price, message, or channel decision instantly.
+                    </p>
+                  </div>
+                  <div className="swarm-btn-wrapper relative flex-shrink-0 p-[2px] rounded-full mt-1">
+                    <div className="swarm-glow-ring absolute inset-0 rounded-full" />
+                    <Link
+                      href="/simulation"
+                      className="relative flex items-center gap-3 glass-dark px-7 py-4 rounded-full text-lg font-semibold text-white/90 hover:text-white transition-all duration-200"
+                    >
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Swarm Simulation
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Search input */}

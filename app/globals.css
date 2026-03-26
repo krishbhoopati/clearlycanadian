@@ -121,6 +121,38 @@
   100% { width: 90%; }
 }
 
+/* ── Swarm Button Glow Ring ───────────────────────── */
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes swarm-btn-glow {
+  to { --glow-angle: 360deg; }
+}
+.swarm-glow-ring {
+  animation: swarm-btn-glow 2s linear infinite;
+  background: conic-gradient(
+    from var(--glow-angle),
+    transparent 0%,
+    transparent 75%,
+    #2d7a5f 80%,
+    #2d7a5f 98%,
+    transparent 100%
+  );
+  padding: 2px;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: background 0.2s ease;
+}
+.swarm-btn-wrapper:hover .swarm-glow-ring {
+  animation-play-state: paused;
+  background: conic-gradient(from 0deg, #2d7a5f 0%, #2d7a5f 100%);
+}
+
 /* ── Swarm Simulation Animations ─────────────────── */
 @keyframes agent-pop-in {
   0%   { opacity: 0; transform: scale(0.7) translateY(16px); }

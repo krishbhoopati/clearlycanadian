@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import Link from "next/link";
 import HomeSearch from "@/components/HomeSearch";
 import PersonaChatModal from "@/components/PersonaChatModal";
 import type {
@@ -251,16 +250,6 @@ export default function HomePage() {
         </span>
       </div>
 
-      {/* Swarm Simulation entry point */}
-      <div className="fixed top-4 right-6 z-40">
-        <Link
-          href="/simulation"
-          className="flex items-center gap-2 glass-dark px-4 py-2 rounded-full text-sm font-medium text-white/80 hover:text-white border border-white/10 hover:border-white/30 transition-all duration-200"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Swarm Simulation
-        </Link>
-      </div>
     </>
   );
 }
